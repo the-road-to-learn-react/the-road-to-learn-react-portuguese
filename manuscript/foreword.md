@@ -4,13 +4,15 @@ O Caminho para aprender React ensina os seus fundamentos. Ao longo do livro, voc
 
 Em O Caminho para aprender React, eu quero oferecer uma base sólida antes de começar a mergulhar em um ecossistema mais amplo. Menos ferramentas e menos gerenciamento externo de estado, mas muita informação a respeito de React. O livro explica conceitos gerais, padrões e melhores práticas em uma aplicação React do mundo real.
 
-Você irá aprender a construir sua própria aplicação Hacker News. Ela cobre funcionalidades como paginação, _client-side caching_ e operações de busca e ordenação. Além disso, você irá fazer a transição de JavaScript ES5 para JavaScript ES6 ao longo do caminho. Espero que este livro capture meu entusiasmo por React e JavaScript e ajude você a ser iniciado.
+Você irá aprender a construir sua própria versão do Hacker News. Ela cobre funcionalidades como paginação, _client-side caching_ e operações de busca e ordenação. Além disso, você irá paulatinamente fazer a transição de JavaScript ES5 para JavaScript ES6. Espero que este livro capture meu entusiasmo por React e JavaScript e ajude você a ser iniciado.
 
 {pagebreak}
 
-# Testimonials
+# Depoimentos
 
-**[Muhammad Kashif][1]:** "The Road to Learn React is a unique book that I recommend to any student or professional interested in learning react basics to advanced level. It is packed with insightful tips and techniques that are hard to find elsewhere, and remarkably thorough in its use of examples and references to sample problems, i have 17 years of experience in web and desktop app development, and before reading this book i was having trouble in learning react, but this book works like magic."
+**[Muhammad Kashif][1]:** “O Caminho para Aprender React é um livro único que eu recomendo para qualquer estudante ou profissional interessado em aprender react, do básico ao nível avançado. Ele é recheado de dicas pertinentes e técnicas difíceis de achar em outro lugar, notavelmente completo no seu uso de exemplos e referências para problemas, eu tenho 17 anos de experiência em desenvolvimento de aplicações web e desktop, e antes de ler este livro eu estava tendo problemas em aprender react, mas este livro funciona como mágica.”
+
+”The Road to Learn React is a unique book that I recommend to any student or professional interested in learning react basics to advanced level. It is packed with insightful tips and techniques that are hard to find elsewhere, and remarkably thorough in its use of examples and references to sample problems, i have 17 years of experience in web and desktop app development, and before reading this book i was having trouble in learning react, but this book works like magic."
 
 **[Andre Vargas][2]:** "The Road to Learn React by Robin Wieruch is such an awesome book! Most of what I learned about React and even ES6 was through it!"
 
