@@ -10,27 +10,25 @@ Você irá aprender a construir sua própria versão do Hacker News. Ela cobre f
 
 # Depoimentos
 
-**[Muhammad Kashif][1]:** “O Caminho para Aprender React é um livro único que eu recomendo para qualquer estudante ou profissional interessado em aprender react, do básico ao nível avançado. Ele é recheado de dicas pertinentes e técnicas difíceis de achar em outro lugar, notavelmente completo no seu uso de exemplos e referências para problemas, eu tenho 17 anos de experiência em desenvolvimento de aplicações web e desktop, e antes de ler este livro eu estava tendo problemas em aprender react, mas este livro funciona como mágica.”
+**[Muhammad Kashif][1]:** "O Caminho para Aprender React é um livro único que eu recomendo para qualquer estudante ou profissional interessado em aprender react, do nível básico ao avançado. Ele é recheado de dicas pertinentes e técnicas difíceis de achar em qualquer outro lugar, notavelmente completo no seu uso de exemplos e referências para modelos de problemas, eu tenho 17 anos de experiência em desenvolvimento de aplicações web e desktop, e antes de ler este livro eu estava tendo problemas em aprender react, mas este livro funciona como mágica."
 
-”The Road to Learn React is a unique book that I recommend to any student or professional interested in learning react basics to advanced level. It is packed with insightful tips and techniques that are hard to find elsewhere, and remarkably thorough in its use of examples and references to sample problems, i have 17 years of experience in web and desktop app development, and before reading this book i was having trouble in learning react, but this book works like magic."
+**[Andre Vargas][2]:** "O Caminho para Aprender React de Robin Wieruch é um livro impressionante! Muito do que eu aprendi sobre React e até ES6 foi através dele!"
 
-**[Andre Vargas][2]:** "The Road to Learn React by Robin Wieruch is such an awesome book! Most of what I learned about React and even ES6 was through it!"
+**[Nicholas Hunt-Walker, Instrutor de Python na Seattle Coding School][3]:** "Esse é um dos livros mais bem escritos e informativos com o qual eu já trabalhei. Uma sólida introdução à React & ES6."
 
-**[Nicholas Hunt-Walker, Instructor of Python at a Seattle Coding School][3]:** "This is one of the most well-written & informative coding books I've ever worked through. A solid React & ES6 introduction."
+**[Austin Green][4]:** "Obrigado, realmente amei o livro. Mistura perfeita para aprender React, ES6, e conceitos avançados de programação."
 
-**[Austin Green][4]:** "Thanks, really loved the book. Perfect blend to learn React, ES6, and higher level programming concepts."
+**[Nicole Ferguson][5]:** "Estou fazendo o curso O Caminho para Aprender React de Robin este final de semana & eu quase que me sinto culpada por me divertir tanto."
 
-**[Nicole Ferguson][5]:** "I'm doing Robin's Road to Learn React course this weekend & I almost feel guilty for having so much fun."
+**[Karan][6]:** "Acabo de terminar o seu Caminho para React. Melhor livro do mundo para iniciantes em React e JS. Exposição elegante de ES. Felicitações! :)"
 
-**[Karan][6]:** "Just finished your Road to React. Best book for a beginner in the world of React and JS. Elegant exposure to ES. Kudos! :)"
+**[Eric Priou][7]:** "O Caminho para aprender React de Robin Wieruch é leitura obrigatória, simples e concisa para React e JavaScript."
 
-**[Eric Priou][7]:** "The Road to learn React by Robin Wieruch is a must read. Clean and concise for React and JavaScript."
+**Desenvolvedor Novato:** "Acabo de terminar o livro mesmo sendo um desenvolvedor iniciante, obrigado por ter trabalhado nisso. Foi fácil de acompanhar e eu me sinto confiante para começar um novo _app_ do zero nos próximos dias. O livro se mostrou muito melhor que o tutorial oficial do React.js que eu tentei anteriormente (e que não pude completar devido à escassez de detalhes). Os exercícios ao final de cada seção foram muito gratificantes."
 
-**A Rookie Developer:** "I just finished the book as a rookie developer, thanks for working on this. It was easy to follow and I feel confident in starting a new app from scratch in the coming days. The book was much better than official React.js tutorial that I tried earlier (and couldn't complete due to lack of detail). The exercises at the end of each section were very rewarding."
+**Estudante:** "O melhor livro para começar a aprender ReactJS. O projeto acompanha os conceitos aprendidos o que ajuda a pegar o assunto. Descobri que 'Codifique e aprenda' é o melhor jeito de dominar programação e este livro faz exatamente isso."
 
-**Student:** "The best book to start learning ReactJS. The project moves along with the concepts being learnt which helps to grasp the subject. I have found 'Code and learn' as best way to master programming and this book exactly does that."
-
-**[Thomas Lockney][8]:** "Pretty solid introduction to React that doesn't try to be comprehensive. I just wanted a taste to understand what it was about and this book gave me exactly that. I didn't follow all the little footnotes to learn about the new ES6 features I've missed ("I wouldn't say I've been missing it, Bob."). But I'm sure for those of you who have fallen behind and are diligent about following those, you can probably learn a lot more than just what the book teaches."
+**[Thomas Lockney][8]:** "Introdução sólida a React que não tenta ser muito abrangente. Eu queria apenas provar para entender de que se tratava e este livro me entregou exatamente isso. Não segui todas as notas de rodapé para aprender a respeito das novas características de ES6 que havia perdido ("_I wouldn't say I've been missing it, Bob._"). Porém, tenho certeza que aqueles de vocês que pararam e são aplicados para segui-las, provavelmente aprenderão muito mais do que apenas o que o livro ensina."
 
 {pagebreak}
 
