@@ -1,6 +1,6 @@
 # O Caminho para aprender React
 
-Repositório oficial da tradução em português do livro [The Road to learn React][1]. Também está disponível o [Código Fonte][2] da aplicação desenvolvida.
+Repositório oficial da tradução em português do livro [The Road to learn React][1]. Também contém o [Código Fonte][2] da aplicação desenvolvida.
 
 ## Atualizações, Ajuda e Como apoiar
 
