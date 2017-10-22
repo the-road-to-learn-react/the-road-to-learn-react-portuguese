@@ -32,39 +32,39 @@ Você irá aprender a construir sua própria versão do Hacker News. Ela cobre f
 
 {pagebreak}
 
-# Education for Children
+# Educação para Crianças
 
-The book is open source and should enable everyone to learn React. However, not everyone is privileged to use open source resources, because not everyone is educated in the English language in the first place. Even though the book is pay what you want, I want to use it to support projects that teach children English in the developing world.
+Este livro é _open source_ e deveria permitir a todos a aprender React. Contudo, nem todos são privilegiados para fazer uso de recursos _open source_,  porque nem todo mundo é educado primariamente na língua inglesa. Mesmo que este livro seja um "pague o quanto quiser", eu gostaria de utilizá-lo para apoiar projetos que ensinam inglês para crianças no mundo em desenvolvimento.
 
-* 11. April to 18. April, 2017, [Giving Back, By Learning React][9]
+* 11 a 18 de Abril de 2017, [Giving Back, By Learning React][9]
 
 {pagebreak}
 
 # FAQ
 
-**How do I get updates?** You can [subscribe][10] to the Newsletter or follow me on [Twitter][11] for updates. Once you have a copy of the book, it will stay updated when a new edition gets released. But you have to grab the copy again when an update is announced.
+**Como recebo atualizações?** Você pode [assinar][10] a newsletter ou me seguir no [Twitter][11] para estar por dentro das atualizações. Uma vez que você obtenha uma cópia do livro, esta permanecerá atualizada até uma nova edição ser lançada. Você precisará fazer o _download_ novamente quando uma atualização for anunciada.
 
-**Does it use the recent React version?** The book always receives an update when the React version got updated. Usually books are outdated pretty soon after their release. Since this book is self-published, I can update it whenever I want.
+**O livro usa a versão mais recente de React?** O livro sempre é atualizado quando uma nova versão de React é lançada. Geralmente livros ficam obsoletos logo após o lançamento. Como este livro é de publicação própria, eu posso atualizá-lo quando quiser.
 
-**Does it cover Redux?** It doesn't. Therefore I have written a second book. The Road to learn React should give you a solid foundation before you dive into advanced topics. The implementation of the sample application in the book will show that you don't need Redux to build an application in React. After you have read the book, you should be able to implement a solid application without Redux. Then you can read my second book to learn [Redux][12].
+**Ele aborda Redux?** Não. Para isso, eu escrevi um segundo livro. O Caminho para aprender React deve lhe fornecer uma base sólida antes de você mergulhar em tópicos avançados. A implementação da aplicação de exemplo no livro irá mostrar que você não precisa de Redux para construir uma aplicação em React. Após terminado o livro, você deverá estar apto a implementar uma aplicação consistente sem Redux. Depois disso, você poderá ler meu segundo livro e aprender [Redux][12].
 
-**Does it use JavaScript ES6?** Yes. But don't worry. You will be fine if you are familiar with JavaScript ES5. All JavaScript ES6 features, that I describe on the journey to learn React, will transition from ES5 to ES6 in the book. Every feature along the way will be explained. The book does not only teach React, but also all useful JavaScript ES6 features for React.
+**Ele usa JavaScript ES6?** Sim. Mas não se preocupe. Você ficará tranquilo se já for familiarizado com JavaScript ES5. Todas as características de ES6, que eu descrevo na jornada para aprender React, irão fazer uma transição de ES5 para ES6 no livro. Todas serão explicadas ao longo do caminho. O livro não ensina apenas React, mas também todas as funcionalidades de JavaScript ES6 que são úteis para React.
 
-**Will you add more chapters in the future?** You can have a look at the Change Log chapter for major updates that already happened. There will be unannounced improvements in between too. In general, it depends on the community whether I continue to work on the book. If there is an acceptance for the book, I will deliver more chapters and improve the old material. I will keep the content up to date with recent best practices, concepts and patterns.
+**Você irá adicionar capítulos no futuro?** Você pode ver no capítulo "Registro de Mudanças" as atualizações mais significativas que já aconteceram. Também foram feitas melhorias não listadas entre elas. Em geral, depende da comunidade dizer quando eu devo continuar a trabalhar no livro. Se este tiver uma boa aceitação, eu irei providenciar mais capítulos e melhorar o material mais antigo. Continuarei mantendo o conteúdo atualizado com as melhores práticas, padrões e conceitos mais recentes.
 
-**What are the reading formats?** In addition to the .pdf, .epub, and .mobi formats, you can read it in pure markdown on [GitHub][13]. In general, I recommend reading it on a suitable format, otherwise the code snippets will have ugly line breaks.
+**Quais são os formatos de leitura disponíveis?** Além dos formatos .pdf, .epub e .mobi, você pode ler o livro em _markdown_ puro no [GitHub][13]. Em geral, eu recomendo a leitura em formato adequado, caso contrário trechos de código irão ter quebras de linha inadequadas.
 
-**How can I get help while reading the book?** The book has a [Slack Group][14] for people who are reading the book. You can join the channel to get help or to help others. After all, helping others can improve your learnings too.
+**Como posso obter ajuda enquanto leio o livro?** Existe um [Grupo no Slack][14] para pessoas que estão lendo o livro e você pode entrar no canal para obter ajuda ou ajudar outras pessoas. Afinal de contas, ajudar os outros também pode melhorar o seu aprendizado.
 
-**Is there any troubleshoot area?** If you run into problems, please join the Slack Group. In addition, you could have a look into the [open issues on GitHub][15] for the book. Perhaps your problem was already mentioned and you can find the solution for it. If your problem wasn't mentioned, don't hesitate to open a new issue where you can explain your problem, maybe provide a screenshot, and some more details (e.g. book page, node version). After all, I try to ship all fixes in next editions of the book.
+**Existe alguma seção de solução de problemas?** Se você se deparar com problemas, por favor, junte-se ao grupo no Slack. Você também pode verificar os [issues abertos no GitHub][15] para o livro. Talvez seu problema já tenha sido mencionado e você poderá achar a solução. Caso contrário, não hesite em abrir um novo _issue_ onde você pode explicar sua dificuldade, talvez fornecer uma captura de tela e mais alguns detalhes (ex.: página do livro, versão do _node_). Não obstante, eu tento enviar todas as correções nas próximas edições do livro.
 
-**Can I help to improve it?** Yes. You can have a direct impact with your thoughts and [contributions on GitHub][16]. I don't claim to be an expert nor to write in native English. I would appreciate your help very much.
+**Posso ajudar a melhorar o livro?** Sim. Você pode ter um impacto direto com suas idéias e [contribuições no GitHub][16]. Não tenho a pretensão de ser um especialista nem de escrever em inglês nativo. Eu agradeceria muito a sua ajuda.
 
-**Why is the book pay what you want?** I have put a lot of effort into this and will do so in the future. My desire is to reach as many people as possible. Everyone should be enabled to learn React. Still you could pay, if you can afford it. In addition, the [book attempts to support projects that educate children in the developing world][17]. You can have an impact too.
+**Por que posso pagar quanto quiser pelo livro?** Eu me dediquei bastante a este trabalho e irei continuar a fazê-lo no futuro. Meu desejo é alcançar quantas pessoas forem possíveis e todos devem estar aptos a aprender React. Mas existe a possibilidade de você pagar, caso possa. Além disso, [o livro é uma tentativa de apoiar projetos que educam crianças em países em desenvolvimento][17]. Você também pode fazer a diferença.
 
-**Can I support the project?** Yes. Feel free to reach out. I invest a lot of my time into open source tutorials and learning resources. You can have a look at my [about me][18] page. I would love to have you as my [Patron on Patreon][19].
+**Posso apoiar o projeto?** Sim. Sinta-se livre para entrar em contato. Eu dedico bastante tempo a tutoriais _open source_ e recursos de aprendizagem. Você pode visitar a página [sobre mim][18]. Eu adoraria ter você como meu [Patron no Patreon][19].
 
-**Is there a call to action?** Yes. I want you to take a moment to think about a person who would be a good match to learn React. The person could have shown the interest already, could be in the middle of learning React or might not yet be aware about wanting to learn React. Reach out to that person and share the book. It would mean a lot to me. The book is intended to be given to others.
+**Existe um chamado para participar ativamente?** Sim. Quero que você pare um momento para pensar em alguém que seria um bom candidato a aprender React. A pessoa pode já ter mostrado interesse, pode estar no meio do aprendizado ou pode nem ter despertado a vontade de aprender ainda. Aborde essa pessoa e compartilhe o livro. Significaria muito para mim. O livro foi feito com a intenção de ser distribuído.
 
 {pagebreak}
 
