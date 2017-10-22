@@ -1,18 +1,18 @@
 # Prefácio
 
-"O Caminho para aprender React" ensina os fundamentos de React. Ao longo do livro, você irá construir uma aplicação comum no mundo real em React puro, sem fazer uso de ferramentas complicadas. Tudo será explicado, da configuração do projeto, até a sua implantação em um servidor.
+"O Caminho para aprender React" ensina os fundamentos de React. Ao longo do livro, você irá construir uma aplicação de verdade em React puro, sem fazer uso de ferramentas complicadas. Tudo será explicado, da configuração do projeto, até a sua implantação em um servidor.
 
 O livro traz referências à exercícios e materiais de leitura adicional em cada capítulo. Depois de lê-lo, você será capaz de construir suas próprias aplicações em React. Os recursos são mantidos atualizados por mim, Robin Wieruch, e pela comunidade.
 
-Minha intenção em "O Caminho para aprender React" é oferecer uma base sólida antes de mergulhar em um ecossistema mais amplo. Menos ferramentas e menos gerenciamento externo de estado, mas muita informação a respeito de React. O livro explica conceitos gerais, padrões e melhores práticas em uma aplicação React do mundo real.
+Minha intenção neste livro é oferecer uma base sólida antes de mergulhar em um ecossistema mais amplo. Menos ferramentas e menos gerenciamento externo de estado, mas muita informação a respeito de React. Ele explica conceitos gerais, padrões e melhores práticas em uma aplicação React do mundo real.
 
-Você irá aprender a construir sua própria versão do Hacker News. Ela cobre funcionalidades como paginação, _client-side caching_ e operações de busca e ordenação. Além disso, você irá paulatinamente fazer a transição de JavaScript ES5 para JavaScript ES6. Espero que este livro capture meu entusiasmo por React e JavaScript e ajude você a ser iniciado.
+Você irá aprender a construir sua própria versão do Hacker News. Ela cobre funcionalidades como paginação, _client-side caching_ e operações de busca e ordenação. Além disso, irá paulatinamente fazer a transição de JavaScript ES5 para JavaScript ES6. Espero que este livro transmita meu entusiasmo por React e JavaScript e ajude você a ser iniciado.
 
 {pagebreak}
 
 # Depoimentos
 
-**[Muhammad Kashif][1]:** "O Caminho para Aprender React é um livro único que eu recomendo para qualquer estudante ou profissional interessado em aprender react, do nível básico ao avançado. Ele é recheado de dicas pertinentes e técnicas difíceis de achar em qualquer outro lugar, notavelmente completo no seu uso de exemplos e referências para modelos de problemas, eu tenho 17 anos de experiência em desenvolvimento de aplicações web e desktop, e antes de ler este livro eu estava tendo problemas em aprender react, mas este livro funciona como mágica."
+**[Muhammad Kashif][1]:** "O Caminho para Aprender React é um livro único, que eu recomendo para qualquer estudante ou profissional interessado em aprender react, do nível básico ao avançado. Ele é recheado de dicas pertinentes e técnicas difíceis de achar em qualquer outro lugar, notavelmente completo no seu uso de exemplos e referências para modelos de problemas, eu tenho 17 anos de experiência em desenvolvimento de aplicações web e desktop, e antes de ler este livro eu estava tendo problemas em aprender react, mas este livro funciona como mágica."
 
 **[Andre Vargas][2]:** "O Caminho para Aprender React de Robin Wieruch é um livro impressionante! Muito do que eu aprendi sobre React e até ES6 foi através dele!"
 
@@ -36,7 +36,7 @@ Você irá aprender a construir sua própria versão do Hacker News. Ela cobre f
 
 # Educação para Crianças
 
-Este livro é _open source_ e deveria permitir a todos a aprender React. Contudo, nem todos são privilegiados para fazer uso de recursos _open source_,  porque nem todo mundo é educado primariamente na língua inglesa. Mesmo que este livro seja um "pague o quanto quiser", eu gostaria de utilizá-lo para apoiar projetos que ensinam inglês para crianças no mundo em desenvolvimento.
+Este livro é _open source_ e deveria permitir que qualquer um aprenda React. Contudo, nem todos são privilegiados para fazer uso de recursos _open source_,  porque nem todo mundo é educado primariamente na língua inglesa. Mesmo que este livro seja um "pague o quanto quiser", eu gostaria de utilizá-lo para apoiar projetos que ensinam inglês para crianças no mundo em desenvolvimento.
 
 * 11 a 18 de Abril de 2017, [Giving Back, By Learning React][9]
 
@@ -44,29 +44,29 @@ Este livro é _open source_ e deveria permitir a todos a aprender React. Contudo
 
 # FAQ
 
-**Como recebo atualizações?** Você pode [assinar][10] a newsletter ou me seguir no [Twitter][11] para estar por dentro das atualizações. Uma vez que você obtenha uma cópia do livro, esta permanecerá atualizada até uma nova edição ser lançada. Você precisará fazer o _download_ novamente quando uma atualização for anunciada.
+**Como recebo atualizações?** Você pode [assinar][10] a newsletter ou me seguir no [Twitter][11] para estar por dentro das atualizações. Uma vez que você obtenha uma cópia do livro, esta permanecerá atualizada até que uma nova edição seja lançada. Quando isso acontecer, você precisará fazer o _download_ novamente.
 
-**O livro usa a versão mais recente de React?** O livro sempre é atualizado quando uma nova versão de React é lançada. Geralmente livros ficam obsoletos logo após o lançamento. Como este livro é de publicação própria, eu posso atualizá-lo quando quiser.
+**O livro usa a versão mais recente de React?** O livro sempre é atualizado quando uma nova versão de React é lançada. De modo geral, livros ficam obsoletos logo após o lançamento. Mas, como este livro é de publicação própria, eu posso atualizá-lo quando quiser.
 
-**Ele aborda Redux?** Não. Para isso, eu escrevi um segundo livro. O Caminho para aprender React deve lhe fornecer uma base sólida antes de você mergulhar em tópicos avançados. A implementação da aplicação de exemplo no livro irá mostrar que você não precisa de Redux para construir uma aplicação em React. Após terminado o livro, você deverá estar apto a implementar uma aplicação consistente sem Redux. Depois disso, você poderá ler meu segundo livro e aprender [Redux][12].
+**Ele aborda Redux?** Não. Para isso, eu escrevi um segundo livro. "O Caminho para aprender React" deve lhe fornecer uma base sólida antes de você mergulhar em tópicos avançados. A implementação da aplicação de exemplo no livro irá mostrar que você não precisa de Redux para construir uma aplicação em React. Após ter terminado o livro, você deverá estar apto a implementar uma aplicação consistente sem Redux. Você então poderá ler meu segundo livro e aprender [Redux][12].
 
-**Ele usa JavaScript ES6?** Sim. Mas não se preocupe. Você ficará tranquilo se já for familiarizado com JavaScript ES5. Todas as características de ES6, que eu descrevo na jornada para aprender React, irão fazer uma transição de ES5 para ES6 no livro. Todas serão explicadas ao longo do caminho. O livro não ensina apenas React, mas também todas as funcionalidades de JavaScript ES6 que são úteis para React.
+**Ele usa JavaScript ES6?** Sim, mas não se preocupe. Você se sairá bem se já for familiarizado com JavaScript ES5. Todas as características de ES6, que eu descrevo nesta jornada para aprender React, irão fazer a transição de ES5 para ES6 no livro. Todas serão explicadas ao longo do caminho. O livro não ensina apenas React, mas também todas as funcionalidades de JavaScript ES6 que são úteis para React.
 
-**Você irá adicionar capítulos no futuro?** Você pode ver no capítulo "Registro de Mudanças" as atualizações mais significativas que já aconteceram. Também foram feitas melhorias não listadas entre elas. Em geral, depende da comunidade dizer quando eu devo continuar a trabalhar no livro. Se este tiver uma boa aceitação, eu irei providenciar mais capítulos e melhorar o material mais antigo. Continuarei mantendo o conteúdo atualizado com as melhores práticas, padrões e conceitos mais recentes.
+**Você irá adicionar capítulos no futuro?** Você pode ver no "Registro de Mudanças" as atualizações mais significativas que já aconteceram. Também foram feitas outras melhorias não listadas. Em geral, depende da comunidade dizer quando eu devo continuar a trabalhar no livro. Se este tiver uma boa aceitação, eu irei providenciar mais capítulos e melhorar o material mais antigo. Continuarei mantendo o conteúdo atualizado com as melhores práticas, padrões e conceitos mais recentes.
 
-**Quais são os formatos de leitura disponíveis?** Além dos formatos .pdf, .epub e .mobi, você pode ler o livro em _markdown_ puro no [GitHub][13]. Em geral, eu recomendo a leitura em formato adequado, caso contrário trechos de código irão ter quebras de linha inadequadas.
+**Quais são os formatos de leitura disponíveis?** Além dos formatos .pdf, .epub e .mobi, você pode ler o livro em _markdown_ puro no [GitHub][13]. Em geral, eu recomendo a leitura em formato adequado, caso contrário trechos de código irão ter quebras de linha indesejadas.
 
 **Como posso obter ajuda enquanto leio o livro?** Existe um [Grupo no Slack][14] para pessoas que estão lendo o livro e você pode entrar no canal para obter ajuda ou ajudar outras pessoas. Afinal de contas, ajudar os outros também pode melhorar o seu aprendizado.
 
-**Existe alguma seção de solução de problemas?** Se você se deparar com problemas, por favor, junte-se ao grupo no Slack. Você também pode verificar os [issues abertos no GitHub][15] para o livro. Talvez seu problema já tenha sido mencionado e você poderá achar a solução. Caso contrário, não hesite em abrir um novo _issue_ onde você pode explicar sua dificuldade, talvez fornecer uma captura de tela e mais alguns detalhes (ex.: página do livro, versão do _node_). Não obstante, eu tento enviar todas as correções nas próximas edições do livro.
+**Existe alguma seção de solução de problemas?** Se você se deparar com problemas, por favor, junte-se ao grupo no Slack. Você também pode verificar os [_issues_ abertos no GitHub][15] para o livro. Talvez seu problema até já tenha sido levantado e você poderá achar a solução. Caso contrário, não hesite em abrir um novo _issue_ onde você pode explicar sua dificuldade, talvez fornecer uma captura de tela e mais alguns detalhes (ex.: página do livro, versão do _node_). Eu tento enviar todas as correções nas próximas edições do livro.
 
 **Posso ajudar a melhorar o livro?** Sim. Você pode ter um impacto direto com suas idéias e [contribuições no GitHub][16]. Não tenho a pretensão de ser um especialista nem de escrever em inglês nativo. Eu agradeceria muito a sua ajuda.
 
-**Por que posso pagar quanto quiser pelo livro?** Eu me dediquei bastante a este trabalho e irei continuar a fazê-lo no futuro. Meu desejo é alcançar quantas pessoas forem possíveis e todos devem estar aptos a aprender React. Mas existe a possibilidade de você pagar, caso possa. Além disso, [o livro é uma tentativa de apoiar projetos que educam crianças em países em desenvolvimento][17]. Você também pode fazer a diferença.
+**Por que posso pagar quanto quiser pelo livro?** Eu me dediquei bastante a este trabalho e irei continuar a fazê-lo no futuro. Meu desejo é alcançar o máximo de pessoas, todos devem estar aptos a aprender React. Mas existe a possibilidade de você pagar, caso possa. Além disso, [o livro é uma tentativa de apoiar projetos que educam crianças em países em desenvolvimento][17]. Você também pode fazer a diferença.
 
-**Posso apoiar o projeto?** Sim. Sinta-se livre para entrar em contato. Eu dedico bastante tempo a tutoriais _open source_ e recursos de aprendizagem. Você pode visitar a página [sobre mim][18]. Eu adoraria ter você como meu [Patron no Patreon][19].
+**Posso apoiar o projeto?** Sim. Sinta-se livre para entrar em contato. Eu dedico bastante tempo a tutoriais _open source_ e recursos de aprendizagem. Você pode visitar minha página [sobre mim][18]. Eu também adoraria ter você como meu [Patron no Patreon][19].
 
-**Existe um chamado para participar ativamente?** Sim. Quero que você pare um momento para pensar em alguém que seria um bom candidato a aprender React. A pessoa pode já ter mostrado interesse, ou estar no meio do aprendizado ou ainda nem ter despertado a vontade de aprender ainda. Aborde essa pessoa e compartilhe o livro. Significaria muito para mim. Ele foi feito com a intenção de ser distribuído.
+**Sou encorajado a participar ativamente?** Sim. Quero que você pare um momento para pensar em alguém que seria um bom candidato a aprender React. A pessoa pode já ter mostrado interesse, ou estar no meio do aprendizado ou ainda nem ter despertado a vontade de aprender ainda. Aborde essa pessoa e compartilhe o livro. Significaria muito para mim. Ele foi feito com a intenção de ser distribuído.
 
 {pagebreak}
 
