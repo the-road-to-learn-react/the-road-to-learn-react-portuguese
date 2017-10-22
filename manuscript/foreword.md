@@ -115,40 +115,40 @@ Este livro é _open source_ e deveria permitir que qualquer um aprenda React. Co
 
 {pagebreak}
 
-# How to read it?
+# Como ler o livro?
 
-The book is my attempt to teach React while you will write an application. It is a practical guide to learn React and not a reference work about React. You will write a Hacker News application that interacts with a real world API. Among several interesting topics, it covers state management in React, caching and interactions (sorting and searching). On the way you will learn best practices and patterns in React.
+Esta é uma tentativa minha de lhe ensinar enquanto você escreve uma aplicação. É um guia prático, não uma referência sobre React. Você irá escrever uma versão própria do Hacker News que interage com uma API de verdade. Entre os vários tópicos interessantes, estão o gerenciamento de estado em React, _caching_ e operações como ordenações e buscas. Durante o processo, você irá aprender as melhores práticas e padrões em React.
 
-In addition, the book gives you a transition from JavaScript ES5 to JavaScript ES6. React embraces a lot of JavaScript ES6 features and I want to show you how you can use them.
+O livro também lhe provê uma transição de JavaScript ES5 para JavaScript ES6. React adota muitas funcionalidades do JavaScript ES6 e eu gostaria de lhe mostrar como utilizá-las.
 
-In general each chapter of the book will build up on the previous chapter. Each chapter will teach you something new. Don't rush through the book. You should internalize each step. You could apply your own implementations and read more about the topic. After each chapter I give you some reading material and exercises. If you really want to learn React, I highly recommend to read the extra material and do some hands on exercises. After you have read a chapter, make yourself comfortable with the learnings before you continue.
+Em geral, um capítulo irá continuar de onde o anterior parou, ensinando-lhe alguma coisa nova. Não se apresse para terminar o livro. Você deve internalizar o conhecimento em cada passo. Você também pode aplicar suas próprias implementações e ler mais a respeito do tópico em questão. Ao final de cada capítulo, disponibilizo alguns exercícios e material de leitura. Se você quer aprender React, eu recomendo fortemente que leia o material extra e que "mele as mãos" com os exercícios. Sinta-se confortável com o que aprendeu antes de passar para o próximo assunto.
 
-In the end you will have a complete React application in production. I am very keen to see your results, so please text me when you have finished the book. The final chapter of the book will give you a handful of options to continue your React journey. In general you will find a lot of React related topics on [my personal website][25].
+No fim, você irá ter uma aplicação React completa em produção e eu tenho grande interesse em ver seus resultados. Portanto, sinta-se livre para entrar em contato quando terminar. O último capítulo irá lhe prover várias opções para continuar sua jornada. Você irá encontrar muitos tópicos relacionados a React no [meu website pessoal][25].
 
-Since you are reading the book, I guess you are new to React. That's perfect. In the end I hope to get your feedback to improve the material to enable everyone to learn React. You can have a direct impact on [GitHub][26] or text me on [Twitter][27].
+Como você está lendo este livro, suponho que seja novo em React. Isso é ótimo. Espero receber o seu _feedback_ sobre como posso melhorar o material para que qualquer um possa aprender. Você pode fazer a diferença diretamente no [GitHub][26] ou falar comigo no [Twitter][27].
 
-# What you can expect (so far...)
+# O que você pode esperar (até agora…)
 
-* [Hacker News App in React][28]
-* no complicated configurations
-* create-react-app to bootstrap your application
-* efficient lightweight code
-* only React setState as state management (so far...)
-* transition from JavaScript ES5 to ES6 along the way
-* the React API with setState and lifecycle methods
-* interaction with a real world API (Hacker News)
-* advanced user interactions
-  * client-sided sorting
-  * client-sided filtering
-  * server-sided searching
-* implementation of client-side caching
-* higher order functions and higher order components
-* snapshot test components with Jest
-* unit test components with Enzyme
-* neat libraries along the way
-* exercises and more readings along the way
-* internalize and reinforce your learnings
-* deploy your application to production
+* [Hacker News App em React][28]
+* nenhuma configuração complicada
+* create-react-app para fazer a configuração inicial da aplicação
+* código leve e eficiente
+* apenas _setState_ de React para gerenciar o estado
+* transição paulatina de JavaScript ES5 para ES6
+* a API React com _setState_ e métodos de ciclo de vida
+* interação com uma API do mundo real (Hacker News)
+* interação avançada com o usuário
+  * ordenação _client-sided_
+  * filtragem _client-sided_
+  * busca _server-sided_
+* implementação de _client-side caching_
+* _higher order functions_ e _higher order components_
+* testes _snapshot_ de componentes com Jest
+* testes unitários com Enzyme
+* bibliotecas organizadas ao longo do caminho
+* exercícios e leituras adicionais
+* internalizar e reforçar seus conhecimentos
+* implantação da sua aplicação em produção
 
 {pagebreak}
 
