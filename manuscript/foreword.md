@@ -1,8 +1,10 @@
 # Prefácio
 
-O Caminho para aprender React ensina os seus fundamentos. Ao longo do livro, você irá construir uma aplicação do mundo real em React puro, sem fazer uso de ferramentas complicadas. Tudo será explicado, da configuração do projeto, até a sua implantação em um servidor. O livro traz referências à exercícios e materiais de leitura adicional em cada capítulo. Depois de lê-lo, você será capaz de construir suas próprias aplicações em React. Os recursos são mantidos atualizados por mim, Robin Wieruch, e pela comunidade.
+"O Caminho para aprender React" ensina os fundamentos de React. Ao longo do livro, você irá construir uma aplicação comum no mundo real em React puro, sem fazer uso de ferramentas complicadas. Tudo será explicado, da configuração do projeto, até a sua implantação em um servidor.
 
-Em O Caminho para aprender React, eu quero oferecer uma base sólida antes de começar a mergulhar em um ecossistema mais amplo. Menos ferramentas e menos gerenciamento externo de estado, mas muita informação a respeito de React. O livro explica conceitos gerais, padrões e melhores práticas em uma aplicação React do mundo real.
+O livro traz referências à exercícios e materiais de leitura adicional em cada capítulo. Depois de lê-lo, você será capaz de construir suas próprias aplicações em React. Os recursos são mantidos atualizados por mim, Robin Wieruch, e pela comunidade.
+
+Minha intenção em "O Caminho para aprender React" é oferecer uma base sólida antes de mergulhar em um ecossistema mais amplo. Menos ferramentas e menos gerenciamento externo de estado, mas muita informação a respeito de React. O livro explica conceitos gerais, padrões e melhores práticas em uma aplicação React do mundo real.
 
 Você irá aprender a construir sua própria versão do Hacker News. Ela cobre funcionalidades como paginação, _client-side caching_ e operações de busca e ordenação. Além disso, você irá paulatinamente fazer a transição de JavaScript ES5 para JavaScript ES6. Espero que este livro capture meu entusiasmo por React e JavaScript e ajude você a ser iniciado.
 
@@ -64,52 +66,52 @@ Este livro é _open source_ e deveria permitir a todos a aprender React. Contudo
 
 **Posso apoiar o projeto?** Sim. Sinta-se livre para entrar em contato. Eu dedico bastante tempo a tutoriais _open source_ e recursos de aprendizagem. Você pode visitar a página [sobre mim][18]. Eu adoraria ter você como meu [Patron no Patreon][19].
 
-**Existe um chamado para participar ativamente?** Sim. Quero que você pare um momento para pensar em alguém que seria um bom candidato a aprender React. A pessoa pode já ter mostrado interesse, pode estar no meio do aprendizado ou pode nem ter despertado a vontade de aprender ainda. Aborde essa pessoa e compartilhe o livro. Significaria muito para mim. O livro foi feito com a intenção de ser distribuído.
+**Existe um chamado para participar ativamente?** Sim. Quero que você pare um momento para pensar em alguém que seria um bom candidato a aprender React. A pessoa pode já ter mostrado interesse, ou estar no meio do aprendizado ou ainda nem ter despertado a vontade de aprender ainda. Aborde essa pessoa e compartilhe o livro. Significaria muito para mim. Ele foi feito com a intenção de ser distribuído.
 
 {pagebreak}
 
-# Change Log
+# Registro de Mudanças
 
-**10. January 2017:**
+**10 de janeiro de 2017:**
 
 * [v2 Pull Request][20]
-* even more beginner friendly
-* 37% more content
-* 30% improved content
-* 13 improved and new chapters
-* 140 pages of learning material
-* [+ interactive course of the book on educative.io][21]
+* ainda mais amigável para iniciantes
+* 37% mais conteúdo
+* 30% de conteúdo melhorado
+* 13 novos (ou melhorados) capítulos
+* 140 páginas de material
+* [+ curso interativo do livro em educative.io][21]
 
-**08. March 2017:**
+**08 de março de 2017:**
 
 * [v3 Pull Request][22]
-* 20% more content
-* 25% improved content
-* 9 new chapters
-* 170 pages of learning material
+* 20% mais conteúdo
+* 25% de conteúdo melhorado
+* 9 novos capítulos
+* 170 páginas de material
 
-**15. April 2017:**
+**15 de abril de 2017:**
 
-* upgrade to React 15.5
+* atualização para React 15.5
 
-**5. July 2017:**
+**5 de julho de 2017:**
 
-* upgrade to node 8.1.3
-* upgrade to npm 5.0.4
-* upgrade to create-react-app 1.3.3
+* atualização para node 8.1.3
+* atualização para npm 5.0.4
+* atualização para create-react-app 1.3.3
 
-**17. October 2017:**
+**17 de outubro de 2017:**
 
-* upgrade to node 8.3.0
-* upgrade to npm 5.5.1
-* upgrade to create-react-app 1.4.1
-* upgrade to React 16
+* atualização para node 8.3.0
+* atualização para npm 5.5.1
+* atualização para create-react-app 1.4.1
+* atualização para React 16
 * [v4 Pull Request][23]
-* 15% more content
-* 15% improved content
-* 3 new chapters (Bindings, Event Handlers, Error Handling)
-* 190+ pages of learning material
-* [+9 Source Code Projects][24]
+* 15% mais conteúdo
+* 15% de conteúdo melhorado
+* 3 novos capítulos (_Bindings_, Tratamento de Eventos, Tratamento de Erros)
+* 190+ páginas de material
+* [+9 Projetos com código-fonte][24]
 
 {pagebreak}
 
