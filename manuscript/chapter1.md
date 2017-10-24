@@ -29,23 +29,25 @@ Recomendo fortemente que você entenda a razão do porquê você escolheria Reac
 * ler sobre [Por que saí de Angular e fui para React?][6]
 * ler sobre [O ecossistema flexível de React][7]
 
-## Requirements
+## Requisitos
 
-If you are coming from a different SPA framework or library, you should already be familiar with the basics of web development. If you have just started in web development, you should feel comfortable with HTML, CSS and JavaScript ES5 to learn React. The book will smoothly transition to JavaScript ES6 and beyond. I encourage you to join the official [Slack Group][8] for the book to get help or to help others.
+Se você está migrando de um _framework_ SPA ou biblioteca diferente, deve já estar familiarizado com o básico de desenvolvimento para a _web_. Mas, se está começando agora, deveria pelo menos se sentir confortável com HTML, CSS e JavaScript ES5 para aprender React. Este livro irá transitar suavemente para JavaScript ES6 e além. Encorajo você a entrar para o [Grupo no Slack][8] oficial para obter ajuda ou para ajudar outras pessoas.
 
-### Editor and Terminal
+### Editor e Terminal
 
-What about the development environment? You will need a running editor or IDE and terminal (command line tool). You can [follow my setup guide][9]. It is adjusted for MacOS users, but you can substitute most of the tools for other operating system. There is a ton of articles out there that will show you how to setup a web development environment in a more elaborated way for your OS.
+E quanto ao ambiente de desenvolvimento?
 
-Optionally, you can use git and GitHub on your own, while conducting the exercises in the book, to keep your projects and the progress in repositories on GitHub. There exists a [little guide][10] on how to use these tools. But once again, it is not mandatory for the book and can be overwhelming when learning everything from scratch. So you can skip it if you are a newcomer in web development to focus on the essential parts taught in this book.
+Você precisa de um editor ou IDE e uma ferramenta de linha de comando (terminal). Se quiser, [siga meu guia de montagem de ambiente][9]. Ele é feito para usuários de Mac OS, mas você pode encontrar ferramentas iguais ou equivalentes em outros sistemas operacionais. Existe também uma tonelada de artigos pela _web_ que irão lhe mostrar como configurar um ambiente de desenvolvimento de uma forma mais elaborada para o seu SO.
 
-### Node and NPM
+Opcionalmente, você pode utilizar git e GitHub por sua própria conta, quando estiver praticando os exercícios do livro, para guardar seus projetos e monitorar o progresso em seus repositórios. Segue um [pequeno guia][10] sobre como usar essas ferramentas. Mas, mais uma vez, não é obrigatório para acompanhar o livro e pode dar um pouco de trabalho caso esteja aprendendo tudo do começo. Se você é um novato no desenvolvimento _web_, pode pular esse passo e concentrar o foco nas partes essenciais ensinadas no livro.
 
-Last but not least, you will need an installation of [node and npm][11]. Both are used to manage libraries you will need along the way. In this book, you will install external node packages via npm (node package manager). These node packages can be libraries or whole frameworks.
+### Node e NPM
 
-You can verify your versions of node and npm on the command line. If you don't get any output in the terminal, you need to install node and npm first. These are only my versions during the time writing this book:
+Por último, mas não menos importante, você precisará ter instalados [node e npm][11]. Ambos são utilizados no gerenciamento de bibliotecas que serão necessárias ao longo do caminho. Neste livro, você instalará pacotes node externos via npm (node package manager). Esses pacotes podem ser bibliotecas ou até _frameworks_ completos.
 
-{title="Command Line",lang="text"}
+É possível verificar as versões de node e npm instaladas pela linha de comando. Caso não obtenha nenhuma saída no terminal, precisará instalar ambos primeiro. Abaixo, seguem minhas versões no momento em que eu escrevia esse livro:
+
+{title="Linha de Comando",lang="text"}
 ~~~~~~~~
 node --version
 *v8.3.0
