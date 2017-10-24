@@ -1,26 +1,28 @@
 # Introdução a React
 
-Você pode estar se perguntando: Por que eu deveria aprender React? Este capítulo pode lhe dar a resposta que procura. Você também irá mergulhar no ecossistema de React, montando sua primeira aplicação sem a necessidade de nenhuma configuração e, durante o processo, você terá uma introdução a JSX e ReactDOM. Prepare-se para seus primeiros componentes React.
+Você pode estar se perguntando: Por que eu deveria aprender React, pra começo de conversa? Este capítulo é uma introdução ao assunto e pode lhe dar a resposta que procura. Você irá mergulhar no ecossistema de React, montando sua primeira aplicação sem a necessidade de nenhuma configuração e, durante o processo, terá uma introdução à JSX e ReactDOM.
+
+Prepare-se para seus primeiros componentes React.
 
 ## Oi, meu nome é React.
 
 **Por que você deveria se incomodar em aprender React?** Nos últimos anos, _single page applications_ ([SPA][1]) tornaram-se populares. _Frameworks_ como Angular, Ember e Backbone ajudaram desenvolvedores JavaScript a construir aplicações web modernas, indo além do que já se costumava fazer com jQuery e JavaScript puro. Existe uma ampla gama de _frameworks_ SPA e, olhando para suas respectivas datas de lançamento, a maioria pertence à primeira geração: Angular 2010, Backbone 2010 e Ember 2011. 
 
-A primeira versão de React foi lançada em 2013 pelo Facebook. Não como um _framework_ SPA, mas uma biblioteca. Ele é apenas o "V" do [MVC][2] (_model view controller_), que lhe permite renderizar componentes como elementos visualizáveis no _browser_. O ecossistema onde React se insere é que torna possível a construção de _single page applications_ .
+A primeira versão de React foi lançada em 2013 pelo Facebook. Não como um _framework_, mas como uma biblioteca. Ele é apenas o "V" do [MVC][2] (_model view controller_), que lhe permite renderizar componentes como elementos visualizáveis no _browser_. O ecossistema onde React se insere é que torna possível a construção de _single page applications_ .
 
-Mas por que considerar o uso de React em detrimento à primeira geração de _frameworks_ SPA? Porque enquanto estes tentam resolver várias coisas ao mesmo tempo, React apenas lhe ajuda a construir sua camada de visão. É uma biblioteca, não um _framework_, que segue uma simples idéia: a camada de visão é uma hierarquia de componentes.
+E por que considerar o uso de React em detrimento à primeira geração de _frameworks_ SPA? Porque enquanto estes últimos tentam resolver várias coisas ao mesmo tempo, React apenas lhe ajuda a construir _views_. Uma biblioteca, não um _framework_, que segue uma simples idéia: a camada de visão é uma hierarquia de componentes.
 
-Em React, você pode manter o foco nas suas _views_ antes de introduzir outros aspectos como se fossem peças plugáveis na sua SPA. Essa divisão em partes integráveis é essencial para construir uma aplicação mais madura e traz duas vantagens:
+Em React, você consegue manter o foco na criação das suas _views_ antes de introduzir outros aspectos na aplicação. Cada outro aspecto é como uma peça acoplável na sua SPA. Essa divisão em partes integráveis é essencial para construir uma aplicação mais madura, trazendo duas vantagens:
 
 Primeiro, você pode aprender passo-a-passo cada parte, sem precisar se preocupar em entender tudo de só uma vez. Bem diferente de um _framework_, que lhe entrega todas as peças para montar desde o início. Este livro foca em React como o primeiro bloco da construção da aplicação. Outros eventualmente serão adicionados.
 
 Segundo, todas as partes são substituíveis. Isso torna o ecossistema de React um lugar de inovação. Várias soluções competem entre si e você pode escolher a que mais se aplica a você e ao contexto em que irá utilizá-la.
 
-A primeira geração de _frameworks_ SPA surgiu com um nível mais profissional e mais engessados. React permanece com um caráter mais inovativo e é adotado por muitas empresas que estão na vanguarda do pensamento tecnológico, como [Airbnb, Netflix e (obviamente) Facebook][3]. Todas elas investem no futuro de React e estão contentes com a biblioteca e com tudo que a cerca.
+_Frameworks_ SPA da primeira geração surgiram com um nível mais profissional e mais engessados. React permanece com um caráter mais inovador e é adotado por muitas empresas que estão na vanguarda do pensamento tecnológico, como [Airbnb, Netflix e (obviamente) Facebook][3]. Todas elas investem no futuro de React e estão contentes com a biblioteca e com tudo que a cerca.
 
 React é, provavelmente, uma das melhores escolhas para a construção de aplicações web atualmente. Apesar de cuidar apenas da camada de visão, [seu ecossistema forma um framework completo, flexível e intercambiável][4]. Em suma, React tem uma API enxuta, um fantástico ecossistema e uma grande comunidade. Você pode ler sobre minhas experiências passadas em [Por que saí de Angular e fui para React?][5].
 
-Recomendo fortemente que tenha esse entendimento sobre a razão da escolha de React e não de outra biblioteca ou framework. No fim das contas, todos estamos ávidos pela experiência de seguir para onde React pode nos levar nos próximos anos.
+Recomendo fortemente que você entenda a razão do porquê você escolheria React e não outra biblioteca ou framework. Estamos todos ávidos pela experiência de seguir para onde React pode nos levar nos próximos anos.
 
 ### Exercícios
 
