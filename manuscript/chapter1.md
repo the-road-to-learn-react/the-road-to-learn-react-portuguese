@@ -45,7 +45,7 @@ Opcionalmente, você pode utilizar git e GitHub por sua própria conta, quando e
 
 Por último, mas não menos importante, você precisará ter instalados [node e npm][11]. Ambos são utilizados no gerenciamento de bibliotecas que serão necessárias ao longo do caminho. Neste livro, você instalará pacotes node externos via npm (node package manager). Esses pacotes podem ser bibliotecas ou até _frameworks_ completos.
 
-É possível verificar as versões de node e npm instaladas pela linha de comando. Caso não obtenha nenhuma saída no terminal, precisará instalar ambos primeiro. Abaixo, seguem minhas versões no momento em que eu escrevia esse livro:
+É possível verificar as versões de node e npm instaladas pela linha de comando. Caso você não obtenha nenhum resultado no terminal, significa que precisará instalar ambos primeiro. Abaixo, seguem minhas versões no momento em que eu escrevia esse livro:
 
 {title="Linha de Comando",lang="text"}
 ~~~~~~~~
@@ -57,43 +57,45 @@ npm --version
 
 ## node and npm
 
-This chapter gives you a little crash course in node and npm. It is not exhaustive, but you will get all the necessary tools. If you are familiar with both of them, you can skip the chapter.
+Este capítulo é um curso intensivo em node e npm. Não explora todas as funcionalidades, mas lhe dará todas as ferramentas necessárias. Se você já está familiarizado com ambos, sinta-se livre para pular para o próximo assunto.
 
-The **node package manager** (npm) allows you to install external **node packages** from the command line. These packages can be a set of utility functions, libraries or whole frameworks. They are the dependencies of your application. You can either install these packages to your global node package folder or to your local project folder.
+O **node package manager** (npm) lhe permite instalar pacotes (**node packages**) externos pela linha de comando. Esses pacotes podem ser desde um conjunto de funções utilitárias até bibliotecas ou _frameworks_ completos. Quando adicionados, tornam-se dependências da sua aplicação. Você pode instalar-los tanto globalmente (no seu diretório global de pacotes node), quanto na pasta local do seu projeto.
 
-Global node packages are accessible from everywhere in the terminal and you have to install them only once to your global directory. You can install a global package by typing in your terminal:
+Pacotes node globais são acessíveis de qualquer lugar no terminal e você só precisa instalá-los apenas uma vez. Para fazê-lo, digite em seu terminal:
 
-{title="Command Line",lang="text"}
+{title="Linha de Comando",lang="text"}
 ~~~~~~~~
 npm install -g <package>
 ~~~~~~~~
 
-The `-g` flag tells npm to install the package globally. Local packages are used in your application. For instance, React as a library will be a local package which can be required in your application for usage. You can install it via the terminal by typing:
+A _flag_ `-g` comunica ao npm para instalar o pacote globalmente. 
 
-{title="Command Line",lang="text"}
+Pacotes locais são usados apenas na sua aplicação. Por exemplo, por tratar-se de uma biblioteca, React será adicionado como um pacote local que poderá ser importado ser usado na sua aplicação. A instalação via terminal é feita através do comando:
+
+{title="Linha de Comando",lang="text"}
 ~~~~~~~~
 npm install <package>
 ~~~~~~~~
 
-In the case of React it would be:
+No caso específico de React, teríamos:
 
-{title="Command Line",lang="text"}
+{title="Linha de Comando",lang="text"}
 ~~~~~~~~
 npm install react
 ~~~~~~~~
 
-The installed package will automatically appear in a folder called *node\_modules/* and will be listed in the *package.json* file next to your other dependencies.
+O pacote instalado irá aparecer automaticamente em uma pasta chamada *node\_modules/* e será listado no arquivo *package.json* juntamente com as outras dependências do projeto.
 
-But how to initialize the *node\_modules/* folder and the *package.json* file for your project in the first place? There is a npm command to initialize a npm project and thus a *package.json* file. Only when you have that file, you can install new local packages via npm.
+Mas, partindo do início, como inicializar o projeto com a pasta *node\_modules/* e o arquivo e  arquivo *package.json*? Existe um comando npm para isso. Quando executado, *package.json* é criado e somente com a existência desse arquivo no projeto é que possibilita a instalação de novos pacotes locais via npm.
 
-{title="Command Line",lang="text"}
+{title="Linha de Comando",lang="text"}
 ~~~~~~~~
 npm init -y
 ~~~~~~~~
 
-The `-y` flag is a shortcut to initialize all the defaults in your *package.json*. If you don't use the flag, you have to decide how to configure the file. After initializing your npm project you are good to install new packages via `npm install <package>`.
+A _flag_ `-y` é um atalho para inicializar seu *package.json* com as configurações padrão. Caso não a use, você terá que decidir como configurar o arquivo. Feita a inicialização, de uma forma ou de outra, você estará apto a instalar novos pacotes com o comando `npm install <package>`.
 
-One more word about the *package.json*. The file enables you to share your project with other developers without sharing all the node packages. The file has all the references of node packages used in your project. These packages are called dependencies. Everyone can copy your project without the dependencies. The dependencies are references in the *package.json*. Someone who copies your project can simply install all packages by using `npm install` on the command line. The `npm install` script takes all the dependencies listed in the *package.json* file and installs them in the *node\_modules/* folder.
+Mais uma coisa sobre o *package.json*: O arquivo habilita você a compartilhar o projeto com outros desenvolvedores sem ter que incluir todos os pacotes node. Ele contém todas as referências dos pacotes utilizados no projeto, chamados de dependências. Todos podem copiar seu projeto sem as dependências e simplesmente instalar todos os pacotes utilizando `npm install` na linha de comando. O _script_ considera todas as dependências listadas no *package.json* e instala cada uma na pasta *node\_modules/*.
 
 I want to cover one more npm command:
 
