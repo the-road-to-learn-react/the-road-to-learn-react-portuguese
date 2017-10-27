@@ -29,23 +29,23 @@ Recomendo fortemente que você entenda a razão do porquê você escolheria Reac
 * ler sobre [Por que saí de Angular e fui para React?][6]
 * ler sobre [O ecossistema flexível de React][7]
 
-## Requisitos
+## Pré-requisitos
 
-Se você está migrando de um _framework_ SPA ou biblioteca diferente, deve já estar familiarizado com o básico de desenvolvimento para a _web_. Mas, se está começando agora, deveria pelo menos se sentir confortável com HTML, CSS e JavaScript ES5 para aprender React. Este livro irá transitar suavemente para JavaScript ES6 e além. Encorajo você a entrar para o [Grupo no Slack][8] oficial para obter ajuda ou para ajudar outras pessoas.
+Se você está migrando de um _framework_ SPA ou de uma biblioteca diferente, já deve estar familiarizado com o básico de desenvolvimento para a _web_. Mas, se está começando agora, deveria pelo menos se sentir confortável com HTML, CSS e JavaScript ES5 para aprender React. Este livro irá fazer uma transição suave para JavaScript ES6 e além. Encorajo você a entrar para o [Grupo no Slack][8] oficial para obter ajuda ou para ajudar outras pessoas.
 
 ### Editor e Terminal
 
 E quanto ao ambiente de desenvolvimento?
 
-Você precisa de um editor ou IDE e uma ferramenta de linha de comando (terminal). Se quiser, [siga meu guia de montagem de ambiente][9]. Ele é feito para usuários de Mac OS, mas você pode encontrar ferramentas iguais ou equivalentes em outros sistemas operacionais. Existe também uma tonelada de artigos pela _web_ que irão lhe mostrar como configurar um ambiente de desenvolvimento de uma forma mais elaborada para o seu SO.
+Você precisa de um editor ou IDE e uma ferramenta de linha de comando (terminal). Se quiser, siga meu[guia de montagem de ambiente][9]. Ele foi feito para usuários de Mac OS, mas você pode encontrar ferramentas iguais ou equivalentes em outros sistemas operacionais. Existe também uma tonelada de artigos pela _web_ que irão lhe mostrar como configurar um ambiente de desenvolvimento de uma forma mais elaborada de acordo com o seu SO.
 
-Opcionalmente, você pode utilizar git e GitHub por sua própria conta, quando estiver praticando os exercícios do livro, para guardar seus projetos e monitorar o progresso em seus repositórios. Segue um [pequeno guia][10] sobre como usar essas ferramentas. Mas, mais uma vez, não é obrigatório para acompanhar o livro e pode dar um pouco de trabalho caso esteja aprendendo tudo do começo. Se você é um novato no desenvolvimento _web_, pode pular esse passo e concentrar o foco nas partes essenciais ensinadas no livro.
+Opcionalmente, você pode utilizar o git e o GitHub quando estiver praticando os exercícios do livro, para guardar seus projetos e monitorar o progresso em seus repositórios. Segue um [pequeno guia][10] sobre como usar essas ferramentas. Mas, mais uma vez, não é obrigatório para acompanhar este guia e pode dar um pouco de trabalho caso você precise aprender tudo do começo. Se você é um novato no desenvolvimento _web_, pode pular esse passo e concentrar o foco nas partes essenciais ensinadas aqui.
 
 ### Node e NPM
 
-Por último, mas não menos importante, você precisará ter instalados [node e npm][11]. Ambos são utilizados no gerenciamento de bibliotecas que serão necessárias ao longo do caminho. Neste livro, você instalará pacotes node externos via npm (node package manager). Esses pacotes podem ser bibliotecas ou até _frameworks_ completos.
+Por último, mas não menos importante, você precisará ter [o node e o npm][11] instalados. Ambos são utilizados no gerenciamento de bibliotecas necessárias ao longo do caminho. Neste livro, você instalará pacotes node externos via npm (_node package manager_). Esses pacotes podem ser bibliotecas ou até _frameworks_ completos.
 
-É possível verificar as versões de node e npm instaladas pela linha de comando. Caso você não obtenha nenhum resultado no terminal, significa que precisará instalar ambos primeiro. Abaixo, seguem minhas versões no momento em que eu escrevia esse livro:
+É possível verificar as versões de node e npm instaladas pela linha de comando. Caso você não obtenha nenhum resultado no terminal, significa que precisará instalar ambos antes de continuar. Abaixo, minhas versões no momento em que escrevia este livro:
 
 {title="Linha de Comando",lang="text"}
 ~~~~~~~~
@@ -55,13 +55,13 @@ npm --version
 *v5.5.1
 ~~~~~~~~
 
-## node and npm
+## node e npm
 
-Este capítulo é um curso intensivo em node e npm. Não explora todas as funcionalidades, mas lhe dará todas as ferramentas necessárias. Se você já está familiarizado com ambos, sinta-se livre para pular para o próximo assunto.
+Este capítulo lhe submete a um pequeno curso intensivo em node e npm. Não explora todas as funcionalidades, mas dá todas as ferramentas necessárias. Se você já está familiarizado com ambos, sinta-se livre para pular para o próximo assunto.
 
-O **node package manager** (npm) lhe permite instalar pacotes (**node packages**) externos pela linha de comando. Esses pacotes podem ser desde um conjunto de funções utilitárias até bibliotecas ou _frameworks_ completos. Quando adicionados, tornam-se dependências da sua aplicação. Você pode instalar-los tanto globalmente (no seu diretório global de pacotes node), quanto na pasta local do seu projeto.
+O **node package manager** (npm) lhe possibilita instalar pacotes (**node packages**) externos pela linha de comando. Esses pacotes podem ser desde um conjunto de funções utilitárias até bibliotecas ou _frameworks_ completos. Quando adicionados, tornam-se dependências da sua aplicação. Você pode instalá-los tanto globalmente (no seu diretório global de pacotes node), quanto na pasta local do seu projeto.
 
-Pacotes node globais são acessíveis de qualquer lugar no terminal e você só precisa instalá-los apenas uma vez. Para fazê-lo, digite em seu terminal:
+Pacotes node globais são acessíveis de qualquer pasta no terminal e você precisa fazer a instalação apenas uma vez. Para tanto, digite em seu terminal:
 
 {title="Linha de Comando",lang="text"}
 ~~~~~~~~
@@ -70,7 +70,7 @@ npm install -g <package>
 
 A _flag_ `-g` comunica ao npm para instalar o pacote globalmente. 
 
-Pacotes locais são usados apenas na sua aplicação. Por exemplo, por tratar-se de uma biblioteca, React será adicionado como um pacote local que poderá ser importado ser usado na sua aplicação. A instalação via terminal é feita através do comando:
+Pacotes locais são usados apenas na sua aplicação. Por exemplo, por tratar-se de uma biblioteca, React será adicionado como um pacote local que poderá ser importado para uso na sua aplicação. A instalação de qualquer pacotes local via terminal é feita através do comando:
 
 {title="Linha de Comando",lang="text"}
 ~~~~~~~~
@@ -86,20 +86,20 @@ npm install react
 
 O pacote instalado irá aparecer automaticamente em uma pasta chamada *node\_modules/* e será listado no arquivo *package.json* juntamente com as outras dependências do projeto.
 
-Mas, partindo do início, como inicializar o projeto com a pasta *node\_modules/* e o arquivo e  arquivo *package.json*? Existe um comando npm para isso. Quando executado, *package.json* é criado e somente com a existência desse arquivo no projeto é que possibilita a instalação de novos pacotes locais via npm.
+Como inicializar o projeto com a pasta *node\_modules/* e o arquivo *package.json*? Existe um comando npm para isso. Quando executado, *package.json* é criado e somente com a existência desse arquivo no projeto é que é possível a instalação de novos pacotes locais via npm.
 
 {title="Linha de Comando",lang="text"}
 ~~~~~~~~
 npm init -y
 ~~~~~~~~
 
-A _flag_ `-y` é um atalho para inicializar seu *package.json* com as configurações padrão. Caso não a use, você terá que decidir como configurar o arquivo. Feita a inicialização, de uma forma ou de outra, você estará apto a instalar novos pacotes com o comando `npm install <package>`.
+A _flag_ `-y` é um atalho para inicializar seu *package.json* com as configurações padrão. Caso não a use, você terá que decidir como configurar o arquivo. Feita a inicialização, você estará apto a instalar novos pacotes com o comando `npm install <package>`.
 
-Mais uma coisa sobre o *package.json*: O arquivo habilita você a compartilhar o projeto com outros desenvolvedores sem ter que incluir todos os pacotes node. Ele contém todas as referências dos pacotes utilizados no projeto, chamados de dependências. Todos podem copiar seu projeto sem as dependências e simplesmente instalar todos os pacotes utilizando `npm install` na linha de comando. O _script_ considera todas as dependências listadas no *package.json* e instala cada uma na pasta *node\_modules/*.
+Mais uma coisa sobre o *package.json*: O arquivo habilita você a compartilhar o projeto com outros desenvolvedores sem ter que incluir todos os pacotes node. Ele contém todas as referências dos pacotes utilizados no projeto, chamados de dependências. Todos podem copiar seu projeto sem baixar as dependências e simplesmente instalar todos os pacotes utilizando `npm install` na linha de comando. O _script_ considera todas as dependências listadas no *package.json* e instala cada uma na pasta *node\_modules/*.
 
-I want to cover one more npm command:
+Quanto aos comandos do npm, gostaria de falar apenas sobre mais um:
 
-{title="Command Line",lang="text"}
+{title="Linha de Comando",lang="text"}
 ~~~~~~~~
 npm install --save-dev <package>
 ~~~~~~~~
