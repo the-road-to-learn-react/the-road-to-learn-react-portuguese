@@ -68,7 +68,7 @@ Pacotes node globais são acessíveis de qualquer pasta no terminal e você prec
 npm install -g <package>
 ~~~~~~~~
 
-A _flag_ `-g` comunica ao npm para instalar o pacote globalmente. 
+A _flag_ `-g` diz ao npm para instalar o pacote globalmente. 
 
 Pacotes locais são usados apenas na sua aplicação. Por exemplo, por tratar-se de uma biblioteca, React será adicionado como um pacote local que poderá ser importado para uso na sua aplicação. A instalação de qualquer pacotes local via terminal é feita através do comando:
 
@@ -156,36 +156,36 @@ Por esta razão, o Facebook introduziu *create-react-app* como uma solução de 
 
 * Leia mais a respeito de [instalações de React][15]
 
-## Zero-Configuration Setup
+## _Setup_ sem nenhuma configuração
 
-In the Road to learn React, you will use [create-react-app][16] to bootstrap your application. It's an opinionated yet zero-configuration starter kit for React introduced by Facebook in 2016. People would [recommend it to beginners by 96%][17]. In *create-react-app* the tooling and configuration evolve in the background while the focus is on the application implementation.
+Em "O Caminho para aprender React", você usará [create-react-app][16] para montar a estrutura inicial da sua aplicação. Trata-se de um _kit_ de inicialização sem necessidade de configuração, de uso opcional, introduzido pelo Facebook em 2016. Cerca de [96% das pessoas perguntadas recomendam-no para iniciantes][17]. Com o *create-react-app*, a configuração e a instrumentação se desenvolvem automaticamente em segundo plano, enquanto o foco permanece na implementação da aplicação.
 
-To get started, you will have to install the package to your global node packages. After that, you always have it available on the command line to bootstrap new React applications.
+Para começar, será necessário fazer a instalação global do pacote. Assim, ele sempre estará disponível na linha de comando para criar suas aplicações React.
 
-{title="Command Line",lang="text"}
+{title="Linha de Comando",lang="text"}
 ~~~~~~~~
 npm install -g create-react-app
 ~~~~~~~~
 
-You can check the version of *create-react-app* to verify a successful installation on your command line:
+Confira a versão do *create-react-app* para ter certeza de que a instalação ocorreu com sucesso:
 
-{title="Command Line",lang="text"}
+{title="Linha de Comando",lang="text"}
 ~~~~~~~~
 create-react-app --version
 *v1.4.1
 ~~~~~~~~
 
-Now you can bootstrap your first React application. We call it *hackernews*, but you can choose a different name. The bootstrapping takes a couple of seconds. Afterward, simply navigate into the folder:
+Agora você pode criar sua primeira aplicação. Iremos chamá-la de *hackernews*, mas você pode escolher um nome diferente. O processo leva alguns segundos e, logo após terminar, navegue para a pasta:
 
-{title="Command Line",lang="text"}
+{title="Linha de Comando",lang="text"}
 ~~~~~~~~
 create-react-app hackernews
 cd hackernews
 ~~~~~~~~
 
-Now you can open the application in your editor. The following folder structure, or a variation of it depending on the *create-react-app* version, should be presented to you:
+Agora você pode abrir a aplicação no editor de sua escolha. A estrutura a seguir (ou uma variação, dependendo da versão do _create-react-app_) lhe será apresentada:
 
-{title="Folder Structure",lang="text"}
+{title="Estrutura de pastas",lang="text"}
 ~~~~~~~~
 hackernews/
   README.md
@@ -204,46 +204,47 @@ hackernews/
     logo.svg
 ~~~~~~~~
 
-A short break down of the folder and files. It is fine if you don't understand all of them in the beginning.
+Não tem problema se você não entender tudo desde o início. Uma descrição curta dos arquivos e pastas:
 
-* **README.md:** The .md extension indicates that the file is a markdown file. Markdown is used as a lightweight markup language with plain text formatting syntax. Many source code projects come with a *README.md* file to give you initial instructions about the project. When pushing your project to a platform such as GitHub eventually, the *README.md* file will show its content prominently when you access the repository. Because you have used *create-react-app*, your *README.md* should be the same as shown in the official [create-react-app GitHub repository][18].
+* **README.md:** A extensão .md indica que o arquivo é do tipo _markdown_, usado como uma linguagem de marcação mais leve, com uma sintaxe de formatação de texto. Muitos projetos com código-fonte incluem um arquivo *README.md* para passar as instruções iniciais. Quando eventualmente você sincronizar seu projeto em uma plataforma como o GitHub, o conteúdo do _README.md_ será exibido na página inicial do repositório. Por ter usado *create-react-app*, seu *README.md* terá conteúdo igual ao do [repositório do create-react-app no GitHub][18].
 
-* **node\_modules/:** The folder has all the node packages that were and are installed via npm. Since you have used *create-react-app*, there should be already a couple of node modules installed for you. Usually you will never touch this folder, but only install and uninstall node packages with npm from the command line.
+* **node\_modules/:** Contém todos os pacotes node que foram instalados via npm. Uma vez que foi utilizado o _create-react-app_, alguns módulos já foram instalados para você. Normalmente, você nunca irá manipular diretamente o conteúdo desta pasta, devendo instalar e desinstalar pacotes usando o npm na linha de comando.
 
-* **package.json:** The file shows you a list of node package dependencies and other project configuration.
+* **package.json:** Mostra uma lista de dependências de pacotes node e mais algumas outras configurações de projeto.
 
-* **.gitignore:** The file indicates all files and folders that shouldn't be added to your remote git repository when using git. They should only live in your local project. The *node\_modules/* folder is such a use case. It is sufficient to share the *package.json* file with your peers to enable them to install all dependencies on their own without sharing the whole dependency folder.
+* **.gitignore:** Este arquivo indica todos os arquivos e pastas que não deveriam ser adicionados ao seu repositório quando utilizando git e que existirão apenas no seu projeto local. Um exemplo é a pasta *node\_modules/*. É suficiente compartilhar apenas o *package.json* com outras pessoas envolvidas para que elas sejam capazes de instalar sozinhas todas as dependências.
 
-* **public/:** The folder holds all your files when building your project for production. Eventually all your written code in the *src/* folder will be bundled into a couple of files when building your project and placed in the public folder.
+* **public/:** A pasta contém todos os arquivos do projeto quando este é preparado para produção. Todo o código que você escreveu na pasta *src/* será empacotado em um ou dois arquivos durante o _building_ e colocado na pasta _public_.
 
-After all, you don't need to touch the mentioned files and folders. In the beginning everything you need is located in the *src/* folder. The main focus lies on the *src/App.js* file to implement React components. It will be used to implement your application, but later you might want to split up your components into multiple files whereas each file maintains one or a few components on its own.
+No fim das contas, você não tem que alterar os arquivos e pastas mencionados. De início, tudo que você precisa está localizado na pasta _src/_. O foco principal fica com o arquivo *src/App.js*, que será usado para implementar sua aplicação. Mais tarde, você deve querer estruturá-la em múltiplos arquivos, cada um contendo seu próprio (ou alguns) componente.
 
-Additionally, you will find a *src/App.test.js* file for your tests and a *src/index.js* as entry point to the React world. You will get to know both files in a later chapter. In addition, there is a *src/index.css* and a *src/App.css* file to style your general application and your components. They all come with default style when you open them.
+Você encontrará um arquivo *src/App.test.js* (para seus testes) e um *src/index.js* como ponto de entrada para o "mundo React". Encontrará também os arquivos *src/index.css* e *src/App.css* para aplicar estilos aos componentes e à aplicação de uma forma geral. Se abrir qualquer dos dois, verá que ambos já trazem as definições de um estilo padrão.
 
-The *create-react-app* application is a npm project. You can use npm to install and uninstall node packages to your project. Additionally it comes with the following npm scripts for your command line:
+A aplicação *create-react-app* é um projeto npm. Além de permitir que utilizemos npm para instalar e desinstalar pacotes node ao projeto, traz os seguintes _scripts_ npm para serem usados na linha de comando:
 
-{title="Command Line",lang="text"}
+{title="Linha de Comando",lang="text"}
 ~~~~~~~~
-// Runs the application in http://localhost:3000
+// Roda a aplicação em http://localhost:3000
 npm start
 
-// Runs the tests
+// Executa os testes
 npm test
 
-// Builds the application for production
+// Pepara a aplicação para produção
 npm run build
 ~~~~~~~~
 
-The scripts are defined in your *package.json*. Your boilerplate React application is bootstrapped now. The exciting part comes in the exercises to finally run your bootstrapped application in the browser.
+Os _scripts_ são definidos no *package.json*.
+Seu esqueleto de aplicação React está agora inicializado. A parte excitante vem agora com os exercícios, finalmente rodando sua aplicação no _browser_.
 
-### Exercises:
+### Exercícios:
 
-* `npm start` your application and visit the application in your browser
-* run the interactive `npm test` script
-* check the content of your *public/* folder, run the `npm run build` script and verify that files were added to the folder (you can remove these files again, but they don't do any harm)
-* make yourself familiar with the folder structure
-* make yourself familiar with the content of the files
-* read more about [the npm scripts and create-react-app][19]
+* Inicie sua aplicação com`npm start` e abra-a em seu navegador.
+* Rode o _script_ interativo `npm test`
+* Verifique o conteúdo da sua pasta *public/*, execute o _script_ `npm run build` e olhe novamente a pasta para ver que arquivos foram adicionados (você pode removê-los se quiser, mas eles não causam nenhum problema)
+* Se familiarize com a estrutura de pastas
+* Faça o mesmo com o conteúdo de cada arquivo
+* Leia mais a respeito de [the npm scripts e create-react-app][19]
 
 ## Introduction to JSX
 
