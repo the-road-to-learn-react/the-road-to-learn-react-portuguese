@@ -104,26 +104,26 @@ Quanto aos comandos do npm, gostaria de falar apenas sobre mais um:
 npm install --save-dev <package>
 ~~~~~~~~
 
-The `--save-dev` flag indicates that the node package is only used in the development environment. It will not be used in production when you deploy your application on a server. What kind of node package could that be? Imagine you want to test your application with the help of a node package. You need to install that package via npm, but want to exclude it from your production environment. Testing should only happen during the development process but not when your application is already running in production. There you don't want to test your application anymore. It should be tested already and work out of the box for your users. That's only one use case where you would want to use the `--save-dev` flag.
+A _flag_ `--save-dev` indica que o pacote node é usado apenas em ambiente de desenvolvimento, ou seja, não será usado em produção quando você implantar sua aplicação no servidor. Mas que tipo de pacote se enquadraria neste caso? Imagine que você queira testar sua aplicação com a ajuda de um pacote node. Você precisa instalá-lo via npm, mas deseja evitar que seja adicionado no seu ambiente de produção. Atividades de teste devem acontecer durante o processo de desenvolvimento, não quando a aplicação já foi disponibilizada para o usuário, já deveria ter sido testada e está funcionando a todo vapor. Este é apenas um dos casos onde você desejaria utilizar a flag `--save-dev`.
 
-You will encounter more npm commands on your way. But these will be sufficient for now.
+Encontraremos mais comandos npm pelo caminho. Mas, por enquanto, esses serão suficientes.
 
-### Exercises:
+### Exercícios:
 
-* setup a throw away npm project
-  * create a new folder with `mkdir <folder_name>`
-  * navigate into the folder with `cd <folder_name>`
-  * execute `npm init -y` or `npm init`
-  * install a local package like React with `npm install react`
-  * have a look into the *package.json* file and the *node\_modules/* folder
-  * find out on your own how to uninstall the *react* node package again
-* read more about [npm][12]
+* Configurar um projeto npm qualquer:
+  * criar uma nova pasta com `mkdir <nome_da_pasta>`
+  * navegar para ela com `cd <nome_da_pasta>`
+  * executar `npm init -y` ou `npm init`
+  * instalar um pacote local como o React com `npm install react`
+  * inspecionar o arquivo *package.json* e a pasta *node\_modules/*
+  * descobrir você mesmo como desinstalar o pacote *react*
+* ler mais sobre [npm][12]
 
-## Installation
+## Instalação
 
-There are multiple approaches to get started with a React application.
+Existem muitas formas de iniciar uma aplicação React.
 
-The first one is to use a CDN. That may sound more complicated than it is. A CDN is a [content delivery network][13]. Several companies have CDNs that host files publicly for people to consume them. These files can be libraries like React, because after all the bundled React library is only a *react.js* JavaScript file. It can be hosted somewhere and you can require it in your application.
+A primeira é usar um CDN. Isso pode soar mais complicado do que realmente é, pois CDN é apenas a sigla para [content delivery network][13]. Muitas empresas possuem CDNs que hospedam arquivos publicamente para que as pessoas possam consumi-los. Esses arquivos podem ser de bibliotecas como React, porque toda a biblioteca empacotada é um simples arquivo JavaScript *react.js*. Ele pode ser hospedado em algum lugar e você pode requisitá-lo em sua aplicação.
 
 How to use a CDN to get started in React? You can inline the `<script>` tag in your HTML that points to a CDN url. To get started in React you need two files (libraries): *react* and *react-dom*.
 
