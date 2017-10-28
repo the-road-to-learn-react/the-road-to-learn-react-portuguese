@@ -104,28 +104,30 @@ Quanto aos comandos do npm, gostaria de falar apenas sobre mais um:
 npm install --save-dev <package>
 ~~~~~~~~
 
-A _flag_ `--save-dev` indica que o pacote node é usado apenas em ambiente de desenvolvimento, ou seja, não será usado em produção quando você implantar sua aplicação no servidor. Mas que tipo de pacote se enquadraria neste caso? Imagine que você queira testar sua aplicação com a ajuda de um pacote node. Você precisa instalá-lo via npm, mas deseja evitar que seja adicionado no seu ambiente de produção. Atividades de teste devem acontecer durante o processo de desenvolvimento, não quando a aplicação já foi disponibilizada para o usuário, já deveria ter sido testada e está funcionando a todo vapor. Este é apenas um dos casos onde você desejaria utilizar a flag `--save-dev`.
+A _flag_ `--save-dev` indica que o pacote node é usado apenas em ambiente de desenvolvimento, ou seja, não será usado em produção quando você implantar a aplicação no servidor. Mas, que tipo de pacote se enquadraria neste caso?
+
+Imagine que você queira testar sua aplicação com a ajuda de um pacote node. Você precisa instalá-lo via npm, mas deseja evitar que seja adicionado no seu ambiente de produção. Atividades de teste devem acontecer durante o processo de desenvolvimento, não quando a aplicação já foi disponibilizada para o usuário. A este ponto, já deve ter sido testada e estar funcionando plenamente. Este exemplo é apenas um dos casos onde você desejaria utilizar a flag `--save-dev`.
 
 Encontraremos mais comandos npm pelo caminho. Mas, por enquanto, esses serão suficientes.
 
 ### Exercícios:
 
-* Configurar um projeto npm qualquer:
-  * criar uma nova pasta com `mkdir <nome_da_pasta>`
-  * navegar para ela com `cd <nome_da_pasta>`
-  * executar `npm init -y` ou `npm init`
-  * instalar um pacote local como o React com `npm install react`
-  * inspecionar o arquivo *package.json* e a pasta *node\_modules/*
-  * descobrir você mesmo como desinstalar o pacote *react*
-* ler mais sobre [npm][12]
+* Configurando um projeto npm qualquer:
+  * crie uma nova pasta com `mkdir <nome_da_pasta>`
+  * navegue para ela com `cd <nome_da_pasta>`
+  * execute `npm init -y` ou `npm init`
+  * instale um pacote local como o React com `npm install react`
+  * inspecione o arquivo *package.json* e a pasta *node\_modules/*
+  * descubra você mesmo como desinstalar o pacote *react*
+* leia mais sobre [npm][12]
 
 ## Instalação
 
 Existem muitas formas de iniciar uma aplicação React.
 
-A primeira é usar um CDN. Isso pode soar mais complicado do que realmente é, pois CDN é apenas a sigla para [content delivery network][13]. Muitas empresas possuem CDNs que hospedam arquivos publicamente para que as pessoas possam consumi-los. Esses arquivos podem ser de bibliotecas como React, porque toda a biblioteca empacotada é um simples arquivo JavaScript *react.js*. Ele pode ser hospedado em algum lugar e você pode requisitá-lo em sua aplicação.
+A primeira é usar um CDN. Isso pode soar mais complicado do que realmente é, mas CDN é apenas a sigla para [content delivery network][13]. Muitas empresas possuem CDNs que hospedam arquivos publicamente para que as pessoas possam consumi-los. Esses arquivos podem ser de bibliotecas, como React, já que toda a biblioteca é empacotada em um simples arquivo JavaScript *react.js*. Ele pode ser hospedado em algum lugar e você pode requisitá-lo em sua aplicação.
 
-How to use a CDN to get started in React? You can inline the `<script>` tag in your HTML that points to a CDN url. To get started in React you need two files (libraries): *react* and *react-dom*.
+Como usar um CDN para começar a trabalhar com React? Você pode adicionar a tag `<script>` _inline_ no seu HTML, apontando para a url do CDN. Você irá precisar de dois arquivos (duas bibliotecas): *react* e *react-dom*.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -133,24 +135,26 @@ How to use a CDN to get started in React? You can inline the `<script>` tag in y
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 ~~~~~~~~
 
-But why should you use a CDN when you have npm to install node packages such as React?
+Mas, eis a questão: por que você deveria usar um CDN quando tem o npm para instalar pacotes como React?
 
-When your application has a *package.json* file, you can install *react* and *react-dom* from the command line. The requirement is that the folder is initialized as npm project by using `npm init -y` with a *package.json* file. You can install multiple node packages in one line with npm.
+Quando sua aplicação possui um arquivo *package.json* em uma pasta inicializada como projeto npm usando `npm init -y`, você pode instalar *react* e *react-dom* pelo terminal. É possível, inclusive, instalar múltiplos pacotes em apenas uma linha com o npm.
 
-{title="Command Line",lang="text"}
+{title="Linha de Comando",lang="text"}
 ~~~~~~~~
 npm install react react-dom
 ~~~~~~~~
 
-That approach is often used to add React to an existing application that is managed with npm.
+Essa abordagem é frequentemente usada para adicionar React a uma aplicação existente, se esta for gerenciada com npm.
 
-Unfortunately that's not everything. You would have to deal with [Babel][14] to make your application aware of JSX (the React syntax) and JavaScript ES6. Babel transpiles your code so that browsers can interpret JavaScript ES6 and JSX. Not all browsers are capable of interpreting the syntax. The setup includes a lot of configuration and tooling. It can be overwhelming for React newcomers to bother with all the configuration.
+Mas isso não é o bastante, infelizmente. Você teria que configurar também o [Babel][14] para fazer com que sua aplicação seja capaz de reconhecer JSX (a sintaxe React) e JavaScript ES6. Babel "_transpila_" (do inglês _transpile_, tradução informal adotada pela comunidade) o seu código para que navegadores possam interpretar ES6 e JSX, pois nem todos conseguem fazê-lo naturalmente. Isso demanda muita configuração e uso de ferramentas, podendo ser aterrador para iniciantes em React ligar com tudo isso.
 
-Because of this reason, Facebook introduced *create-react-app* as a zero-configuration React solution. The next chapter will show you how to setup your application by using this bootstrapping tool.
+Por esta razão, o Facebook introduziu *create-react-app* como uma solução de trabalho com React sem a necessidade de configurações. O próximo capítulo lhe mostrará como montar sua aplicação utilizando essa ferramenta de inicialização (_bootstrap tool_).
 
-### Exercises:
+* **Nota do Tradutor:** De agora em diante, ao longo do livro original, aparecerão cada vez mais termos como _bootstraping_ e _transpile_, que não possuem uma tradução exata na língua portuguesa. Além disso, em alguns casos, apesar de existir a palavra, o resultado da tradução de um termo técnico também pode soar estranho para estudantes e profissionais da área. Sendo assim, quando convir, manterei a palavra original e explicarei entre parênteses, se for necessário. Quando for possível e soar naturalmente, irei traduzir a sentença para algo de mesmo sentido no português.
 
-* read more about [React installations][15]
+### Exercícios:
+
+* Leia mais a respeito de [instalações de React][15]
 
 ## Zero-Configuration Setup
 
