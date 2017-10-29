@@ -235,7 +235,7 @@ npm run build
 ~~~~~~~~
 
 Os _scripts_ são definidos no *package.json*.
-Seu esqueleto de aplicação React está agora inicializado. A parte excitante vem agora com os exercícios, finalmente rodando sua aplicação no _browser_.
+Seu "esqueleto" de aplicação React está agora inicializado. A parte excitante vem agora com os exercícios, finalmente rodando sua aplicação no _browser_.
 
 ### Exercícios:
 
@@ -246,9 +246,11 @@ Seu esqueleto de aplicação React está agora inicializado. A parte excitante v
 * Faça o mesmo com o conteúdo de cada arquivo
 * Leia mais a respeito de [the npm scripts e create-react-app][19]
 
-## Introduction to JSX
+## Introdução à JSX
 
-Now you will get to know JSX. It is the syntax in React. As mentioned before, *create-react-app* has already bootstrapped a boilerplate application for you. All files come with default implementations. Let's dive into the source code. The only file you will touch in the beginning will be the *src/App.js* file.
+Chegou o momento de você conhecer JSX, a sintaxe React. Como foi dito antes, *create-react-app* já montou uma estrutura inicial de aplicação para você. Todos os arquivos contêm alguma implementação _default_. 
+
+Vamos ao código-fonte. Inicialmente, você irá trabalhar apenas com o arquivo *src/App.js*:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -275,15 +277,15 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-Don't let yourself get confused by the import/export statements and class declaration. These features are already JavaScript ES6. We will revisit those in a later chapter.
+Para que não se confunda com as declarações _import/export_ e com a palavra _class_, saiba que essas já são funcionalidades de JavaScript ES6. Iremos falar sobre isso novamente, mais tarde, neste mesmo capítulo.
 
-In the file you have an **React ES6 class component** with the name App. It is a component declaration. Basically after you have declared a component, you can use it as element everywhere in your application. It will produce an **instance** of your **component** or in other words: the component gets instantiated.
+No arquivo você tem uma ** classe de componente React ES6** (do inglês, _class component_) de nome App. É a declaração de um componente. Basicamente, depois de o ter declarado, você pode usá-lo como um elemento em qualquer lugar da sua aplicação. Será produzida uma **instância** do seu **componente**, ou, em outras palavras: o componente é instanciado.
 
-The **element** it returns is specified in the `render()` method. Elements are what components are made of. It is useful to understand the differences between component, instance and element.
+O **elemento** retornado é especificado no método `render()` e os componentes são feitos de elementos. É importante entender as diferenças entre componente, instância e elemento.
 
-Pretty soon, you will see where the App component is instantiated. Otherwise you wouldn't see the rendered output in the browser, would you? The App component is only the declaration, but not the usage. You would instantiate the component somewhere in your JSX with `<App />`.
+Logo você verá que o componente App é instanciado, pois, se não o fosse, você não seria capaz de vê-lo renderizado no navegador. O componente é apenas a declaração, mas sem utilidade por si só. Você deve instanciá-lo em algum lugar usando JSX, assim: `<App />`.
 
-The content in the render block looks pretty similar to HTML, but it's JSX. JSX allows you to mix HTML and JavaScript. It's powerful yet confusing when you are used to separate your HTML and JavaScript. That's why a good starting point is to use basic HTML in your JSX. In the beginning, remove all the distracting content in the file.
+O conteúdo do bloco _render_ se parece muito com HTML, mas é JSX. JSX lhe permite misturar HTML e JavaScript. É algo poderoso, mas confuso quando você já está acostumado a separar os dois. Por esta razão, é mais fácil começar com JSX usando apenas HTML básico, removendo qualquer outro conteúdo que possa ser uma distração no arquivo.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
