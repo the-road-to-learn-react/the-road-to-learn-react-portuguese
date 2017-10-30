@@ -414,7 +414,7 @@ export default App;
 
 ## ReactDOM
 
-Before you continue with the App component, you might want to see where it is used. It is located in your entry point to the React world: the *src/index.js* file.
+Antes de continuar trabalhando no component App, você deve querer ver onde ele é utilizado, não é mesmo? Ele está localizado dentro do seu ponto de entrada no mundo React: o arquivo *src/index.js*.
 
 {title="src/index.js",lang=javascript}
 ~~~~~~~~
@@ -429,11 +429,11 @@ ReactDOM.render(
 );
 ~~~~~~~~
 
-Basically `ReactDOM.render()` uses a DOM node in your HTML to replace it with your JSX. That's how you can easily integrate React in every foreign application. It is not forbidden to use `ReactDOM.render()` multiple times across your application. You can use it at multiple places to bootstrap simple JSX syntax, a React component, multiple React components or a whole application. But in plain React application you will only use it once to bootstrap your whole component tree.
+Basicamente, `ReactDOM.render()` usa um _DOM node_ no HTML e o substitui com o seu JSX. Dessa forma, você pode facilmente integrar React em qualquer aplicação estranha à sua. Não é proibido utilizar `ReactDOM.render()` muitas vezes na aplicação, você pode fazê-lo para habilitar o uso da sintaxe JSX, de um componente React, de múltiplos componentes React ou até uma aplicação inteira. Mas, numa aplicação React pura, você só usará este método uma vez, para carregar toda a sua árvore de componentes.
 
-`ReactDOM.render()` expects two arguments. The first argument is JSX that gets rendered. The second argument specifies the place where the React application hooks into your HTML. It expects an element with an `id='root'`. You can open your *public/index.html* file to find the id attribute.
+`ReactDOM.render()` espera dois argumentos. O primeiro é o código JSX que será renderizado. O segundo argumento especifica o lugar onde a aplicação React irá se acomodar em seu HTML. Ele espera um elemento com um `id='root'`. Abra o arquivo *public/index.html* você encontrará esse id como atributo.
 
-In the implementation `ReactDOM.render()` already takes your App component. However, it would be fine to pass simpler JSX as long as it is JSX. It doesn't have to be an instantiation of a component.
+Na implementação corrente, `ReactDOM.render()` já recebe seu componente App. Contudo, não haveria problema se passássemos um simples código JSX, desde que seja realmente JSX. Não é obrigatório que o argumento seja um componente instanciado.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -443,10 +443,10 @@ ReactDOM.render(
 );
 ~~~~~~~~
 
-### Exercises:
+### Exercícios:
 
-* open the *public/index.html* to see where the React applications hooks into your HTML
-* read more about [rendering elements in React][25]
+* Abra o arquivo *public/index.html* e veja onde a aplicação React será alocada em seu HTML
+* Leia mais a respeito da [renderização de elementos em React][25]
 
 ## Hot Module Replacement
 
