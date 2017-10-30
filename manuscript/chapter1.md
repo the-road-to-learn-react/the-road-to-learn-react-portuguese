@@ -242,7 +242,7 @@ Seu "esqueleto" de aplicação React está agora inicializado. A parte excitante
 * Inicie sua aplicação com`npm start` e abra-a em seu navegador.
 * Rode o _script_ interativo `npm test`
 * Verifique o conteúdo da sua pasta *public/*, execute o _script_ `npm run build` e olhe novamente a pasta para ver que arquivos foram adicionados (você pode removê-los se quiser, mas eles não causam nenhum problema)
-* Se familiarize com a estrutura de pastas
+* Familiarize-se com a estrutura de pastas
 * Faça o mesmo com o conteúdo de cada arquivo
 * Leia mais a respeito de [the npm scripts e create-react-app][19]
 
@@ -305,7 +305,7 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-Now, you only return HTML in your `render()` method without JavaScript. Let's define the "Welcome to the Road to learn React" as a variable. A variable can be used in your JSX by using curly braces.
+Pronto. O método `render()` agora retorna apenas um HTML simples, sem JavaScript. Vamos definir o texto "_Welcome to the Road to learn React_" como uma variável, que pode ser usada dentro do seu JSX entre chaves.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -330,17 +330,17 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-It should work when you start your application on the command line with `npm start` again.
+Deve funcionar, quando você levantar sua aplicação novamente com `npm start` na linha de comando.
 
-Additionally you might have noticed the `className` attribute. It reflects the standard `class` attribute in HTML. Because of technical reasons, JSX had to replace a handful of internal HTML attributes. You can find all of the [supported HTML attributes in the React documentation][20]. They all follow the camelCase convention. On your way to learn React, you will come across some more JSX specific attributes.
+Você também deve ter notado o atributo `className`. Ele espelha o atributo `class` padrão de HTML. Por razões técnicas, JSX teve que substituir um punhado de atributos HTML. Você pode ver a lista completa em [atributos HTML suportados na documentação de React][20]. Eles seguem a convenção _camelCase_. No seu caminho aprendendo React, você irá se deparar com mais atributos específicos de JSX.
 
-### Exercises:
+### Exercícios:
 
-* define more variables and render them in your JSX
-  * use a complex object to represent an user with a first name and last name
-  * render the user properties in your JSX
-* read more about [JSX][21]
-* read more about [React components, elements and instances][22]
+* Defina mais variáveis e as adicione ao seu código JSX
+  * Use um objeto para representar um usuário com nome e sobrenome
+  * Adicione as propriedades do objeto ao seu código JSX
+* Leia mais sobre [JSX][21]
+* Leia mais sobre [componentes, elementos e instâncias em React][22]
 
 ## ES6 const and let
 
