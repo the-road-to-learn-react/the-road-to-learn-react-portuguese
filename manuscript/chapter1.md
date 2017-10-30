@@ -26,8 +26,8 @@ Recomendo fortemente que você entenda a razão do porquê você escolheria Reac
 
 ### Exercícios
 
-* ler sobre [Por que saí de Angular e fui para React?][6]
-* ler sobre [O ecossistema flexível de React][7]
+* Ler sobre [Por que saí de Angular e fui para React?][6]
+* Ler sobre [O ecossistema flexível de React][7]
 
 ## Pré-requisitos
 
@@ -113,13 +113,13 @@ Encontraremos mais comandos npm pelo caminho. Mas, por enquanto, esses serão su
 ### Exercícios:
 
 * Configurando um projeto npm qualquer:
-  * crie uma nova pasta com `mkdir <nome_da_pasta>`
-  * navegue para ela com `cd <nome_da_pasta>`
-  * execute `npm init -y` ou `npm init`
-  * instale um pacote local como o React com `npm install react`
-  * inspecione o arquivo *package.json* e a pasta *node\_modules/*
-  * descubra você mesmo como desinstalar o pacote *react*
-* leia mais sobre [npm][12]
+  * Crie uma nova pasta com `mkdir <nome_da_pasta>`
+  * Navegue para ela com `cd <nome_da_pasta>`
+  * Execute `npm init -y` ou `npm init`
+  * Instale um pacote local como o React com `npm install react`
+  * Inspecione o arquivo *package.json* e a pasta *node\_modules/*
+  * Descubra você mesmo como desinstalar o pacote *react*
+* Leia mais sobre [npm][12]
 
 ## Instalação
 
@@ -342,46 +342,46 @@ Você também deve ter notado o atributo `className`. Ele espelha o atributo `cl
 * Leia mais sobre [JSX][21]
 * Leia mais sobre [componentes, elementos e instâncias em React][22]
 
-## ES6 const and let
+## ES6 const e let
 
-I guess you noticed that we declared the variable `helloWorld` with a `var` statement. JavaScript ES6 comes with two more options to declare your variables: `const` and `let`. In JavaScript ES6, you will rarely find `var` anymore.
+Suponho que você tenha notado que declaramos a variável `helloWorld` com a palavra-chave `var`. JavaScript ES6 nos traz mais duas opções para declararmos variáveis: `const` e `let`. De agora em diante, você raramente irá encontrar `var` novamente.
 
-A variable declared with `const` cannot be re-assigned or re-declared. It cannot get mutated (changed, modified). You embrace immutable data structures by using it. Once the data structure is defined, you cannot change it.
+Uma variável declarada com `const` não pode ter um novo valor atribuído a ela nem ser novamente declarada. Não pode ser modificada. Você adota as estruturas de dados imutáveis quando usa `const`. Uma vez que sua estrutura de dados é definida, você não pode mais modificá-la.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
-// not allowed
+// não permitido
 const helloWorld = 'Welcome to the Road to learn React';
 helloWorld = 'Bye Bye React';
 ~~~~~~~~
 
-A variable declared with `let` can get mutated.
+Uma variável definida com `let` pode ser modificada.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
-// allowed
+// permitido
 let helloWorld = 'Welcome to the Road to learn React';
 helloWorld = 'Bye Bye React';
 ~~~~~~~~
 
-You would use it when you would need to re-assign a variable.
+Você pode usar `let` quando achar de poderia precisar atribuir novo valor à variável.
 
-However, you have to be careful with `const`. A variable declared with `const` cannot get modified. But when the variable is an array or object, the value it holds can get updated. The value it holds is not immutable.
+Contudo, você deve ter cuidado com `const`. Uma variáveis declarada com `const` não pode ser modificada, mas, quando esta se trata de um _array_ ou objeto, os valores que ela armazena podem ser atualizados, não são imutáveis.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
-// allowed
+// permitido
 const helloWorld = {
   text: 'Welcome to the Road to learn React'
 };
 helloWorld.text = 'Bye Bye React';
 ~~~~~~~~
 
-But when to use each declaration? There are different opinions about the usage. I suggest using `const` whenever you can. It indicates that you want to keep your data structure immutable even though values in objects and arrays can get modified. If you want to modify your variable, you can use `let`.
+Quando usar cada tipo de declaração, então? Existem diferentes opiniões sobre o melhor uso. Eu sugiro usar `const` sempre que possível, indicando que você quer manter sua estrutura de dados imutável, mesmo que os valores em objetos e _arrays_ possam ser modificados. Se você deliberadamente deseja modificar sua variável, use `let`.
 
-Immutability is embraced in React and its ecosystem. That's why `const` should be your default choice when you define a variable. Still, in complex objects the values within can get modified. Be careful about this behavior.
+Imutabilidade é uma característica que foi abraçada em React e no seu ecossistema. É por este motivo que`const` deveria ser sua escolha padrão quando definindo uma variável. Mais uma vez, os valores em objetos complexos ainda podem ser modificados. Tenha cuidado com esse comportamento.
 
-In your application, you should use `const` over `var`.
+Na sua aplicação, dê preferência a `const` sobre `var`.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -404,13 +404,13 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-### Exercises:
+### Exercícios:
 
-* read more about [ES6 const][23]
-* read more about [ES6 let][24]
-* research more about immutable data structures
-  * why do they make sense in programming in general
-  * why are they used in React and its ecosystem
+* Leia mais sobre [ES6 const][23]
+* Leia mais sobre [ES6 let][24]
+* Pesquise sobre imutabilidade de estruturas de dados
+  * Descubra o porquê disso fazer sentido em geral em programação
+  * Descubra porque é uma prática em React e em seu ecossistema
 
 ## ReactDOM
 
