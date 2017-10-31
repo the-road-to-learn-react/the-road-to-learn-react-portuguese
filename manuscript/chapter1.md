@@ -116,18 +116,16 @@ Encontraremos mais comandos npm pelo caminho. Mas, por enquanto, é suficiente.
   * Crie uma nova pasta com `mkdir <nome_da_pasta>`
   * Navegue para ela com `cd <nome_da_pasta>`
   * Execute `npm init -y` ou `npm init`
-  * Instale um pacote local como o React com `npm install react`
-  * Inspecione o arquivo *package.json* e a pasta *node\_modules/*
+  * Instale um pacote local como React com `npm install react`
+  * Olhe os conteúdos do arquivo *package.json* e da pasta *node\_modules/*
   * Descubra você mesmo como desinstalar o pacote *react*
 * Leia mais sobre [npm][12]
 
 ## Instalação
 
-Existem muitas formas de iniciar uma aplicação React.
+Existem muitas formas de começar a trabalhar com uma aplicação React, e a primeira delas é usar um CDN. Isso pode soar mais complicado do que realmente é, mas CDN é apenas a sigla para [Content Delivery Network][13]. Muitas empresas possuem CDNs que hospedam arquivos publicamente para que as pessoas possam consumi-los. Esses arquivos podem ser de bibliotecas como React, já que toda a biblioteca é empacotada em um simples arquivo JavaScript *react.js*. Ele pode ser hospedado em algum lugar e você pode requisitá-lo em sua aplicação.
 
-A primeira é usar um CDN. Isso pode soar mais complicado do que realmente é, mas CDN é apenas a sigla para [content delivery network][13]. Muitas empresas possuem CDNs que hospedam arquivos publicamente para que as pessoas possam consumi-los. Esses arquivos podem ser de bibliotecas, como React, já que toda a biblioteca é empacotada em um simples arquivo JavaScript *react.js*. Ele pode ser hospedado em algum lugar e você pode requisitá-lo em sua aplicação.
-
-Como usar um CDN para começar a trabalhar com React? Você pode adicionar a tag `<script>` _inline_ no seu HTML, apontando para a url do CDN. Você irá precisar de dois arquivos (duas bibliotecas): *react* e *react-dom*.
+E como usar um CDN para começar a trabalhar com React? Simples. Você pode adicionar a tag `<script>` _inline_ no seu HTML, apontando para a url do CDN. Serão precisos dois arquivos (duas bibliotecas): *react* e *react-dom*.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -144,11 +142,11 @@ Quando sua aplicação possui um arquivo *package.json* em uma pasta inicializad
 npm install react react-dom
 ~~~~~~~~
 
-Essa abordagem é frequentemente usada para adicionar React a uma aplicação existente, se esta for gerenciada com npm.
+Essa é  uma abordagem frequentemente utilizada para adicionar React a uma aplicação existente, caso esta seja gerenciada com npm.
 
-Mas isso não é o bastante, infelizmente. Você teria que configurar também o [Babel][14] para fazer com que sua aplicação seja capaz de reconhecer JSX (a sintaxe React) e JavaScript ES6. Babel "_transpila_" (do inglês _transpile_, tradução informal adotada pela comunidade) o seu código para que navegadores possam interpretar ES6 e JSX, pois nem todos conseguem fazê-lo naturalmente. Isso demanda muita configuração e uso de ferramentas, podendo ser aterrador para iniciantes em React ligar com tudo isso.
+Mas isso não é o bastante, infelizmente. Você teria que configurar também o [Babel][14] para fazer com que sua aplicação seja capaz de reconhecer JSX (a sintaxe React) e JavaScript ES6. O Babel "_transpila_" (tradução informal adotada pela comunidade para _transpile_) o seu código para que navegadores possam interpretar ES6 e JSX, pois nem todos conseguem fazê-lo naturalmente. Isso demanda muita configuração e uso de ferramentas, podendo ser aterrador para iniciantes em React lidarem com tudo isso.
 
-Por esta razão, o Facebook introduziu *create-react-app* como uma solução de trabalho com React sem a necessidade de configurações. O próximo capítulo lhe mostrará como montar sua aplicação utilizando essa ferramenta de inicialização (_bootstrap tool_).
+Por esta razão, o Facebook introduziu *create-react-app* como uma solução de trabalho com React sem a necessidade de escrever configurações. O próximo capítulo lhe mostrará como montar sua aplicação utilizando essa ferramenta de inicialização (_bootstrap tool_).
 
 * **Nota do Tradutor:** De agora em diante, ao longo do livro original, aparecerão cada vez mais termos como _bootstraping_ e _transpile_, que não possuem uma tradução exata na língua portuguesa. Além disso, em alguns casos, apesar de existir a palavra, o resultado da tradução de um termo técnico também pode soar estranho para estudantes e profissionais da área. Sendo assim, quando convir, manterei a palavra original e explicarei entre parênteses, se for necessário. Quando for possível e soar naturalmente, irei traduzir a sentença para algo de mesmo sentido no português.
 
@@ -158,7 +156,7 @@ Por esta razão, o Facebook introduziu *create-react-app* como uma solução de 
 
 ## _Setup_ sem nenhuma configuração
 
-Em "O Caminho para aprender React", você usará [create-react-app][16] para montar a estrutura inicial da sua aplicação. Trata-se de um _kit_ de inicialização sem necessidade de configuração, de uso opcional, introduzido pelo Facebook em 2016. Cerca de [96% das pessoas perguntadas recomendam-no para iniciantes][17]. Com o *create-react-app*, a configuração e a instrumentação se desenvolvem automaticamente em segundo plano, enquanto o foco permanece na implementação da aplicação.
+Em "O Caminho para aprender React", você usará [create-react-app][16] para montar a estrutura inicial da sua aplicação. Trata-se de um _kit_ de inicialização sem necessidade de configuração, de uso opcional, introduzido pelo Facebook em 2016. Cerca de [96% das pessoas perguntadas recomendam-no para iniciantes][17]. Com o *create-react-app*, a configuração e a instrumentação se desenvolvem automaticamente em segundo plano, enquanto o seu foco permanece na implementação da aplicação.
 
 Para começar, será necessário fazer a instalação global do pacote. Assim, ele sempre estará disponível na linha de comando para criar suas aplicações React.
 
@@ -183,7 +181,7 @@ create-react-app hackernews
 cd hackernews
 ~~~~~~~~
 
-Agora você pode abrir a aplicação no editor de sua escolha. A estrutura a seguir (ou uma variação, dependendo da versão do _create-react-app_) lhe será apresentada:
+Você pode abrir a aplicação no editor de sua escolha. A estrutura a seguir (ou uma variação, dependendo da versão do _create-react-app_) lhe será apresentada:
 
 {title="Estrutura de pastas",lang="text"}
 ~~~~~~~~
@@ -204,11 +202,11 @@ hackernews/
     logo.svg
 ~~~~~~~~
 
-Não tem problema se você não entender tudo desde o início. Uma descrição curta dos arquivos e pastas:
+Não tem problema se você não entender tudo desde o início. Eis uma descrição curta dos arquivos e pastas:
 
-* **README.md:** A extensão .md indica que o arquivo é do tipo _markdown_, usado como uma linguagem de marcação mais leve, com uma sintaxe de formatação de texto. Muitos projetos com código-fonte incluem um arquivo *README.md* para passar as instruções iniciais. Quando eventualmente você sincronizar seu projeto em uma plataforma como o GitHub, o conteúdo do _README.md_ será exibido na página inicial do repositório. Por ter usado *create-react-app*, seu *README.md* terá conteúdo igual ao do [repositório do create-react-app no GitHub][18].
+* **README.md:** A extensão .md indica que o arquivo é do tipo _markdown_, uma linguagem de marcação mais leve com uma sintaxe de formatação de texto. Muitos projetos com código-fonte incluem um arquivo *README.md* para passar as instruções iniciais. Quando eventualmente você sincronizar seu projeto em uma plataforma como o GitHub, o conteúdo do _README.md_ será exibido na página inicial do repositório. Por ter usado *create-react-app*, seu *README.md* terá conteúdo igual ao do [repositório do create-react-app no GitHub][18].
 
-* **node\_modules/:** Contém todos os pacotes node que foram instalados via npm. Uma vez que foi utilizado o _create-react-app_, alguns módulos já foram instalados para você. Normalmente, você nunca irá manipular diretamente o conteúdo desta pasta, devendo instalar e desinstalar pacotes usando o npm na linha de comando.
+* **node\_modules/:** Contém todos os pacotes node instalados via npm pois, uma vez que foi utilizado o _create-react-app_, alguns módulos já foram instalados para você. Normalmente, você nunca irá manipular diretamente o conteúdo desta pasta, devendo instalar e desinstalar pacotes usando npm na linha de comando.
 
 * **package.json:** Mostra uma lista de dependências de pacotes node e mais algumas outras configurações de projeto.
 
@@ -216,11 +214,11 @@ Não tem problema se você não entender tudo desde o início. Uma descrição c
 
 * **public/:** A pasta contém todos os arquivos do projeto quando este é preparado para produção. Todo o código que você escreveu na pasta *src/* será empacotado em um ou dois arquivos durante o _building_ e colocado na pasta _public_.
 
-No fim das contas, você não tem que alterar os arquivos e pastas mencionados. De início, tudo que você precisa está localizado na pasta _src/_. O foco principal fica com o arquivo *src/App.js*, que será usado para implementar sua aplicação. Mais tarde, você deve querer estruturá-la em múltiplos arquivos, cada um contendo seu próprio (ou alguns) componente.
+No fim das contas, você não tem que alterar os arquivos e pastas mencionados acima. De início, tudo que você precisa está localizado na pasta _src/_. O foco principal fica com o arquivo *src/App.js*, que será usado para implementar sua aplicação. Mais tarde, você irá querer estruturá-la em múltiplos arquivos, cada um contendo seu próprio (ou alguns) componente.
 
-Você encontrará um arquivo *src/App.test.js* (para seus testes) e um *src/index.js* como ponto de entrada para o "mundo React". Encontrará também os arquivos *src/index.css* e *src/App.css* para aplicar estilos aos componentes e à aplicação de uma forma geral. Se abrir qualquer dos dois, verá que ambos já trazem as definições de um estilo padrão.
+Você encontrará um arquivo *src/App.test.js* (para seus testes) e um *src/index.js* como ponto de entrada para o "mundo React". Encontrará também os arquivos *src/index.css* e *src/App.css* para aplicar estilos aos componentes e à aplicação de uma forma geral. Se abrir qualquer dos dois, verá que ambos já trazem as definições de estilos padrão.
 
-A aplicação *create-react-app* é um projeto npm. Além de permitir que utilizemos npm para instalar e desinstalar pacotes node ao projeto, traz os seguintes _scripts_ npm para serem usados na linha de comando:
+A aplicação *create-react-app* também é um projeto npm. Além de permitir que utilizemos npm para instalar e desinstalar pacotes node ao projeto, traz os seguintes _scripts_ npm para serem usados na linha de comando:
 
 {title="Linha de Comando",lang="text"}
 ~~~~~~~~
@@ -235,16 +233,16 @@ npm run build
 ~~~~~~~~
 
 Os _scripts_ são definidos no *package.json*.
-Seu "esqueleto" de aplicação React está agora inicializado. A parte excitante vem agora com os exercícios, finalmente rodando sua aplicação no _browser_.
+Seu "esqueleto" de aplicação React está agora criado. A parte excitante vem a seguir, com os exercícios, finalmente rodando sua aplicação no _browser_.
 
 ### Exercícios:
 
 * Inicie sua aplicação com`npm start` e abra-a em seu navegador.
 * Rode o _script_ interativo `npm test`
-* Verifique o conteúdo da sua pasta *public/*, execute o _script_ `npm run build` e olhe novamente a pasta para ver que arquivos foram adicionados (você pode removê-los se quiser, mas eles não causam nenhum problema)
+* Verifique o conteúdo da sua pasta *public/*, execute o _script_ `npm run build` e olhe novamente a pasta para ver quais arquivos foram adicionados (você pode removê-los se quiser, mas eles não causam nenhum problema)
 * Familiarize-se com a estrutura de pastas
 * Faça o mesmo com o conteúdo de cada arquivo
-* Leia mais a respeito de [the npm scripts e create-react-app][19]
+* Leia mais a respeito de [npm scripts e create-react-app][19]
 
 ## Introdução à JSX
 
@@ -277,11 +275,11 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-Para que não se confunda com as declarações _import/export_ e com a palavra _class_, saiba que essas já são funcionalidades de JavaScript ES6. Iremos falar sobre isso novamente, mais tarde, neste mesmo capítulo.
+Para que não se confunda com as declarações _import/export_ e com a palavra _class_, saiba que essas já são funcionalidades de JavaScript ES6. Iremos falar sobre isso mais tarde, neste mesmo capítulo.
 
-No arquivo você tem uma ** classe de componente React ES6** (do inglês, _class component_) de nome App. É a declaração de um componente. Basicamente, depois de o ter declarado, você pode usá-lo como um elemento em qualquer lugar da sua aplicação. Será produzida uma **instância** do seu **componente**, ou, em outras palavras: o componente é instanciado.
+No arquivo você tem uma ** classe de componente React ES6** (do inglês, um _class component_) de nome App. É a declaração de um componente. Basicamente, depois de o ter declarado, você poderá usá-lo como um elemento em qualquer lugar da sua aplicação. Será produzida uma **instância** do seu **componente**, ou, em outras palavras: o componente é instanciado.
 
-O **elemento** retornado é especificado no método `render()` e os componentes são feitos de elementos. É importante entender as diferenças entre componente, instância e elemento.
+O **elemento** retornado é especificado no método `render()`. Componentes são feitos de elementos. É importante entender as diferenças entre componente, instância e elemento.
 
 Logo você verá que o componente App é instanciado, pois, se não o fosse, você não seria capaz de vê-lo renderizado no navegador. O componente é apenas a declaração, mas sem utilidade por si só. Você deve instanciá-lo em algum lugar usando JSX, assim: `<App />`.
 
@@ -330,7 +328,7 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-Deve funcionar, quando você levantar sua aplicação novamente com `npm start` na linha de comando.
+Deverá funcionar, quando você levantar sua aplicação novamente com `npm start` na linha de comando.
 
 Você também deve ter notado o atributo `className`. Ele espelha o atributo `class` padrão de HTML. Por razões técnicas, JSX teve que substituir um punhado de atributos HTML. Você pode ver a lista completa em [atributos HTML suportados na documentação de React][20]. Eles seguem a convenção _camelCase_. No seu caminho aprendendo React, você irá se deparar com mais atributos específicos de JSX.
 
@@ -346,7 +344,7 @@ Você também deve ter notado o atributo `className`. Ele espelha o atributo `cl
 
 Suponho que você tenha notado que declaramos a variável `helloWorld` com a palavra-chave `var`. JavaScript ES6 nos traz mais duas opções para declararmos variáveis: `const` e `let`. De agora em diante, você raramente irá encontrar `var` novamente.
 
-Uma variável declarada com `const` não pode ter um novo valor atribuído a ela nem ser novamente declarada. Não pode ser modificada. Você adota as estruturas de dados imutáveis quando usa `const`. Uma vez que sua estrutura de dados é definida, você não pode mais modificá-la.
+Uma variável declarada com `const` não pode ter um novo valor atribuído a ela nem ser novamente declarada. Não pode ser modificada. Você adota o uso de estruturas de dados imutáveis quando utiliza `const`. Uma vez que sua estrutura de dados é definida, você não pode mais modificá-la.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -366,7 +364,7 @@ helloWorld = 'Bye Bye React';
 
 Você pode usar `let` quando achar de poderia precisar atribuir novo valor à variável.
 
-Contudo, você deve ter cuidado com `const`. Uma variáveis declarada com `const` não pode ser modificada, mas, quando esta se trata de um _array_ ou objeto, os valores que ela armazena podem ser atualizados, não são imutáveis.
+Contudo, você deve ter cuidado com `const`. Uma variável declarada com `const` não pode ser modificada, mas, quando esta se trata de um _array_ ou objeto, os valores que ela armazena não são imutáveis e podem ser atualizados.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -377,7 +375,7 @@ const helloWorld = {
 helloWorld.text = 'Bye Bye React';
 ~~~~~~~~
 
-Quando usar cada tipo de declaração, então? Existem diferentes opiniões sobre o melhor uso. Eu sugiro usar `const` sempre que possível, indicando que você quer manter sua estrutura de dados imutável, mesmo que os valores em objetos e _arrays_ possam ser modificados. Se você deliberadamente deseja modificar sua variável, use `let`.
+Então quando usar cada tipo de declaração? Existem diferentes opiniões sobre o melhor uso. Eu sugiro usar `const` sempre que possível, indicando que você quer manter sua estrutura de dados imutável, mesmo que os valores em objetos e _arrays_ possam ser modificados. Se você deliberadamente deseja modificar sua variável, use `let`.
 
 Imutabilidade é uma característica que foi abraçada em React e no seu ecossistema. É por este motivo que`const` deveria ser sua escolha padrão quando definindo uma variável. Mais uma vez, os valores em objetos complexos ainda podem ser modificados. Tenha cuidado com esse comportamento.
 
@@ -414,7 +412,7 @@ export default App;
 
 ## ReactDOM
 
-Antes de continuar trabalhando no component App, você deve querer ver onde ele é utilizado, não é mesmo? Ele está localizado dentro do seu ponto de entrada no mundo React: o arquivo *src/index.js*.
+Antes de continuar trabalhando no componente App, você deve querer ver onde ele é utilizado, não é mesmo? Ele está localizado dentro do seu ponto de entrada no mundo React: o arquivo *src/index.js*.
 
 {title="src/index.js",lang=javascript}
 ~~~~~~~~
@@ -429,7 +427,9 @@ ReactDOM.render(
 );
 ~~~~~~~~
 
-Basicamente, `ReactDOM.render()` usa um _DOM node_ no HTML e o substitui com o seu JSX. Dessa forma, você pode facilmente integrar React em qualquer aplicação estranha à sua. Não é proibido utilizar `ReactDOM.render()` muitas vezes na aplicação, você pode fazê-lo para habilitar o uso da sintaxe JSX, de um componente React, de múltiplos componentes React ou até uma aplicação inteira. Mas, numa aplicação React pura, você só usará este método uma vez, para carregar toda a sua árvore de componentes.
+Basicamente, `ReactDOM.render()` usa um _DOM node_ no HTML e o substitui com o seu JSX. Dessa forma, você pode facilmente integrar React em qualquer aplicação estranha à sua.
+
+Não é proibido utilizar `ReactDOM.render()` muitas vezes na aplicação, você pode fazê-lo para habilitar o uso da sintaxe JSX, de um componente React, de múltiplos componentes React ou até uma aplicação inteira. Mas, numa aplicação React pura, você só usará este método uma vez, para carregar toda a sua árvore de componentes.
 
 `ReactDOM.render()` espera dois argumentos. O primeiro é o código JSX que será renderizado. O segundo argumento especifica o lugar onde a aplicação React irá se acomodar em seu HTML. Ele espera um elemento com um `id='root'`. Abra o arquivo *public/index.html* você encontrará esse id como atributo.
 
