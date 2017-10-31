@@ -57,11 +57,11 @@ npm --version
 
 ## node e npm
 
-Este capítulo lhe submete a um pequeno curso intensivo em node e npm. Não explora todas as funcionalidades, mas dá todas as ferramentas necessárias. Se você já está familiarizado com ambos, sinta-se livre para pular para o próximo assunto.
+Este capítulo é um curso intensivo em node e npm. Ele não explora todas as funcionalidades, mas apresenta as ferramentas necessárias. Se você já está familiarizado com ambos, sinta-se livre para pular para o próximo assunto.
 
-O **node package manager** (npm) lhe possibilita instalar pacotes (**node packages**) externos pela linha de comando. Esses pacotes podem ser desde um conjunto de funções utilitárias até bibliotecas ou _frameworks_ completos. Quando adicionados, tornam-se dependências da sua aplicação. Você pode instalá-los tanto globalmente (no seu diretório global de pacotes node), quanto na pasta local do seu projeto.
+O **node package manager** (npm) possibilita a instalação de pacotes (**node packages**) externos pela linha de comando. Esses pacotes podem conter desde um conjunto de funções utilitárias até bibliotecas ou _frameworks_ completos e, quando adicionados, tornam-se dependências da sua aplicação. Você pode instalá-los tanto globalmente (no seu diretório global de pacotes node), quanto na pasta local do seu projeto.
 
-Pacotes node globais são acessíveis de qualquer pasta no terminal e você precisa fazer a instalação apenas uma vez. Para tanto, digite em seu terminal:
+Pacotes node globais são acessíveis de qualquer pasta no terminal e você só precisa fazer a instalação de cada pacote uma vez. Para tanto, digite em seu terminal:
 
 {title="Linha de Comando",lang="text"}
 ~~~~~~~~
@@ -70,7 +70,7 @@ npm install -g <package>
 
 A _flag_ `-g` diz ao npm para instalar o pacote globalmente. 
 
-Pacotes locais são usados apenas na sua aplicação. Por exemplo, por tratar-se de uma biblioteca, React será adicionado como um pacote local que poderá ser importado para uso na sua aplicação. A instalação de qualquer pacotes local via terminal é feita através do comando:
+Já os pacotes locais são usados apenas na sua aplicação. React, por exemplo, por se tratar de uma biblioteca, será adicionado como um pacote local que poderá ser importado para uso interno. A instalação de qualquer pacote local via terminal é feita através do comando:
 
 {title="Linha de Comando",lang="text"}
 ~~~~~~~~
@@ -86,18 +86,18 @@ npm install react
 
 O pacote instalado irá aparecer automaticamente em uma pasta chamada *node\_modules/* e será listado no arquivo *package.json* juntamente com as outras dependências do projeto.
 
-Como inicializar o projeto com a pasta *node\_modules/* e o arquivo *package.json*? Existe um comando npm para isso. Quando executado, *package.json* é criado e somente com a existência desse arquivo no projeto é que é possível a instalação de novos pacotes locais via npm.
+E como inicializar o projeto com a pasta *node\_modules/* e o arquivo *package.json*? Existe um comando npm para isso também. Quando executado, *package.json* é criado e somente com a existência desse arquivo no projeto é que é possível a instalação de novos pacotes locais.
 
 {title="Linha de Comando",lang="text"}
 ~~~~~~~~
 npm init -y
 ~~~~~~~~
 
-A _flag_ `-y` é um atalho para inicializar seu *package.json* com as configurações padrão. Caso não a use, você terá que decidir como configurar o arquivo. Feita a inicialização, você estará apto a instalar novos pacotes com o comando `npm install <package>`.
+A _flag_ `-y` é um atalho para inicializar seu *package.json* com as configurações padrão. Caso não a use, você terá que informar alguns dados adicionais para configurar o arquivo. Feita a inicialização, você está apto a instalar novos pacotes com o comando `npm install <package>`.
 
-Mais uma coisa sobre o *package.json*: O arquivo habilita você a compartilhar o projeto com outros desenvolvedores sem ter que incluir todos os pacotes node. Ele contém todas as referências dos pacotes utilizados no projeto, chamados de dependências. Todos podem copiar seu projeto sem baixar as dependências e simplesmente instalar todos os pacotes utilizando `npm install` na linha de comando. O _script_ considera todas as dependências listadas no *package.json* e instala cada uma na pasta *node\_modules/*.
+Mais uma coisa sobre o *package.json*: O arquivo habilita você a compartilhar o projeto com outros desenvolvedores sem ter que incluir todos os pacotes node. Ele contém todas as referências dos pacotes utilizados no projeto, chamados de dependências. Todos podem copiar seu projeto sem baixar as dependências e simplesmente instalar todos os pacotes utilizando `npm install` na linha de comando. O _script_ considera todas as entradas listadas no *package.json* e instala cada uma na pasta *node\_modules/*.
 
-Quanto aos comandos do npm, gostaria de falar apenas sobre mais um:
+Existe mais um comando npm sobre o qual eu gostaria de falar a respeito:
 
 {title="Linha de Comando",lang="text"}
 ~~~~~~~~
@@ -106,9 +106,9 @@ npm install --save-dev <package>
 
 A _flag_ `--save-dev` indica que o pacote node é usado apenas em ambiente de desenvolvimento, ou seja, não será usado em produção quando você implantar a aplicação no servidor. Mas, que tipo de pacote se enquadraria neste caso?
 
-Imagine que você queira testar sua aplicação com a ajuda de um pacote node. Você precisa instalá-lo via npm, mas deseja evitar que seja adicionado no seu ambiente de produção. Atividades de teste devem acontecer durante o processo de desenvolvimento, não quando a aplicação já foi disponibilizada para o usuário. A este ponto, já deve ter sido testada e estar funcionando plenamente. Este exemplo é apenas um dos casos onde você desejaria utilizar a flag `--save-dev`.
+Imagine que você queira instalar um pacote para lhe ajudar a testar sua aplicação. Você precisa instalá-lo via npm, mas deseja evitar que seja adicionado no seu ambiente de produção. Atividades de teste devem acontecer durante o processo de desenvolvimento, não quando a aplicação já foi disponibilizada para o usuário e já deveria ter sido testada e estar funcionando plenamente. Este é apenas um dos casos onde você desejaria utilizar a flag `--save-dev`.
 
-Encontraremos mais comandos npm pelo caminho. Mas, por enquanto, esses serão suficientes.
+Encontraremos mais comandos npm pelo caminho. Mas, por enquanto, é suficiente.
 
 ### Exercícios:
 
