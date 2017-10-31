@@ -431,9 +431,9 @@ Basicamente, `ReactDOM.render()` usa um _DOM node_ no HTML e o substitui com o s
 
 Não é proibido utilizar `ReactDOM.render()` muitas vezes na aplicação, você pode fazê-lo para habilitar o uso da sintaxe JSX, de um componente React, de múltiplos componentes React ou até uma aplicação inteira. Mas, numa aplicação React pura, você só usará este método uma vez, para carregar toda a sua árvore de componentes.
 
-`ReactDOM.render()` espera dois argumentos. O primeiro é o código JSX que será renderizado. O segundo argumento especifica o lugar onde a aplicação React irá se acomodar em seu HTML. Ele espera um elemento com um `id='root'`. Abra o arquivo *public/index.html* você encontrará esse id como atributo.
+`ReactDOM.render()` espera dois argumentos. O primeiro é o código JSX que será renderizado. O segundo argumento especifica o lugar onde a aplicação React irá se acomodar em seu HTML. Ele espera um elemento com um `id='root'`. Abra o arquivo *public/index.html* você encontrará esse id como atributo de uma tag.
 
-Na implementação corrente, `ReactDOM.render()` já recebe seu componente App. Contudo, não haveria problema se passássemos um simples código JSX, desde que seja realmente JSX. Não é obrigatório que o argumento seja um componente instanciado.
+Na nossa implementação, `ReactDOM.render()` já recebe seu componente App. Contudo, não haveria problema se, no lugar, passássemos um simples código JSX, não sendo obrigatório que o argumento passado seja um componente instanciado.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -450,11 +450,11 @@ ReactDOM.render(
 
 ## Hot Module Replacement
 
-There is one thing that you can do in the *src/index.js* file to improve your development experience as a developer. But it is optional and shouldn't overwhelm you in the beginning when learning React.
+Existe algo que você pode fazer no arquivo *src/index.js* para melhorar sua experiência de desenvolvimento. Mas, é opcional e não é necessário "enfiar goela abaixo" essa prática quando se está começando a aprender React.
 
-In *create-react-app* it is already an advantage that the browser automatically refreshes the page when you change your source code. Try it by changing the `helloWorld` variable in your *src/App.js* file. The browser should refresh the page. But there is a better way of doing it.
+Em aplicação criada com *create-react-app* já existe a vantagem de o navegador atualizar a página exibida quando você altera o código fonte. Faça o teste, alterando a variável `helloWorld` no seu arquivo *src/App.js*. A página será recarregada. Mas, existe uma maneira ainda melhor de fazê-lo.
 
-Hot Module Replacement (HMR) is a tool to reload your application in the browser. The browser doesn't perform a page refresh. You can easily activate it in *create-react-app*. In your *src/index.js*, your entry point to React, you have to add one little configuration.
+_Hot Module Replacement_ (HMR) (algo como "recarregamento de módulo em tempo real") é uma ferramenta de atualização da aplicação em seu navegador, sem que este faça o recarregamento da página. Você pode facilmente ativar esse recurso, adicionando uma pequena configuração ao seu *src/index.js*:
 
 {title="src/index.js",lang=javascript}
 ~~~~~~~~
@@ -475,24 +475,24 @@ if (module.hot) {
 # leanpub-end-insert
 ~~~~~~~~
 
-That's it. Try again to change the `helloWorld` variable in your *src/App.js* file. The browser shouldn't perform a page refresh, but the application reloads and shows the correct output. HMR comes with multiple advantages:
+É só isso. Faça o teste novamente, alterando a variável `helloWorld` em seu *src/App.js*. O navegador não irá recarregar toda a página, mas a aplicação irá ser atualizada e mostrar a saída correta. HRM nos traz muitas vantagens:
 
-Imagine you are debugging your code with `console.log()` statements. These statements will stay in your developer console, even though you change your code, because the browser doesn't refresh the page anymore. That can be convenient for debugging purposes.
+Imagine que você está depurando o código fazendo chamadas `console.log()`. Como o navegador não atualiza mais a página todas as vezes que você altera e salva o código, as chamadas anteriores irão permanecer no console até que você não queria mais. Isso pode ajudar bastante no processo de depuração.
 
-In a growing application a page refresh delays your productivity. You have to wait until the page loads. A page reload can take several seconds in a large application. HMR takes away this disadvantage.
+Em aplicação que já está ficando grande, recarregamentos de página pode tirar sua produtividade. Você sempre tem que esperar que a página carregue novamente e isso pode demorar vários segundos em um app de maior tamanho. HMR remove essa desvantagem.
 
-The biggest benefit is that you can keep the application state with HMR. Imagine you have a dialog in your application with multiple steps and you are at step 3. Basically it is a wizard. Without HMR you would change the source code and your browser refreshes the page. You would have to open the dialog again and would have to navigate from step 1 to step 3. With HMR your dialog stays open at step 3. It keeps the application state even though the source code changes. The application itself reloads, but not the page.
+Mas o maior benefício de usar HMR é o de que você consegue conservar o estado da aplicação por mais tempo. Imagine que você uma janela de diálogo com uma sequência de passos e você está no passo 3 (procedimento bastante conhecido como um _wizard_). Sem HMR, ao realizar alterações no código-fonte, seu navegador automaticamente recarregará a página. Você terá que reiniciar o procedimento do passo 1 e navegar até o passo 3 para ver a modificação. Com HMR, sua janela permanece ativa no passo 3, mantendo o estado da aplicação mesmo depois da mudanças de fonte. A aplicação em si recarrega, mas a página não.
 
-### Exercises:
+### Exercícios:
 
-* change your *src/App.js* source code a few times to see HMR in action
-* watch the first 10 minutes of [Live React: Hot Reloading with Time Travel][26] by Dan Abramov
+* Mude o código-fonte do seu *src/App.js* algumas vezes para testar o uso do HMR.
+* Assista aos primeiros 10 minutos da apresentação [Live React: Hot Reloading with Time Travel][26], com Dan Abramov.
 
-## Complex JavaScript in JSX
+## JavaScript dentro do código JSX
 
-Let's get back to your App component. So far you rendered some primitive variables in your JSX. Now you will start to render a list of items. The list will be sample data in the beginning, but later you will fetch the data from an external [API][27]. That will be far more exciting.
+Voltemos ao componente App. Até então, você renderiza algumas variáveis primitivas em seu código JSX. Agora você irá começar a trabalhar com listas de itens. Inicialmente, a lista virá de uma amostra local de dados, mas depois você irá consultar os dados usando uma [API][27] externa, o que é muito mais empolgante.
 
-First you have to define the list of items.
+Primeiro você precisa definir uma lista de itens.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -525,9 +525,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The sample data will reflect the data we will fetch later on from the API. An item in the list has a title, an url and an author. Additionally it comes with an identifier, points (which indicate how popular an article is) and a count of comments.
+Esses dados de exemplo irão refletir o modelo de dados que irmos consultar mais tarde com a API. Um item da lista possui um título, uma url e um autor. Adicionalmente, tem um identificador, pontos (que indicam o quão popular é um artigo) e um contador de comentários.
 
-Now you can use the built-in JavaScript `map` functionality in your JSX. It enables you to iterate over your list of items to display them. Again you will use curly braces to encapsulate the JavaScript expression in your JSX.
+Com a lista em mãos, você pode agora usar a funcionalidade nativa de JavaScript `map` em seu código JSX. Ela lhe possibilita iterar sobre sua lista de itens e exibir seu conteúdo. Mais uma vez, você usará chaves para encapsular a expressão JavaScript no JSX.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -548,9 +548,9 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-Using JavaScript in HTML is pretty powerful in JSX. Usually you might have used `map` to convert one list of items to another list of items. This time you use `map` to convert a list of items to HTML elements.
+O uso de JavaScript dentro do HTML é algo muito poderoso em JSX. Normalmente, você teria utilizado `map` para converter uma lista de itens em outra lista de itens. Mas aqui você usa para converter uma lista de itens em elementos HTML.
 
-So far, only the `title` will be displayed for each item. Let's display some more of the item properties.
+Até então, apenas o `title` é exibido para cada item. Vamos adicionar mais propriedades:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -580,9 +580,9 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-You can see how the map function is simply inlined in your JSX. Each item property is displayed in a `<span>` tag. Moreover the url property of the item is used in the `href` attribute of the anchor tag.
+É possível enxergar como a função map é simplesmente invocada _inline_ no código JSX. Cada propriedade de item é exibida em uma tag `<span>`, com exceção da url, que colocamos no `href` da tag `<a>`.
 
-React will do all the work for you and display each item. But you should add one helper for React to embrace its full potential and improve its performance. You have to assign a key attribute to each list element. That way React is able to identify added, changed and removed items when the list changes. The sample list items come with an identifier already.
+React irá fazer todo o trabalho de exibir cada item. Contudo, você deve dar uma ajudá-lo a atingir todo o seu potencial e melhorar a performance. Você deve dar um atributo `key` a cada elemento da lista. Essa é a forma de identificar que itens foram adicionados, modificados ou removidos quando a lista muda. Os itens do exemplo possuem um identificador que pode ser utilizado.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -602,11 +602,11 @@ React will do all the work for you and display each item. But you should add one
 })}
 ~~~~~~~~
 
-You should make sure that the key attribute is a stable identifier. Don't make the mistake of using index of the item in the array. The array index isn't stable at all. For instance, when the list changes its order, React will have a hard time identifying the items properly.
+Você deve se certificar de que o atributo key é um identificador único válido. Não cometa o erro de usar o índice do item no array. O índice não é um identificador estável, pois, quando a lista é reordenada, ficará difícil para o React identificar os itens propriamente.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
-// don't do this
+// não faça isso
 {list.map(function(item, key) {
   return (
     <div key={key}>
@@ -616,13 +616,13 @@ You should make sure that the key attribute is a stable identifier. Don't make t
 })}
 ~~~~~~~~
 
-You are displaying both list items now. You can start your app, open your browser and see both items of the list displayed.
+Agora você está exibindo ambos os itens da lista. Inicie sua aplicação, abra o navegador e veja os dois sendo mostrados.
 
-### Exercises:
+### Exercícios:
 
-* read more about [React lists and keys][28]
-* recap the [standard built-in array functionalities in JavaScript][29]
-* use more JavaScript expressions on your own in JSX
+* Leia mais sobre [listas e _keys_ em React][28]
+* Revise as [funcionalidades padrão de arrays em JavaScript][29]
+* Use mais expressões JavaScript no seu código JSX
 
 ## ES6 Arrow Functions
 
