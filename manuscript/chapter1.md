@@ -448,13 +448,13 @@ ReactDOM.render(
 * Abra o arquivo *public/index.html* e veja onde a aplicação React será alocada em seu HTML
 * Leia mais a respeito da [renderização de elementos em React][25]
 
-## Hot Module Replacement
+## _Hot Module Replacement_
 
-Existe algo que você pode fazer no arquivo *src/index.js* para melhorar sua experiência de desenvolvimento. Mas, é opcional e não é necessário "enfiar goela abaixo" essa prática quando se está começando a aprender React.
+Existe algo que você pode fazer no arquivo *src/index.js* para melhorar sua experiência de desenvolvimento. É opcional e não é necessário "enfiar goela abaixo" essa prática quando se está começando a aprender React.
 
-Em aplicação criada com *create-react-app* já existe a vantagem de o navegador atualizar a página exibida quando você altera o código fonte. Faça o teste, alterando a variável `helloWorld` no seu arquivo *src/App.js*. A página será recarregada. Mas, existe uma maneira ainda melhor de fazê-lo.
+Em uma aplicação criada com *create-react-app*,  o navegador atualiza a página exibida quando você altera o código fonte e isso já é uma vantagem. Faça o teste, alterando a variável `helloWorld` no seu arquivo *src/App.js*. A página será recarregada. Mas, existe uma maneira ainda melhor de fazê-lo.
 
-_Hot Module Replacement_ (HMR) (algo como "recarregamento de módulo em tempo real") é uma ferramenta de atualização da aplicação em seu navegador, sem que este faça o recarregamento da página. Você pode facilmente ativar esse recurso, adicionando uma pequena configuração ao seu *src/index.js*:
+_Hot Module Replacement_ - algo como "recarregamento de módulos em tempo real" - (ou HRM) é uma ferramenta que permite a atualização da aplicação em seu navegador, sem que este faça o recarregamento da página. Você pode facilmente ativar esse recurso, adicionando uma pequena configuração ao seu *src/index.js*:
 
 {title="src/index.js",lang=javascript}
 ~~~~~~~~
@@ -475,18 +475,20 @@ if (module.hot) {
 # leanpub-end-insert
 ~~~~~~~~
 
-É só isso. Faça o teste novamente, alterando a variável `helloWorld` em seu *src/App.js*. O navegador não irá recarregar toda a página, mas a aplicação irá ser atualizada e mostrar a saída correta. HRM nos traz muitas vantagens:
+É só isso. Faça o teste novamente, alterando a variável `helloWorld` em seu *src/App.js*. O navegador não irá recarregar toda a página, mas a aplicação irá ser atualizada e mostrar a saída correta. 
 
-Imagine que você está depurando o código fazendo chamadas `console.log()`. Como o navegador não atualiza mais a página todas as vezes que você altera e salva o código, as chamadas anteriores irão permanecer no console até que você não queria mais. Isso pode ajudar bastante no processo de depuração.
+HRM nos traz muitas vantagens:
 
-Em aplicação que já está ficando grande, recarregamentos de página pode tirar sua produtividade. Você sempre tem que esperar que a página carregue novamente e isso pode demorar vários segundos em um app de maior tamanho. HMR remove essa desvantagem.
+Imagine que você está depurando o código fazendo chamadas `console.log()`. Como o navegador não atualiza mais a página todas as vezes que você altera e salva o código, as chamadas anteriores irão permanecer no console até que você não queira mais. Isso pode ajudar bastante no processo de depuração.
 
-Mas o maior benefício de usar HMR é o de que você consegue conservar o estado da aplicação por mais tempo. Imagine que você uma janela de diálogo com uma sequência de passos e você está no passo 3 (procedimento bastante conhecido como um _wizard_). Sem HMR, ao realizar alterações no código-fonte, seu navegador automaticamente recarregará a página. Você terá que reiniciar o procedimento do passo 1 e navegar até o passo 3 para ver a modificação. Com HMR, sua janela permanece ativa no passo 3, mantendo o estado da aplicação mesmo depois da mudanças de fonte. A aplicação em si recarrega, mas a página não.
+Em  uma aplicação que já está ficando grande, recarregamentos de página podem tirar sua produtividade. O tempo todo você tem que esperar que a página carregue novamente e isso pode demorar vários segundos em um app um pouco maior. HMR remove essa desvantagem.
+
+Mas o maior benefício de usar HMR é o de que você consegue conservar o estado da aplicação por mais tempo. Imagine que você tem uma caixa de diálogo com uma sequência de passos e você está no passo 3 (procedimento bastante conhecido como um _wizard_). Sem HMR, ao realizar alterações no código-fonte, seu navegador automaticamente recarregará a página. Você terá que reiniciar o procedimento do passo 1 e navegar até o passo 3 para ver a modificação. Com HMR, sua janela permanece ativa no passo 3, mantendo o estado da aplicação mesmo depois das mudanças de código fonte. A aplicação em si recarrega, mas a página não.
 
 ### Exercícios:
 
-* Mude o código-fonte do seu *src/App.js* algumas vezes para testar o uso do HMR.
-* Assista aos primeiros 10 minutos da apresentação [Live React: Hot Reloading with Time Travel][26], com Dan Abramov.
+* Mude o código-fonte do seu *src/App.js* algumas vezes para testar o uso de HMR
+* Assista aos primeiros 10 minutos da apresentação [Live React: Hot Reloading with Time Travel][26], com Dan Abramov
 
 ## JavaScript dentro do código JSX
 
@@ -525,9 +527,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Esses dados de exemplo irão refletir o modelo de dados que irmos consultar mais tarde com a API. Um item da lista possui um título, uma url e um autor. Adicionalmente, tem um identificador, pontos (que indicam o quão popular é um artigo) e um contador de comentários.
+Esses dados irão refletir o modelo daqueles que iremos consultar mais tarde com a API. Um item da lista possui um título, uma url e um autor. Ele tem identificador, pontos (que indicam o quão popular é um artigo) e também um contador de comentários.
 
-Com a lista em mãos, você pode agora usar a funcionalidade nativa de JavaScript `map` em seu código JSX. Ela lhe possibilita iterar sobre sua lista de itens e exibir seu conteúdo. Mais uma vez, você usará chaves para encapsular a expressão JavaScript no JSX.
+Com a lista em mãos, você agora pode usar a funcionalidade `map`, nativa de JavaScript, em seu código JSX. Ela lhe possibilita iterar sobre sua lista de itens e exibir seu conteúdo. Mais uma vez, você usará chaves para encapsular a expressão JavaScript no JSX.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -582,7 +584,7 @@ export default App;
 
 É possível enxergar como a função map é simplesmente invocada _inline_ no código JSX. Cada propriedade de item é exibida em uma tag `<span>`, com exceção da url, que colocamos no `href` da tag `<a>`.
 
-React irá fazer todo o trabalho de exibir cada item. Contudo, você deve dar uma ajudá-lo a atingir todo o seu potencial e melhorar a performance. Você deve dar um atributo `key` a cada elemento da lista. Essa é a forma de identificar que itens foram adicionados, modificados ou removidos quando a lista muda. Os itens do exemplo possuem um identificador que pode ser utilizado.
+React irá fazer todo o trabalho de exibir cada item. Contudo, você deve dar uma ajudá-lo a atingir todo o seu potencial e a ter uma melhor performance. Você deve dar um atributo `key` a cada elemento da lista. Essa é a forma de identificar que itens foram adicionados, modificados ou removidos quando a lista muda. Os itens do exemplo possuem um identificador que pode ser utilizado.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -602,7 +604,7 @@ React irá fazer todo o trabalho de exibir cada item. Contudo, você deve dar um
 })}
 ~~~~~~~~
 
-Você deve se certificar de que o atributo key é um identificador único válido. Não cometa o erro de usar o índice do item no array. O índice não é um identificador estável, pois, quando a lista é reordenada, ficará difícil para o React identificar os itens propriamente.
+Você deve se certificar de que o atributo key é um identificador único válido. Não cometa o erro de usar o índice do item no array, por exemplo. O índice não é um identificador estável, pois, quando a lista é reordenada, ficará difícil para o React identificar propriamente cada item.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -621,12 +623,12 @@ Agora você está exibindo ambos os itens da lista. Inicie sua aplicação, abra
 ### Exercícios:
 
 * Leia mais sobre [listas e _keys_ em React][28]
-* Revise as [funcionalidades padrão de arrays em JavaScript][29]
+* Revise as [funcionalidades padrão de _arrays_ em JavaScript][29]
 * Use mais expressões JavaScript no seu código JSX
 
 ## ES6 Arrow Functions
 
-JavaScript ES6 introduziu _arrow functions_. Uma expressão com _arrow function_ é mais curta do que uma expressão com uma função convencional (utilizando a palavra function).
+JavaScript ES6 introduziu _arrow functions_. Uma expressão com _arrow function_ é mais curta do que uma expressão com uma função convencional (utilizando a palavra `function`).
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -637,7 +639,7 @@ function () { ... }
 () => { ... }
 ~~~~~~~~
 
-Porém, você precisa estar ciente das suas funcionalidades. Uma delas é um comportamento diferente com com o objeto `this`. Uma função convencional sempre define seu próprio objeto `this`. _Arrow functions_ têm o objeto `this` do contexto que as contêm. Fique esperto quando utilizar `this` em uma _arrow function_.
+Contudo, você precisa estar ciente das funcionalidades que essa sintaxe agrega. Uma delas é um comportamento diferente com com o objeto `this`. Uma função convencional sempre define seu próprio objeto `this`. _Arrow functions_ têm o objeto `this` do contexto que as contêm. Fique esperto quando utilizar `this` em funções definidas dessa forma.
 
 Existe outro fato importante sobre _arrow functions_ com relação a parênteses. Você pode removê-los quando a função recebe apenas um argumento, mas precisa mantê-los quando recebe vários.
 
@@ -676,7 +678,7 @@ Olhemos a função `map`. Você pode reescrevê-la de forma mais concisa com uma
 })}
 ~~~~~~~~
 
-Você também pode remover as chaves que delimitam o corpo da _arrow function_, pois este é conciso e o retorno é implícito. Portanto, você deve remover o `return`. Essa prática irá se repetir mais vezes pelo livro, então certifique-se que aprendeu a diferença entre um bloco de código como corpo da função e um corpo conciso de função quando estiver utilizando _arrow functions_.
+Você também pode remover as chaves que delimitam o corpo da _arrow function_, pois este é conciso e o retorno é implícito. Se o fizer, você deve remover  também o `return`. Essa prática irá se repetir mais vezes pelo livro, então certifique-se que aprendeu a diferença entre um bloco de código como corpo da função e um corpo conciso de função quando estiver utilizando _arrow functions_.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -696,19 +698,19 @@ Você também pode remover as chaves que delimitam o corpo da _arrow function_, 
 # leanpub-end-insert
 ~~~~~~~~
 
-Seu código JSX parece mais conciso e legível agora. Ele omite a palavra-chave `function`, as chaves e o `return`. O desenvolvedor pode focar nos detalhes da implementação.
+Seu código JSX parece mais conciso e legível agora. Ele omite a palavra-chave `function`, as chaves e o `return`. O desenvolvedor pode focar melhor nos detalhes da implementação.
 
 ### Exercícios:
 
-* Leia mais a respeito de [ES6 arrow functions][30]
+* Leia mais a respeito de [ES6 _arrow functions_][30]
 
 ## Classes ES6
 
-JavaScript ES6 introduziu classes. Uma classe é normalmente utilizada em linguagens de programação orientadas a objetos. JavaScript, por outro lado, sempre foi e ainda é muito flexível quanto aos seus paradigmas de programação. Você pode usar programação funcional e programação orientada a objetos lado a lado, quando mais apropriado for.
+JavaScript ES6 introduziu classes, que são normalmente utilizadas em linguagens de programação orientadas a objetos. JavaScript sempre foi e ainda é muito flexível quanto aos seus paradigmas de programação. Você pode usar programação funcional e programação orientada a objetos lado a lado, quando mais apropriado for.
 
 Apesar de React adotar programação funcional, por exemplo com estruturas de dados imutáveis, classes são usadas para declarar componentes. Elas são chamadas de componentes de classe de ES6 (_ES6 class components_). React mistura as boas partes de ambos os paradigmas de programação.
 
-Consideremos a classe Developer a seguir, para que possamos examinar uma classe JavaScript ES6 sem ter que pensar sobre componentes.
+Consideremos a classe `Developer` a seguir, para que possamos examinar uma classe JavaScript ES6 sem ter que pensar sobre componentes.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -724,9 +726,9 @@ class Developer {
 }
 ~~~~~~~~
 
-Uma classe tem um construtor para torná-la instanciável. O construtor pode receber argumentos para atribuí-los à instância da classe. Adicionalmente, uma classe pode definir funções que, por estarem associadas, são chamadas de métodos. Geralmente, são chamados de métodos de classe.
+Uma classe tem um construtor para torná-la instanciável e ele pode receber argumentos para atribuí-los à instância da classe. Além disso, uma classe pode definir funções que, por estarem associadas, são chamadas de métodos. Geralmente, são chamados de métodos de classe.
 
-Developer é apenas a declaração da classe. Você pode criar múltiplas instâncias de uma classe invocando-a. É o mesmo raciocínio ao componente de classe de ES6, que tem uma declaração, mas que você precisa usá-lo em algum outro lugar para instanciá-lo.
+`Developer` é apenas a declaração da classe. Você pode criar múltiplas instâncias invocando-a. É o mesmo raciocínio ao componente de classe de ES6, que tem uma declaração, mas que você precisa usá-lo em algum outro lugar para instanciá-lo.
 
 Vejamos como você pode instanciar a classe e como pode utilizar seus métodos.
 
@@ -737,7 +739,7 @@ console.log(robin.getName());
 // saída: Robin Wieruch
 ~~~~~~~~
 
-React usa classes de JavaScript ES6 para componentes de classe ES6. Você já utilizou um.
+React usa classes de JavaScript ES6 para componentes de classe ES6 e  você já utilizou um.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -752,13 +754,13 @@ class App extends Component {
 }
 ~~~~~~~~
 
-A classe App herda de `Component`. Basicamente você declara o componente App, mas ele estende outro componente. O que isso significa? EM programação orientada a objetos, você tem o princípio da herança. Ele é usado para repassar funcionalidades de uma classe para outra.
+A classe App herda de `Component`. Basicamente você declara o componente App, mas ele estende outro componente. O que isso significa? Em programação orientada a objetos, você tem o princípio da herança. Ele é usado para repassar funcionalidades de uma classe para outra.
 
-App herda funcionalidades da classe Component. Ela é utilizada para transformar uma classe básica de ES6 em uma classe de componente ES6. Ela tem todas as funcionalidades que um componente em React precisa ter. O método render é uma dessas funcionalidades que você já utilizou. Você irá aprender sobre outros métodos de classes de componentes mais tarde.
+App herda funcionalidades da classe `Component`. Ela é utilizada para transformar uma classe básica de ES6 em uma classe de componente ES6. Ela tem todas as funcionalidades que um componente em React precisa ter. O método render é uma dessas funcionalidades que você já utilizou. Você irá aprender sobre outros métodos de classes de componentes mais tarde.
 
 A classe `Component` encapsula todos os detalhes de implementação de um componente React. Ela torna os desenvolvedores capazes de usar classes como componentes em React.
 
-Os métodos que um `Component` React expõe é a sua interface pública. Um desses métodos tem que ser sobrescrito, os outros não. Você aprenderá sobre os outros futuramente quando o livro chegar nos métodos de ciclo de vida em capítulos posteriores. O método `render()` deve ser sobrescrito, porque ele define a saída de um `Component` React.
+Os métodos que um `Component` React expõe são a sua interface pública. Um desses métodos tem que ser sobrescrito, os outros não. Você aprenderá sobre os outros futuramente quando o livro chegar nos métodos de ciclo de vida em capítulos posteriores. Mas o método `render()` deve ser sobrescrito, porque ele define a saída de um `Component` React.
 
 Agora você sabe o básico sobre classes JavaScript de ES6 e como elas são usadas em React para tornarem-se componentes. Você aprenderá mais sobre os métodos de Component quando o livro for descrever os métodos de ciclo de vida de React.
 
@@ -785,7 +787,7 @@ Você aprendeu a criar a estrutura inicial da sua própria aplicação React! Va
 
 É prudente fazer um intervalo agora. Internalize o conhecimento adquirido e aplique-o por sua conta. Você pode brincar com o código fonte que escreveu até agora.
 
-Você pode achar o código-fonte novamente no [repositório oficial][32].
+Ache o código-fonte novamente no [repositório oficial][32].
 
 [1]:	https://en.wikipedia.org/wiki/Single-page_application
 [2]:	https://de.wikipedia.org/wiki/Model_View_Controller
