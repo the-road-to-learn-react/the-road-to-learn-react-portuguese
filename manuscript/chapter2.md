@@ -1,12 +1,10 @@
-# Basics in React
+# React Básico
 
-The chapter will guide you through the basics of React. It covers state and interactions in components, because static components are a bit dull, aren't they? Additionally, you will learn about the different ways to declare a component and how to keep components composable and reusable. Be prepared to breathe life into your components.
+Este capítulo irá lhe mostrar os conceitos básicos de React. Ele cobre assuntos como estado e interações em componentes, porque componentes estáticos são um pouco maçantes, não é mesmo? Você também irá aprender os diferentes modos de declarar um componente e como fazer para mantê-los fáceis de reusar e compor uns com os outros. Prepare-se para dar vida a seus componentes.
 
-## Internal Component State
+O estado interno do componente, também chamado de estado local, lhe permite salvar, modificar e apagar propriedades que são armazenadas dentro do seu componente. O componente de classe de ES6 pode usar um construtor para inicializar o estado interno. O construtor é chamado apenas uma vez quando o componente é inicializado.
 
-Internal component state, also known as local state, allows you to save, modify and delete properties that are stored in your component. The ES6 class component can use a constructor to initialize internal component state later on. The constructor is called only once when the component initializes.
-
-Let's introduce a class constructor.
+Introduzindo um construtor de classe:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -23,11 +21,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-When having a constructor in your ES6 class component, it is mandatory to call `super();` because the App component is a subclass of `Component`. Hence the `extends Component` in your App component declaration. You will learn more about ES6 class components later on.
+Quando seu componente de classe possui um construtor, é obrigatório chamar `super();`, porque o componente App é uma subclasse de `Component` (`class App extends Component`). Mais tarde, você aprenderá mais sobre componentes de classe em ES6.
 
-You can call `super(props);` as well. It sets `this.props` in your constructor in case you want to access them in the constructor. Otherwise, when accessing `this.props` in your constructor, they would be `undefined`. You will learn more about the props of a React component later on.
+Você também pode invocar `super(props);`, para definir `this.props` em seu construtor. Caso contrário, quanto tentar acessar `this.props` em seu construtor, receberá o valor `undefined`. Mais tarde, você também aprenderá mais sobre as props de um componente React.
 
-Now, in your case, the initial state in your component should be the sample list of items.
+Neste momento, no seu caso, o estado inicial do componente deveria ser apenas uma lista de itens.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -60,7 +58,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The state is bound to the class by using the `this` object. Thus you can access the local state in your whole component. For instance, it can be used in the `render()` method. Previously you have mapped a static list of items in your `render()` method that was defined outside of your component. Now you are about to use the list from your local state in your component.
+O estado está amarrado à classe através do objeto `this`. Desta forma, você pode acessar o estado local em qualquer lugar do componente. Por exemplo, ele pode ser utilizado no método `render()`. Antes, você usou `map` com uma lista estática de itens em seu método `render()` que foi definida fora do componente. Agora, você irá usar a lista do seu estado local.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -89,20 +87,20 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The list is part of the component now. It resides in the internal component state. You could add items, change items or remove items in and from your list. Every time you change your component state, the `render()` method of your component will run again. That's how you can simply change your internal component state and be sure that the component re-renders and displays the correct data that comes from the local state.
+A lista é parte do componente agora, residindo em seu estado interno. Você pode adicionar, mudar ou remover itens da sua lista. Todas as vezes que você mudar o estado do seu componente, o método `render()` irá ser chamado novamente. É dessa forma que você pode simplesmente alterar o estado interno,  sabendo que o componente será de novo renderizado e que os dados corretos que são lidos do estado local serão exibidos.
 
-But be careful. Don't mutate the state directly. You have to use a method called `setState()` to modify your state. You will get to know it in a following chapter.
+Mas tenha cuidado. Não altere o estado diretamente. Você tem que usar um método chamado `setState()` para modificar o seu estado. Você irá conhecê-lo melhor no próximo capítulo.
 
-### Exercises:
+### Exercícios:
 
-* experiment with the local state
-  * define more initial state in the constructor
-  * use and access the state in your `render()` method
-* read more about [the ES6 class constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)
+* Faça experiências trabalhando com o estado local
+  * Defina mais dados iniciais no estado em seu construtor
+  * Use o estado no seu método `render()`
+* Leia mais sobre [o construtor de classe ES6][1]
 
-## ES6 Object Initializer
+## Inicializador de Objetos ES6
 
-In JavaScript ES6, you can use a shorthand property syntax to initialize your objects more concisely. Imagine the following object initialization:
+Em JavaScript ES6, você pode usar uma sintaxe abreviada para inicializar seus objetos de forma mais concisa. Imagine a seguinte inicialização:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -113,7 +111,7 @@ const user = {
 };
 ~~~~~~~~
 
-When the property name in your object is the same as your variable name, you can do the following:
+Quando a propriedade `name` em seu objeto é a mesma da sua variável `name`, você pode fazer desta forma:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -124,7 +122,7 @@ const user = {
 };
 ~~~~~~~~
 
-In your application, you can do the same. The list variable name and the state property name share the same name.
+Fazendo o mesmo na sua aplicação, com a variável `list` e a propriedade do estado local que compartilha o mesmo nome:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -139,7 +137,7 @@ this.state = {
 };
 ~~~~~~~~
 
-Another neat helper are shorthand method names. In JavaScript ES6, you can initialize methods in an object more concisely.
+Outro atalho elegante é a declaração concisa de métodos em JavaScript ES6.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -158,7 +156,7 @@ const userService = {
 };
 ~~~~~~~~
 
-Last but not least, you are allowed to use computed property names in JavaScript ES6.
+Por último, mas não menos importante, você tem permissão para usar nomes computados de propriedades em JavaScript ES6.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -174,12 +172,12 @@ const user = {
 };
 ~~~~~~~~
 
-Perhaps computed property names make no sense for you yet. Why should you need them? In a later chapter, you will come to a point where you can use them to allocate values by key in a dynamic way in an object. It's neat to generate lookup tables in JavaScript.
+Talvez isso ainda não faça sentido. Por que você precisaria utilizar nomes computados? Em um capítulo mais adiante, você irá chegar no ponto onde pode utilizá-los para alocar valores por chave de uma forma dinâmica em um objeto. É uma forma elegante de gerar tabelas para pesquisa em JavaScript.
 
-### Exercises:
+### Exercícios:
 
-* experiment with ES6 object initializer
-* read more about [ES6 object initializer](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer)
+* Experimente trabalhar com inicialização de objetos com ES6
+* Leia mais sobre [inicialização de objetos em ES6][2]
 
 ## Unidirectional Data Flow
 
@@ -346,11 +344,11 @@ onDismiss(id) {
 
 Now run again your application and try the "Dismiss" button. It should work. What you experience now is the **unidirectional data flow** in React. You trigger an action in your view with `onClick()`, a function or class method modifies the internal component state and the `render()` method of the component runs again to update the view.
 
-![Internal state update with unidirectional data flow](images/set-state-to-render-unidirectional.png)
+![Internal state update with unidirectional data flow][image-1]
 
 ### Exercises:
 
-* read more about [the state and lifecycle in React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
+* read more about [the state and lifecycle in React][3]
 
 ## Bindings
 
@@ -1021,8 +1019,8 @@ The search functionality should work now. Try it yourself in the browser.
 
 ### Exercises:
 
-* read more about [React events](https://facebook.github.io/react/docs/handling-events.html)
-* read more about [higher order functions](https://en.wikipedia.org/wiki/Higher-order_function)
+* read more about [React events][4]
+* read more about [higher order functions][5]
 
 ## ES6 Destructuring
 
@@ -1110,7 +1108,7 @@ But since the book uses JavaScript ES6 most of the time, you should stick to it.
 
 ### Exercises:
 
-* read more about [ES6 destructuring](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+* read more about [ES6 destructuring][6]
 
 ## Controlled Components
 
@@ -1154,7 +1152,7 @@ The whole internal state management and unidirectional data flow might be new to
 
 ### Exercises:
 
-* read more about [React forms](https://facebook.github.io/react/docs/forms.html)
+* read more about [React forms][7]
 
 ## Split Up Components
 
@@ -1346,7 +1344,7 @@ The "Search" text should be visible next to your input field now. When you use t
 
 ### Exercises:
 
-* read more about [the composition model of React](https://facebook.github.io/react/docs/composition-vs-inheritance.html)
+* read more about [the composition model of React][8]
 
 ## Reusable Components
 
@@ -1436,7 +1434,7 @@ Now, whenever there is no `className` property specified when using the Button c
 
 ### Exercises:
 
-* read more about [ES6 default parameters](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Default_parameters)
+* read more about [ES6 default parameters][9]
 
 ## Component Declarations
 
@@ -1446,7 +1444,7 @@ By now you have four ES6 class components. But you can do better. Let me introdu
 
 * **ES6 Class Components:** You already used this type of component declaration in your four components. In the class definition, they extend from the React component. The `extend` hooks all the lifecycle methods, available in the React component API, to the component. That way you were able to use the `render()` class method. Additionally, you can store and manipulate state in ES6 class components by using `this.state` and `this.setState()`.
 
-* **React.createClass:** The component declaration was used in older versions of React and still in JavaScript ES5 React applications. But [Facebook declared it as deprecated](https://facebook.github.io/react/blog/2015/03/10/react-v0.13.html) in favor of JavaScript ES6. They even added a [deprecation warning in version 15.5](https://facebook.github.io/react/blog/2017/04/07/react-v15.5.0.html). You will not use it in the book.
+* **React.createClass:** The component declaration was used in older versions of React and still in JavaScript ES5 React applications. But [Facebook declared it as deprecated][10] in favor of JavaScript ES6. They even added a [deprecation warning in version 15.5][11]. You will not use it in the book.
 
 So basically there are only two component declarations left. But when to use functional stateless components over ES6 class components? A rule of thumb is to use functional stateless components when you don't need local state or component lifecycle methods. Usually you start to implement your components as functional stateless components. Once you need access to the state or lifecycle methods, you have to refactor it to an ES6 class component. In our application, we started the other way around for the sake of learning React.
 
@@ -1532,7 +1530,7 @@ Now you have one lightweight functional stateless component. Once you would need
 ### Exercises:
 
 * refactor the Table and Button component to stateless functional components
-* read more about [ES6 class components and functional stateless components](https://facebook.github.io/react/docs/components-and-props.html)
+* read more about [ES6 class components and functional stateless components][12]
 
 ## Styling Components
 
@@ -1793,8 +1791,8 @@ In general, you will find different opinions and solutions for style in React. Y
 
 I don't want to be opinionated here, but I want to leave you some more options. You can read about them and apply them on your own. But if you are new to React, I would recommend to stick to pure CSS and inline style for now.
 
-* [styled-components](https://github.com/styled-components/styled-components)
-* [CSS Modules](https://github.com/css-modules/css-modules)
+* [styled-components][13]
+* [CSS Modules][14]
 
 {pagebreak}
 
@@ -1816,6 +1814,25 @@ You have learned the basics to write your own React application! Let's recap the
 * General
   * higher order functions
 
-Again it makes sense to take a break. Internalize the learnings and apply them on your own. You can experiment with the source code you have written so far. Additionally you can read more in the official [documentation](https://facebook.github.io/react/docs/installation.html).
+Again it makes sense to take a break. Internalize the learnings and apply them on your own. You can experiment with the source code you have written so far. Additionally you can read more in the official [documentation][15].
 
-You can find the source code in the [official repository](https://github.com/rwieruch/hackernews-client/tree/4.2).
+You can find the source code in the [official repository][16].
+
+[1]:	https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor
+[2]:	https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer
+[3]:	https://facebook.github.io/react/docs/state-and-lifecycle.html
+[4]:	https://facebook.github.io/react/docs/handling-events.html
+[5]:	https://en.wikipedia.org/wiki/Higher-order_function
+[6]:	https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+[7]:	https://facebook.github.io/react/docs/forms.html
+[8]:	https://facebook.github.io/react/docs/composition-vs-inheritance.html
+[9]:	https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Default_parameters
+[10]:	https://facebook.github.io/react/blog/2015/03/10/react-v0.13.html
+[11]:	https://facebook.github.io/react/blog/2017/04/07/react-v15.5.0.html
+[12]:	https://facebook.github.io/react/docs/components-and-props.html
+[13]:	https://github.com/styled-components/styled-components
+[14]:	https://github.com/css-modules/css-modules
+[15]:	https://facebook.github.io/react/docs/installation.html
+[16]:	https://github.com/rwieruch/hackernews-client/tree/4.2
+
+[image-1]:	images/set-state-to-render-unidirectional.png

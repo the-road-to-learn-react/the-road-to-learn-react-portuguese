@@ -787,7 +787,7 @@ Você aprendeu a criar a estrutura inicial da sua própria aplicação React! Va
 
 É prudente fazer um intervalo agora. Internalize o conhecimento adquirido e aplique-o por sua conta. Você pode brincar com o código fonte que escreveu até agora.
 
-Ache o código-fonte novamente no [repositório oficial][32].
+ O código-fonte está disponível no [repositório oficial][32].
 
 [1]:	https://en.wikipedia.org/wiki/Single-page_application
 [2]:	https://de.wikipedia.org/wiki/Model_View_Controller
