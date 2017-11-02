@@ -98,7 +98,7 @@ Mas tenha cuidado. Não altere o estado diretamente. Você tem que usar um méto
   * Use o estado no seu método `render()`
 * Leia mais sobre [o construtor de classe ES6][1]
 
-## Inicializador de Objetos ES6
+## Inicializando Objetos em ES6
 
 Em JavaScript ES6, você pode usar uma sintaxe abreviada para inicializar seus objetos de forma mais concisa. Imagine a seguinte inicialização:
 
@@ -111,7 +111,7 @@ const user = {
 };
 ~~~~~~~~
 
-Quando a propriedade `name` em seu objeto é a mesma da sua variável `name`, você pode fazer desta forma:
+Como tanto a propriedade do objeto quando a variável são chamadas de `name` , você pode fazer desta forma:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -179,11 +179,11 @@ Talvez isso ainda não faça sentido. Por que você precisaria utilizar nomes co
 * Experimente trabalhar com inicialização de objetos com ES6
 * Leia mais sobre [inicialização de objetos em ES6][2]
 
-## Unidirectional Data Flow
+## Fluxo Unidirecional de Dados
 
-Now you have some internal state in your App component. However, you have not manipulated the local state yet. The state is static and thus is the component. A good way to experience state manipulation is to have some component interaction.
+Você agora tem em mãos um componente App com estado interno. Mas, ainda não o manipulou. O seu estado é estático e, consequentemente, o componente. Uma boa forma de experimentar manipulação de estado é criar alguma interação entre componentes.
 
-Let's add a button for each item in the displayed list. The button says "Dismiss" and is going to remove the item from the list. It could be useful eventually when you only want to keep a list of unread items and dismiss the items that you are not interested in.
+Vamos adicionar um botão para cada item da lista que é exibida. O botão tem o rótulo "Dismiss" (dispensar) e irá remover o item da lista. Sua utilidade é dispensar os items que você não tem interesse ou quando você quer manter uma lista constando apenas itens ainda não lidos, por exemplo.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -220,11 +220,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The `onDismiss()` class method is not defined yet. We will do it in a moment, but for now the focus should be on the `onClick` handler of the button element. As you can see, the `onDismiss()` method in the `onClick` handler is enclosed by another function. It is an arrow function. That way, you can sneak in the `objectID` property of the `item` object to identify the item that will be dismissed. An alternative way would be to define the function outside of the `onClick` handler and only pass the defined function to the handler. A later chapter will explain the topic of handlers in elements in more detail.
+O método de classe `onDismiss()` ainda não foi definido, nós o faremos daqui a pouco.  Vamos primeiro focar no tratamento do `onClick` do elemento `button`. Como você pode ver, o método `onDismiss()` no `onClick` está encapsulado por uma _arrow function_. Nela, você tem acesso à propriedade `objectID` do objeto `item`, que identifica qual item será removido. Uma alternativa à isso seria definir a função fora e apenas passá-la para o `onclick`. Esse tratamento em elementos será explicado em mais detalhes em um capítulo mais na frente.
 
-Did you notice the multilines for the button element? Note that elements with multiple attributes get messy as one line at some point. That's why the button element is used with multilines and indentations to keep it readable. But it is not mandatory. It is only a code style recommendation that I highly recommend.
+Você notou que o elemento button é declarado em múltiplas linhas? À medida que a quantidade de atributos cresce, deixar tudo em uma linha pode acabar se tornando uma bagunça. Por esse motivo, o elemento button foi escrito em múltiplas linhas e indentado. Não é obrigatório, mas é um estilo de código que eu recomendo fortemente.
 
-Now you have to implement the `onDismiss()` functionality. It takes an id to identify the item to dismiss. The function is bound to the class and thus becomes a class method. That's why you access it with `this.onDismiss()` and not `onDismiss()`. The `this` object is your class instance. In order to define the `onDismiss()` as class method, you have to bind it in the constructor. Bindings will be explained in another chapter later on.
+Chegou a hora de implementar o comportamento de `onDismiss()`. A função recebe um id para identificar qual item será removido. Ela é um método de classe, motivo pelo qual é acessada por `this.onDismiss()` e não apenas por `onDismiss()`. O objeto `this` é a infância da sua classe. Para definir o `onDismiss()` como um método de classe, você precisa usar `bind` no construtor.  _Bindings_ serão explicados mais adiante, em outro capítulo.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -248,7 +248,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-In the next step, you have to define its functionality, the business logic, in your class. Class methods can be defined the following way.
+O próximo passo é definir a funcionalidade em si, a lógica de negócio do método em sua classe, da seguinte maneira:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -276,9 +276,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Now you are able to define what happens inside of the class method. Basically you want to remove the item identified by the id from the list and store an updated list to your local state. Afterward, the updated list will be used in the re-running `render()` method to display it. The removed item shouldn't appear anymore.
+Você pode escrever o conteúdo agora. Basicamente, você quer remover da lista o idem identificado pelo id e armazenar a lista atualizada no seu estado local. Feito isso, a nova lista será usada no método `render`, que será novamente chamado, para ser exibida. O item removido não deve mais aparecer.
 
-You can remove an item from a list by using the JavaScript built-in filter functionality. The filter function takes a function as input. The function has access to each value in the list, because it iterates over the list. That way, you can evaluate each item in the list based on a filter condition. If the evaluation for an item is true, the item stays in the list. Otherwise it will be filtered from the list. Additionally, it is good to know that the function returns a new list and doesn't mutate the old list. It supports the convention in React of having immutable data structures.
+Você pode remover um item de uma lista usando a funcionalidade nativa de JavaScript _filter_. A função filter recebe outra função como entrada. Esta, por sua vez, tem acesso a cada valor na lista, pois filter está iterando sobre ela. Sendo assim, você consegue checar item a item na lista baseado na condição fornecida. Se o resultado da avaliação for _true_, o item permanece na lista. Caso contrário, será filtrado dela. Além disso, é bom saber que a função filter retorna uma nova lista e não mexe no estado da antiga. Ela atende à convenção em React de estruturas de dados imutáveis.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -291,7 +291,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-In the next step, you can extract the function and pass it to the filter function.
+No próximo passo, você pode extrair a função e passá-la para filter.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -306,7 +306,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-In addition, you can do it more concisely by using a JavaScript ES6 arrow function again.
+Você ainda pode fazê-lo de forma mais concisa, usando novamente uma _arrow function_ de JavaScript.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -318,7 +318,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-You could even inline it again, like you did in the `onClick` handler of the button, but it might get less readable.
+Você pode até colocá-la _inline_ novamente, como fez no `onClick` do botão, mas pode ser que fique menos legível dessa forma.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -329,7 +329,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-The list removes the clicked item now. However the state isn't updated yet. Therefore you can finally use the `setState()` class method to update the list in the internal component state.
+A lista agora remove o item clicado. Entretanto, o estado local ainda não foi atualizado. Finalmente você pode usar o método `setState()` para atualizar a lista no estado interno do componente.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -342,13 +342,13 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-Now run again your application and try the "Dismiss" button. It should work. What you experience now is the **unidirectional data flow** in React. You trigger an action in your view with `onClick()`, a function or class method modifies the internal component state and the `render()` method of the component runs again to update the view.
+Rode novamente sua aplicação e tente clicar no botão "Dismiss". Provavelmente irá funcionar. O que você está testemunhando no momento é o **fluxo unidirecional de dados** em React. Você dispara uma ação em sua _view_ com `onClick()`, uma função ou método de classe muda o estado interno do componente e `render()` é de novo executado para atualizar a _view_.
 
 ![Internal state update with unidirectional data flow][image-1]
 
-### Exercises:
+### Exercícios:
 
-* read more about [the state and lifecycle in React][3]
+* Leia mais sobre [o ciclo de vida do estado em React][3]
 
 ## Bindings
 
