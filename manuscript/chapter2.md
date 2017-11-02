@@ -352,7 +352,7 @@ Rode novamente sua aplicação e tente clicar no botão "Dismiss". Provavelmente
 
 ## Bindings
 
-It is important to learn about bindings in JavaScript classes when using React ES6 class components. In the previous chapter, you have bound your class method `onDismiss()` in the constructor.
+É muito importante aprender sobre _bindings_ em classes de JavaScript quando se vai trabalhar com componentes de classe em React. No capítulo anterior, você utilizou _binding_ para ligar seu método `onDismiss()` à classe em seu construtor.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -371,7 +371,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Why would you do that in the first place? The binding step is necessary, because class methods don't automatically bind `this` to the class instance. Let's demonstrate it with the help of the following ES6 class component.
+Em primeiro lugar, por que você teve que fazer isso?
+
+Esse passo é necessário porque a ligação do `this` com a instância de classe não é feita automaticamente pelos métodos. Vamos demostrar isso com a ajuda do componente de classe de ES6 a seguir.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -393,9 +395,9 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-The component renders just fine, but when you click the button, you will get `undefined` in your developer console log. That's a main source of bugs when using React, because if you want to access `this.state` in your class method, it cannot be retrieved because `this` is `undefined`. So in order to make `this` accessible in your class methods, you have to bind the class methods to `this`.
+O componente renderiza normalmente, mas quando você clica no botão, obtém `undefined` como retorno no console. Essa é uma das maiores fontes de _bugs_ quando se usa React. Se você deseja usar `this.state` em um método de classe, ele não está acessível, porque `this` é `undefined`. Então, para corrigir isso, você precisa utilizar o _binding_ entre os métodos de classe e `this`.
 
-In the following class component the class method is properly bound in the class constructor.
+No exemplo a seguir, o método é propriamente vinculado a `this` dentro do construtor da classe.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -425,9 +427,9 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-When trying the button again, the `this` object, to be more specific the class instance, should be defined and you would be able to access `this.state`, or as you will later learn `this.props`, now.
+Executando novamente o teste, o objeto `this`, ou sendo mais específico, a instância de classe está definida e você tem acesso a `this.state`, ou `this.props`, que você conhecerá depois.  
 
-The class method binding can happen somewhere else too. For instance, it can happen in the `render()` class method.
+O _binding_ the métodos também poderia acontecer em outros lugares. Por exemplo, pode ser feito no método `render()`.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -451,9 +453,9 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-But you should avoid it, because it would bind the class method every time when the `render()` method runs. Basically it runs every time your component updates which leads to performance implications. When binding the class method in the constructor, you bind it only once in the beginning when the component is instantiated. That's a better approach to do it.
+Apesar de possível, deve ser evitado, porque a vinculação do método seria feira todas as vezes que `render()` rodar. Basicamente, ele roda todas as vezes que seu componente atualiza, o que traria implicações de performance. Quando o _binding_ ocorre no construtor, o processo só ocorre uma vez, quando o componente é instanciado. É a melhor abordagem para se escolher.
 
-Another thing people sometimes come up with is defining the business logic of their class methods in the constructor.
+Outra coisa que as pessoas às vezes acabam fazendo é definir a lógica de negócios dos seu métodos de classe dentro do construtor.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -481,7 +483,7 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-You should avoid it too, because it will clutter your constructor over time. The constructor is only there to instantiate your class with all its properties. That's why the business logic of class methods should be defined outside of the constructor.
+Também deveria ser evitado, porque isso irá transformar seu construtor em uma bagunça ao longo do tempo. Ele só existe para instanciar sua classe com todas as propriedades. Por isso, a lógica de negócio de métodos de classe deve ser definida fora dele.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -505,7 +507,7 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Last but not least, it is worth to mention that class methods can be autobound automatically without binding them explicitly by using JavaScript ES6 arrow functions.
+Por fim, devo mencionar que métodos de classe podem ser automaticamente vinculados sem fazê-lo explicitamente, quando _arrow functions_ de ES6 são utilizadas.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -527,11 +529,11 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-If the repetitive binding in the constructor annoys you, you can go ahead with this approach instead. The official React documentation sticks to the class method bindings in the constructor. That's why the book will stick to those as well.
+Se a repetição do processo de _binding_ no construtor não lhe agrada, você pode seguir com essa abordagem. A documentação oficial de React continua utilizando _bindings_ no construtor e, por isso, este livro irá fazê-lo também.
 
-### Exercises:
+### Exercícios:
 
-* try the different approaches of bindings and console log the `this` object
+* Experimente diferentes abordagens de _binding_ e veja o valor de `this` no console.
 
 ## Event Handler
 
