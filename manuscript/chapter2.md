@@ -1,10 +1,12 @@
 # React Básico
 
-Este capítulo irá lhe mostrar os conceitos básicos de React. Ele cobre assuntos como estado e interações em componentes, porque componentes estáticos são um pouco maçantes, não é mesmo? Você também irá aprender os diferentes modos de declarar um componente e como fazer para mantê-los fáceis de reusar e compor uns com os outros. Prepare-se para dar vida a seus componentes.
+Este capítulo lhe apresentará os conceitos básicos de React. Componentes estáticos são um pouco maçantes, então trataremos de assuntos como estado e interações. Você também irá aprender os diferentes modos de declarar um componente e como fazer para mantê-los fáceis de reusar e de compor uns com os outros. Prepare-se para dar vida à eles.
 
-O estado interno do componente, também chamado de estado local, lhe permite salvar, modificar e apagar propriedades que são armazenadas dentro do seu componente. O componente de classe de ES6 pode usar um construtor para inicializar o estado interno. O construtor é chamado apenas uma vez quando o componente é inicializado.
+## Estado Interno do Componente
 
-Introduzindo um construtor de classe:
+O estado local, também chamado de estado interno do componente, lhe permite salvar, modificar e apagar propriedades que são armazenadas nele.
+
+O componente de classe de ES6 usa um construtor para inicializar seu estado interno. Ele é chamado apenas uma vez quando o componente é inicializado. Abaixo, um construtor de classe:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -21,11 +23,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Quando seu componente de classe possui um construtor, é obrigatório chamar `super();`, porque o componente App é uma subclasse de `Component` (`class App extends Component`). Mais tarde, você aprenderá mais sobre componentes de classe em ES6.
+Quando seu componente possui um construtor, torna-se obrigatória a chamado de `super();`, porque o componente App é uma subclasse de `Component` (`class App extends Component`). Mais tarde, você aprenderá mais sobre componentes de classe em ES6.
 
-Você também pode invocar `super(props);`, para definir `this.props` em seu construtor. Caso contrário, quanto tentar acessar `this.props` em seu construtor, receberá o valor `undefined`. Mais tarde, você também aprenderá mais sobre as props de um componente React.
+Você também pode invocar `super(props);` para definir `this.props` no contexto do seu construtor. Caso contrário, se tentar acessar `this.props`, receberá o valor `undefined`. Futuramente, estudaremos mais sobre as props de um componente React.
 
-Neste momento, no seu caso, o estado inicial do componente deveria ser apenas uma lista de itens.
+A essa altura, o estado inicial do seu componente deve ser apenas uma lista de itens:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -58,7 +60,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-O estado está amarrado à classe através do objeto `this`. Desta forma, você pode acessar o estado local em qualquer lugar do componente. Por exemplo, ele pode ser utilizado no método `render()`. Antes, você usou `map` com uma lista estática de itens em seu método `render()` que foi definida fora do componente. Agora, você irá usar a lista do seu estado local.
+O estado local está amarrado à classe através do objeto `this`. Dessa forma, você pode acessá-lo em qualquer lugar do componente. Ele pode ser utilizado, por exemplo, no método `render()`. Anteriormente, você usou `map` com uma lista estática de itens, definida fora do componente,  em seu método `render()`. Agora, você irá usar a lista obtida do seu estado local.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -87,20 +89,20 @@ class App extends Component {
 }
 ~~~~~~~~
 
-A lista é parte do componente agora, residindo em seu estado interno. Você pode adicionar, mudar ou remover itens da sua lista. Todas as vezes que você mudar o estado do seu componente, o método `render()` irá ser chamado novamente. É dessa forma que você pode simplesmente alterar o estado interno,  sabendo que o componente será de novo renderizado e que os dados corretos que são lidos do estado local serão exibidos.
+A lista é parte do componente agora, residindo em seu estado interno. Você pode adicionar, mudar ou remover itens a ela. Todas as vezes que você mudar o estado do seu componente, o método `render()` será chamado novamente. Você pode simplesmente alterar o estado interno,  sabendo que o componente será de novo renderizado e que os dados corretos que são lidos do estado local serão exibidos.
 
-Mas tenha cuidado. Não altere o estado diretamente. Você tem que usar um método chamado `setState()` para modificar o seu estado. Você irá conhecê-lo melhor no próximo capítulo.
+Mas, tenha cuidado. Não altere o estado diretamente. Use um método chamado `setState()` para modificar o seu estado. Você irá conhecê-lo melhor no próximo capítulo.
 
 ### Exercícios:
 
-* Faça experiências trabalhando com o estado local
+* Experimente trabalhar com o estado local
   * Defina mais dados iniciais no estado em seu construtor
   * Use o estado no seu método `render()`
 * Leia mais sobre [o construtor de classe ES6][1]
 
 ## Inicializando Objetos em ES6
 
-Em JavaScript ES6, você pode usar uma sintaxe abreviada para inicializar seus objetos de forma mais concisa. Imagine a seguinte inicialização:
+Em JavaScript ES6, você pode usar uma sintaxe abreviada para inicializar seus objetos de forma mais concisa. Imagine o seguinte:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -111,7 +113,7 @@ const user = {
 };
 ~~~~~~~~
 
-Como tanto a propriedade do objeto quando a variável são chamadas de `name` , você pode fazer desta forma:
+Nesse caso, como tanto a propriedade do objeto quando a variável são chamadas de `name` , você poderia fazer desta forma:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
