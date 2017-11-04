@@ -25,9 +25,9 @@ class App extends Component {
 
 Quando seu componente possui um construtor, torna-se obrigatória a chamado de `super();`, porque o componente App é uma subclasse de `Component` (`class App extends Component`). Mais tarde, você aprenderá mais sobre componentes de classe em ES6.
 
-Você também pode invocar `super(props);` para definir `this.props` no contexto do seu construtor. Caso contrário, se tentar acessar `this.props`, receberá o valor `undefined`. Futuramente, estudaremos mais sobre as props de um componente React.
+Você também pode invocar `super(props);` para definir `this.props` no contexto do seu construtor. Caso contrário, se tentar acessar `this.props`, receberá o valor `undefined`. Futuramente, estudaremos mais sobre as _props_ de um componente React.
 
-A essa altura, o estado inicial do seu componente deve ser apenas uma lista de itens:
+A essa altura, o estado inicial do seu componente é composto por apenas uma lista de itens:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -89,9 +89,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-A lista é parte do componente agora, residindo em seu estado interno. Você pode adicionar, mudar ou remover itens a ela. Todas as vezes que você mudar o estado do seu componente, o método `render()` será chamado novamente. Você pode simplesmente alterar o estado interno,  sabendo que o componente será de novo renderizado e que os dados corretos que são lidos do estado local serão exibidos.
+A lista agora é parte do componente, residindo em seu estado interno. Você pode adicionar, mudar ou remover itens. Todas as vezes que mudar o estado do seu componente, o método `render()` será chamado novamente. Você simplesmente altera o estado interno, sabendo que o componente será de novo renderizado e que os dados corretos que são lidos serão exibidos.
 
-Mas, tenha cuidado. Não altere o estado diretamente. Use um método chamado `setState()` para modificar o seu estado. Você irá conhecê-lo melhor no próximo capítulo.
+Mas, tenha cuidado. Não altere o estado diretamente. Use um método chamado `setState()` para mudá-lo. Você irá saber mais a respeito no próximo capítulo.
 
 ### Exercícios:
 
