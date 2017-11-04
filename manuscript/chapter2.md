@@ -356,7 +356,7 @@ Rode novamente sua aplicação e experimente clicar no botão "Dismiss". Provave
 
 ## Bindings
 
-É muito importante aprender sobre _bindings_ em classes de JavaScript quando se vai trabalhar com componentes de classe em React. No capítulo anterior, você utilizou _binding_ para ligar seu método `onDismiss()` à classe em seu construtor.
+É importante aprender sobre _bindings_ em classes JavaScript quando se vai trabalhar com componentes de classe em React. No capítulo anterior, você os utilizou para ligar seu método `onDismiss()` à classe em seu construtor.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -375,9 +375,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Em primeiro lugar, por que você teve que fazer isso?
+Em primeiro lugar: Por que você teve que fazer isso?
 
-Esse passo é necessário porque a ligação do `this` com a instância de classe não é feita automaticamente pelos métodos. Vamos demostrar isso com a ajuda do componente de classe de ES6 a seguir.
+Esse passo é necessário porque a amarração do `this` com a instância de classe não é feita automaticamente pelos métodos. Vamos demostrar isso com a ajuda do componente a seguir:
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -399,7 +399,7 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-O componente renderiza normalmente, mas quando você clica no botão, obtém `undefined` como retorno no console. Essa é uma das maiores fontes de _bugs_ quando se usa React. Se você deseja usar `this.state` em um método de classe, ele não está acessível, porque `this` é `undefined`. Então, para corrigir isso, você precisa utilizar o _binding_ entre os métodos de classe e `this`.
+O componente renderiza normalmente, mas quando você clica no botão, obtém `undefined` no console. Essa é uma das maiores fontes de _bugs_ quando se usa React. Você deseja usar `this.state` em um método de classe e ele não está acessível, porque `this` é `undefined`. Para corrigir isso, você precisa criar o _binding_ entre o método e `this`.
 
 No exemplo a seguir, o método é propriamente vinculado a `this` dentro do construtor da classe.
 
@@ -431,9 +431,9 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Executando novamente o teste, o objeto `this`, ou sendo mais específico, a instância de classe está definida e você tem acesso a `this.state`, ou `this.props`, que você conhecerá depois.  
+Executando novamente o teste, o objeto `this` (ou, sendo mais específico, a instância de classe) está definido nesse contexto e você tem acesso a `this.state`, ou `this.props`, que você conhecerá depois.  
 
-O _binding_ the métodos também poderia acontecer em outros lugares. Por exemplo, pode ser feito no método `render()`.
+O _binding_ de métodos também poderia ser feito em outros lugares, como no `render()`, por exemplo.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -457,9 +457,9 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Apesar de possível, deve ser evitado, porque a vinculação do método seria feira todas as vezes que `render()` rodar. Basicamente, ele roda todas as vezes que seu componente atualiza, o que traria implicações de performance. Quando o _binding_ ocorre no construtor, o processo só ocorre uma vez, quando o componente é instanciado. É a melhor abordagem para se escolher.
+Apesar de possível, deve ser evitado, porque a vinculação do método seria feira todas as vezes que `render()` for chamado. Como basicamente ele roda todas as vezes que seu componente é atualizado, isso poderia trazer implicações de performance. Quando o _binding_ ocorre no construtor, o processo só ocorre uma vez: quando o componente é instanciado. Essa é a melhor abordagem a ser escolhida.
 
-Outra coisa que as pessoas às vezes acabam fazendo é definir a lógica de negócios dos seu métodos de classe dentro do construtor.
+Outra coisa que, uma vez ou outra, alguém acaba fazendo, é definir a lógica de negócios dos métodos de classe dentro do construtor.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -487,7 +487,7 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Também deveria ser evitado, porque isso irá transformar seu construtor em uma bagunça ao longo do tempo. Ele só existe para instanciar sua classe com todas as propriedades. Por isso, a lógica de negócio de métodos de classe deve ser definida fora dele.
+Essa prática também deveria ser evitada, porque ela irá transformar seu construtor em uma bagunça ao longo do tempo. A finalidade do construtor é instanciar sua classe com todas as propriedades. Por isso, a lógica de negócio dos métodos de classe deve ser definida fora dele.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -511,7 +511,7 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Por fim, devo mencionar que métodos de classe podem ser automaticamente vinculados sem fazê-lo explicitamente, quando _arrow functions_ de ES6 são utilizadas.
+Por fim, devo mencionar que métodos de classe podem ser automaticamente vinculados sem fazê-lo explicitamente, com o uso de _arrow functions_.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -533,7 +533,7 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Se a repetição do processo de _binding_ no construtor não lhe agrada, você pode seguir com essa abordagem. A documentação oficial de React continua utilizando _bindings_ no construtor e, por isso, este livro irá fazê-lo também.
+Se a repetição do processo de _binding_ no construtor não lhe agrada, você pode seguir nessa abordagem. Como a documentação oficial de React continua utilizando _bindings_ no construtor, este livro irá fazê-lo também.
 
 ### Exercícios:
 
