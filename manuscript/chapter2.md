@@ -750,9 +750,9 @@ Imagine que você tem uma enorme tabela de dados com 1000 itens e cada linha ou 
 
 ## Interação com Forms e Eventos
 
-Let's add another interaction for the application to experience forms and events in React. The interaction is a search functionality. The input of the search field should be used to filter your list temporary based on the title property of an item.
+Adicionemos outra interação à aplicação, tendo uma experiência com _forms_ e eventos em React. A interação em questão é uma funcionalidade de busca. O valor de entrada no campo de busca será usado para filtrar temporariamente sua lista, baseado na propriedade _title_ de cada item.
 
-In the first step, you are going to define a form with an input field in your JSX.
+O primeiro passo é definir um _form_ com um campo de _input_ em seu JSX.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -777,9 +777,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-In the following scenario you will type into the input field and filter the list temporarily by the search term that is used in the input field. To be able to filter the list based on the value of the input field, you need to store the value of the input field in your local state. But how do you access the value? You can use **synthetic events** in React to access the event payload.
+Você irá digitar no _input_ e filtrar a lista por esse termo de busca. Para tanto, você precisa armazenar o valor digitado em seu estado local. Mas, como acessar o valor? É possível utilizar **synthetic events** em React para acessar os detalhes do evento.
 
-Let's define a `onChange` handler for the input field.
+Vamos definir um _event handler_  `onChange` para o campo _input_.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -805,7 +805,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The function is bound to the component and thus a class method again. You have to bind and define the method.
+A função está vinculada ao componente e, portanto, novamente temos um método de classe. Você ainda precisa do _binding_  e definir o método em si.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -834,7 +834,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-When using a handler in your element, you get access to the synthetic React event in your callback function's signature.
+Utilizando um _event handler_ em seu elemento, você ganha acesso ao _synthetic event_ de React na assinatura da função que utilizou como _callback_.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -852,7 +852,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The event has the value of the input field in its target object. Hence you are able to update the local state with the search term by using `this.setState()` again.
+O evento tem o _value_ do campo _input_ no seu objeto _target_. Consequentemente, você consegue atualizar o estado local com o termo da busca utilizando `this.setState()` novamente.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -870,7 +870,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Additionally, you shouldn't forget to define the initial state for the `searchTerm` property in the constructor. The input field should be empty in the beginning and thus the value should be an empty string.
+Ademais, você não deveria esquecer de definir o estado inicial para a propriedade `searchTerm` em seu construtor. O campo _input_ estará vazio de início e, portanto, o valor deveria ser uma _string_ vazia.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -894,10 +894,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Now you store the input value to your internal component state every time the value in the input field changes.
+Agora, todas as vezes que o calor no campo de _input _ muda, você está armazenando o valor digitado no estado interno do seu componente.
 
-A brief note about updating the local state in a React component. It would be fair to assume that when updating the `searchTerm` with `this.setState()` the list needs to be passed as well to preserve it. But that isn't the case. React's `this.setState()` is a shallow merge. It preserves the sibling properties in the state object when updating one sole property in it. Thus the list state, even though you have already dismissed an item from it, would stay the same when updating the `searchTerm` property.
+Um breve comentário a respeito da atualização do estado local em um componente React: Seria justo assumirmos que, quando atualizamos `searchTerm` com `this.setState`, também deveríamos informar o valor de `list`, mas não é o caso. O método `this.setState()` de React faz o que chamamos de _shallow merge_. Ele preserva o valor das outras propriedades do objeto estado quando apenas uma delas é atualizada. O estado da lista permanecerá o mesmo, inclusive sem o item que você removeu, quando apenas a propriedade `searchTerm` for alterada.
 
+Voltemos à sua aplicação. A lista ainda não é filtrada com base no valor do campo _input_ que está armazenado no seu estado local.
 Let's get back to your application. The list isn't filtered yet based on the input field value that is stored in the local state. Basically you have to filter the list temporarily based on the `searchTerm`. You have everything you need to filter it. So how to filter it temporarily now? In your `render()` method, before you map over the list, you can apply a filter on it. The filter would only evaluate if the `searchTerm` matches title property of the item. You have already used the built-in JavaScript filter functionality, so let's do it again. You can sneak in the filter function before the map function, because the filter function returns a new array and thus the map function can be used on it in such a convenient way.
 
 {title="src/App.js",lang=javascript}
