@@ -113,7 +113,7 @@ const user = {
 };
 ~~~~~~~~
 
-Nesse caso, como tanto a propriedade do objeto quando a variável são chamadas de `name` , você poderia fazer desta forma:
+Nesse caso, a propriedade do objeto e a variável são igualmente chamadas de `name`. Você poderia fazer desta forma:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -139,7 +139,7 @@ this.state = {
 };
 ~~~~~~~~
 
-Outro atalho elegante é a declaração concisa de métodos em JavaScript ES6.
+Um outro atalho elegante é a declaração concisa de métodos em JavaScript ES6.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -174,7 +174,7 @@ const user = {
 };
 ~~~~~~~~
 
-Talvez isso ainda não faça tanto sentido. Por que você precisaria utilizar nomes computados? Em um capítulo mais adiante, iremos nos deparar com a situação em que poderemos utilizadores-los para alocar valores por chave, de uma forma dinâmica em um objeto. É uma forma elegante em JavaScript de gerar _lookup tables_ (um tipo de estrutura de dados).
+Talvez isso ainda não faça tanto sentido para você. Por que você utilizar nomes computados? Em um capítulo mais adiante, iremos nos deparar com a situação em que poderemos utilizadores-los para alocar valores por chave, de uma forma dinâmica em um objeto. É uma forma elegante em JavaScript de gerar _lookup tables_ (um tipo de estrutura de dados).
 
 ### Exercícios:
 
@@ -539,9 +539,11 @@ Se a repetição do processo de _binding_ no construtor não lhe agrada, você p
 
 * Experimente diferentes abordagens de _binding_ e veja o valor de `this` no console.
 
-## Event Handler
+## Tratamento de Eventos
 
-The chapter should give you a deeper understanding of event handlers in elements. In your application, you are using the following button element to dismiss an item from the list.
+**Nota do tradutor**: De agora em diante, neste livro, usaremos "_event handler_" e "tratamento de evento" com o mesmo significado. Apesar de essa última não ser a tradução literal da primeira, é a forma mais conhecida para tal na língua portuguesa. Soaria estranho se usássemos "tratador de eventos", ou até "manipulador de eventos".
+
+Este capítulo deve lhe dar um melhor entendimento sobre tratamento de eventos em elementos. Na sua aplicação, você usa o elemento `button` a seguir para remover um item da lista:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -557,7 +559,7 @@ The chapter should give you a deeper understanding of event handlers in elements
 ...
 ~~~~~~~~
 
-That's already a complex use case, because you have to pass a value to the class method and thus you have to wrap it into another (arrow) function. So basically, it has to be a function that is passed to the event handler. The following code wouldn't work, because the class method would be executed immediately when you open the application in the browser.
+Este exemplo é um tanto quanto complexo. Você tem que passar um valor para o método de classe e, para tal, precisa encapsulá-lo em outra função (uma _arrow function_). Basicamente, o que precisa ser passado como argumento para _event handler_ é uma função, não sua chamada. O código a seguir não funcionaria, porque o método de classe seria imediatamente executado quando você abrisse sua aplicação no navegador.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -573,9 +575,9 @@ That's already a complex use case, because you have to pass a value to the class
 ...
 ~~~~~~~~
 
-When using `onClick={doSomething()}`, the `doSomething()` function would execute immediately when you open the application in your browser. The expression in the handler is evaluated. Since the returned value of the function isn't a function anymore, nothing would happen when you click the button. But when using `onClick={doSomething}` whereas `doSomething` is a function, it would be executed when clicking the button. The same rules apply for the `onDismiss()` class method that is used in your application.
+Quando usamos `onClick={executarAlgo()}`, a função `executarAlgo()` seria executada imediatamente após a aplicação abrir no _browser_. A expressão passada para o _handler_ é avaliada e, como o valor retornado não é uma função, nada irá acontecer quando você clicar no botão. Mas, quando fazemos `onClick={executarAlgo}`, onde `executarAlgo` é o nome de uma função, essa só será executada quando o botão for clicado. A mesma regra se aplica para o método `onDismiss` usado em sua aplicação.
 
-However, using `onClick={this.onDismiss}` wouldn't suffice, because somehow the `item.objectID` property needs to be passed to the class method to identify the item that is going to be dismissed. That's why it can be wrapped into another function to sneak in the property. The concept is called higher order functions in JavaScript and will be explained briefly later on.
+Entretanto, não é suficiente declarar `onClick={this.onDismiss}`, porque precisamos passar a propriedade `item.objectID` para o método, para identificar qual item será removido. Por esse motivo, usamos uma _arrow function_ como _wrapper_, utilizando o conceito conhecido em JavaScript como _high-order function_ , que será brevemente explicado mais tarde.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -591,7 +593,7 @@ However, using `onClick={this.onDismiss}` wouldn't suffice, because somehow the 
 ...
 ~~~~~~~~
 
-A workaround would be to define the wrapping function somewhere outside and only pass the defined function to the handler. Since it needs access to the individual item, it has to live in the inside of the map function block.
+Uma outra alternativa seria definir a função _wrapper_ em algum outro lugar e passá-la como argumento para to tratamento do evento. Uma vez que precisa ter acesso ao item, ela deve residir dentro do bloco da função _map_.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -636,7 +638,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-After all, it has to be a function that is passed to the element's handler. As an example, try this code instead:
+No fim das contas, o _event handler_ do elemento precisa receber uma função. Como exemplo, faça o teste com esse código, que faz o contrário:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -667,7 +669,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-It will run when you open the application in the browser but not when you click the button. Whereas the following code would only run when you click the button. It is a function that is executed when you trigger the handler.
+A função é executada assim que você abre a aplicação no navegador, mas não quando você clica no botão. Enquanto que o código a seguir só roda no momento do clique. É uma função que é executada quando você dispara o evento.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -687,7 +689,7 @@ It will run when you open the application in the browser but not when you click 
 ...
 ~~~~~~~~
 
-In order to keep it concise, you can transform it into a JavaScript ES6 arrow function again. That's what we did with the `onDismiss()` class method too.
+Visando manter o código conciso, você pode transformá-la de volta uma uma _arrow function_, fazendo o mesmo que fizemos com o método de classe `onDismiss()`.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -705,7 +707,9 @@ In order to keep it concise, you can transform it into a JavaScript ES6 arrow fu
 ...
 ~~~~~~~~
 
-Often newcomers to React have difficulties with the topic of using functions in event handlers. That's why I tried to explain it in more detail here. In the end, you should end up with the following code in your button to have a concisely inlined JavaScript ES6 arrow function that has access to the `objectID` property of the `item` object.
+Frequentemente, novatos em React têm dificuldades com este tópico do uso de funções no tratamento de eventos. Por isso, me alonguei tentando explicar em maiores detalhes.
+
+Feita isso, agora você deve ter o seguinte código no botão, com uma _arrow function_ _inline_  concisa que tem acesso à propriedade `objectID` do objeto item:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -736,13 +740,15 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Another performance relevant topic, that is often mentioned, are the implications of using arrow functions in event handlers. For instance, the `onClick` handler for the `onDismiss()` method is wrapping the method in another arrow function to be able to pass the item identifier. So every time the `render()` method runs, the handler instantiates the higher order arrow function. It *can* have an impact on your application performance, but in most cases you will not notice it. Imagine you have a huge table of data with 1000 items and each row or column has such an arrow function in an event handler. Then it is worth to think about the performance implications and therefore you could implement a dedicated Button component to bind the method in the constructor. But before that happens it is premature optimization. It is more valuable to focus on learning React itself.
+Outro tópico relevante que sempre é mencionado, relacionado à performance, trata sobre as implicações do uso de _arrow functions_ em _event handlers_. Por exemplo, tomemos o caso do `onClick` com uma _arrow function_ envolvendo o `onDismiss`. Todas as vezes que o método `render()` for executado, o _event handler_ irá instanciar a função. Isso _pode_ ter um certo impacto na performance da sua aplicação. Na maioria dos casos, porém, você não irar notar a diferença.
 
-### Exercises:
+Imagine que você tem uma enorme tabela de dados com 1000 itens e cada linha ou coluna tem uma _arrow function_ sendo definida no _event handler_. Nesse caso, sim, é válida a preocupação a respeito da performance e você poderia implementar um componente dedicado `Button` com o _biding_ ocorrendo no construtor. Mas, preocupar-se com isso agora significa otimização prematura. É mais benéfico focar em aprender React em si.
 
-* try the different approaches of using functions in the `onClick` handler of your button
+### Exercícios:
 
-## Interactions with Forms and Events
+* Experimente as diferentes abordagens de uso de funções no `onClick` do botão em sua aplicação.
+
+## Interação com Forms e Eventos
 
 Let's add another interaction for the application to experience forms and events in React. The interaction is a search functionality. The input of the search field should be used to filter your list temporary based on the title property of an item.
 
