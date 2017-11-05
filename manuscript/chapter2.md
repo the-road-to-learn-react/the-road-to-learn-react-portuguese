@@ -896,10 +896,9 @@ class App extends Component {
 
 Agora, todas as vezes que o calor no campo de _input _ muda, você está armazenando o valor digitado no estado interno do seu componente.
 
-Um breve comentário a respeito da atualização do estado local em um componente React: Seria justo assumirmos que, quando atualizamos `searchTerm` com `this.setState`, também deveríamos informar o valor de `list`, mas não é o caso. O método `this.setState()` de React faz o que chamamos de _shallow merge_. Ele preserva o valor das outras propriedades do objeto estado quando apenas uma delas é atualizada. O estado da lista permanecerá o mesmo, inclusive sem o item que você removeu, quando apenas a propriedade `searchTerm` for alterada.
+Um breve comentário a respeito da atualização do estado local em um componente React: Seria normal se achássemos que, quando atualizamos `searchTerm` com `this.setState`, também deveríamos informar o valor de `list`. Mas não é o caso. O método `this.setState()` de React faz o que chamamos de _shallow merge_. Ele preserva o valor das outras propriedades do objeto estado quando apenas uma delas é atualizada. O estado da lista permanecerá o mesmo, inclusive sem o item que você removeu, quando apenas a propriedade `searchTerm` for alterada.
 
-Voltemos à sua aplicação. A lista ainda não é filtrada com base no valor do campo _input_ que está armazenado no seu estado local.
-Let's get back to your application. The list isn't filtered yet based on the input field value that is stored in the local state. Basically you have to filter the list temporarily based on the `searchTerm`. You have everything you need to filter it. So how to filter it temporarily now? In your `render()` method, before you map over the list, you can apply a filter on it. The filter would only evaluate if the `searchTerm` matches title property of the item. You have already used the built-in JavaScript filter functionality, so let's do it again. You can sneak in the filter function before the map function, because the filter function returns a new array and thus the map function can be used on it in such a convenient way.
+Voltemos à sua aplicação. A lista ainda não é temporariamente filtrada com base no valor do campo _input_ que está armazenado no seu estado local, mas você já tem em mão tudo o que precisa para fazê-lo. Como? No seu método `render()`, antes de iterar sobre a lista usando _map_, você pode aplicar um filtro à ela, que apenas avaliaria se `searchTerm` coincide com o a propriedade _title_ do item. Vamos usar a funcionalidade _filter_, nativa de JavaScript e já demonstrada anteriormente. Como _filter_ retorna um novo _array_, você pode convenientemente chamá-la antes de _map_.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -927,11 +926,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Let's approach the filter function in a different way this time. We want to define the filter argument, the function that is passed to the filter function, outside of the ES6 class component. There we don't have access to the state of the component and thus we have no access to the `searchTerm` property to evaluate the filter condition. We have to pass the `searchTerm` to the filter function and have to return a new function to evaluate the condition. That's called a higher order function.
+Desta vez, iremos adotar uma abordagem diferente sobre a função _filter_. Queremos definir o seu argumento (outra função) fora do componente. Lá, não temos acesso ao estado do componente e, por consequência, à propriedade `searchTerm` para avaliar a condição de filtragem. Teremos que passar o `searchTerm` como argumento e retornar uma nova função, que avalia a condição. Esse tipo de função retornada por outra função é chamada de _high-order function_.
 
-Normally I wouldn't mention higher order functions, but in a React book it makes total sense. It makes sense to know about higher order functions, because React deals with a concept called higher order components. You will get to know the concept later in the book. Now again, let's focus on the filter functionality.
+Normalmente eu não mencionaria _higher-order functions_, mas faz todo o sentido em um livro sobre React. Faz sentido porque React trabalha com um conceito chamado de _high-order components_. Mais tarde, você aprenderá mais sobre isso. Vamos focar agora na funcionalidade _filter_.
 
-First, you have to define the higher order function outside of your App component.
+Primeiro, você terá que definir a _high-order function_ fora do componente App.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -950,7 +949,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The function takes the `searchTerm` and returns another function, because after all the filter function takes a function as its input. The returned function has access to the item object because it is the function that is passed to the filter function. In addition, the returned function will be used to filter the list based on the condition defined in the function. Let's define the condition.
+A função recebe o `searchTerm` e retorna outra função, porque é o que _filter_ espera como entrada. A função retornada terá acesso ao objeto item, pois será argumento da função _filter_. A filtragem será feita baseada na condição definida nela, que é o que faremos agora.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -969,7 +968,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The condition says that you match the incoming `searchTerm` pattern with the title property of the item from your list. You can do that with the built-in `includes` JavaScript functionality. Only when the pattern matches, you return true and the item stays in the list. When the pattern doesn't match the item is removed from the list. But be careful with pattern matching: You shouldn't forget to lower case both strings. Otherwise there will be mismatches between a search term 'redux' and an item title 'Redux'. Since we are working on a immutable list and return a new list by using the filter function, the original list in the local state isn't modified at all.
+A condição diz que devemos comparar o padrão recebido em `searchTerm` com a propriedade `title` do item da lista. Você pode fazê-lo utilizando `includes`, funcionalidade nativa da JavaScript. Apenas quando o padrão coincide, você retorna _true_ e o item permanece na lista. Caso contrário, o item é removido. Mas, tenha cuidado com comparações de padrões: Você não pode esquecer de formatar ambas as _strings_, transformando seus caracteres em minúsculas. Caso contrário, o título "Redux" e o termo de busca "redux" serão considerados diferentes. Uma vez que estamos trabalhando com listas imutáveis e uma nova lista é retornada pela função _filter_, a lista original permanecerá sem ser modificada.
 
 One thing is left to mention: We cheated a bit by using the built-in includes JavaScript functionality. It is already an ES6 feature. How would that look like in JavaScript ES5? You would use the `indexOf()` function to get the index of the item in the list. When the item is in the list, `indexOf()` will return its index in the array.
 
