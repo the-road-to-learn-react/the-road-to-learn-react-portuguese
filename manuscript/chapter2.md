@@ -431,7 +431,7 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Executando novamente o teste, o objeto `this` (ou, sendo mais específico, a instância de classe) está definido nesse contexto e você tem acesso a `this.state`, ou `this.props`, que você conhecerá depois.  
+Executando novamente o teste, o objeto `this` (ou, sendo mais específico, a instância de classe) está definido nesse contexto e você tem acesso a `this.state`, ou `this.props`, que você conhecerá depois.
 
 O _binding_ de métodos também poderia ser feito em outros lugares, como no `render()`, por exemplo.
 
@@ -970,7 +970,7 @@ class App extends Component {
 
 A condição diz que devemos comparar o padrão recebido em `searchTerm` com a propriedade `title` do item da lista. Você pode fazê-lo utilizando `includes`, funcionalidade nativa da JavaScript. Apenas quando o padrão coincide, você retorna _true_ e o item permanece na lista. Caso contrário, o item é removido. Mas, tenha cuidado com comparações de padrões: Você não pode esquecer de formatar ambas as _strings_, transformando seus caracteres em minúsculas. Caso contrário, o título "Redux" e o termo de busca "redux" serão considerados diferentes. Uma vez que estamos trabalhando com listas imutáveis e uma nova lista é retornada pela função _filter_, a lista original permanecerá sem ser modificada.
 
-One thing is left to mention: We cheated a bit by using the built-in includes JavaScript functionality. It is already an ES6 feature. How would that look like in JavaScript ES5? You would use the `indexOf()` function to get the index of the item in the list. When the item is in the list, `indexOf()` will return its index in the array.
+Falta mencionar uma coisa: nós trapaceamos um pouco usando `includes` do JavaScript. Ele na verdade, é um recurso do ES6. Como isso seria em JavaScript ES5? Você usaria a função `indexOf ()` para obter o índice do item na lista. Quando o item está na lista, `indexOf ()` retornará seu índice no _array_.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -981,7 +981,7 @@ string.indexOf(pattern) !== -1
 string.includes(pattern)
 ~~~~~~~~
 
-Another neat refactoring can be done with an ES6 arrow function again. It makes the function more concise:
+Podemos realizar outra refatoração bem bacana utilizando uma _arrow function_. Tornando a função mais concisa:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -997,9 +997,9 @@ const isSearched = searchTerm => item =>
   item.title.toLowerCase().includes(searchTerm.toLowerCase());
 ~~~~~~~~
 
-One could argue which function is more readable. Personally I prefer the second one. The React ecosystem uses a lot of functional programming concepts. It happens often that you will use a function which returns a function (higher order functions). In JavaScript ES6, you can express these more concisely with arrow functions.
+Existem diferentes argumentos sobre qual função é mais legível. Pessoalmente, eu prefiro a segunda opção. O ecossistema em torno do React usa muitos conceitos de programação funcional. Frequentemente, você usará uma função que retorna uma função (_higher order functions_). No JavaScript ES6, você pode expressá-las de uma forma mais concisa com _arrow functions_.
 
-Last but not least, you have to use the defined `isSearched()` function to filter your list. You pass it the `searchTerm` property from your local state, it returns the filter input function, and filters your list based on the filter condition. Afterward it maps over the filtered list to display an element for each list item.
+Por último, mas não menos importante, você precisa usar a função `isSearched()` para filtrar sua lista. Você passa a propriedade `searchTerm` do seu estado local como parâmetro para essa função, quer irá retornar sua lista filtrada baseada nas condições do filtro. Em seguida, mapeamos a lista filtrada para exibir um elemento para cada item da lista.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1027,12 +1027,12 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The search functionality should work now. Try it yourself in the browser.
+A funcionalidade de pesquisa deve funcionar agora. Experimente você mesmo no navegador.
 
-### Exercises:
+### Exercícios:
 
-* read more about [React events][4]
-* read more about [higher order functions][5]
+* leia mais sobre [eventos em React][4]
+* leia mais sobre [higher order functions][5]
 
 ## ES6 Destructuring
 
