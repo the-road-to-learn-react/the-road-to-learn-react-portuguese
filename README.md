@@ -10,7 +10,8 @@ Repositório oficial da tradução em português do livro [The Road to learn Rea
 
 ## Contribuindo
 
-**Este READEME será atualizado quando tivermos a primeira versão completa, aberto à colaborações**
+**Este READEME será atualizado quando tivermos a primeira versão completa, aberto à colaborações**.
+
 Infelizmente, um texto narrativo funciona de forma diferente do código-fonte, pois precisa passar para o leitor a mesma sensaço de continuidade do começo ao fim. Além disso, parágrafos e até capítulos inteiros são traduzidos e não necessariamente sincronizados imediatamente, aguardando revisão.
 
 Então, juntamente com o autor da versão original, decidi dar primeiro a "cara" do livro, um rascunho com a tradução inicial de todas as seções, depois abri-lo para sugestões, melhorias e correções, através de PRs e issues. Serão todas bem vindas.
