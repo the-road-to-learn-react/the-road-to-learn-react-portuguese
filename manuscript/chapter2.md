@@ -1,12 +1,12 @@
 # React Básico
 
-Este capítulo lhe apresentará os conceitos básicos de React. Componentes estáticos são um pouco maçantes, então trataremos de assuntos como estado e interações. Você também irá aprender os diferentes modos de declarar um componente e como fazer para mantê-los fáceis de reusar e de compor uns com os outros. Prepare-se para dar vida à eles.
+Este capítulo irá lhe apresentar os conceitos básicos de React. Trataremos de assuntos como estado e interações, pois componentes estáticos são um pouco maçantes, não acha? Você também irá aprender os diferentes modos de declarar um componente e como fazer para mantê-los fáceis de reusar e de compor uns com os outros. Prepare-se para dar vida à eles.
 
 ## Estado Interno do Componente
 
-O estado local, também chamado de estado interno do componente, lhe permite salvar, modificar e apagar propriedades que são armazenadas nele.
+O estado local, também chamado de estado interno do componente, lhe permite salvar, modificar e apagar propriedades que nele são armazenadas.
 
-O componente de classe de ES6 usa um construtor para inicializar seu estado interno. Ele é chamado apenas uma vez quando o componente é inicializado. Abaixo, um construtor de classe:
+Componentes de classe usam inicializam seu estado interno utilizando um construtor. Ele é chamado apenas uma vez (quando o componente é inicializado). Abaixo, um construtor de classe:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -23,7 +23,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Quando seu componente possui um construtor, torna-se obrigatória a chamado de `super();`, porque o componente App é uma subclasse de `Component` (`class App extends Component`). Mais tarde, você aprenderá mais sobre componentes de classe em ES6.
+Quando seu componente possui um construtor, torna-se obrigatória a chamada de `super();`, porque o componente App é uma subclasse de `Component` (`class App extends Component`). Mais tarde, você aprenderá mais sobre componentes de classe em ES6.
 
 Você também pode invocar `super(props);` para definir `this.props` no contexto do seu construtor. Caso contrário, se tentar acessar `this.props`, receberá o valor `undefined`. Futuramente, estudaremos mais sobre as _props_ de um componente React.
 
@@ -60,7 +60,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-O estado local está amarrado à classe através do objeto `this`. Dessa forma, você pode acessá-lo em qualquer lugar do componente. Ele pode ser utilizado, por exemplo, no método `render()`. Anteriormente, você usou `map` com uma lista estática de itens, definida fora do componente,  em seu método `render()`. Agora, você irá usar a lista obtida do seu estado local.
+O estado local está amarrado à classe através do objeto `this`. Dessa forma, você pode acessá-lo em qualquer lugar do componente. Por exemplo, no método `render()`.
+
+Anteriormente, você usou `map` com uma lista estática de itens (definida fora do componente)  em seu método `render()`. Agora, você irá usar a lista obtida do seu estado local.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -89,9 +91,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-A lista agora é parte do componente, residindo em seu estado interno. Você pode adicionar, mudar ou remover itens. Todas as vezes que mudar o estado do seu componente, o método `render()` será chamado novamente. Você simplesmente altera o estado interno, sabendo que o componente será de novo renderizado e que os dados corretos que são lidos serão exibidos.
+A lista agora é parte do componente, residindo em seu estado interno. Você pode adicionar, alterar ou remover itens. Todas as vezes que o estado do seu componente mudar, o método `render()` será chamado novamente. Você simplesmente altera o estado interno, sabendo que o componente será de novo renderizado exibindo os dados corretos.
 
-Mas, tenha cuidado. Não altere o estado diretamente. Use um método chamado `setState()` para mudá-lo. Você irá saber mais a respeito no próximo capítulo.
+Mas, tenha cuidado. Não altere o estado diretamente, use um método chamado `setState()` para mudá-lo. Você verá mais a respeito no próximo capítulo.
 
 ### Exercícios:
 
@@ -113,7 +115,7 @@ const user = {
 };
 ~~~~~~~~
 
-Nesse caso, a propriedade do objeto e a variável são igualmente chamadas de `name`. Você poderia fazer desta forma:
+Nesse caso, em que a propriedade do objeto e a variável são igualmente chamadas de `name`, você poderia fazer desta forma:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -124,7 +126,7 @@ const user = {
 };
 ~~~~~~~~
 
-Aplicando o mesmo raciocínio na sua aplicação, com a variável `list` e a propriedade do estado local que compartilha o mesmo nome:
+Aplicando o mesmo raciocínio na sua aplicação, com a variável `list` e a propriedade do estado local que compartilha do mesmo nome:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -174,7 +176,7 @@ const user = {
 };
 ~~~~~~~~
 
-Talvez isso ainda não faça tanto sentido para você. Por que você utilizar nomes computados? Em um capítulo mais adiante, iremos nos deparar com a situação em que poderemos utilizadores-los para alocar valores por chave, de uma forma dinâmica em um objeto. É uma forma elegante em JavaScript de gerar _lookup tables_ (um tipo de estrutura de dados).
+Talvez isso ainda não faça tanto sentido para você. Por que você utilizar nomes computados? Em um capítulo mais adiante, iremos nos deparar com a situação em que poderemos utilizá-los para alocar valores por chave, de uma forma dinâmica em um objeto. É uma forma elegante em JavaScript de gerar _lookup tables_ (um tipo de estrutura de dados).
 
 ### Exercícios:
 
