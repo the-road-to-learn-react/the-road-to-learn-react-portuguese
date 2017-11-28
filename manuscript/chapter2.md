@@ -970,9 +970,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-A condição diz que devemos comparar o padrão recebido em `searchTerm` com a propriedade `title` do item da lista. Você pode fazê-lo utilizando `includes`, funcionalidade nativa da JavaScript. Apenas quando o padrão coincide, você retorna _true_ e o item permanece na lista. Caso contrário, o item é removido. Mas, tenha cuidado com comparações de padrões: Você não pode esquecer de formatar ambas as _strings_, transformando seus caracteres em minúsculas. Caso contrário, o título "Redux" e o termo de busca "redux" serão considerados diferentes. Uma vez que estamos trabalhando com listas imutáveis e uma nova lista é retornada pela função _filter_, a lista original permanecerá sem ser modificada.
+A condição diz que devemos comparar o padrão recebido em `searchTerm` com a propriedade `title` do item da lista. Você pode fazê-lo utilizando `includes`, funcionalidade nativa de JavaScript. Quando o padrão coincide, você retorna _true_ e o item permanece na lista. Senão, o item é removido. Mas, tenha cuidado com comparações de padrões: Você não pode esquecer de formatar ambas as _strings_, transformando seus caracteres em minúsculas. Caso contrário, o título "Redux" e o termo de busca "redux" serão considerados diferentes.
 
-One thing is left to mention: We cheated a bit by using the built-in includes JavaScript functionality. It is already an ES6 feature. How would that look like in JavaScript ES5? You would use the `indexOf()` function to get the index of the item in the list. When the item is in the list, `indexOf()` will return its index in the array.
+Uma vez que estamos trabalhando com listas imutáveis e uma nova lista é retornada pela função _filter_, a lista original permanecerá sem ser modificada.
+
+Uma última coisa a mencionar: "Apelamos" um pouco, utilizando o recuso _includes_ já de ES6. Como faríamos o mesmo, em JavaScript ES5? Você usaria a função `inderOf()` para pegar o índice do item na lista.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -983,7 +985,7 @@ string.indexOf(pattern) !== -1
 string.includes(pattern)
 ~~~~~~~~
 
-Another neat refactoring can be done with an ES6 arrow function again. It makes the function more concise:
+Outra refatoração elegante pode ser feita utilizando-se novamente uma _arrow function_, tornando a função mais concisa:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -999,9 +1001,9 @@ const isSearched = searchTerm => item =>
   item.title.toLowerCase().includes(searchTerm.toLowerCase());
 ~~~~~~~~
 
-One could argue which function is more readable. Personally I prefer the second one. The React ecosystem uses a lot of functional programming concepts. It happens often that you will use a function which returns a function (higher order functions). In JavaScript ES6, you can express these more concisely with arrow functions.
+Qual das funções é mais legível, vai depender de cada um. Pessoalmente, eu prefiro a segunda opção. O ecossistema de React usa muitos conceitos de programação funcional. Corriqueiramente, você irá utilizar uma função que retorna outra função (_high order function_). Em JavaScript ES6, você pode expressá-las de forma mais concisa com _arrow functions_.
 
-Last but not least, you have to use the defined `isSearched()` function to filter your list. You pass it the `searchTerm` property from your local state, it returns the filter input function, and filters your list based on the filter condition. Afterward it maps over the filtered list to display an element for each list item.
+Por fim, você tem que usar a função definida `isSearched()` para filtrar sua lista. Você passa a propriedade `searchTerm` do seu estado local para a função, ela retorna outra função como _input_ de _filter_ e filtra sua lista baseada na condição descrita. Depois disso tudo, iteramos sobre a lista filtrada usando _map_ para exibir um elemento para cada item da lista.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1029,12 +1031,12 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The search functionality should work now. Try it yourself in the browser.
+A funcionalidade de buscar deve funcionar agora. Tente você mesmo, no seu navegador.
 
-### Exercises:
+### Exercícios:
 
-* read more about [React events][4]
-* read more about [higher order functions][5]
+* Leia mais sobre [React events][4]
+* Leia mais sobre [higher order functions][5]
 
 ## ES6 Destructuring
 
