@@ -9,19 +9,17 @@ O estado local, também chamado de estado interno do componente, lhe permite sal
 Componentes de classe usam inicializam seu estado interno utilizando um construtor. Ele é chamado apenas uma vez (quando o componente é inicializado). Abaixo, um construtor de classe:
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-# leanpub-start-insert
-  constructor(props) {
-    super(props);
-  }
-# leanpub-end-insert
-
-  ...
-
-}
-~~~~~~~~
+	class App extends Component {
+	
+	# leanpub-start-insert
+	  constructor(props) {
+	    super(props);
+	  }
+	# leanpub-end-insert
+	
+	  ...
+	
+	}
 
 Quando seu componente possui um construtor, torna-se obrigatória a chamada de `super();`, porque o componente App é uma subclasse de `Component` (`class App extends Component`). Mais tarde, você aprenderá mais sobre componentes de classe em ES6.
 
@@ -30,66 +28,62 @@ Você também pode invocar `super(props);` para definir `this.props` no contexto
 A essa altura, o estado inicial do seu componente é composto por apenas uma lista de itens:
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-const list = [
-  {
-    title: 'React',
-    url: 'https://facebook.github.io/react/',
-    author: 'Jordan Walke',
-    num_comments: 3,
-    points: 4,
-    objectID: 0,
-  },
-  ...
-];
-
-class App extends Component {
-
-  constructor(props) {
-    super(props);
-
-# leanpub-start-insert
-    this.state = {
-      list: list,
-    };
-# leanpub-end-insert
-  }
-
-  ...
-
-}
-~~~~~~~~
+	const list = [
+	  {
+	    title: 'React',
+	    url: 'https://facebook.github.io/react/',
+	    author: 'Jordan Walke',
+	    num_comments: 3,
+	    points: 4,
+	    objectID: 0,
+	  },
+	  ...
+	];
+	
+	class App extends Component {
+	
+	  constructor(props) {
+	    super(props);
+	
+	# leanpub-start-insert
+	    this.state = {
+	      list: list,
+	    };
+	# leanpub-end-insert
+	  }
+	
+	  ...
+	
+	}
 
 O estado local está amarrado à classe através do objeto `this`. Dessa forma, você pode acessá-lo em qualquer lugar do componente. Por exemplo, no método `render()`.
 
 Anteriormente, você usou `map` com uma lista estática de itens (definida fora do componente)  em seu método `render()`. Agora, você irá usar a lista obtida do seu estado local.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-  render() {
-    return (
-      <div className="App">
-# leanpub-start-insert
-        {this.state.list.map(item =>
-# leanpub-end-insert
-          <div key={item.objectID}>
-            <span>
-              <a href={item.url}>{item.title}</a>
-            </span>
-            <span>{item.author}</span>
-            <span>{item.num_comments}</span>
-            <span>{item.points}</span>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    return (
+	      <div className="App">
+	# leanpub-start-insert
+	        {this.state.list.map(item =>
+	# leanpub-end-insert
+	          <div key={item.objectID}>
+	            <span>
+	              <a href={item.url}>{item.title}</a>
+	            </span>
+	            <span>{item.author}</span>
+	            <span>{item.num_comments}</span>
+	            <span>{item.points}</span>
+	          </div>
+	        )}
+	      </div>
+	    );
+	  }
+	}
 
 A lista agora é parte do componente, residindo em seu estado interno. Você pode adicionar, alterar ou remover itens. Todas as vezes que o estado do seu componente mudar, o método `render()` será chamado novamente. Você simplesmente altera o estado interno, sabendo que o componente será de novo renderizado exibindo os dados corretos.
 
@@ -107,74 +101,64 @@ Mas, tenha cuidado. Não altere o estado diretamente, use um método chamado `se
 Em JavaScript ES6, você pode usar uma sintaxe abreviada para inicializar seus objetos de forma mais concisa. Imagine o seguinte:
 
 {title="Code Playground",lang="javascript"}
-~~~~~~~~
-const name = 'Robin';
-
-const user = {
-  name: name,
-};
-~~~~~~~~
+	const name = 'Robin';
+	
+	const user = {
+	  name: name,
+	};
 
 Nesse caso, em que a propriedade do objeto e a variável são igualmente chamadas de `name`, você poderia fazer desta forma:
 
 {title="Code Playground",lang="javascript"}
-~~~~~~~~
-const name = 'Robin';
-
-const user = {
-  name,
-};
-~~~~~~~~
+	const name = 'Robin';
+	
+	const user = {
+	  name,
+	};
 
 Aplicando o mesmo raciocínio na sua aplicação, com a variável `list` e a propriedade do estado local que compartilha do mesmo nome:
 
 {title="Code Playground",lang="javascript"}
-~~~~~~~~
-// ES5
-this.state = {
-  list: list,
-};
-
-// ES6
-this.state = {
-  list,
-};
-~~~~~~~~
+	// ES5
+	this.state = {
+	  list: list,
+	};
+	
+	// ES6
+	this.state = {
+	  list,
+	};
 
 Um outro atalho elegante é a declaração concisa de métodos em JavaScript ES6.
 
 {title="Code Playground",lang="javascript"}
-~~~~~~~~
-// ES5
-var userService = {
-  getUserName: function (user) {
-    return user.firstname + ' ' + user.lastname;
-  },
-};
-
-// ES6
-const userService = {
-  getUserName(user) {
-    return user.firstname + ' ' + user.lastname;
-  },
-};
-~~~~~~~~
+	// ES5
+	var userService = {
+	  getUserName: function (user) {
+	    return user.firstname + ' ' + user.lastname;
+	  },
+	};
+	
+	// ES6
+	const userService = {
+	  getUserName(user) {
+	    return user.firstname + ' ' + user.lastname;
+	  },
+	};
 
 Por último, mas não menos importante, o uso de nomes computados de propriedades é permitido em JavaScript ES6.
 
 {title="Code Playground",lang="javascript"}
-~~~~~~~~
-// ES5
-var user = {
-  name: 'Robin',
-};
-
-// ES6
-const key = 'name';
-const user = {
-  [key]: 'Robin',
-};
-~~~~~~~~
+	// ES5
+	var user = {
+	  name: 'Robin',
+	};
+	
+	// ES6
+	const key = 'name';
+	const user = {
+	  [key]: 'Robin',
+	};
 
 Talvez isso ainda não faça tanto sentido para você. Por que você utilizar nomes computados? Em um capítulo mais adiante, iremos nos deparar com a situação em que poderemos utilizá-los para alocar valores por chave, de uma forma dinâmica em um objeto. É uma forma elegante em JavaScript de gerar _lookup tables_ (um tipo de estrutura de dados).
 
@@ -190,39 +174,37 @@ Você tem agora em mãos um componente App com estado interno, que ainda não fo
 Vamos adicionar um botão para cada item da lista que é exibida. O botão tem o rótulo "_Dismiss_" (dispensar) e irá remover o item, sendo útil quando você quer manter uma lista constando apenas itens ainda não lidos e dispensar os que não tem interesse, por exemplo.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-  render() {
-    return (
-      <div className="App">
-        {this.state.list.map(item =>
-          <div key={item.objectID}>
-            <span>
-              <a href={item.url}>{item.title}</a>
-            </span>
-            <span>{item.author}</span>
-            <span>{item.num_comments}</span>
-            <span>{item.points}</span>
-# leanpub-start-insert
-            <span>
-              <button
-                onClick={() => this.onDismiss(item.objectID)}
-                type="button"
-              >
-                Dismiss
-              </button>
-            </span>
-# leanpub-end-insert
-          </div>
-        )}
-      </div>
-    );
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    return (
+	      <div className="App">
+	        {this.state.list.map(item =>
+	          <div key={item.objectID}>
+	            <span>
+	              <a href={item.url}>{item.title}</a>
+	            </span>
+	            <span>{item.author}</span>
+	            <span>{item.num_comments}</span>
+	            <span>{item.points}</span>
+	# leanpub-start-insert
+	            <span>
+	              <button
+	                onClick={() => this.onDismiss(item.objectID)}
+	                type="button"
+	              >
+	                Dismiss
+	              </button>
+	            </span>
+	# leanpub-end-insert
+	          </div>
+	        )}
+	      </div>
+	    );
+	  }
+	}
 
 O método de classe `onDismiss()` ainda não foi definido, nós o faremos daqui a pouco.  Vamos primeiro focar no tratamento do `onClick` do elemento `button`. Como você pode ver, o método `onDismiss()` no `onClick` está encapsulado por uma _arrow function_. Nela, você tem acesso à propriedade `objectID` do objeto `item`, que identifica qual item será removido. Uma alternativa à isso seria definir a função fora e apenas passá-la para o `onClick`. Outro capítulo irá explicar em maiores detalhes o tópico de tratamento de eventos em elementos.
 
@@ -233,120 +215,106 @@ Chegou a hora de implementar o comportamento de `onDismiss()`. A função recebe
 Para definir o `onDismiss()` como um método de classe, você precisa usar `bind` no construtor.  _Bindings_ serão explicados mais adiante, em outro capítulo.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      list,
-    };
-
-# leanpub-start-insert
-    this.onDismiss = this.onDismiss.bind(this);
-# leanpub-end-insert
-  }
-
-  render() {
-    ...
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  constructor(props) {
+	    super(props);
+	
+	    this.state = {
+	      list,
+	    };
+	
+	# leanpub-start-insert
+	    this.onDismiss = this.onDismiss.bind(this);
+	# leanpub-end-insert
+	  }
+	
+	  render() {
+	    ...
+	  }
+	}
 
 O próximo passo é definir a funcionalidade em si, ou a lógica de negócio do método em sua classe, da seguinte maneira:
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      list,
-    };
-
-    this.onDismiss = this.onDismiss.bind(this);
-  }
-
-# leanpub-start-insert
-  onDismiss(id) {
-    ...
-  }
-# leanpub-end-insert
-
-  render() {
-    ...
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  constructor(props) {
+	    super(props);
+	
+	    this.state = {
+	      list,
+	    };
+	
+	    this.onDismiss = this.onDismiss.bind(this);
+	  }
+	
+	# leanpub-start-insert
+	  onDismiss(id) {
+	    ...
+	  }
+	# leanpub-end-insert
+	
+	  render() {
+	    ...
+	  }
+	}
 
 Feito isso, você pode escrever o que acontece dentro do método. Basicamente, você quer remover da lista o idem identificado pelo id e armazenar a lista atualizada no seu estado local. A nova lista será usada no método `render`, que será novamente chamado, para ser exibida. O item removido não irá mais aparecer.
 
 É possível remover um item de uma lista usando a funcionalidade nativa de JavaScript _filter_, que é uma função que recebe outra função como entrada. Esta, por sua vez, tem acesso a cada valor na lista, pois _filter_ está iterando sobre ela, permitindo-lhe checar item a item na lista baseado na condição fornecida. Se o resultado da avaliação for _true_, o item permanece na lista. Caso contrário, será filtrado dela. Além disso, é bom saber que a função _filter_ retorna uma nova lista e não mexe no estado da antiga. Ela atende à convenção em React de manter estruturas de dados imutáveis.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-onDismiss(id) {
-# leanpub-start-insert
-  const updatedList = this.state.list.filter(function isNotId(item) {
-    return item.objectID !== id;
-  });
-# leanpub-end-insert
-}
-~~~~~~~~
+	onDismiss(id) {
+	# leanpub-start-insert
+	  const updatedList = this.state.list.filter(function isNotId(item) {
+	    return item.objectID !== id;
+	  });
+	# leanpub-end-insert
+	}
 
 No próximo passo, você pode extrair a função e passá-la como argumento para _filter_.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-onDismiss(id) {
-# leanpub-start-insert
-  function isNotId(item) {
-    return item.objectID !== id;
-  }
-
-  const updatedList = this.state.list.filter(isNotId);
-# leanpub-end-insert
-}
-~~~~~~~~
+	onDismiss(id) {
+	# leanpub-start-insert
+	  function isNotId(item) {
+	    return item.objectID !== id;
+	  }
+	
+	  const updatedList = this.state.list.filter(isNotId);
+	# leanpub-end-insert
+	}
 
 Ainda pode fazê-lo de forma mais concisa, usando novamente uma _arrow function_ de JavaScript.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-onDismiss(id) {
-# leanpub-start-insert
-  const isNotId = item => item.objectID !== id;
-  const updatedList = this.state.list.filter(isNotId);
-# leanpub-end-insert
-}
-~~~~~~~~
+	onDismiss(id) {
+	# leanpub-start-insert
+	  const isNotId = item => item.objectID !== id;
+	  const updatedList = this.state.list.filter(isNotId);
+	# leanpub-end-insert
+	}
 
 Pode até colocá-la _inline_ novamente, como fez no `onClick` do botão, mas pode ser que assim ela fique menos legível.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-onDismiss(id) {
-# leanpub-start-insert
-  const updatedList = this.state.list.filter(item => item.objectID !== id);
-# leanpub-end-insert
-}
-~~~~~~~~
+	onDismiss(id) {
+	# leanpub-start-insert
+	  const updatedList = this.state.list.filter(item => item.objectID !== id);
+	# leanpub-end-insert
+	}
 
 A lista agora remove o item clicado. Entretanto, o estado local ainda não foi atualizado. Finalmente você pode usar o método `setState()` para atualizar a lista no estado interno do componente.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-onDismiss(id) {
-  const isNotId = item => item.objectID !== id;
-  const updatedList = this.state.list.filter(isNotId);
-# leanpub-start-insert
-  this.setState({ list: updatedList });
-# leanpub-end-insert
-}
-~~~~~~~~
+	onDismiss(id) {
+	  const isNotId = item => item.objectID !== id;
+	  const updatedList = this.state.list.filter(isNotId);
+	# leanpub-start-insert
+	  this.setState({ list: updatedList });
+	# leanpub-end-insert
+	}
 
 Rode novamente sua aplicação e experimente clicar no botão "Dismiss". Provavelmente, irá funcionar e você estará testemunhando nesse momento o **fluxo unidirecional de dados** em React. Você dispara uma ação em sua _view_ com `onClick()`, uma função ou método de classe muda o estado interno do componente e `render()` é de novo executado para atualizar a _view_.
 
@@ -361,179 +329,165 @@ Rode novamente sua aplicação e experimente clicar no botão "Dismiss". Provave
 É importante aprender sobre _bindings_ em classes JavaScript quando se vai trabalhar com componentes de classe em React. No capítulo anterior, você os utilizou para ligar seu método `onDismiss()` à classe em seu construtor.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      list,
-    };
-
-    this.onDismiss = this.onDismiss.bind(this);
-  }
-
-  ...
-}
-~~~~~~~~
+	class App extends Component {
+	  constructor(props) {
+	    super(props);
+	
+	    this.state = {
+	      list,
+	    };
+	
+	    this.onDismiss = this.onDismiss.bind(this);
+	  }
+	
+	  ...
+	}
 
 Em primeiro lugar: Por que você teve que fazer isso?
 
 Esse passo é necessário porque a amarração do `this` com a instância de classe não é feita automaticamente pelos métodos. Vamos demostrar isso com a ajuda do componente a seguir:
 
 {title="Code Playground",lang=javascript}
-~~~~~~~~
-class ExplainBindingsComponent extends Component {
-  onClickMe() {
-    console.log(this);
-  }
-
-  render() {
-    return (
-      <button
-        onClick={this.onClickMe}
-        type="button"
-      >
-        Click Me
-      </button>
-    );
-  }
-}
-~~~~~~~~
+	class ExplainBindingsComponent extends Component {
+	  onClickMe() {
+	    console.log(this);
+	  }
+	
+	  render() {
+	    return (
+	      <button
+	        onClick={this.onClickMe}
+	        type="button"
+	      >
+	        Click Me
+	      </button>
+	    );
+	  }
+	}
 
 O componente renderiza normalmente, mas quando você clica no botão, obtém `undefined` no console. Essa é uma das maiores fontes de _bugs_ quando se usa React. Você deseja usar `this.state` em um método de classe e ele não está acessível, porque `this` é `undefined`. Para corrigir isso, você precisa criar o _binding_ entre o método e `this`.
 
 No exemplo a seguir, o método é propriamente vinculado a `this` dentro do construtor da classe.
 
 {title="Code Playground",lang=javascript}
-~~~~~~~~
-class ExplainBindingsComponent extends Component {
-# leanpub-start-insert
-  constructor() {
-    super();
-
-    this.onClickMe = this.onClickMe.bind(this);
-  }
-# leanpub-end-insert
-
-  onClickMe() {
-    console.log(this);
-  }
-
-  render() {
-    return (
-      <button
-        onClick={this.onClickMe}
-        type="button"
-      >
-        Click Me
-      </button>
-    );
-  }
-}
-~~~~~~~~
+	class ExplainBindingsComponent extends Component {
+	# leanpub-start-insert
+	  constructor() {
+	    super();
+	
+	    this.onClickMe = this.onClickMe.bind(this);
+	  }
+	# leanpub-end-insert
+	
+	  onClickMe() {
+	    console.log(this);
+	  }
+	
+	  render() {
+	    return (
+	      <button
+	        onClick={this.onClickMe}
+	        type="button"
+	      >
+	        Click Me
+	      </button>
+	    );
+	  }
+	}
 
 Executando novamente o teste, o objeto `this` (ou, sendo mais específico, a instância de classe) está definido nesse contexto e você tem acesso a `this.state`, ou `this.props`, que você conhecerá depois.  
 
 O _binding_ de métodos também poderia ser feito em outros lugares, como no `render()`, por exemplo.
 
 {title="Code Playground",lang=javascript}
-~~~~~~~~
-class ExplainBindingsComponent extends Component {
-  onClickMe() {
-    console.log(this);
-  }
-
-  render() {
-    return (
-      <button
-# leanpub-start-insert
-        onClick={this.onClickMe.bind(this)}
-# leanpub-end-insert
-        type="button"
-      >
-        Click Me
-      </button>
-    );
-  }
-}
-~~~~~~~~
+	class ExplainBindingsComponent extends Component {
+	  onClickMe() {
+	    console.log(this);
+	  }
+	
+	  render() {
+	    return (
+	      <button
+	# leanpub-start-insert
+	        onClick={this.onClickMe.bind(this)}
+	# leanpub-end-insert
+	        type="button"
+	      >
+	        Click Me
+	      </button>
+	    );
+	  }
+	}
 
 Apesar de possível, deve ser evitado, porque a vinculação do método seria feira todas as vezes que `render()` for chamado. Como basicamente ele roda todas as vezes que seu componente é atualizado, isso poderia trazer implicações de performance. Quando o _binding_ ocorre no construtor, o processo só ocorre uma vez: quando o componente é instanciado. Essa é a melhor abordagem a ser escolhida.
 
 Outra coisa que, uma vez ou outra, alguém acaba fazendo, é definir a lógica de negócios dos métodos de classe dentro do construtor.
 
 {title="Code Playground",lang=javascript}
-~~~~~~~~
-class ExplainBindingsComponent extends Component {
-  constructor() {
-    super();
-
-# leanpub-start-insert
-    this.onClickMe = () => {
-      console.log(this);
-    }
-# leanpub-end-insert
-  }
-
-  render() {
-    return (
-      <button
-        onClick={this.onClickMe}
-        type="button"
-      >
-        Click Me
-      </button>
-    );
-  }
-}
-~~~~~~~~
+	class ExplainBindingsComponent extends Component {
+	  constructor() {
+	    super();
+	
+	# leanpub-start-insert
+	    this.onClickMe = () => {
+	      console.log(this);
+	    }
+	# leanpub-end-insert
+	  }
+	
+	  render() {
+	    return (
+	      <button
+	        onClick={this.onClickMe}
+	        type="button"
+	      >
+	        Click Me
+	      </button>
+	    );
+	  }
+	}
 
 Essa prática também deveria ser evitada, porque ela irá transformar seu construtor em uma bagunça ao longo do tempo. A finalidade do construtor é instanciar sua classe com todas as propriedades. Por isso, a lógica de negócio dos métodos de classe deve ser definida fora dele.
 
 {title="Code Playground",lang=javascript}
-~~~~~~~~
-class ExplainBindingsComponent extends Component {
-  constructor() {
-    super();
-
-    this.doSomething = this.doSomething.bind(this);
-    this.doSomethingElse = this.doSomethingElse.bind(this);
-  }
-
-  doSomething() {
-    // do something
-  }
-
-  doSomethingElse() {
-    // do something else
-  }
-
-  ...
-}
-~~~~~~~~
+	class ExplainBindingsComponent extends Component {
+	  constructor() {
+	    super();
+	
+	    this.doSomething = this.doSomething.bind(this);
+	    this.doSomethingElse = this.doSomethingElse.bind(this);
+	  }
+	
+	  doSomething() {
+	    // do something
+	  }
+	
+	  doSomethingElse() {
+	    // do something else
+	  }
+	
+	  ...
+	}
 
 Por fim, devo mencionar que métodos de classe podem ser automaticamente vinculados sem fazê-lo explicitamente, com o uso de _arrow functions_.
 
 {title="Code Playground",lang=javascript}
-~~~~~~~~
-class ExplainBindingsComponent extends Component {
-  onClickMe = () => {
-    console.log(this);
-  }
-
-  render() {
-    return (
-      <button
-        onClick={this.onClickMe}
-        type="button"
-      >
-        Click Me
-      </button>
-    );
-  }
-}
-~~~~~~~~
+	class ExplainBindingsComponent extends Component {
+	  onClickMe = () => {
+	    console.log(this);
+	  }
+	
+	  render() {
+	    return (
+	      <button
+	        onClick={this.onClickMe}
+	        type="button"
+	      >
+	        Click Me
+	      </button>
+	    );
+	  }
+	}
 
 Se a repetição do processo de _binding_ no construtor não lhe agrada, você pode seguir nessa abordagem. Como a documentação oficial de React continua utilizando _bindings_ no construtor, este livro irá fazê-lo também.
 
@@ -548,199 +502,183 @@ Se a repetição do processo de _binding_ no construtor não lhe agrada, você p
 Este capítulo deve lhe dar um melhor entendimento sobre tratamento de eventos em elementos. Na sua aplicação, você usa o elemento `button` a seguir para remover um item da lista:
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-...
-
-<button
-  onClick={() => this.onDismiss(item.objectID)}
-  type="button"
->
-  Dismiss
-</button>
-
-...
-~~~~~~~~
+	...
+	
+	<button
+	  onClick={() => this.onDismiss(item.objectID)}
+	  type="button"
+	>
+	  Dismiss
+	</button>
+	
+	...
 
 Este exemplo é um tanto quanto complexo. Você tem que passar um valor para o método de classe e, para tal, precisa encapsulá-lo em outra função (uma _arrow function_). Basicamente, o que precisa ser passado como argumento para _event handler_ é uma função, não sua chamada. O código a seguir não funcionaria, porque o método de classe seria imediatamente executado quando você abrisse sua aplicação no navegador.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-...
-
-<button
-  onClick={this.onDismiss(item.objectID)}
-  type="button"
->
-  Dismiss
-</button>
-
-...
-~~~~~~~~
+	...
+	
+	<button
+	  onClick={this.onDismiss(item.objectID)}
+	  type="button"
+	>
+	  Dismiss
+	</button>
+	
+	...
 
 Quando usamos `onClick={executarAlgo()}`, a função `executarAlgo()` seria executada imediatamente após a aplicação abrir no _browser_. A expressão passada para o _handler_ é avaliada e, como o valor retornado não é uma função, nada irá acontecer quando você clicar no botão. Mas, quando fazemos `onClick={executarAlgo}`, onde `executarAlgo` é o nome de uma função, essa só será executada quando o botão for clicado. A mesma regra se aplica para o método `onDismiss` usado em sua aplicação.
 
 Entretanto, não é suficiente declarar `onClick={this.onDismiss}`, porque precisamos passar a propriedade `item.objectID` para o método, para identificar qual item será removido. Por esse motivo, usamos uma _arrow function_ como _wrapper_, utilizando o conceito conhecido em JavaScript como _high-order function_ , que será brevemente explicado mais tarde.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-...
-
-<button
-  onClick={() => this.onDismiss(item.objectID)}
-  type="button"
->
-  Dismiss
-</button>
-
-...
-~~~~~~~~
+	...
+	
+	<button
+	  onClick={() => this.onDismiss(item.objectID)}
+	  type="button"
+	>
+	  Dismiss
+	</button>
+	
+	...
 
 Uma outra alternativa seria definir a função _wrapper_ em algum outro lugar e passá-la como argumento para to tratamento do evento. Uma vez que precisa ter acesso ao item, ela deve residir dentro do bloco da função _map_.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-  render() {
-    return (
-      <div className="App">
-        {this.state.list.map(item => {
-# leanpub-start-insert
-          const onHandleDismiss = () =>
-            this.onDismiss(item.objectID);
-# leanpub-end-insert
-
-          return (
-            <div key={item.objectID}>
-              <span>
-                <a href={item.url}>{item.title}</a>
-              </span>
-              <span>{item.author}</span>
-              <span>{item.num_comments}</span>
-              <span>{item.points}</span>
-              <span>
-                <button
-# leanpub-start-insert
-                  onClick={onHandleDismiss}
-# leanpub-end-insert
-                  type="button"
-                >
-                  Dismiss
-                </button>
-              </span>
-            </div>
-          );
-        }
-        )}
-      </div>
-    );
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    return (
+	      <div className="App">
+	        {this.state.list.map(item => {
+	# leanpub-start-insert
+	          const onHandleDismiss = () =>
+	            this.onDismiss(item.objectID);
+	# leanpub-end-insert
+	
+	          return (
+	            <div key={item.objectID}>
+	              <span>
+	                <a href={item.url}>{item.title}</a>
+	              </span>
+	              <span>{item.author}</span>
+	              <span>{item.num_comments}</span>
+	              <span>{item.points}</span>
+	              <span>
+	                <button
+	# leanpub-start-insert
+	                  onClick={onHandleDismiss}
+	# leanpub-end-insert
+	                  type="button"
+	                >
+	                  Dismiss
+	                </button>
+	              </span>
+	            </div>
+	          );
+	        }
+	        )}
+	      </div>
+	    );
+	  }
+	}
 
 No fim das contas, o _event handler_ do elemento precisa receber uma função. Como exemplo, faça o teste com esse código, que faz o contrário:
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-  render() {
-    return (
-      <div className="App">
-        {this.state.list.map(item =>
-            ...
-            <span>
-              <button
-# leanpub-start-insert
-                onClick={console.log(item.objectID)}
-# leanpub-end-insert
-                type="button"
-              >
-                Dismiss
-              </button>
-            </span>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    return (
+	      <div className="App">
+	        {this.state.list.map(item =>
+	            ...
+	            <span>
+	              <button
+	# leanpub-start-insert
+	                onClick={console.log(item.objectID)}
+	# leanpub-end-insert
+	                type="button"
+	              >
+	                Dismiss
+	              </button>
+	            </span>
+	          </div>
+	        )}
+	      </div>
+	    );
+	  }
+	}
 
 A função é executada assim que você abre a aplicação no navegador, mas não quando você clica no botão. Enquanto que o código a seguir só roda no momento do clique. É uma função que é executada quando você dispara o evento.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-...
-
-<button
-# leanpub-start-insert
-  onClick={function () {
-    console.log(item.objectID)
-  }}
-# leanpub-end-insert
-  type="button"
->
-  Dismiss
-</button>
-
-...
-~~~~~~~~
+	...
+	
+	<button
+	# leanpub-start-insert
+	  onClick={function () {
+	    console.log(item.objectID)
+	  }}
+	# leanpub-end-insert
+	  type="button"
+	>
+	  Dismiss
+	</button>
+	
+	...
 
 Visando manter o código conciso, você pode transformá-la de volta uma uma _arrow function_, fazendo o mesmo que fizemos com o método de classe `onDismiss()`.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-...
-
-<button
-# leanpub-start-insert
-  onClick={() => console.log(item.objectID)}
-# leanpub-end-insert
-  type="button"
->
-  Dismiss
-</button>
-
-...
-~~~~~~~~
+	...
+	
+	<button
+	# leanpub-start-insert
+	  onClick={() => console.log(item.objectID)}
+	# leanpub-end-insert
+	  type="button"
+	>
+	  Dismiss
+	</button>
+	
+	...
 
 Frequentemente, novatos em React têm dificuldades com este tópico do uso de funções no tratamento de eventos. Por isso, me alonguei tentando explicar em maiores detalhes.
 
 Feita isso, agora você deve ter o seguinte código no botão, com uma _arrow function_ _inline_  concisa que tem acesso à propriedade `objectID` do objeto item:
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-  ...
-
-  render() {
-    return (
-      <div className="App">
-        {this.state.list.map(item =>
-          <div key={item.objectID}>
-            ...
-            <span>
-# leanpub-start-insert
-              <button
-                onClick={() => this.onDismiss(item.objectID)}
-                type="button"
-              >
-                Dismiss
-              </button>
-# leanpub-end-insert
-            </span>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	  ...
+	
+	  render() {
+	    return (
+	      <div className="App">
+	        {this.state.list.map(item =>
+	          <div key={item.objectID}>
+	            ...
+	            <span>
+	# leanpub-start-insert
+	              <button
+	                onClick={() => this.onDismiss(item.objectID)}
+	                type="button"
+	              >
+	                Dismiss
+	              </button>
+	# leanpub-end-insert
+	            </span>
+	          </div>
+	        )}
+	      </div>
+	    );
+	  }
+	}
 
 Outro tópico relevante que sempre é mencionado, relacionado à performance, trata sobre as implicações do uso de _arrow functions_ em _event handlers_. Por exemplo, tomemos o caso do `onClick` com uma _arrow function_ envolvendo o `onDismiss`. Todas as vezes que o método `render()` for executado, o _event handler_ irá instanciar a função. Isso _pode_ ter um certo impacto na performance da sua aplicação. Na maioria dos casos, porém, você não irar notar a diferença.
 
@@ -757,144 +695,132 @@ Adicionemos outra interação à aplicação, tendo uma experiência com _forms_
 O primeiro passo é definir um _form_ com um campo de _input_ em seu JSX.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-  render() {
-    return (
-      <div className="App">
-# leanpub-start-insert
-        <form>
-          <input type="text" />
-        </form>
-# leanpub-end-insert
-        {this.state.list.map(item =>
-          ...
-        )}
-      </div>
-    );
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    return (
+	      <div className="App">
+	# leanpub-start-insert
+	        <form>
+	          <input type="text" />
+	        </form>
+	# leanpub-end-insert
+	        {this.state.list.map(item =>
+	          ...
+	        )}
+	      </div>
+	    );
+	  }
+	}
 
 Você irá digitar no _input_ e filtrar a lista por esse termo de busca. Para tanto, você precisa armazenar o valor digitado em seu estado local. Mas, como acessar o valor? É possível utilizar **synthetic events** em React para acessar os detalhes do evento.
 
 Vamos definir um _event handler_  `onChange` para o campo _input_.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-  render() {
-    return (
-      <div className="App">
-        <form>
-# leanpub-start-insert
-          <input
-            type="text"
-            onChange={this.onSearchChange}
-          />
-# leanpub-end-insert
-        </form>
-        ...
-      </div>
-    );
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    return (
+	      <div className="App">
+	        <form>
+	# leanpub-start-insert
+	          <input
+	            type="text"
+	            onChange={this.onSearchChange}
+	          />
+	# leanpub-end-insert
+	        </form>
+	        ...
+	      </div>
+	    );
+	  }
+	}
 
 A função está vinculada ao componente e, portanto, novamente temos um método de classe. Você ainda precisa do _binding_  e definir o método em si.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      list,
-    };
-
-# leanpub-start-insert
-    this.onSearchChange = this.onSearchChange.bind(this);
-# leanpub-end-insert
-    this.onDismiss = this.onDismiss.bind(this);
-  }
-
-# leanpub-start-insert
-  onSearchChange() {
-    ...
-  }
-# leanpub-end-insert
-
-  ...
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  constructor(props) {
+	    super(props);
+	
+	    this.state = {
+	      list,
+	    };
+	
+	# leanpub-start-insert
+	    this.onSearchChange = this.onSearchChange.bind(this);
+	# leanpub-end-insert
+	    this.onDismiss = this.onDismiss.bind(this);
+	  }
+	
+	# leanpub-start-insert
+	  onSearchChange() {
+	    ...
+	  }
+	# leanpub-end-insert
+	
+	  ...
+	}
 
 Utilizando um _event handler_ em seu elemento, você ganha acesso ao _synthetic event_ de React na assinatura da função que utilizou como _callback_.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-# leanpub-start-insert
-  onSearchChange(event) {
-# leanpub-end-insert
-    ...
-  }
-
-  ...
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	# leanpub-start-insert
+	  onSearchChange(event) {
+	# leanpub-end-insert
+	    ...
+	  }
+	
+	  ...
+	}
 
 O evento tem o _value_ do campo _input_ no seu objeto _target_. Consequentemente, você consegue atualizar o estado local com o termo da busca utilizando `this.setState()` novamente.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-  onSearchChange(event) {
-# leanpub-start-insert
-    this.setState({ searchTerm: event.target.value });
-# leanpub-end-insert
-  }
-
-  ...
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	  onSearchChange(event) {
+	# leanpub-start-insert
+	    this.setState({ searchTerm: event.target.value });
+	# leanpub-end-insert
+	  }
+	
+	  ...
+	}
 
 Ademais, você não deveria esquecer de definir o estado inicial para a propriedade `searchTerm` em seu construtor. O campo _input_ estará vazio de início e, portanto, o valor deveria ser uma _string_ vazia.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      list,
-# leanpub-start-insert
-      searchTerm: '',
-# leanpub-end-insert
-    };
-
-    this.onSearchChange = this.onSearchChange.bind(this);
-    this.onDismiss = this.onDismiss.bind(this);
-  }
-
-  ...
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  constructor(props) {
+	    super(props);
+	
+	    this.state = {
+	      list,
+	# leanpub-start-insert
+	      searchTerm: '',
+	# leanpub-end-insert
+	    };
+	
+	    this.onSearchChange = this.onSearchChange.bind(this);
+	    this.onDismiss = this.onDismiss.bind(this);
+	  }
+	
+	  ...
+	}
 
 Agora, todas as vezes que o calor no campo de _input _ muda, você está armazenando o valor digitado no estado interno do seu componente.
 
@@ -903,30 +829,28 @@ Um breve comentário a respeito da atualização do estado local em um component
 Voltemos à sua aplicação. A lista ainda não é temporariamente filtrada com base no valor do campo _input_ que está armazenado no seu estado local, mas você já tem em mão tudo o que precisa para fazê-lo. Como? No seu método `render()`, antes de iterar sobre a lista usando _map_, você pode aplicar um filtro à ela, que apenas avaliaria se `searchTerm` coincide com o a propriedade _title_ do item. Vamos usar a funcionalidade _filter_, nativa de JavaScript e já demonstrada anteriormente. Como _filter_ retorna um novo _array_, você pode convenientemente chamá-la antes de _map_.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-  render() {
-    return (
-      <div className="App">
-        <form>
-          <input
-            type="text"
-            onChange={this.onSearchChange}
-          />
-        </form>
-# leanpub-start-insert
-        {this.state.list.filter(...).map(item =>
-# leanpub-end-insert
-          ...
-        )}
-      </div>
-    );
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    return (
+	      <div className="App">
+	        <form>
+	          <input
+	            type="text"
+	            onChange={this.onSearchChange}
+	          />
+	        </form>
+	# leanpub-start-insert
+	        {this.state.list.filter(...).map(item =>
+	# leanpub-end-insert
+	          ...
+	        )}
+	      </div>
+	    );
+	  }
+	}
 
 Desta vez, iremos adotar uma abordagem diferente sobre a função _filter_. Queremos definir o seu argumento (outra função) fora do componente. Lá, não temos acesso ao estado do componente e, por consequência, à propriedade `searchTerm` para avaliar a condição de filtragem. Teremos que passar o `searchTerm` como argumento e retornar uma nova função, que avalia a condição. Esse tipo de função retornada por outra função é chamada de _high-order function_.
 
@@ -935,40 +859,36 @@ Normalmente eu não mencionaria _higher-order functions_, mas faz todo o sentido
 Primeiro, você terá que definir a _high-order function_ fora do componente App.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-# leanpub-start-insert
-function isSearched(searchTerm) {
-  return function(item) {
-    // some condition which returns true or false
-  }
-}
-# leanpub-end-insert
-
-class App extends Component {
-
-  ...
-
-}
-~~~~~~~~
+	# leanpub-start-insert
+	function isSearched(searchTerm) {
+	  return function(item) {
+	    // some condition which returns true or false
+	  }
+	}
+	# leanpub-end-insert
+	
+	class App extends Component {
+	
+	  ...
+	
+	}
 
 A função recebe o `searchTerm` e retorna outra função, porque é o que _filter_ espera como entrada. A função retornada terá acesso ao objeto item, pois será argumento da função _filter_. A filtragem será feita baseada na condição definida nela, que é o que faremos agora.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-function isSearched(searchTerm) {
-  return function(item) {
-# leanpub-start-insert
-    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
-# leanpub-end-insert
-  }
-}
-
-class App extends Component {
-
-  ...
-
-}
-~~~~~~~~
+	function isSearched(searchTerm) {
+	  return function(item) {
+	# leanpub-start-insert
+	    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
+	# leanpub-end-insert
+	  }
+	}
+	
+	class App extends Component {
+	
+	  ...
+	
+	}
 
 A condição diz que devemos comparar o padrão recebido em `searchTerm` com a propriedade `title` do item da lista. Você pode fazê-lo utilizando `includes`, funcionalidade nativa de JavaScript. Quando o padrão coincide, você retorna _true_ e o item permanece na lista. Senão, o item é removido. Mas, tenha cuidado com comparações de padrões: Você não pode esquecer de formatar ambas as _strings_, transformando seus caracteres em minúsculas. Caso contrário, o título "Redux" e o termo de busca "redux" serão considerados diferentes.
 
@@ -977,59 +897,53 @@ Uma vez que estamos trabalhando com listas imutáveis e uma nova lista é retorn
 Uma última coisa a mencionar: "Apelamos" um pouco, utilizando o recuso _includes_ já de ES6. Como faríamos o mesmo, em JavaScript ES5? Você usaria a função `inderOf()` para pegar o índice do item na lista.
 
 {title="Code Playground",lang="javascript"}
-~~~~~~~~
-// ES5
-string.indexOf(pattern) !== -1
-
-// ES6
-string.includes(pattern)
-~~~~~~~~
+	// ES5
+	string.indexOf(pattern) !== -1
+	
+	// ES6
+	string.includes(pattern)
 
 Outra refatoração elegante pode ser feita utilizando-se novamente uma _arrow function_, tornando a função mais concisa:
 
 {title="Code Playground",lang="javascript"}
-~~~~~~~~
-// ES5
-function isSearched(searchTerm) {
-  return function(item) {
-    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
-  }
-}
-
-// ES6
-const isSearched = searchTerm => item =>
-  item.title.toLowerCase().includes(searchTerm.toLowerCase());
-~~~~~~~~
+	// ES5
+	function isSearched(searchTerm) {
+	  return function(item) {
+	    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
+	  }
+	}
+	
+	// ES6
+	const isSearched = searchTerm => item =>
+	  item.title.toLowerCase().includes(searchTerm.toLowerCase());
 
 Qual das funções é mais legível, vai depender de cada um. Pessoalmente, eu prefiro a segunda opção. O ecossistema de React usa muitos conceitos de programação funcional. Corriqueiramente, você irá utilizar uma função que retorna outra função (_high order function_). Em JavaScript ES6, você pode expressá-las de forma mais concisa com _arrow functions_.
 
 Por fim, você tem que usar a função definida `isSearched()` para filtrar sua lista. Você passa a propriedade `searchTerm` do seu estado local para a função, ela retorna outra função como _input_ de _filter_ e filtra sua lista baseada na condição descrita. Depois disso tudo, iteramos sobre a lista filtrada usando _map_ para exibir um elemento para cada item da lista.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-  render() {
-    return (
-      <div className="App">
-        <form>
-          <input
-            type="text"
-            onChange={this.onSearchChange}
-          />
-        </form>
-# leanpub-start-insert
-        {this.state.list.filter(isSearched(this.state.searchTerm)).map(item =>
-# leanpub-end-insert
-          ...
-        )}
-      </div>
-    );
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    return (
+	      <div className="App">
+	        <form>
+	          <input
+	            type="text"
+	            onChange={this.onSearchChange}
+	          />
+	        </form>
+	# leanpub-start-insert
+	        {this.state.list.filter(isSearched(this.state.searchTerm)).map(item =>
+	# leanpub-end-insert
+	          ...
+	        )}
+	      </div>
+	    );
+	  }
+	}
 
 A funcionalidade de buscar deve funcionar agora. Tente você mesmo, no seu navegador.
 
@@ -1040,91 +954,83 @@ A funcionalidade de buscar deve funcionar agora. Tente você mesmo, no seu naveg
 
 ## ES6 Destructuring
 
-There is a way in JavaScript ES6 for an easier access to properties in objects and arrays. It's called destructuring. Compare the following snippet in JavaScript ES5 and ES6.
+Existe um jeito em JavaScript ES6 para acessar propriedades de objetos mais facilmente: É chamado de _destructuring_. Compare os seguintes trechos de código, em JavaScript ES5 e ES6:
 
 {title="Code Playground",lang="javascript"}
-~~~~~~~~
-const user = {
-  firstname: 'Robin',
-  lastname: 'Wieruch',
-};
+	const user = {
+	  firstname: 'Robin',
+	  lastname: 'Wieruch',
+	};
+	
+	// ES5
+	var firstname = user.firstname;
+	var lastname = user.lastname;
+	
+	console.log(firstname + ' ' + lastname);
+	// output: Robin Wieruch
+	
+	// ES6
+	const { firstname, lastname } = user;
+	
+	console.log(firstname + ' ' + lastname);
+	// output: Robin Wieruch
 
-// ES5
-var firstname = user.firstname;
-var lastname = user.lastname;
+Enquanto que, com JavaScript ES5, você precisa de mais uma instrução de código todas as vezes que quer acessar uma propriedade de um objeto, em ES6 você pode fazê-lo de uma só vez em uma única linha.
 
-console.log(firstname + ' ' + lastname);
-// output: Robin Wieruch
-
-// ES6
-const { firstname, lastname } = user;
-
-console.log(firstname + ' ' + lastname);
-// output: Robin Wieruch
-~~~~~~~~
-
-While you have to add an extra line each time you want to access an object property in JavaScript ES5, you can do it in one line in JavaScript ES6. A best practice for readability is to use multilines when you destructure an object into multiple properties.
-
-{title="Code Playground",lang="javascript"}
-~~~~~~~~
-const {
-  firstname,
-  lastname
-} = user;
-~~~~~~~~
-
-The same goes for arrays. You can destructure them too. Again, multilines will keep your code scannable and readable.
+Uma boa prática, visando legibilidade, é fazer _destructuring_ de múltiplas propriedades quebrando-o em várias linhas:
 
 {title="Code Playground",lang="javascript"}
-~~~~~~~~
-const users = ['Robin', 'Andrew', 'Dan'];
-const [
-  userOne,
-  userTwo,
-  userThree
-] = users;
+	const {
+	  firstname,
+	  lastname
+	} = user;
 
-console.log(userOne, userTwo, userThree);
-// output: Robin Andrew Dan
-~~~~~~~~
+O mesmo vale para _arrays_, que também podem sofrer _destructuring_.
 
-Perhaps you have noticed that the local state object in the App component can get destructured the same way. You can shorten the filter and map line of code.
+{title="Code Playground",lang="javascript"}
+	const users = ['Robin', 'Andrew', 'Dan'];
+	const [
+	  userOne,
+	  userTwo,
+	  userThree
+	] = users;
+	
+	console.log(userOne, userTwo, userThree);
+	// output: Robin Andrew Dan
+
+Talvez você tenha notado que o objeto do estado local do componente App pode ser “desestruturado” (iremos nos alternar entre “desestruturação” e o original “_destructuring_” no texto, uma vez que é importante saber o termo amplamente conhecido na comunidade) da mesma forma. A linha de código com _filter_ e _map_ ficará menor.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-  render() {
-# leanpub-start-insert
-    const { searchTerm, list } = this.state;
-# leanpub-end-insert
-    return (
-      <div className="App">
-        ...
-# leanpub-start-insert
-        {list.filter(isSearched(searchTerm)).map(item =>
-# leanpub-end-insert
-          ...
-        )}
-      </div>
-    );
-~~~~~~~~
+	  render() {
+	# leanpub-start-insert
+	    const { searchTerm, list } = this.state;
+	# leanpub-end-insert
+	    return (
+	      <div className="App">
+	        ...
+	# leanpub-start-insert
+	        {list.filter(isSearched(searchTerm)).map(item =>
+	# leanpub-end-insert
+	          ...
+	        )}
+	      </div>
+	    );
 
-You can do it the ES5 or ES6 way:
+Novamente, o jeito ES5 e o ES6:
 
 {title="Code Playground",lang="javascript"}
-~~~~~~~~
-// ES5
-var searchTerm = this.state.searchTerm;
-var list = this.state.list;
+	// ES5
+	var searchTerm = this.state.searchTerm;
+	var list = this.state.list;
+	
+	// ES6
+	const { searchTerm, list } = this.state;
 
-// ES6
-const { searchTerm, list } = this.state;
-~~~~~~~~
+Contudo, uma vez que o livro usa JavaScript ES6 a maior parte do tempo, é aconselhável que você também faça esta opção.
 
-But since the book uses JavaScript ES6 most of the time, you should stick to it.
+### Exercícios:
 
-### Exercises:
-
-* read more about [ES6 destructuring][6]
+* leia mais à respeito de [ES6 destructuring][6]
 
 ## Controlled Components
 
@@ -1137,30 +1043,28 @@ That's wrong. Form elements such as `<input>`, `<textarea>` and `<select>` hold 
 How should you do that? You only have to set the value attribute of the input field. The value is already saved in the `searchTerm` state property. So why not access it from there?
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-  render() {
-    const { searchTerm, list } = this.state;
-    return (
-      <div className="App">
-        <form>
-          <input
-            type="text"
-# leanpub-start-insert
-            value={searchTerm}
-# leanpub-end-insert
-            onChange={this.onSearchChange}
-          />
-        </form>
-        ...
-      </div>
-    );
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    const { searchTerm, list } = this.state;
+	    return (
+	      <div className="App">
+	        <form>
+	          <input
+	            type="text"
+	# leanpub-start-insert
+	            value={searchTerm}
+	# leanpub-end-insert
+	            onChange={this.onSearchChange}
+	          />
+	        </form>
+	        ...
+	      </div>
+	    );
+	  }
+	}
 
 That's it. The unidirectional data flow loop for the input field is self-contained now. The internal component state is the single source of truth for the input field.
 
@@ -1177,118 +1081,110 @@ You have one large App component now. It keeps growing and can become confusing 
 Let's start to use a component for the search input and a component for the list of items.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-  render() {
-    const { searchTerm, list } = this.state;
-    return (
-      <div className="App">
-# leanpub-start-insert
-        <Search />
-        <Table />
-# leanpub-end-insert
-      </div>
-    );
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    const { searchTerm, list } = this.state;
+	    return (
+	      <div className="App">
+	# leanpub-start-insert
+	        <Search />
+	        <Table />
+	# leanpub-end-insert
+	      </div>
+	    );
+	  }
+	}
 
 You can pass those components properties which they can use themselves. In the case of the App component it needs to pass the properties managed in the local state and its class methods.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-  render() {
-    const { searchTerm, list } = this.state;
-    return (
-      <div className="App">
-# leanpub-start-insert
-        <Search
-          value={searchTerm}
-          onChange={this.onSearchChange}
-        />
-        <Table
-          list={list}
-          pattern={searchTerm}
-          onDismiss={this.onDismiss}
-        />
-# leanpub-end-insert
-      </div>
-    );
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    const { searchTerm, list } = this.state;
+	    return (
+	      <div className="App">
+	# leanpub-start-insert
+	        <Search
+	          value={searchTerm}
+	          onChange={this.onSearchChange}
+	        />
+	        <Table
+	          list={list}
+	          pattern={searchTerm}
+	          onDismiss={this.onDismiss}
+	        />
+	# leanpub-end-insert
+	      </div>
+	    );
+	  }
+	}
 
 Now you can define the components next to your App component. Those components will be ES6 class components as well. They render the same elements like before.
 
 The first one is the Search component.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-  ...
-}
-
-# leanpub-start-insert
-class Search extends Component {
-  render() {
-    const { value, onChange } = this.props;
-    return (
-      <form>
-        <input
-          type="text"
-          value={value}
-          onChange={onChange}
-        />
-      </form>
-    );
-  }
-}
-# leanpub-end-insert
-~~~~~~~~
+	class App extends Component {
+	  ...
+	}
+	
+	# leanpub-start-insert
+	class Search extends Component {
+	  render() {
+	    const { value, onChange } = this.props;
+	    return (
+	      <form>
+	        <input
+	          type="text"
+	          value={value}
+	          onChange={onChange}
+	        />
+	      </form>
+	    );
+	  }
+	}
+	# leanpub-end-insert
 
 The second one is the Table component.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-...
-
-# leanpub-start-insert
-class Table extends Component {
-  render() {
-    const { list, pattern, onDismiss } = this.props;
-    return (
-      <div>
-        {list.filter(isSearched(pattern)).map(item =>
-          <div key={item.objectID}>
-            <span>
-              <a href={item.url}>{item.title}</a>
-            </span>
-            <span>{item.author}</span>
-            <span>{item.num_comments}</span>
-            <span>{item.points}</span>
-            <span>
-              <button
-                onClick={() => onDismiss(item.objectID)}
-                type="button"
-              >
-                Dismiss
-              </button>
-            </span>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
-# leanpub-end-insert
-~~~~~~~~
+	...
+	
+	# leanpub-start-insert
+	class Table extends Component {
+	  render() {
+	    const { list, pattern, onDismiss } = this.props;
+	    return (
+	      <div>
+	        {list.filter(isSearched(pattern)).map(item =>
+	          <div key={item.objectID}>
+	            <span>
+	              <a href={item.url}>{item.title}</a>
+	            </span>
+	            <span>{item.author}</span>
+	            <span>{item.num_comments}</span>
+	            <span>{item.points}</span>
+	            <span>
+	              <button
+	                onClick={() => onDismiss(item.objectID)}
+	                type="button"
+	              >
+	                Dismiss
+	              </button>
+	            </span>
+	          </div>
+	        )}
+	      </div>
+	    );
+	  }
+	}
+	# leanpub-end-insert
 
 Now you have three ES6 class components. Perhaps you have noticed the `props` object that is accessible via the class instance by using `this`. The props, short form for properties, have all the values you have passed to the components when you used them in your App component. That way, components can pass properties down the component tree.
 
@@ -1304,57 +1200,53 @@ By extracting those components from the App component, you would be able to reus
 There is one more little property which is accessible in the props object: the `children` prop. You can use it to pass elements to your components from above, which are unknown to the component itself, but make it possible to compose components into each other. Let's see how this looks like when you only pass a text (string) as a child to the Search component.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-  render() {
-    const { searchTerm, list } = this.state;
-    return (
-      <div className="App">
-# leanpub-start-insert
-        <Search
-          value={searchTerm}
-          onChange={this.onSearchChange}
-        >
-          Search
-        </Search>
-# leanpub-end-insert
-        <Table
-          list={list}
-          pattern={searchTerm}
-          onDismiss={this.onDismiss}
-        />
-      </div>
-    );
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    const { searchTerm, list } = this.state;
+	    return (
+	      <div className="App">
+	# leanpub-start-insert
+	        <Search
+	          value={searchTerm}
+	          onChange={this.onSearchChange}
+	        >
+	          Search
+	        </Search>
+	# leanpub-end-insert
+	        <Table
+	          list={list}
+	          pattern={searchTerm}
+	          onDismiss={this.onDismiss}
+	        />
+	      </div>
+	    );
+	  }
+	}
 
 Now the Search component can destructure the children property from the props object. Then it can specify where the children should be displayed.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class Search extends Component {
-  render() {
-# leanpub-start-insert
-    const { value, onChange, children } = this.props;
-# leanpub-end-insert
-    return (
-      <form>
-# leanpub-start-insert
-        {children} <input
-# leanpub-end-insert
-          type="text"
-          value={value}
-          onChange={onChange}
-        />
-      </form>
-    );
-  }
-}
-~~~~~~~~
+	class Search extends Component {
+	  render() {
+	# leanpub-start-insert
+	    const { value, onChange, children } = this.props;
+	# leanpub-end-insert
+	    return (
+	      <form>
+	# leanpub-start-insert
+	        {children} <input
+	# leanpub-end-insert
+	          type="text"
+	          value={value}
+	          onChange={onChange}
+	        />
+	      </form>
+	    );
+	  }
+	}
 
 The "Search" text should be visible next to your input field now. When you use the Search component somewhere else, you can choose a different text if you like. After all, it is not only text that you can pass as children. You can pass an element and element trees (which can be encapsulated by components again) as children. The children property makes it possible to weave components into each other.
 
@@ -1369,82 +1261,76 @@ Reusable and composable components empower you to come up with capable component
 Let's define one more reusable component, a Button component, which gets reused more often eventually.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class Button extends Component {
-  render() {
-    const {
-      onClick,
-      className,
-      children,
-    } = this.props;
-
-    return (
-      <button
-        onClick={onClick}
-        className={className}
-        type="button"
-      >
-        {children}
-      </button>
-    );
-  }
-}
-~~~~~~~~
+	class Button extends Component {
+	  render() {
+	    const {
+	      onClick,
+	      className,
+	      children,
+	    } = this.props;
+	
+	    return (
+	      <button
+	        onClick={onClick}
+	        className={className}
+	        type="button"
+	      >
+	        {children}
+	      </button>
+	    );
+	  }
+	}
 
 It might seem redundant to declare such a component. You will use a `Button` component instead of a `button` element. It only spares the `type="button"`. Except for the type attribute you have to define everything else when you want to use the Button component. But you have to think about the long term investment here. Imagine you have several buttons in your application, but want to change an attribute, style or behavior for the button. Without the component you would have to refactor every button. Instead the Button component ensures to have only one single source of truth. One Button to refactor all buttons at once. One Button to rule them all.
 
 Since you already have a button element, you can use the Button component instead. It omits the type attribute, because the Button component specifies it.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class Table extends Component {
-  render() {
-    const { list, pattern, onDismiss } = this.props;
-    return (
-      <div>
-        {list.filter(isSearched(pattern)).map(item =>
-          <div key={item.objectID}>
-            <span>
-              <a href={item.url}>{item.title}</a>
-            </span>
-            <span>{item.author}</span>
-            <span>{item.num_comments}</span>
-            <span>{item.points}</span>
-            <span>
-# leanpub-start-insert
-              <Button onClick={() => onDismiss(item.objectID)}>
-                Dismiss
-              </Button>
-# leanpub-end-insert
-            </span>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
-~~~~~~~~
+	class Table extends Component {
+	  render() {
+	    const { list, pattern, onDismiss } = this.props;
+	    return (
+	      <div>
+	        {list.filter(isSearched(pattern)).map(item =>
+	          <div key={item.objectID}>
+	            <span>
+	              <a href={item.url}>{item.title}</a>
+	            </span>
+	            <span>{item.author}</span>
+	            <span>{item.num_comments}</span>
+	            <span>{item.points}</span>
+	            <span>
+	# leanpub-start-insert
+	              <Button onClick={() => onDismiss(item.objectID)}>
+	                Dismiss
+	              </Button>
+	# leanpub-end-insert
+	            </span>
+	          </div>
+	        )}
+	      </div>
+	    );
+	  }
+	}
 
 The Button component expects a `className` property in the props. The `className` attribute is another React derivate for the HTML attribute class. But we didn't pass any `className` when the Button was used. In the code it should be more explicit in the Button component that the `className` is optional.
 
 Therefore, you can use the default parameter which is a JavaScript ES6 feature.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class Button extends Component {
-  render() {
-    const {
-      onClick,
-# leanpub-start-insert
-      className = '',
-# leanpub-end-insert
-      children,
-    } = this.props;
-
-    ...
-  }
-}
-~~~~~~~~
+	class Button extends Component {
+	  render() {
+	    const {
+	      onClick,
+	# leanpub-start-insert
+	      className = '',
+	# leanpub-end-insert
+	      children,
+	    } = this.props;
+	
+	    ...
+	  }
+	}
 
 Now, whenever there is no `className` property specified when using the Button component, the value will be an empty string instead of `undefined`.
 
@@ -1467,77 +1353,69 @@ So basically there are only two component declarations left. But when to use fun
 Let's get back to your application. The App component uses internal state. That's why it has to stay as an ES6 class component. But the other three of your ES6 class components are stateless. They don't need access to `this.state` or `this.setState()`. Even more, they have no lifecycle methods. Let's refactor together the Search component to a stateless functional component. The Table and Button component refactoring will remain as your exercise.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-# leanpub-start-insert
-function Search(props) {
-  const { value, onChange, children } = props;
-  return (
-    <form>
-      {children} <input
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
-    </form>
-  );
-}
-# leanpub-end-insert
-~~~~~~~~
+	# leanpub-start-insert
+	function Search(props) {
+	  const { value, onChange, children } = props;
+	  return (
+	    <form>
+	      {children} <input
+	        type="text"
+	        value={value}
+	        onChange={onChange}
+	      />
+	    </form>
+	  );
+	}
+	# leanpub-end-insert
 
 That's basically it. The props are accessible in the function signature and the return value is JSX. But you can do more code wise in a functional stateless component. You already know the ES6 destructuring. The best practice is to use it in the function signature to destructure the props.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-# leanpub-start-insert
-function Search({ value, onChange, children }) {
-# leanpub-end-insert
-  return (
-    <form>
-      {children} <input
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
-    </form>
-  );
-}
-~~~~~~~~
+	# leanpub-start-insert
+	function Search({ value, onChange, children }) {
+	# leanpub-end-insert
+	  return (
+	    <form>
+	      {children} <input
+	        type="text"
+	        value={value}
+	        onChange={onChange}
+	      />
+	    </form>
+	  );
+	}
 
 But it can get better. You know already that ES6 arrow functions allow you to keep your functions concise. You can remove the block body of the function. In a concise body an implicit return is attached thus you can remove the return statement. Since your functional stateless component is a function, you can keep it concise as well.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-# leanpub-start-insert
-const Search = ({ value, onChange, children }) =>
-  <form>
-    {children} <input
-      type="text"
-      value={value}
-      onChange={onChange}
-    />
-  </form>
-# leanpub-end-insert
-~~~~~~~~
+	# leanpub-start-insert
+	const Search = ({ value, onChange, children }) =>
+	  <form>
+	    {children} <input
+	      type="text"
+	      value={value}
+	      onChange={onChange}
+	    />
+	  </form>
+	# leanpub-end-insert
 
 The last step was especially useful to enforce only to have props as input and JSX as output. Nothing in between. Still, you could *do something* in between by using a block body in your ES6 arrow function.
 
 {title="Code Playground",lang=javascript}
-~~~~~~~~
-const Search = ({ value, onChange, children }) => {
-
-  // do something
-
-  return (
-    <form>
-      {children} <input
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
-    </form>
-  );
-}
-~~~~~~~~
+	const Search = ({ value, onChange, children }) => {
+	
+	  // do something
+	
+	  return (
+	    <form>
+	      {children} <input
+	        type="text"
+	        value={value}
+	        onChange={onChange}
+	      />
+	    </form>
+	  );
+	}
 
 But you don't need it for now. That's why you can keep the previous version without the block body. When using block bodies, people often tend to do too many things in the function. By leaving the block body out, you can focus on the input and output of your function.
 
@@ -1555,251 +1433,239 @@ Let's add some basic styling to your application and components. You can reuse t
 First, styling for your overall application.
 
 {title="src/index.css",lang="css"}
-~~~~~~~~
-body {
-  color: #222;
-  background: #f4f4f4;
-  font: 400 14px CoreSans, Arial,sans-serif;
-}
-
-a {
-  color: #222;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-ul, li {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-input {
-  padding: 10px;
-  border-radius: 5px;
-  outline: none;
-  margin-right: 10px;
-  border: 1px solid #dddddd;
-}
-
-button {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #dddddd;
-  background: transparent;
-  color: #808080;
-  cursor: pointer;
-}
-
-button:hover {
-  color: #222;
-}
-
-*:focus {
-  outline: none;
-}
-~~~~~~~~
+	body {
+	  color: #222;
+	  background: #f4f4f4;
+	  font: 400 14px CoreSans, Arial,sans-serif;
+	}
+	
+	a {
+	  color: #222;
+	}
+	
+	a:hover {
+	  text-decoration: underline;
+	}
+	
+	ul, li {
+	  list-style: none;
+	  padding: 0;
+	  margin: 0;
+	}
+	
+	input {
+	  padding: 10px;
+	  border-radius: 5px;
+	  outline: none;
+	  margin-right: 10px;
+	  border: 1px solid #dddddd;
+	}
+	
+	button {
+	  padding: 10px;
+	  border-radius: 5px;
+	  border: 1px solid #dddddd;
+	  background: transparent;
+	  color: #808080;
+	  cursor: pointer;
+	}
+	
+	button:hover {
+	  color: #222;
+	}
+	
+	*:focus {
+	  outline: none;
+	}
 
 Second, styling for your components in the App file.
 
 {title="src/App.css",lang="css"}
-~~~~~~~~
-.page {
-  margin: 20px;
-}
-
-.interactions {
-  text-align: center;
-}
-
-.table {
-  margin: 20px 0;
-}
-
-.table-header {
-  display: flex;
-  line-height: 24px;
-  font-size: 16px;
-  padding: 0 10px;
-  justify-content: space-between;
-}
-
-.table-empty {
-  margin: 200px;
-  text-align: center;
-  font-size: 16px;
-}
-
-.table-row {
-  display: flex;
-  line-height: 24px;
-  white-space: nowrap;
-  margin: 10px 0;
-  padding: 10px;
-  background: #ffffff;
-  border: 1px solid #e3e3e3;
-}
-
-.table-header > span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0 5px;
-}
-
-.table-row > span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0 5px;
-}
-
-.button-inline {
-  border-width: 0;
-  background: transparent;
-  color: inherit;
-  text-align: inherit;
-  -webkit-font-smoothing: inherit;
-  padding: 0;
-  font-size: inherit;
-  cursor: pointer;
-}
-
-.button-active {
-  border-radius: 0;
-  border-bottom: 1px solid #38BB6C;
-}
-~~~~~~~~
+	.page {
+	  margin: 20px;
+	}
+	
+	.interactions {
+	  text-align: center;
+	}
+	
+	.table {
+	  margin: 20px 0;
+	}
+	
+	.table-header {
+	  display: flex;
+	  line-height: 24px;
+	  font-size: 16px;
+	  padding: 0 10px;
+	  justify-content: space-between;
+	}
+	
+	.table-empty {
+	  margin: 200px;
+	  text-align: center;
+	  font-size: 16px;
+	}
+	
+	.table-row {
+	  display: flex;
+	  line-height: 24px;
+	  white-space: nowrap;
+	  margin: 10px 0;
+	  padding: 10px;
+	  background: #ffffff;
+	  border: 1px solid #e3e3e3;
+	}
+	
+	.table-header > span {
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  padding: 0 5px;
+	}
+	
+	.table-row > span {
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  padding: 0 5px;
+	}
+	
+	.button-inline {
+	  border-width: 0;
+	  background: transparent;
+	  color: inherit;
+	  text-align: inherit;
+	  -webkit-font-smoothing: inherit;
+	  padding: 0;
+	  font-size: inherit;
+	  cursor: pointer;
+	}
+	
+	.button-active {
+	  border-radius: 0;
+	  border-bottom: 1px solid #38BB6C;
+	}
 
 Now you can use the style in some of your components. Don't forget to use React `className` instead of `class` as HTML attribute.
 
 First, apply it in your App ES6 class component.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-class App extends Component {
-
-  ...
-
-  render() {
-    const { searchTerm, list } = this.state;
-    return (
-# leanpub-start-insert
-      <div className="page">
-        <div className="interactions">
-# leanpub-end-insert
-          <Search
-            value={searchTerm}
-            onChange={this.onSearchChange}
-          >
-            Search
-          </Search>
-# leanpub-start-insert
-        </div>
-# leanpub-end-insert
-        <Table
-          list={list}
-          pattern={searchTerm}
-          onDismiss={this.onDismiss}
-        />
-# leanpub-start-insert
-      </div>
-# leanpub-end-insert
-    );
-  }
-}
-~~~~~~~~
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    const { searchTerm, list } = this.state;
+	    return (
+	# leanpub-start-insert
+	      <div className="page">
+	        <div className="interactions">
+	# leanpub-end-insert
+	          <Search
+	            value={searchTerm}
+	            onChange={this.onSearchChange}
+	          >
+	            Search
+	          </Search>
+	# leanpub-start-insert
+	        </div>
+	# leanpub-end-insert
+	        <Table
+	          list={list}
+	          pattern={searchTerm}
+	          onDismiss={this.onDismiss}
+	        />
+	# leanpub-start-insert
+	      </div>
+	# leanpub-end-insert
+	    );
+	  }
+	}
 
 Second, apply it in your Table functional stateless component.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-const Table = ({ list, pattern, onDismiss }) =>
-# leanpub-start-insert
-  <div className="table">
-# leanpub-end-insert
-    {list.filter(isSearched(pattern)).map(item =>
-# leanpub-start-insert
-      <div key={item.objectID} className="table-row">
-# leanpub-end-insert
-        <span>
-          <a href={item.url}>{item.title}</a>
-        </span>
-        <span>{item.author}</span>
-        <span>{item.num_comments}</span>
-        <span>{item.points}</span>
-        <span>
-          <Button
-            onClick={() => onDismiss(item.objectID)}
-# leanpub-start-insert
-            className="button-inline"
-# leanpub-end-insert
-          >
-            Dismiss
-          </Button>
-        </span>
-# leanpub-start-insert
-      </div>
-# leanpub-end-insert
-    )}
-# leanpub-start-insert
-  </div>
-# leanpub-end-insert
-~~~~~~~~
+	const Table = ({ list, pattern, onDismiss }) =>
+	# leanpub-start-insert
+	  <div className="table">
+	# leanpub-end-insert
+	    {list.filter(isSearched(pattern)).map(item =>
+	# leanpub-start-insert
+	      <div key={item.objectID} className="table-row">
+	# leanpub-end-insert
+	        <span>
+	          <a href={item.url}>{item.title}</a>
+	        </span>
+	        <span>{item.author}</span>
+	        <span>{item.num_comments}</span>
+	        <span>{item.points}</span>
+	        <span>
+	          <Button
+	            onClick={() => onDismiss(item.objectID)}
+	# leanpub-start-insert
+	            className="button-inline"
+	# leanpub-end-insert
+	          >
+	            Dismiss
+	          </Button>
+	        </span>
+	# leanpub-start-insert
+	      </div>
+	# leanpub-end-insert
+	    )}
+	# leanpub-start-insert
+	  </div>
+	# leanpub-end-insert
 
 Now you have styled your application and components with basic CSS. It should look quite decent. As you know, JSX mixes up HTML and JavaScript. Now one could argue to add CSS in the mix as well. That's called inline style. You can define JavaScript objects and pass them to the style attribute of an element.
 
 Let's keep the Table column width flexible by using inline style.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-const Table = ({ list, pattern, onDismiss }) =>
-  <div className="table">
-    {list.filter(isSearched(pattern)).map(item =>
-      <div key={item.objectID} className="table-row">
-# leanpub-start-insert
-        <span style={{ width: '40%' }}>
-          <a href={item.url}>{item.title}</a>
-        </span>
-        <span style={{ width: '30%' }}>
-          {item.author}
-        </span>
-        <span style={{ width: '10%' }}>
-          {item.num_comments}
-        </span>
-        <span style={{ width: '10%' }}>
-          {item.points}
-        </span>
-        <span style={{ width: '10%' }}>
-          <Button
-            onClick={() => onDismiss(item.objectID)}
-            className="button-inline"
-          >
-            Dismiss
-          </Button>
-        </span>
-# leanpub-end-insert
-      </div>
-    )}
-  </div>
-~~~~~~~~
+	const Table = ({ list, pattern, onDismiss }) =>
+	  <div className="table">
+	    {list.filter(isSearched(pattern)).map(item =>
+	      <div key={item.objectID} className="table-row">
+	# leanpub-start-insert
+	        <span style={{ width: '40%' }}>
+	          <a href={item.url}>{item.title}</a>
+	        </span>
+	        <span style={{ width: '30%' }}>
+	          {item.author}
+	        </span>
+	        <span style={{ width: '10%' }}>
+	          {item.num_comments}
+	        </span>
+	        <span style={{ width: '10%' }}>
+	          {item.points}
+	        </span>
+	        <span style={{ width: '10%' }}>
+	          <Button
+	            onClick={() => onDismiss(item.objectID)}
+	            className="button-inline"
+	          >
+	            Dismiss
+	          </Button>
+	        </span>
+	# leanpub-end-insert
+	      </div>
+	    )}
+	  </div>
 
 The style is inlined now. You could define the style objects outside of your elements to make it cleaner.
 
 {title="Code Playground",lang="javascript"}
-~~~~~~~~
-const largeColumn = {
-  width: '40%',
-};
-
-const midColumn = {
-  width: '30%',
-};
-
-const smallColumn = {
-  width: '10%',
-};
-~~~~~~~~
+	const largeColumn = {
+	  width: '40%',
+	};
+	
+	const midColumn = {
+	  width: '30%',
+	};
+	
+	const smallColumn = {
+	  width: '10%',
+	};
 
 After that you would use them in your columns: `<span style={smallColumn}>`.
 
