@@ -952,7 +952,7 @@ A funcionalidade de buscar deve funcionar agora. Tente você mesmo, no seu naveg
 * Leia mais sobre [React events][4]
 * Leia mais sobre [higher order functions][5]
 
-## ES6 Destructuring
+## ES6 _Destructuring_
 
 Existe um jeito em JavaScript ES6 para acessar propriedades de objetos mais facilmente: É chamado de _destructuring_. Compare os seguintes trechos de código, em JavaScript ES5 e ES6:
 
@@ -975,7 +975,7 @@ Existe um jeito em JavaScript ES6 para acessar propriedades de objetos mais faci
 	console.log(firstname + ' ' + lastname);
 	// output: Robin Wieruch
 
-Enquanto que, com JavaScript ES5, você precisa de mais uma instrução de código todas as vezes que quer acessar uma propriedade de um objeto, em ES6 você pode fazê-lo de uma só vez em uma única linha.
+Enquanto que, em JavaScript ES5, você precisa de uma instrução de código a mais todas as vezes que quer acessar uma propriedade de um objeto, em ES6 você pode fazê-lo de uma só vez, em uma única linha.
 
 Uma boa prática, visando legibilidade, é fazer _destructuring_ de múltiplas propriedades quebrando-o em várias linhas:
 
@@ -1030,7 +1030,7 @@ Contudo, uma vez que o livro usa JavaScript ES6 a maior parte do tempo, é acons
 
 ### Exercícios:
 
-* leia mais à respeito de [ES6 destructuring][6]
+* leia mais a respeito de [ES6 destructuring][6]
 
 ## Controlled Components
 
