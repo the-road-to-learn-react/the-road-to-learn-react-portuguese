@@ -1040,7 +1040,7 @@ Mas, não teríamos esquecido de alguma coisa no elemento _input_? A _tag_ HTML 
 
 Errado. Elementos de _forms_ como `<input>`, `<textarea>` e `<select>` possuem seu próprio estado em HTML puro. Eles modificam o valor internamente quando alguém de fora do componente o muda. Em React, isso é chamado de um **componente não controlado**, porque ele gerencia seu próprio estado. Você deve garantir-se de fazê-los **componentes controlados**.
 
-Mas, como fazê-lo? Você só precisa definir o atributo “_value_” de um campo de _input_. O valor aqui, neste exemplo, já está salvo na propriedade `searchTerm` do estado do componente. Por que não acessá-lo, então?
+Mas, como fazê-lo? Você só precisa definir o atributo “\_value\_” de um campo de _input_. O valor aqui, neste exemplo, já está salvo na propriedade `searchTerm` do estado do componente. Por que não acessá-lo, então?
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1074,11 +1074,11 @@ Toda essa história de gerenciamento de estado interno e fluxo unidirecional de 
 
 * Leia mais sobre [React forms][7]
 
-## Split Up Components
+## Dividindo componentes
 
-You have one large App component now. It keeps growing and can become confusing eventually. You can start to split it up into chunks of smaller components.
+Você tem em mãos um componente _App_ de tamanho considerável. Ele continua crescendo e, eventualmente, pode tornar-se confuso. É possível dividi-lo partes, componentes menores.
 
-Let's start to use a component for the search input and a component for the list of items.
+Comecemos usando um componente para o _input_ de busca e um componente para a lista de itens.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1098,7 +1098,7 @@ Let's start to use a component for the search input and a component for the list
 	  }
 	}
 
-You can pass those components properties which they can use themselves. In the case of the App component it needs to pass the properties managed in the local state and its class methods.
+Você pode passar, para estes componentes, propriedades que eles podem utilizar. No caso, o componente _App_ precisa passar as propriedades gerenciadas no seu estado local e os seus métodos de classe.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1125,9 +1125,9 @@ You can pass those components properties which they can use themselves. In the c
 	  }
 	}
 
-Now you can define the components next to your App component. Those components will be ES6 class components as well. They render the same elements like before.
+Agora, você pode definir os componentes ao lado de App. Estes também serão classes ES6. Eles irão renderizar os mesmos elementos de antes.
 
-The first one is the Search component.
+O primeiro é o componente _Search_:
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1151,7 +1151,7 @@ The first one is the Search component.
 	}
 	# leanpub-end-insert
 
-The second one is the Table component.
+O segundo é o componente _Table_:
 
 {title="src/App.js",lang=javascript}
 	...
@@ -1186,14 +1186,14 @@ The second one is the Table component.
 	}
 	# leanpub-end-insert
 
-Now you have three ES6 class components. Perhaps you have noticed the `props` object that is accessible via the class instance by using `this`. The props, short form for properties, have all the values you have passed to the components when you used them in your App component. That way, components can pass properties down the component tree.
+Agora que você tem esses três componentes, talvez tenha notado o objeto `props`que é acessível na instância de classe com o uso de `this`. As `props` (diminutivo de propriedades) têm todos os valores que você passou para os componentes quando os utilizou dentro de _App_. Desta forma, componentes podem passar propriedades níveis abaixo na árvore de componentes.
 
-By extracting those components from the App component, you would be able to reuse them somewhere else. Since components get there values by using the props object, you can pass every time different props to your components when you use them somewhere else. These components became reusable.
+Tendo extraído esses componentes de _App_, você estaria apto a reutilizá-los em qualquer outro lugar. Uma vez que componentes recebem valores através do objeto _props_, você pode passar valores diferentes para seu componente a cada vez que utilizá-lo. Em outras palavras, eles se tornaram bastante reutilizáveis.
 
-### Exercises:
+### Exercícios:
 
-* figure out further components that you could split up as you have done with the Search and Table components
-  * but don't do it now, otherwise you will run into conflicts in the next chapters
+* imagine outros componentes que você poderia separar, como fez com _Search_ e _Table_.
+  * entregando, não o faça agora na prática, para não ter conflitos com o que faremos nos capítulos seguintes.
 
 ## Composable Components
 
