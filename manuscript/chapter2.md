@@ -998,7 +998,7 @@ O mesmo vale para _arrays_, que também podem sofrer _destructuring_.
 	console.log(userOne, userTwo, userThree);
 	// output: Robin Andrew Dan
 
-Talvez você tenha notado que o objeto do estado local do componente App pode ser “desestruturado” (iremos nos alternar entre “desestruturação” e o original “_destructuring_” no texto, uma vez que é importante saber o termo amplamente conhecido na comunidade) da mesma forma. A linha de código com _filter_ e _map_ ficará menor.
+Talvez você tenha notado que o objeto do estado local do componente App pode ser “desestruturado” (iremos nos alternar entre “desestruturação” e o original “\_destructuring\_” no texto, uma vez que é importante saber o termo amplamente conhecido na comunidade) da mesma forma. A linha de código com _filter_ e _map_ ficará menor.
 
 {title="src/App.js",lang=javascript}
 	  render() {
@@ -1032,15 +1032,15 @@ Contudo, uma vez que o livro usa JavaScript ES6 a maior parte do tempo, é acons
 
 * leia mais a respeito de [ES6 destructuring][6]
 
-## Controlled Components
+## Componentes Controlados
 
-You already learned about the unidirectional data flow in React. The same law applies for the input field, which updates the local state with the `searchTerm` in order to filter the list. When the state changes, the `render()` method runs again and uses the recent `searchTerm` from the local state to apply the filter condition.
+Você já tomou conhecimento do fluxo unidirecional de dados em React. A mesma lógica se aplica para o campo de _input_, que atualiza o estado local com o `searchTerm` para filtrar a lista. Quando o estado é alterado, o método  `render()` é executado novamente e utiliza o `searchTerm` mais recente do estado local para aplicar a condição de filtragem.
 
-But didn't we forget something in the input element? A HTML input tag comes with a `value` attribute. The value attribute usually has the value that is shown in the input field. In this case it would be the `searchTerm` property. However, it seems like we don't need that in React.
+Mas, não teríamos esquecido de alguma coisa no elemento _input_? A _tag_ HTML “input” possui um atributo `value`. Este, por sua vez, geralmente contém o valor que é mostrado no campo. Neste caso, a propriedade `searchTerm`. Contudo, ficou a impressão de que não precisamos disso em React.
 
-That's wrong. Form elements such as `<input>`, `<textarea>` and `<select>` hold their own state in plain HTML. They modify the value internally once someone changes it from the outside. In React that's called an **uncontrolled component**, because it handles its own state. In React, you should make sure to make those elements **controlled components**.
+Errado. Elementos de _forms_ como `<input>`, `<textarea>` e `<select>` possuem seu próprio estado em HTML puro. Eles modificam o valor internamente quando alguém de fora do componente o muda. Em React, isso é chamado de um **componente não controlado**, porque ele gerencia seu próprio estado. Você deve garantir-se de fazê-los **componentes controlados**.
 
-How should you do that? You only have to set the value attribute of the input field. The value is already saved in the `searchTerm` state property. So why not access it from there?
+Mas, como fazê-lo? Você só precisa definir o atributo “_value_” de um campo de _input_. O valor aqui, neste exemplo, já está salvo na propriedade `searchTerm` do estado do componente. Por que não acessá-lo, então?
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1066,13 +1066,13 @@ How should you do that? You only have to set the value attribute of the input fi
 	  }
 	}
 
-That's it. The unidirectional data flow loop for the input field is self-contained now. The internal component state is the single source of truth for the input field.
+É só isso. O _loop_ do fluxo de dados unidirecional do campo _input_ torna-se auto-contido. O estado interno do componente é a única fonte confiável de dados (_single source of truth_) para o campo de _input_.
 
-The whole internal state management and unidirectional data flow might be new to you. But once you are used to it, it will be your natural flow to implement things in React. In general, React brought a novel pattern with the unidirectional data flow to the world of single page applications. It is adopted by several frameworks and libraries by now.
+Toda essa história de gerenciamento de estado interno e fluxo unidirecional de dados deve ser nova para você. Mas, uma vez acostumado, esta será o seu jeito natural de implementar coisas em React. Em geral, React trouxe um interessante novo padrão, com o fluxo de dados unidirecional, para o mundo das SPA (_single page applications_). Agora, este padrão é adotado por diversos _frameworks_ e bibliotecas no momento.
 
-### Exercises:
+### Exercícios:
 
-* read more about [React forms][7]
+* Leia mais sobre [React forms][7]
 
 ## Split Up Components
 
