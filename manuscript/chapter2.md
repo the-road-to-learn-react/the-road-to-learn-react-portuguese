@@ -1195,9 +1195,9 @@ Tendo extraído esses componentes de _App_, você estaria apto a reutilizá-los 
 * imagine outros componentes que você poderia separar, como fez com _Search_ e _Table_.
   * entregando, não o faça agora na prática, para não ter conflitos com o que faremos nos capítulos seguintes.
 
-## Composable Components
+## Composição de Componentes
 
-There is one more little property which is accessible in the props object: the `children` prop. You can use it to pass elements to your components from above, which are unknown to the component itself, but make it possible to compose components into each other. Let's see how this looks like when you only pass a text (string) as a child to the Search component.
+Existe ainda uma pequena propriedade que pode ser acessada no objeto de  _props_: a _prop_ `children`. Você pode usá-la para passar elementos dos componentes acima na hierarquia para os que estão abaixo, tornando possível combinar componentes dentro uns dos outros. Vejamos como isso é feito quando você manda apenas um texto (_string_) como _child_ para o componente _Search_.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1226,7 +1226,7 @@ There is one more little property which is accessible in the props object: the `
 	  }
 	}
 
-Now the Search component can destructure the children property from the props object. Then it can specify where the children should be displayed.
+Agora, o componente _Search_ pode desestruturar a propriedade _children_ do objeto _props_. Aí, poderá especificar onde _children_ deverá ser mostrado.
 
 {title="src/App.js",lang=javascript}
 	class Search extends Component {
@@ -1248,11 +1248,11 @@ Now the Search component can destructure the children property from the props ob
 	  }
 	}
 
-The "Search" text should be visible next to your input field now. When you use the Search component somewhere else, you can choose a different text if you like. After all, it is not only text that you can pass as children. You can pass an element and element trees (which can be encapsulated by components again) as children. The children property makes it possible to weave components into each other.
+O texto “Search” deverá estar visível próximo do campo de _input_ agora. Quando você utilizar o componente _Search_ em algum outro lugar, você poderá escolher um texto diferente, se assim quiser. No fim das contas, não é só texto que pode ser passado assim Você pode enviar um elemento (e árvores de elementos, encapsuladas por outros componentes) como _children_. Esta propriedade permite entrelaçar componentes.
 
-### Exercises:
+### Exercícios:
 
-* read more about [the composition model of React][8]
+* Leia mais sobre [o modelo de composição de React][8]
 
 ## Reusable Components
 
