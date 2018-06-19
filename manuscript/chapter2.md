@@ -1195,7 +1195,7 @@ Tendo extraído esses componentes de _App_, você estaria apto a reutilizá-los 
 * imagine outros componentes que você poderia separar, como fez com _Search_ e _Table_.
   * entregando, não o faça agora na prática, para não ter conflitos com o que faremos nos capítulos seguintes.
 
-## Composição de Componentes
+## Divisão em Componentes
 
 Existe ainda uma pequena propriedade que pode ser acessada no objeto de  _props_: a _prop_ `children`. Você pode usá-la para passar elementos dos componentes acima na hierarquia para os que estão abaixo, tornando possível combinar componentes dentro uns dos outros. Vejamos como isso é feito quando você manda apenas um texto (_string_) como _child_ para o componente _Search_.
 
@@ -1254,11 +1254,11 @@ O texto “Search” deverá estar visível próximo do campo de _input_ agora. 
 
 * Leia mais sobre [o modelo de composição de React][8]
 
-## Reusable Components
+## Componentes Reutilizáveis
 
-Reusable and composable components empower you to come up with capable component hierarchies. They are the foundation of React's view layer. The last chapters mentioned the term reusability. You can reuse the Table and Search components by now. Even the App component is reusable, because you could instantiate it somewhere else again.
+Componentes reutilizáveis e combináveis lhe dão poderes para ser capaz de produzir hierarquias qualificadas de componentes. Eles são a base da camada de visão do React. Os últimos capítulos mencionaram o termo reusabilidade. Você agora pode reutilizar os componentes _Table_ e _Search_. Até mesmo o componente _App_ é reutilizável, porque você poderia instanciá-lo em algum outro lugar.
 
-Let's define one more reusable component, a Button component, which gets reused more often eventually.
+Vamos definir mais um componente reutilizável, um componente _Button_, que irá, eventualmente, ser utilizado com mais frequência. 
 
 {title="src/App.js",lang=javascript}
 	class Button extends Component {
@@ -1281,9 +1281,9 @@ Let's define one more reusable component, a Button component, which gets reused 
 	  }
 	}
 
-It might seem redundant to declare such a component. You will use a `Button` component instead of a `button` element. It only spares the `type="button"`. Except for the type attribute you have to define everything else when you want to use the Button component. But you have to think about the long term investment here. Imagine you have several buttons in your application, but want to change an attribute, style or behavior for the button. Without the component you would have to refactor every button. Instead the Button component ensures to have only one single source of truth. One Button to refactor all buttons at once. One Button to rule them all.
+Pode parecer redundante declarar um componente como este. Você irá utilizar um componente `Button` ao invés do elemento `button`. Isto irá apenas poupar o `type="button"`. Exceto por este atributo de tipo, você precisa definir todo o resto, quando você decide usar o componente `Button`. Mas, você tem que pensar se tratar de um investimento de longo prazo. Imagine que possui vários botões em sua aplicação, mas quer mudar um atributo, estilo ou comportamento do botão. Sem o componente recém criado, você teria que manualmente refatorar cada botão. O componente _Button_ garante que existirá uma referência única, um _Button_ para refatorar todos os botões de uma só vez. “_One Button to rule them all_.”
 
-Since you already have a button element, you can use the Button component instead. It omits the type attribute, because the Button component specifies it.
+Uma vez que você já tem um elemento de botão, substitua-o pelo componente _Button_. Note que ele omite o atributo _type_, já especificado dentro do próprio componente.
 
 {title="src/App.js",lang=javascript}
 	class Table extends Component {
@@ -1313,9 +1313,9 @@ Since you already have a button element, you can use the Button component instea
 	  }
 	}
 
-The Button component expects a `className` property in the props. The `className` attribute is another React derivate for the HTML attribute class. But we didn't pass any `className` when the Button was used. In the code it should be more explicit in the Button component that the `className` is optional.
+O componente espera receber uma propriedade `className` via props. O atributo `className` é mais uma especificidade React, derivando do atributo HTML `class`. Mas, nós não passamos este atributo quando utilizamos _Button_ e, sendo assim, deveria ser mais explícito no código do componente que `className` é opcional. 
 
-Therefore, you can use the default parameter which is a JavaScript ES6 feature.
+Portanto, você deveria definir um valor padrão para o parâmetro (mais uma funcionalidade de JavaScript ES6).
 
 {title="src/App.js",lang=javascript}
 	class Button extends Component {
@@ -1332,11 +1332,11 @@ Therefore, you can use the default parameter which is a JavaScript ES6 feature.
 	  }
 	}
 
-Now, whenever there is no `className` property specified when using the Button component, the value will be an empty string instead of `undefined`.
+Agora, sempre que não houve propriedade `className` especificada quando o componente _Button_ for utilizado, o valor do atributo será uma _string_ vazia, ao invés de `undefined`.
 
-### Exercises:
+### Exercícios:
 
-* read more about [ES6 default parameters][9]
+* Leia mais a respeito de [parâmetros _default_ em ES6][9]
 
 ## Component Declarations
 
