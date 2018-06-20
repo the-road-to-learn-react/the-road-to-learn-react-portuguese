@@ -1346,11 +1346,11 @@ No momento, você tem quatro componentes implementados com classes ES6. É poss�
 
 * **Componentes de Classe ES6:** Você já utilizou este tipo de declaração de componente nos quatro que construiu até aqui, extendendo o componente React. O `extend` atrela todos os métodos de ciclo de vida, disponíveis na API de componentes React, ao componente. Assim, você pôde utilizar o método `render()`. Além disso, é possível armazenar e manipular o estado através de `this.state` e `this.setState()`.
 
-* **React.createClass:** The component declaration was used in older versions of React and still in JavaScript ES5 React applications. But [Facebook declared it as deprecated][10] in favor of JavaScript ES6. They even added a [deprecation warning in version 15.5][11]. You will not use it in the book.
+* **React.createClass:** Esta forma era utilizada nas versões mais antigas de React e ainda é, em aplicações React que utilizam JavaScript ES5. Mas, o [Facebook a declarou como _deprecated_][10], preferindo o uso de JavaScript ES6. Um [deprecation warning foi adicionado na versão 15.5][11]. Esta forma não será utilizada no livro.
 
-So basically there are only two component declarations left. But when to use functional stateless components over ES6 class components? A rule of thumb is to use functional stateless components when you don't need local state or component lifecycle methods. Usually you start to implement your components as functional stateless components. Once you need access to the state or lifecycle methods, you have to refactor it to an ES6 class component. In our application, we started the other way around for the sake of learning React.
+Assim, basicamente, sobram-nos apenas duas maneiras de declarar componentes. Mas, quando usar cada um? Uma regra simples é: use _functional stateless components_ quando você não precisa de estado ou de métodos de ciclo de vida. Geralmente, comece implementando seu componente desta forma e, uma vez que você precisa acessar o estado ou métodos de ciclo de vida, você pode refatorá-lo para um componente de classe ES6. Aqui no livro, fizemos o inverso, apenas para fins de aprendizado.
 
-Let's get back to your application. The App component uses internal state. That's why it has to stay as an ES6 class component. But the other three of your ES6 class components are stateless. They don't need access to `this.state` or `this.setState()`. Even more, they have no lifecycle methods. Let's refactor together the Search component to a stateless functional component. The Table and Button component refactoring will remain as your exercise.
+Voltemos para sua aplicação. O componente App usa diretamente o seu estado interno. Por este motivo, ele tem que permanecer escrito como um componente de classe. Mas, os outros três componentes não precisam acessar `this.state` ou `this.setState()`, muito menos possuem algum método de ciclo de vida. Vamos, juntos, refatorar o componente _Search_ para um _stateless functional component_. _Table_ e _Button_ ficarão como exercício para você.
 
 {title="src/App.js",lang=javascript}
 	# leanpub-start-insert
@@ -1368,7 +1368,7 @@ Let's get back to your application. The App component uses internal state. That'
 	}
 	# leanpub-end-insert
 
-That's basically it. The props are accessible in the function signature and the return value is JSX. But you can do more code wise in a functional stateless component. You already know the ES6 destructuring. The best practice is to use it in the function signature to destructure the props.
+Basicamente, é isso: as props estão acessíveis na assinatura da função e o seu retorno é código JSX. Mas, você pode melhorar ainda mais o código. Da mesma forma que você utilizou _destructuring_ antes, pode fazê-lo novamente no parâmetro _props_ da assinatura da função.
 
 {title="src/App.js",lang=javascript}
 	# leanpub-start-insert
