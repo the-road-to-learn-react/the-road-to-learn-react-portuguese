@@ -1428,11 +1428,11 @@ Agora, você tem um _stateless functional component_ super enxuto. Se, em algum 
 * refatore _Table_ e _Button_ para _stateless functional compotes_
 * Leia mais a respeito de [componentes de classe ES6 e functional stateless components][12]
 
-## Styling Components
+## Estilizando Componentes
 
-Let's add some basic styling to your application and components. You can reuse the *src/App.css* and *src/index.css* files. These files should already be in your project since you have bootstrapped it with *create-react-app*. They should be imported in your *src/App.js* and *src/index.js* files too. I prepared some CSS which you can simply copy and paste to these files, but feel free to use your own style at this point.
+Adicionemos alguns estilos básicos à nossa aplicação e aos nossos componentes. Você pode reutilizar os arquivos _src/App.css_ e _src/index.css_. Estes arquivos já devem estar presentes em seu projeto, uma vez que você o criou utilizado o _create-react-app_. Devem ter sido importados em seus arquivos _src/App.js_ e _src/Index.js_, respectivamente. Eu preparei alguns estilos que você pode simplesmente copiar e colar nesses arquivos. Mas, sinta-se livre para user seus próprios CSS, se quiser.
 
-First, styling for your overall application.
+Primeiramente, estilizando sua aplicação de um modo geral:
 
 {title="src/index.css",lang="css"}
 	body {
@@ -1480,7 +1480,7 @@ First, styling for your overall application.
 	  outline: none;
 	}
 
-Second, styling for your components in the App file.
+Em seguida, estilos para seus componentes no arquivo _App_:
 
 {title="src/App.css",lang="css"}
 	.page {
@@ -1547,9 +1547,9 @@ Second, styling for your components in the App file.
 	  border-bottom: 1px solid #38BB6C;
 	}
 
-Now you can use the style in some of your components. Don't forget to use React `className` instead of `class` as HTML attribute.
+Agora, você pode utilizá-los em alguns dos seus componentes. Não se esqueça de usar, como atributo HTML, `className` (de React) no lugar de `class`.
 
-First, apply it in your App ES6 class component.
+Primeiramente, aplicaremos os estilos no componente _App_:
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1584,7 +1584,7 @@ First, apply it in your App ES6 class component.
 	  }
 	}
 
-Second, apply it in your Table functional stateless component.
+Depois, faça o mesmo para o componente _Table_.
 
 {title="src/App.js",lang=javascript}
 	const Table = ({ list, pattern, onDismiss }) =>
@@ -1619,9 +1619,9 @@ Second, apply it in your Table functional stateless component.
 	  </div>
 	# leanpub-end-insert
 
-Now you have styled your application and components with basic CSS. It should look quite decent. As you know, JSX mixes up HTML and JavaScript. Now one could argue to add CSS in the mix as well. That's called inline style. You can define JavaScript objects and pass them to the style attribute of an element.
+Você estilizou sua aplicação e componentes com CSS básico. Ela deve ter um visual minimamente decente, agora. Como você bem sabe, JSX mistura HTML e JavaScript. Sendo assim, alguém pode argumentar que é perfeitamente aceitável misturar CSS também (_inline styles_). Você pode definir objetos JavaScript e passá-los para o atributo _style_ de um elemento.  
 
-Let's keep the Table column width flexible by using inline style.
+Vamos definir uma coluna de largura dinâmica em Table, utilizando um _inline style_:
 
 {title="src/App.js",lang=javascript}
 	const Table = ({ list, pattern, onDismiss }) =>
@@ -1654,7 +1654,7 @@ Let's keep the Table column width flexible by using inline style.
 	    )}
 	  </div>
 
-The style is inlined now. You could define the style objects outside of your elements to make it cleaner.
+Se quiser, você pode definir seus objetos de estilos fora dos elementos, mantendo-os mais limpos.
 
 {title="Code Playground",lang="javascript"}
 	const largeColumn = {
@@ -1669,38 +1669,38 @@ The style is inlined now. You could define the style objects outside of your ele
 	  width: '10%',
 	};
 
-After that you would use them in your columns: `<span style={smallColumn}>`.
+Finalmente, você pode utilizá-los em suas colunas: `<span style={smallColumn}>`.
 
-In general, you will find different opinions and solutions for style in React. You used pure CSS and inline style now. That's sufficient to get started.
+Em geral, você irá encontrar diferentes opções e soluções para aplicar estilos em React. Utilizamos CSS puro e _inline styles_, até agora. É o suficiente para iniciar.
 
-I don't want to be opinionated here, but I want to leave you some more options. You can read about them and apply them on your own. But if you are new to React, I would recommend to stick to pure CSS and inline style for now.
+Não quero ser dogmático aqui, mas irei lhe deixar mais algumas opções. Você pode ler a respeito delas e aplicá-las por sua própria conta. Mas, se você é novo em React, eu recomendaria que permaneça com CSS puro e estilos _inline_, por enquanto.
 
 * [styled-components][13]
 * [CSS Modules][14]
 
 {pagebreak}
 
-You have learned the basics to write your own React application! Let's recap the last chapters:
+Você aprendeu o básico para escrever sua própria aplicação React! Recapitulemos os últimos capítulos:
 
 * React
-  * use `this.state` and `setState()` to manage your internal component state
-  * pass functions or class methods to your element handler
-  * use forms and events in React to add interactions
-  * unidirectional data flow is an important concept in React
-  * embrace controlled components
-  * compose components with children and reusable components
-  * usage and implementation of ES6 class components and functional stateless components
-  * approaches to style your components
+	* use `this.state` e `setState()` para gerenciar o estado interno do seu componente
+	 * como passar funções ou métodos de classe para _element handlers_
+	 * utilizando _forms_ e eventos em React para adicionar interações
+	 * o fluxo de dados unidirecional unidirectional é um importante conceito em React
+	 * adote a prática de componentes controlados
+	 * compondo componentes com componentes filhos reutilizáveis
+	 * implementação e uso de componentes de classe ES6 e _stateless functional components_
+	 * abordagens para estilizar seus componentes
 * ES6
-  * functions that are bound to a class are class methods
-  * destructuring of objects and arrays
-  * default parameters
-* General
-  * higher order functions
+	 * funções que são atreladas à uma classe são métodos de classe
+	 * _destructuring_ de objetos e arrays
+	 * parâmetros _default_
+* Geral
+	 * _higher order functions_
 
-Again it makes sense to take a break. Internalize the learnings and apply them on your own. You can experiment with the source code you have written so far. Additionally you can read more in the official [documentation][15].
+Mais uma vez, é recomendável fazer um intervalo na leitura. Internalize o que aprendeu de novo e pratique. Faça experiências com o código-fonte que você escreveu até agora. Ademais, você pode também ler mais a respeito dos assuntos aqui discorridos na [documentação oficial][15].
 
-You can find the source code in the [official repository][16].
+Você pode encontrar o código-fonte deste capítulo no [repositório oficial][16].
 
 [1]:	https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor
 [2]:	https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer
