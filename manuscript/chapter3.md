@@ -69,11 +69,11 @@ Existe mais um método de ciclo de vida: `componentDidCatch(error, info)`. Ele f
 * Leia mais sobre [o estado e sua relação com métodos de ciclo de vida][7]
 * Leia mais sobre [tratamento de erros em componentes][8]
 
-## Fetching Data
+## Obtendo Dados
 
-Now you are prepared to fetch data from the Hacker News API. There was one lifecycle method mentioned that can be used to fetch data: `componentDidMount()`. You will use the native fetch API in JavaScript to perform the request.
+Você está agora preparado para obter dados da API Hacker News. Um método de ciclo de vida foi mencionado como apropriado para este uso: `componentDidMount()`. Você usará a API **fetch**, nativa de JavaScript, para efetuar a requisição.
 
-Before we can use it, let's set up the URL constants and default parameters to breakup the API request into chunks.
+Antes que possamos fazê-lo, vamos configurar as constantes de URL e parâmetros _default_, para decompor a requisição em pedaços menores.
 
 {title="src/App.js",lang=javascript}
 	import React, { Component } from 'react';
@@ -89,7 +89,7 @@ Before we can use it, let's set up the URL constants and default parameters to b
 	
 	...
 
-In JavaScript ES6, you can use [template strings][9] to concatenate strings. You will use it to concatenate your URL for the API endpoint.
+Em JavaScript ES6, você pode utilizar [template strings][9] para concatenar strings. Você fará isso aqui, para concatenar sua URL para o _endpoint_ da API.
 
 {title="Code Playground",lang="javascript"}
 	// ES6
@@ -101,9 +101,9 @@ In JavaScript ES6, you can use [template strings][9] to concatenate strings. You
 	console.log(url);
 	// output: https://hn.algolia.com/api/v1/search?query=redux
 
-That will keep your URL composition flexible in the future.
+Este formato irá manter a composição da sua URL flexível no futuro.
 
-But let's get to the API request where you will use the url. The whole data fetch process will be presented at once, but each step will be explained afterward.
+Agora, vejamos a requisição à API, onde você usará esta URL. O processo inteiro de obtenção dos dados será apresentado de uma só vez, mas cada passo será explicado posteriormente.
 
 {title="src/App.js",lang=javascript}
 	...
@@ -145,19 +145,21 @@ But let's get to the API request where you will use the url. The whole data fetc
 	  ...
 	}
 
-A lot of things happen in the code. I thought about breaking it into smaller pieces. Then again it would be difficult to grasp the relations of each piece to each other. Let me explain each step in detail.
+Um monte de coisas aconteceu neste código. Eu até pensei em quebrá-lo em pedaços menores. Mas, de novo, ficaria difícil de compreender as relações entre as partes. Deixe-me explicar cada passo em detalhes.
 
-First, you can remove the sample list of items, because you return a real list from the Hacker News API. The sample data is not used anymore. The initial state of your component has an empty result and default search term now. The same default search term is used in the input field of the Search component and in your first request.
+Primeiro, você pode remover a lista de itens criada como amostra de dados, porque a API do Hacker News retorna uma lista real, a amostra não será mais utilizada. O estado inicial do seu componente tem um `result`vazio e um termo de busca (`searchTerm`) padrão agora. O mesmo termo de busca é usado no campo _input_ do componente _Search_ e na sua primeira requisição.
 
-Second, you use the `componentDidMount()` lifecycle method to fetch the data after the component did mount. In the very first fetch, the default search term from the local state is used. It will fetch "redux" related stories, because that is the default parameter.
+Segundo, você utiliza o método `componentDidMount` para obter os dados depois que o componente é montado. Na primeira chamada de _fetch_, o termo de busca _default_ do estado local é utilizado. Ela irá buscar discussões relacionadas com “redux”.
 
-Third, the native fetch API is used. The JavaScript ES6 template strings allow it to compose the URL with the `searchTerm`. The URL is the argument for the native fetch API function. The response needs to get transformed to a JSON data structure, which is a mandatory step in a native fetch function when dealing with JSON data structures, and can finally be set as result in the internal component state. In addition, the catch block is used in case of an error. If an error happens during the request, the function will run into the catch block instead of the then block. In a later chapter of the book, you will include the error handling.
+Terceiro, a API nativa _fetch_ é utilizada. O uso de _template strings_ de JavaScript ES6 possibilita a composição da URL com o `searchTerm`. Ela (a URL) é o argumento para a função nativa _fetch_.  A resposta então precisa ser transformada em uma estrutura de dados JSON, um passo mandatório neste caso (_fetch_ nativo lidando com estruturas de dados JSON). E, finalmente, a resposta pode ser atribuída a _result_no estado interno do component. Ademais, o block `catch` é utilizado em caso de um erro ocorrer. Se isto acontecer, o fluxo será desviado para o bloco _catch_  ao invés do _then_. Em um capítulo futuro, você irá incluir o tratamento para os erros.
 
-Last but not least, don't forget to bind your new component method in the constructor.
+Por último, não menos importante, não se esqueça de fazer o _binding_ do novo método no seu construtor.
 
-Now you can use the fetched data instead of the sample list of items. However, you have to be careful again. The result is not only a list of data. [It's a complex object with meta information and a list of hits which are in our case the stories][10]. You can output the internal state with `console.log(this.state);` in your `render()` method to visualize it.
+Você agora consegue utilizar os dados obtidos ao invés da amostra inicial. Contudo, tenha cuidado. O resultado não é apenas uma lista de dados. [É um objeto complexo com _metadados_ e uma lista de itens que são, no nosso caso, nossas discussões][10]. Você pode imprimir o estado interno com `console.log(this.state);` no seu método `render()`, a fim de visualizá-lo melhor.
 
-In the next step, you will use the result to render it. But we will prevent it from rendering anything, so we will return null, when there is no result in the first place. Once the request to the API succeeded, the result is saved to the state and the App component will re-render with the updated state.
+(**Nota do Tradutor:** No texto original, o autor refere-se às discussões como _stories_. Iremos usar as formas “discussões” e “posts” aqui). 
+
+No passo seguinte, você irá renderizar o valor em _result_. Iremos evitar que qualquer coisa seja renderizada, retornando _null_ quando não existir um resultado.  Uma vez que a requisição à API foi bem sucedida o resultado é salvo em _state_ e o componente _App_ será re-renderizado, desta vez com o estado atualizado.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -186,7 +188,7 @@ In the next step, you will use the result to render it. But we will prevent it f
 	  }
 	}
 
-Let's recap what happens during the component lifecycle. Your component gets initialized by the constructor. After that, it renders for the first time. But you prevent it from displaying anything, because the result in the local state is null. It is allowed to return null for a component in order to display nothing. Then the `componentDidMount()` lifecycle method runs. In that method you fetch the data from the Hacker News API asynchronously. Once the data arrives, it changes your internal component state in `setSearchTopStories()`. Afterward, the update lifecycle comes into play because the local state was updated. The component runs the `render()` method again, but this time with populated result in your internal component state. The component and thus the Table component with its content will be rendered.
+Vamos recapitular o que acontece durante o ciclo de vida do componente. Ele é inicializado pelo seu construtor. Depois disso, ele é renderizado pela primeira vez. Mas, você evitou que ele tentasse exibir qualquer coisa, porque `result`, no estado local, é _null_. É permitido a um componente retornar o valor _null_ para que nada seja exibido. Então, o método `componentDidMount` é executado. Neste método, você obtém os dados da API do Hacker News de forma assíncrona. Uma vez que os dados chegam, o estado interno do componente é alterado por `setSearchTopStories()`. Depois disso, o ciclo de vida de atualização entra em cena, uma vez que o estado foi atualizado. O componente executa o método `render()` novamente, mas desta vez com o resultado poupado no estado interno. O componente atual e, consequentemente, o componente _Table_ e seu conteúdo são renderizados novamente.
 
 You used the native fetch API that is supported by most browsers to perform an asynchronous request to an API. The *create-react-app* configuration makes sure that it is supported in every browser. There are third-party node packages that you can use to substitute the native fetch API: [superagent][11] and [axios][12].
 
