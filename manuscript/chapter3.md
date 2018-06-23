@@ -151,7 +151,7 @@ Primeiro, você pode remover a lista de itens criada como amostra de dados, porq
 
 Segundo, você utiliza o método `componentDidMount` para obter os dados depois que o componente é montado. Na primeira chamada de _fetch_, o termo de busca _default_ do estado local é utilizado. Ela irá buscar discussões relacionadas com “redux”.
 
-Terceiro, a API nativa _fetch_ é utilizada. O uso de _template strings_ de JavaScript ES6 possibilita a composição da URL com o `searchTerm`. Ela (a URL) é o argumento para a função nativa _fetch_.  A resposta então precisa ser transformada em uma estrutura de dados JSON, um passo mandatório neste caso (_fetch_ nativo lidando com estruturas de dados JSON). E, finalmente, a resposta pode ser atribuída a _result_no estado interno do component. Ademais, o block `catch` é utilizado em caso de um erro ocorrer. Se isto acontecer, o fluxo será desviado para o bloco _catch_  ao invés do _then_. Em um capítulo futuro, você irá incluir o tratamento para os erros.
+Terceiro, a API nativa _fetch_ é utilizada. O uso de _template strings_ de JavaScript ES6 possibilita a composição da URL com o `searchTerm`. Ela (a URL) é o argumento para a função nativa _fetch_.  A resposta então precisa ser transformada em uma estrutura de dados JSON, um passo mandatório neste caso (_fetch_ nativo lidando com estruturas de dados JSON). E, finalmente, a resposta pode ser atribuída a _result_no estado interno do component. Ademais, o block `catch` é utilizado em caso de um erro ocorrer. Se isto acontecer, o fluxo será desviado para o bloco _catch\_  ao invés do _then_. Em um capítulo futuro, você irá incluir o tratamento para os erros.
 
 Por último, não menos importante, não se esqueça de fazer o _binding_ do novo método no seu construtor.
 
@@ -190,19 +190,19 @@ No passo seguinte, você irá renderizar o valor em _result_. Iremos evitar que 
 
 Vamos recapitular o que acontece durante o ciclo de vida do componente. Ele é inicializado pelo seu construtor. Depois disso, ele é renderizado pela primeira vez. Mas, você evitou que ele tentasse exibir qualquer coisa, porque `result`, no estado local, é _null_. É permitido a um componente retornar o valor _null_ para que nada seja exibido. Então, o método `componentDidMount` é executado. Neste método, você obtém os dados da API do Hacker News de forma assíncrona. Uma vez que os dados chegam, o estado interno do componente é alterado por `setSearchTopStories()`. Depois disso, o ciclo de vida de atualização entra em cena, uma vez que o estado foi atualizado. O componente executa o método `render()` novamente, mas desta vez com o resultado poupado no estado interno. O componente atual e, consequentemente, o componente _Table_ e seu conteúdo são renderizados novamente.
 
-You used the native fetch API that is supported by most browsers to perform an asynchronous request to an API. The *create-react-app* configuration makes sure that it is supported in every browser. There are third-party node packages that you can use to substitute the native fetch API: [superagent][11] and [axios][12].
+Você utilizou a função _fetch_ que é suportada pela maioria dos _browsers_ para realizar uma requisição assíncrona para uma API. A configuração do _create-react-app_ assegura que ela é suportada por todos eles. Existem, todavia, pacotes node de terceiros que podem ser utilizados como substitutos à API nativa _fetch_: [superagent][11] e [axios][12].
 
-Keep in mind that the book builds up on the JavaScript's shorthand notation for truthfulness checks. In the previous example, `if (!result)` was used in favor of `if (result === null)`. The same applies for other cases throughout the book too. For instance, `if (!list.length)` is used in favor of `if (list.length === 0)` or `if (someString)` is used in favor of `if (someString !== '')`. Read up about the topic if you are not too familiar with it.
+Este livro se baseia fortemente na notação JavaScript para checagem de dados. No exemplo anterior, `if (!result)` foi utilizado no lugar de `if (result === null)`. O mesmo se aplica para outros casos ao longo do livro, da mesma forma. Por exemplo, `if (!list.length)` é usado ao invés de `if (list.length === 0)` ou `if (someString)` no lugar de `if (someString !== '')`. Recomendo ler mais sobre este tópico, se não estiver bem familiarizado com ele.
 
-Back to your application: The list of hits should be visible now. However, there are two regression bugs in the application now. First, the "Dismiss" button is broken. It doesn't know about the complex result object and still operates on the plain list from the local state when dismissing an item. Second, when the list is displayed but you try to search for something else, the list gets filtered on the client-side even though the initial search was made by searching for stories on the server-side. The perfect behavior would be to fetch another result object from the API when using the Search component. Both regression bugs will be fixed in the following chapters.
+De volta a sua aplicação: A lista de resultados deve ser visível agora, Entretanto, existem dois _bugs_ que foram deixados para trás. Primeiro, o botão “Dismiss” está quebrado. Ele não conhece o objeto complexo de resultado e ainda funciona baseado na lista simples da amostra de dados. Segundo, quando a lista com dados do servidor é exibida e você tenta buscar por outra coisa, a filtragem ocorre apenas do lado do cliente. O comportamento esperado é que outra consulta à API ocorra. Ambos os _bugs_ serão corrigidos nos capítulos seguintes.
 
 ### Exercises:
 
-* read more about [ES6 template strings][13]
-* read more about [the native fetch API][14]
-* read more about [data fetching in React][15]
+* Leia mais a respeito de [ES6 template strings][13]
+* Leia mais a respeito de [a API nativa _fetch_][14]
+* Leia mais a respeito de [obtendo dados com React][15]
 
-## ES6 Spread Operators
+## ES6 e o Operador Spread
 
 The "Dismiss" button doesn't work because the `onDismiss()` method is not aware of the complex result object. It only knows about a plain list in the local state. But it isn't a plain list anymore. Let's change it to operate on the result object instead of the list itself.
 
