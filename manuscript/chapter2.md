@@ -1385,7 +1385,9 @@ Basicamente, é isso: as props estão acessíveis na assinatura da função e o 
 	  );
 	}
 
-But it can get better. You know already that ES6 arrow functions allow you to keep your functions concise. You can remove the block body of the function. In a concise body an implicit return is attached thus you can remove the return statement. Since your functional stateless component is a function, you can keep it concise as well.
+Mas, pode melhorar. Você ja sabe que _arrow functions_ permitem que você escreva funções mais concisas. Você pode remover os caracteres de bloco do corpo da função. Ocorre um retorno implícito e, desta forma, você pode remover também a instrução _return_.
+
+Uma vez que seu _stateless functional component_ é uma função, você pode mantê-lo conciso também.
 
 {title="src/App.js",lang=javascript}
 	# leanpub-start-insert
@@ -1399,7 +1401,7 @@ But it can get better. You know already that ES6 arrow functions allow you to ke
 	  </form>
 	# leanpub-end-insert
 
-The last step was especially useful to enforce only to have props as input and JSX as output. Nothing in between. Still, you could *do something* in between by using a block body in your ES6 arrow function.
+Este último passo foi especialmente útil: ele forçou que a função tenha apenas _props_ como entrada e JSX como saída. Contudo, se você realmente precisar fazer alguma coisa (representada aqui pelo comentário _do something_) além disso, sempre é possível devolver as declarações de bloco de corpo e do retorno da função.
 
 {title="Code Playground",lang=javascript}
 	const Search = ({ value, onChange, children }) => {
@@ -1417,14 +1419,14 @@ The last step was especially useful to enforce only to have props as input and J
 	  );
 	}
 
-But you don't need it for now. That's why you can keep the previous version without the block body. When using block bodies, people often tend to do too many things in the function. By leaving the block body out, you can focus on the input and output of your function.
+Não precisa fazê-lo agora. Eis uma motivação para manter a versão concisa: Quando utilizando a versão mais explícita, as pessoas geralmente tendem a fazer muitas coisas em uma função. Deixando a função com retorno implícito, você pode focar nos seus _inputs_ e _outputs_.
 
-Now you have one lightweight functional stateless component. Once you would need access to its internal component state or lifecycle methods, you would refactor it to an ES6 class component. In addition you saw how JavaScript ES6 can be used in React components to make them more concise and elegant.
+Agora, você tem um _stateless functional component_ super enxuto. Se, em algum momento, você precisar acessar seu estado local ou métodos de ciclo de vida, bastará refatorar seu código para um componente de classe ES6. Além disso, vimos aqui como ES6 pode ser utilizado em componentes React para torná-los mais concisos e elegantes.
 
-### Exercises:
+### Exercícios:
 
-* refactor the Table and Button component to stateless functional components
-* read more about [ES6 class components and functional stateless components][12]
+* refatore _Table_ e _Button_ para _stateless functional compotes_
+* Leia mais a respeito de [componentes de classe ES6 e functional stateless components][12]
 
 ## Styling Components
 
