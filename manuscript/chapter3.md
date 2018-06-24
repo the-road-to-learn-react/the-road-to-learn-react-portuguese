@@ -311,13 +311,13 @@ Agora, o botão “Dismiss” voltará a funcionar, uma vez que `onDismiss()` sa
 * Leia mais sobre [o operador _spread_ de _array_ em ES6][18]
 	 * O operador _spread_ de objetos é brevemente mencionado.
 
-## Conditional Rendering
+## Renderização Condicional
 
-Conditional rendering is introduced pretty early in React applications. But not in the case of the book, because there wasn't such a use case yet. The conditional rendering happens when you want to make a decision to render either one or another element. Sometimes it means to render an element or nothing. After all, a conditional rendering simplest usage can be expressed by an if-else statement in JSX.
+Renderização condicional é algo que, logo cedo, aparece em aplicações React. No livro, ainda não apareceu um caso em que fosse precisa. A renderização condicional acontece quando você quer decidir, em tempo de execução, entre renderizar um elemento ou outro. Algumas vezes, renderizar um elemento ou nada. No fim das contas, pode ser expressada como uma declaração if-else em JSX.
 
-The `result` object in the internal component state is `null` in the beginning. So far, the App component returned no elements when the `result` hasn't arrived from the API. That's already a conditional rendering, because you return earlier from the `render()` lifecycle method for a certain condition. The App component either renders nothing or its elements.
+O objeto `result` no estado interno do componente é, inicialmente, `null`. Até então, o component App não retornou nenhum elemento quando `result` não contém nada avindo da API. Não deixa de ser uma renderização condicional, uma vez que você opta por retornar mais cedo no `render()`, dada uma condição. O component App ou renderiza nada ou seus elementos.
 
-But let's go one step further. It makes more sense to wrap the Table component, which is the only component that depends on the `result`, in an independent conditional rendering. Everything else should be displayed, even though there is no `result` yet. You can simply use a ternary operator in your JSX.
+Mas, vamos dar um passo adiante. Faz mais sentido envolver o componente _Table_, que é um componente que depende de `result`, em uma condição independente de renderização. Todo o resto deve ser exibido, mesmo que ainda não haja nada em `result`. Você pode simplesmente usar um operador ternário em seu código JSX.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -353,7 +353,7 @@ But let's go one step further. It makes more sense to wrap the Table component, 
 	  }
 	}
 
-That's your second option to express a conditional rendering. A third option is the logical `&&` operator. In JavaScript a `true && 'Hello World'` always evaluates to 'Hello World'. A `false && 'Hello World'` always evaluates to false.
+Esta é sua segunda opção para expressar uma renderização condicional. Uma terceira opção é o operador lógico `&&`. Em JavaScript, um `true && 'Hello World'` sempre resulta em ‘Hello World’. Um `false && 'Hello World'` sempre resulta como _false_.
 
 {title="Code Playground",lang="javascript"}
 	const result = true && 'Hello World';
@@ -364,7 +364,7 @@ That's your second option to express a conditional rendering. A third option is 
 	console.log(result);
 	// output: false
 
-In React you can make use of that behavior. If the condition is true, the expression after the logical `&&` operator will be the output. If the condition is false, React ignores and skips the expression. It is applicable in the Table conditional rendering case, because it should return a Table or nothing.
+Em React, você pode tomar proveito deste comportamento. Se a condição é verdadeira, a expressão após o operador lógico `&&` será a saída. Se a condição é falsa, React ignora e descarta a expressão. Isso pode ser aplicado no caso da renderização condicional de _Table_, porque o retorno será _Table_ ou nada.
 
 {title="src/App.js",lang=javascript}
 	{ result &&
@@ -375,14 +375,14 @@ In React you can make use of that behavior. If the condition is true, the expres
 	  />
 	}
 
-These were a few approaches to use conditional rendering in React. You can read about [more alternatives in an exhaustive list of examples for conditional rendering approaches][19]. Moreover you will get to know their different use cases and when to apply them.
+Estas foram algumas abordagens de como implementar a renderização condicional em React. Você poderá ler [mais alternativas nesta exaustiva lista de exemplos de renderização condicional][19]. Você irá conhecer seus diferentes casos de uso e quando aplicá-los.
 
-After all, you should be able to see the fetched data in your application. Everything except the Table is displayed when the data fetching is pending. Once the request resolves the result and stores it into the local state, the Table is displayed because the `render()` method runs again and the condition in the conditional rendering resolves in favor of displaying the Table component.
+Finalmente, você deverá estar vendo os dados obtidos em sua aplicação. Tudo, menos _Table_, é exibido quando a consulta dos dados ainda está pendente. Uma vez que a requisição é completada, o resultado é armazenado no estado local e _Table_ é exibido, porque o método `render()` é novamente invocado e a condição avaliada resulta em seu favor.
 
-### Exercises:
+### Exercícios:
 
-* read more about [different ways for conditional renderings][20]
-* read more about [React conditional rendering][21]
+* Leia mais sobre [diferentes formas de renderizações condicionais][20]
+* Leia mais sobre [renderização condicional em React][21]
 
 ## Client- or Server-side Search
 
