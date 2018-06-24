@@ -384,11 +384,11 @@ Finalmente, você deverá estar vendo os dados obtidos em sua aplicação. Tudo,
 * Leia mais sobre [diferentes formas de renderizações condicionais][20]
 * Leia mais sobre [renderização condicional em React][21]
 
-## Client- or Server-side Search
+## Busca do lado do cliente ou do servidor
 
-When you use the Search component with its input field now, you will filter the list. That's happening on the client-side though. Now you are going to use the Hacker News API to search on the server-side. Otherwise you would deal only with the first API response which you got on `componentDidMount()` with the default search term parameter.
+Atualmente, quando você usa o componente _Search_ com o seu campo _input_, você irá filtrar a lista, embora isso esteja ocorrendo apenas no lado do cliente. Agora, você irá usar a API do Hacker News para realizar a busca do lado do servidor. Caso contrário, você só teria o primeiro resultado de chamada à API, feita no `componentDidMount()` com o termo de busca _default_ como parâmetro.
 
-You can define an `onSearchSubmit()` method in your App component which fetches results from the Hacker News API when executing a search in the Search component.
+Você pode definir um método `onSearchSubmit()` no seu componente _App_, que obtém resultados da API do Hacker News quando executando uma busca no componente _Search_.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -420,7 +420,7 @@ You can define an `onSearchSubmit()` method in your App component which fetches 
 	  ...
 	}
 
-The `onSearchSubmit()` method should use the same functionality as the `componentDidMount()` lifecycle method, but this time with a modified search term from the local state and not with the initial default search term. Thus you can extract the functionality as a reusable class method.
+O método `onSearchSubmit()` poderia utilizar a mesma funcionalidade que `componentDidMount()`, porém com o termo de busca modificado do estado local e não com o termo _default_ inicial. Sendo assim, você pode extrair a funcionalidade como um método de classe reutilizável.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
