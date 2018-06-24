@@ -151,7 +151,7 @@ Primeiro, você pode remover a lista de itens criada como amostra de dados, porq
 
 Segundo, você utiliza o método `componentDidMount` para obter os dados depois que o componente é montado. Na primeira chamada de _fetch_, o termo de busca _default_ do estado local é utilizado. Ela irá buscar discussões relacionadas com “redux”.
 
-Terceiro, a API nativa _fetch_ é utilizada. O uso de _template strings_ de JavaScript ES6 possibilita a composição da URL com o `searchTerm`. Ela (a URL) é o argumento para a função nativa _fetch_.  A resposta então precisa ser transformada em uma estrutura de dados JSON, um passo mandatório neste caso (_fetch_ nativo lidando com estruturas de dados JSON). E, finalmente, a resposta pode ser atribuída a _result_no estado interno do component. Ademais, o block `catch` é utilizado em caso de um erro ocorrer. Se isto acontecer, o fluxo será desviado para o bloco _catch\_  ao invés do _then_. Em um capítulo futuro, você irá incluir o tratamento para os erros.
+Terceiro, a API nativa _fetch_ é utilizada. O uso de _template strings_ de JavaScript ES6 possibilita a composição da URL com o `searchTerm`. Ela (a URL) é o argumento para a função nativa _fetch_.  A resposta então precisa ser transformada em uma estrutura de dados JSON, um passo mandatório neste caso (_fetch_ nativo lidando com estruturas de dados JSON). E, finalmente, a resposta pode ser atribuída a _result_no estado interno do component. Ademais, o block `catch` é utilizado em caso de um erro ocorrer. Se isto acontecer, o fluxo será desviado para o bloco _catch\_  ao invés do \_then\_. Em um capítulo futuro, você irá incluir o tratamento para os erros.
 
 Por último, não menos importante, não se esqueça de fazer o _binding_ do novo método no seu construtor.
 
@@ -202,9 +202,9 @@ De volta a sua aplicação: A lista de resultados deve ser visível agora, Entre
 * Leia mais a respeito de [a API nativa _fetch_][14]
 * Leia mais a respeito de [obtendo dados com React][15]
 
-## ES6 e o Operador Spread
+## ES6 e o Operador _Spread_
 
-The "Dismiss" button doesn't work because the `onDismiss()` method is not aware of the complex result object. It only knows about a plain list in the local state. But it isn't a plain list anymore. Let's change it to operate on the result object instead of the list itself.
+O botão “Dismiss” não funciona porque o método `onDismiss()` não conhece o objeto do resultado exibido. Ele ainda trata como se fosse a lista simples que era armazenada no estado local. Vamos mudar a função, para que opere sobre o objeto ao invés da lista.
 
 {title="src/App.js",lang=javascript}
 	onDismiss(id) {
@@ -217,23 +217,23 @@ The "Dismiss" button doesn't work because the `onDismiss()` method is not aware 
 	# leanpub-end-insert
 	}
 
-But what happens in `setState()` now? Unfortunately the result is a complex object. The list of hits is only one of multiple properties in the object. However, only the list gets updated, when an item gets removed in the result object, while the other properties stay the same.
+Mas  o que acontece no `setState()` agora? Infelizmente, o resultado é um objeto complexo. A lista de resultados (aqui chamados de _hits_) é apenas uma das múltiplas propriedades do objeto. Contudo, somente a lista é atualizada quando um item é removido e as outras propriedades devem permanecer as mesmas.
 
-One approach could be to mutate the hits in the result object. I will demonstrate it, but we won't do it that way.
+Uma possível abordagem seria a de mudar os _hits_ no objeto resultado, como  demonstro abaixo. Mas, não será a que adotaremos.
 
 {title="Code Playground",lang="javascript"}
 	// don`t do this
 	this.state.result.hits = updatedHits;
 
-React embraces immutable data structures. Thus you shouldn't mutate an object (or mutate the state directly). A better approach is to generate a new object based on the information you have. Thereby none of the objects get altered. You will keep the immutable data structures. You will always return a new object and never alter an object.
+React abraça a imutabilidade de estruturas de dados. Dessa forma, você não deveria modificar diretamente um objeto. Uma abordagem melhor é a de gerar um novo objeto, baseado na informação que você tem. Nenhum dos objetos é realmente manipulado, você irá manter as estruturas de dados imutáveis, sempre retornando um novo objeto.
 
-Therefore you can use JavaScript ES6 `Object.assign()`. It takes as first argument a target object. All following arguments are source objects. These objects are merged into the target object. The target object can be an empty object. It embraces immutability, because no source object gets mutated. It would look similar to the following:
+Você pode usar `Object.assign()`, de JavaScript ES6, que recebe como primeiro argumento o objeto alvo. Todos os outros argumentos são objetos fontes de dados, que são combinados no objeto alvo que, por sua vez, pode ser um objeto vazio. A imutabilidade é preservada aqui, uma vez que nenhum dos objetos originais é modificado. Seria algo mais ou menos assim:
 
 {title="Code Playground",lang="javascript"}
 	const updatedHits = { hits: updatedHits };
 	const updatedResult = Object.assign({}, this.state.result, updatedHits);
 
-Latter objects will override former merged objects when they share the same property names. Now let's do it in the `onDismiss()` method:
+Quando objetos de origem possuírem propriedades de mesmo nome, as do objeto que aparecer primeiro como argumento serão sobrescritas por aquelas do que aparecer depois, no objeto de destino. Apliquemos o mesmo raciocínio para o método `onDismiss()`:
 
 {title="src/App.js",lang=javascript}
 	onDismiss(id) {
@@ -246,9 +246,9 @@ Latter objects will override former merged objects when they share the same prop
 	  });
 	}
 
-That would already be the solution. But there is a simpler way in JavaScript ES6 and future JavaScript releases. May I introduce the spread operator to you? It only consists of three dots: `...` When it is used, every value from an array or object gets copied to another array or object.
+Esta poderia ser, muito bem, a solução. Mas, existe um jeito ainda mais simples, em JavaScript ES6 e _releases_ futuras. Gostaria de lhe introduzir o operador _spread_, que consiste apenas em três pontos: `...`. Quando utilizado, todos os valores de um array ou objeto são copiados para outro array ou objeto.
 
-Let's examine the ES6 **array** spread operator even though you don't need it yet.
+Apesar de não precisar dele ainda, vamos examinar como funciona o operador _spread_ de um **array**.
 
 {title="Code Playground",lang="javascript"}
 	const userList = ['Robin', 'Andrew', 'Dan'];
@@ -258,7 +258,7 @@ Let's examine the ES6 **array** spread operator even though you don't need it ye
 	console.log(allUsers);
 	// output: ['Robin', 'Andrew', 'Dan', 'Jordan']
 
-The `allUsers` variable is a completely new array. The other variables `userList` and `additionalUser` stay the same. You can even merge two arrays that way into a new array.
+A variável `allUsers` é um _array_ completamente novo. As outras variáveis `userList` e `additionalUser` permanecem as mesmas. Você poderia combinar até dois _arrays_ em um novo, da mesma forma.
 
 {title="Code Playground",lang="javascript"}
 	const oldUsers = ['Robin', 'Andrew'];
@@ -268,9 +268,9 @@ The `allUsers` variable is a completely new array. The other variables `userList
 	console.log(allUsers);
 	// output: ['Robin', 'Andrew', 'Dan', 'Jordan']
 
-Now let's have a look at the object spread operator. It is not JavaScript ES6. It is a [proposal for a next JavaScript version][16] yet already used by the React community. That's why *create-react-app* incorporated the feature in the configuration.
+Olhemos, agora, o mesmo operador _spread_ com objetos. Neste caso, não é JavaScript ES6. É apenas uma [proposta para a próxima versão de JavaScript][16],  mas, mesmo assim já utilizada pela comunidade React. Por causa disso, *create-react-app* incorporou essa funcionalidade em sua configuração.
 
-Basically it is the same as the JavaScript ES6 array spread operator but with objects. It copies each key value pair into a new object.
+Basicamente, é o mesmo que o operador _spread_ de array, só que com objetos. Ele copia cada par chave-valor em um novo objeto.
 
 {title="Code Playground",lang="javascript"}
 	const userNames = { firstname: 'Robin', lastname: 'Wieruch' };
@@ -280,7 +280,7 @@ Basically it is the same as the JavaScript ES6 array spread operator but with ob
 	console.log(user);
 	// output: { firstname: 'Robin', lastname: 'Wieruch', age: 28 }
 
-Multiple objects can be spread like in the array spread example.
+Também a exemplo de _array_, múltiplos objetos podem ser combinados.
 
 {title="Code Playground",lang="javascript"}
 	const userNames = { firstname: 'Robin', lastname: 'Wieruch' };
@@ -290,7 +290,7 @@ Multiple objects can be spread like in the array spread example.
 	console.log(user);
 	// output: { firstname: 'Robin', lastname: 'Wieruch', age: 28 }
 
-After all, it can be used to replace `Object.assign()`.
+No fim das contas, ele pode ser utilizado no lugar de `Object.assign()`.
 
 {title="src/App.js",lang=javascript}
 	onDismiss(id) {
@@ -303,13 +303,13 @@ After all, it can be used to replace `Object.assign()`.
 	  });
 	}
 
-Now the "Dismiss" button should work again, because the `onDismiss()` method is aware of the complex result object and how to update it after dismissing an item from the list.
+Agora, o botão “Dismiss” voltará a funcionar, uma vez que `onDismiss()` saberá como atualizar o objeto complexo em _result_, quando um item da lista for removido.
 
-### Exercises:
+### Exercícios:
 
-* read more about the [ES6 Object.assign()][17]
-* read more about the [ES6 array spread operator][18]
-  * the object spread operator is briefly mentioned
+* Leia mais a respeito de [ES6 Object.assign()][17]
+* Leia mais sobre [o operador _spread_ de _array_ em ES6][18]
+	 * O operador _spread_ de objetos é brevemente mencionado.
 
 ## Conditional Rendering
 
