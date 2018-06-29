@@ -20,21 +20,21 @@ O método `render()` também é chamado durante o processo de montagem e quando 
 
 Agora você já sabe um pouco mais sobre dois métodos de ciclo de vida e quando eles são chamados, além de já os ter utilizado. Mas, existem outros mais além deles.
 
-A montagem de um componente tem mais dois métodos de ciclo de vida: `componentWillMount()` e `componentDidMount()`. O construtor é chamado primeiro, `componentWillMount()` chamado antes de `render()` e `componentDidMount`é invocado depois do método `render()`.
+A montagem de um componente tem mais dois métodos de ciclo de vida: `getDerivedStateFromProps()` e `componentDidMount()`. O construtor é chamado primeiro, `getDerivedStateFromProps()` chamado antes de `render()` e `componentDidMount`é invocado depois do método `render()`.
 
-Em resumo, o processo de montagem tem 4 métodos de cicloOverall the mounting process has 4 lifecycle methods. Eles são invocados na seguinte ordem:
+Em resumo, o processo de montagem tem 4 métodos de ciclo de vida. Eles são invocados na seguinte ordem:
 
 * constructor()
-* componentWillMount()
+* getDerivedStateFromProps()
 * render()
 * componentDidMount()
 
 Mas, e quanto ao ciclo de vida de **atualização** de um componente, o que acontece quando o _state_ ou as _props_ mudam?  No total, existem 5 métodos, chamados na seguinte ordem:
 
-* componentWillReceiveProps()
+* getDerivedStateFromProps()
 * shouldComponentUpdate()
-* componentWillUpdate()
 * render()
+* getSnapshotBeforeUpdate()
 * componentDidUpdate()
 
 Por último, mas não menos importante, existe o ciclo de vida de desmontagem de um componente. Ele possui apenas um método, `componentWillUnmount()`.
@@ -43,25 +43,23 @@ No fim das contas, você não precisa conhecer todos esses métodos desde o come
 
 * **constructor(props)** -É chamado quando o componente é inicializado. Você pode definir um estado inicial do componente e realizar o _binding_ de métodos de classe aqui.
 
-* **componentWillMount()** - Invocado antes do método `render()`. Pode ser utilizado para definir o estado interno do componente, porque ele não irá disparar uma segunda renderização do componente. No entanto, geralmente, é recomendado utilizar `constructor()` para definir este estado inicial.
+* ** static getDerivedStateFromProps(props, state)** - Invocado antes do método `render()`, tanto na montagem inicial do componente, quanto em atualizações subsequentes. Ele deve retornar um objeto para atualização do estado (ou _null_ para não atualizar nada). Este método existe para ser usado em **raras** situações onde o estado depende das mudanças de _props_ ao longo do tempo. Importante notar que este é um método estático e não tem acesso à instância do componente.
 
 * **render()** - Este método de ciclo de vida é mandatório e retorna os elementos como saída do componente. Deve ser puro e, logo, não deve modificar o estado do componente. Ele recebe como entrada o _state_ e as _props_ e retorna um elemento.
 
 * **componentDidMount()** - É chamado apenas uma vez, quando o component é montado. É o momento perfeito para fazer qualquer requisição assíncrona para obter dados de uma API. Os dados obtidos serão armazenados no estado interno do componente, para serem mostrados via `render()`.
 
-* **componentWillReceiveProps(nextProps)** - Este é chamado durante um ciclo de atualização do componente. Como entrada, ele recebe as novas _props_ recebidas. Você pode comparar `nextProps` com as anteriores, com`this.props`, para aplicar um comportamento específico baseado nas diferenças encontradas. Adicionalmente, você pode definir o `state` baseado nessas novas props.
-
 * **shouldComponentUpdate(nextProps, nextState)** - É sempre chamado quando o componente atualiza devido a mudanças de `state` ou `props`.  Você utilizará este método em uma aplicação React mais madura, visando otimizações de performance. Dependendo do valor booleano retornado aqui, o componente e todos os seus filhos irão ser novamente renderizados no ciclo de atualização. Você pode evitar que o método `render()` seja invocado.
 
-* **componentWillUpdate(nextProps, nextState)** - Imediatamente invocado antes do `render()`. Aqui, você já tem as novas _props_ e o novo estado à sua disposição. O método é a última oportunidade para fazer preparações antes que `render()` seja executado. Saiba que você não pode disparar `setState()` novamente aqui. Se você desejar computar o estado baseado nas próximas _props_, você deve utilizar `componentWillReceiveProps`.
+* ** getSnapshotBeforeUpdate(prevProps, prevState)** - Este método de ciclo de vida é invocado imediatamente antes da renderização mais recente ser aplicada no DOM. Em raros casos, quando o componente precisa capturar a informação do DOM antes que ela seja alterada, este método lhe permite fazê-lo. Outro método de ciclo de vida (`componentDidMount`) irá receber como um parâmetro qualquer valor retornado por `getSnapshotBeforeUpdate()`.
 
-* **componentDidUpdate(prevProps, prevState)** - Este método é chamado imediatamente depois de `render()`. Você pode utilizá-lo como uma oportunidade de realizar operações no DOM ou de efetuar requisições assíncronas depois do componente já estar montado.
+* **componentDidUpdate(prevProps, prevState, snapshot)** - Este método é chamado imediatamente depois de uma atualização do componente, com exceção da renderização inicial. Você pode utilizá-lo como uma oportunidade de realizar operações no DOM ou de efetuar requisições assíncronas depois do componente já estar montado. Se `getSnapshotBeforeUpdate()` tiver sido implementado no seu componente, o valor por ele retornado será recebido aqui, através do parâmetro `snapshot`.
 
 * **componentWillUnmount()** - Chamado antes de você destruir seu componente. Você pode usá-lo para realizar qualquer tarefa de limpeza, por exemplo.
 
 Os métodos de ciclo de vida `constructor()` e `render()` já foram utilizados por você, uma vez que são comumente utilizados em componentes de classe ES6. O método `render()` é, na verdade, obrigatório, caso contrário você não conseguiria retornar uma instância do componente.
 
-Existe mais um método de ciclo de vida: `componentDidCatch(error, info)`. Ele foi introduzido no [React 16][5] e é utilizado para capturar erros em componentes. No nosso contexto, a lista de dados da sua aplicação está funcionando muito bem. Mas, pode existir o caso da lista no estado local ser definida, por acidente, com o valor nulo (por exemplo, quando os dados são obtidos de uma API externa, mas a requisição falha e você define o valor do estado local para `null`).  Ocorrido esta situação, não será mais possível filtrar ou mapear a lista, porque ela tem valor `null` ao invés de ser uma lista vazia. O componente quebraria e a aplicação inteira poderia falhar. Agora, com o uso do `componentDidCatch()`, você capturar o erro, armazená-lo no estado local e, opcionalmente, exibir uma mensagem para o usuário informando que algo de errado ocorreu.
+Existe ainda um outro método de ciclo de vida em componentes React: `componentDidCatch(error, info)`. Ele foi introduzido no [React 16][5] e é utilizado para capturar erros em componentes. No nosso contexto, a lista de dados da sua aplicação está funcionando muito bem. Mas, pode existir o caso da lista no estado local ser definida, por acidente, com o valor nulo (por exemplo, quando os dados são obtidos de uma API externa, mas a requisição falha e você define o valor do estado local para `null`).  Ocorrido esta situação, não será mais possível filtrar ou mapear a lista, porque ela tem valor `null` ao invés de ser uma lista vazia. O componente quebraria e a aplicação inteira poderia falhar. Agora, com o uso do `componentDidCatch()`, você capturar o erro, armazená-lo no estado local e, opcionalmente, exibir uma mensagem para o usuário informando que algo de errado ocorreu.
 
 ### Exercícios:
 
