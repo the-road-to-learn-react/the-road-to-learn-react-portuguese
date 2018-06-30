@@ -738,11 +738,11 @@ No final, a requisição à API Hacker News irá obter mais itens de uma vez, em
 
 ## _Cache_ do Cliente
 
-Each search submit makes a request to the Hacker News API. You might search for "redux", followed by "react" and eventually "redux" again. In total it makes 3 requests. But you searched for "redux" twice and both times it took a whole asynchronous roundtrip to fetch the data. In a client-sided cache you would store each result. When a request to the API is made, it checks if a result is already there. If it is there, the cache is used. Otherwise an API request is made to fetch the data.
+Cada _submit_ de consulta faz uma requisição à API Hacker News. Você poderia buscar por “redux”, depois por “react” e, eventualmente, “redux” novamente. No total, 3 requisições. Mas, você buscou por “redux” duas vezes e, em ambas, todo o caminho de requisição assíncrona para obter dados foi percorrido. Em uma implementação de _cache_ do lado do cliente, você armazena cada resultado. Quando uma requisição à API é feita, ela antes checa se o resultado já existe. Se sim, o _cache_ é utilizado. Caso contrário, o processo completo é seguido.
 
-In order to have a client cache for each result, you have to store multiple `results` rather than one `result` in your internal component state. The results object will be a map with the search term as key and the result as value. Each result from the API will be saved by search term (key).
+A fim de ter um _cache_ no cliente para cada resultado, você terá que armazenar múltiplos `results` ao invés de um só `result` no estado interno do seu componente. O objeto _results_ consistirá em um mapa com o termo de busca como chave e o _result_ como valor. Cada resultado da API será salvo com este conjunto chave-valor.
 
-At the moment, your result in the local state looks similar to the following:
+No momento, o resultado no estado local se encontra da seguinte forma:
 
 {title="Code Playground",lang="javascript"}
 	result: {
@@ -750,7 +750,7 @@ At the moment, your result in the local state looks similar to the following:
 	  page: 2,
 	}
 
-Imagine you have made two API requests. One for the search term "redux" and another one for "react". The results object should look like the following:
+Imaginando que você tenha feito duas requisições, uma para o termo “redux” e outra para “react”, o objeto _results_ deverá se parecer com o seguinte:
 
 {title="Code Playground",lang="javascript"}
 	results: {
@@ -765,7 +765,7 @@ Imagine you have made two API requests. One for the search term "redux" and anot
 	  ...
 	}
 
-Let's implement a client-side cache with React `setState()`. First, rename the `result` object to `results` in the initial component state. Second, define a temporary `searchKey` which is used to store each `result`.
+Vamos implementar a lógica do _cache_ do cliente com `setState()`. Primeiro, renomeie o objeto `result` para `results` no estado inicial do componente. Segundo, defina uma `searchKey` temporária, que é utilizada para armazenar cada `result`.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -789,7 +789,7 @@ Let's implement a client-side cache with React `setState()`. First, rename the `
 	
 	}
 
-The `searchKey` has to be set before each request is made. It reflects the `searchTerm`. You might wonder: Why don't we use the `searchTerm` in the first place? That's a crucial part to understand before continuing with the implementation. The `searchTerm` is a fluctuant variable, because it gets changed every time you type into the Search input field. However, in the end you will need a non fluctuant variable. It determines the recent submitted search term to the API and can be used to retrieve the correct result from the map of results. It is a pointer to your current result in the cache and thus can be used to display the current result in your `render()` method.
+A `searchKey` deve ser definida antes de cada requisição ser feita. Ela reflete o `searchTerm`. Você deve estar se perguntando: Por que não utilizar `searchTerm` diretamente? Esta é uma parte crucial a ser entendida, antes de continuar com a implementação. O `searchTerm` é uma variável flutuante, porque ele é alterado todas as vezes que você digita no campo _input_ do _Search_. Entretanto, você precisará de uma variável não flutuante para determinar o termo de busca recentemente submetido à API para recuperar o resultado correto do mapa de resultados. Ela é um ponteiro para seu resultado atual no _cache_ e, desta forma, pode ser utilizado para exibi-lo no método `render()`.
 
 {title="src/App.js",lang=javascript}
 	componentDidMount() {
@@ -809,7 +809,7 @@ The `searchKey` has to be set before each request is made. It reflects the `sear
 	  event.preventDefault();
 	}
 
-Now you have to adjust the functionality where the result is stored to the internal component state. It should store each result by `searchKey`.
+Com isso, você também precisa ajustar a funcionalidade onde o resultado é armazenado no estado interno do componente. Ela agora deve gravar cada resultado por `searchKey`.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -845,13 +845,13 @@ Now you have to adjust the functionality where the result is stored to the inter
 	
 	}
 
-The `searchKey` will be used as the key to save the updated hits and page in a `results` map.
+A `searchKey` será usada para salvar os _hits_ e página atualizados em um mapa de `results`.
 
-First, you have to retrieve the `searchKey` from the component state. Remember that the `searchKey` gets set on `componentDidMount()` and `onSearchSubmit()`.
+Primeiro, você deve recuperá-la do estado do componente. Lembre-se de que `searchKey` tem o valor definido em `componentDidMount()` e `onSearchSubmit()`.
 
-Second, the old hits have to get merged with the new hits as before. But this time the old hits get retrieved from the `results` map with the `searchKey` as key.
+Segundo, os resultados anteriores precisam ser combinados com os novos, como já ocorria antes. Mas, desta vez, os valores antigos são recuperados do mapa com a chave `searchKey`.
 
-Third, a new result can be set in the `results` map in the state. Let's examine the `results` object in `setState()`.
+Terceiro, um novo resultado pode ser colocado em `results` no estado do componente. Third, a new result can be set in the `results` map in the state. Observemos o objeto `results` dentro do `setState()`.
 
 {title="src/App.js",lang=javascript}
 	results: {
@@ -859,11 +859,11 @@ Third, a new result can be set in the `results` map in the state. Let's examine 
 	  [searchKey]: { hits: updatedHits, page }
 	}
 
-The bottom part makes sure to store the updated result by `searchKey` in the results map. The value is an object with a hits and page property. The `searchKey` is the search term. You already learned the `[searchKey]: ...` syntax. It is an ES6 computed property name. It helps you to allocate values dynamically in an object.
+A parte inferior garante que o resultado atualizado é armazenado por `searchKey` no mapa. O valor é um objeto com propriedades _hits_ e _page_. A `searchKey` é o termo de busca. Você já aprendeu o que significa a sintaxe `[searchKey]: ...` em ES6: é uma propriedade com nome computado. Ela lhe ajuda a alocar valores dinamicamente em um objeto.
 
-The upper part needs to spread all other results by `searchKey` in the state by using the object spread operator. Otherwise you would lose all results that you have stored before.
+A parte superior precisa copiar todos os outros resultados no state, por `searchKey`, utilizando o operador _spread_ de objetos. Caso contrário, você perderia tudo o que foi armazenado anteriormente.
 
-Now you store all results by search term. That's the first step to enable your cache. In the next step, you can retrieve the result depending on the non fluctuant `searchKey` from your map of results. That's why you had to introduce the `searchKey` in the first place as non fluctuant variable. Otherwise the retrieval would be broken when you would use the fluctuant `searchTerm` to retrieve the current result, because this value might change when you would use the Search component.
+Todos os resultados são agora armazenados por termo de busca. Este foi o primeiro passo para habilitar o comportamento de _cache_. No passo seguinte, você pode recuperar o resultado através da variável `searchKey` no mapa de resultados. Este é o principal motivo pelo qual `searchKey` teve que ser definido como uma variável não flutuante. Se não fosse assim, o processo de recuperação em _cache_ nem sempre funcionaria, uma vez que o valor em `searchTerm` muda frequentemente enquanto você utiliza o componente _Search_.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
