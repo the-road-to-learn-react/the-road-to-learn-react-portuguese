@@ -988,11 +988,11 @@ Entretanto, não existe nada que impeça a aplicação de uma requisição à AP
 
 Agora, seu cliente fará apenas uma requisição à API, quando você buscar pelo mesmo termo duas ou mais vezes. Até mesmo dados paginados, com diversas páginas, são armazenados em _cache_ desta forma, porque você sempre salva a última página exibida, para cada resultado, no mapa `results`. Esta é uma abordagem muito arrojada de incluir _caching_ na sua aplicação, não acha? A API Hacker News provê tudo o que você precisa para fazer _cache_ até mesmo de dados paginados de forma efetiva.
 
-## Error Handling
+## Tratamento de Erros
 
-Everything is in place for your interactions with the Hacker News API. You even have introduced an elegant way to cache your results from the API and make use of its paginated list functionality to fetch an endless list of sublists of stories from the API. But there is one piece missing. Unfortunately it is often missed when developing applications nowadays: error handling. It is too easy to implement the happy path without worrying about the errors that can happen along the way.
+Tudo está pronto para que você interaja com a API do Hacker News. Você até mesmo introduziu um jeito muito elegante de manter _cache_ dos seus resultados e implementou paginação para obter listas de infinitos resultados de discussões da API. Mas, ainda falta uma peça no quebra-cabeças. Infelizmente, uma peça que geralmente tem faltado em aplicações desenvolvidas nos dias de hoje: tratamento de erros. É muito fácil implementar o “caminho feliz” sem a preocupação sobre erros que poderiam ocorrer no processo.
 
-In this chapter, you will introduce an efficient solution to add error handling for your application in case of an erroneous API request. You have already learned about the necessary building blocks in React to introduce error handling: local state and conditional rendering. Basically, the error is only another state in React. When an error occurs, you will store it in the local state and display it with a conditional rendering in your component. That's it. Let's implement it in the App component, because it's the component that is used to fetch the data from the Hacker News API in the first place. First, you have to introduce the error in the local state. It is initialized as null, but will be set to the error object in case of an error.
+Neste capítulo, você irá incluir uma solução eficiente de tratamento de erros em sua aplicação, para o caso de problemas em uma requisição à API. Você já aprendeu tudo sobre as partes necessárias para adicionar tratamento de erros em React: estado local e renderização condicional. Basicamente, um erro é apenas mais um estado em React. Quando ele ocorre, você irá guardá-lo em um estado local e exibi-lo através de uma renderização condicional em seu componente. E só. Vamos implementar este tratamento no componente _App_, porque ele é o componente utilizado na consulta de dados da API. Primeiro, você tem que incluir o estado local `error`, inicializado com _null_, para receber um objeto em caso de erro.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1015,7 +1015,7 @@ In this chapter, you will introduce an efficient solution to add error handling 
 	
 	}
 
-Second, you can use the catch block in your native fetch to store the error object in the local state by using `setState()`. Every time the API request isn't successful, the catch block would be executed.
+Segundo, você pode utilizar o bloco `catch`, da função nativa _fetch_, para chamar `setState()` e guardar o objeto de erro no estado local. Todas as vezes que uma requisição à API não é bem sucedida, o bloco _catch_ será executado.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1035,7 +1035,7 @@ Second, you can use the catch block in your native fetch to store the error obje
 	
 	}
 
-Third, you can retrieve the error object from your local state in the `render()` method and display a message in case of an error by using React's conditional rendering.
+Terceiro, você pode recuperar este objeto do estado local no método `render()` e exibir uma mensagem em caso de erro, utilizando a renderização condicional de React.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1068,12 +1068,12 @@ Third, you can retrieve the error object from your local state in the `render()`
 	  }
 	}
 
-That's it. If you want to test that your error handling is working, you can change the API URL to something else that is non existent.
+É isto. Se quiser testar que o seu tratamento de erros está funcionando, você pode mudar a URL da API para algum valor inexistente.
 
 {title="src/App.js",lang=javascript}
 	const PATH_BASE = 'https://hn.foo.bar.com/api/v1';
 
-Afterward, you should get the error message instead of your application. It is up to you where you want to place the conditional rendering for the error message. In this case, the whole app isn't displayed anymore. That wouldn't be the best user experience. So what about displaying either the Table component or the error message? The remaining application would still be visible in case of an error.
+Se o fizer, você deverá receber uma mensagem de erro, ao invés do conteúdo da aplicação. Fica a seu critério o local onde deseja colocar a renderização condicional para a mensagem de erro. No caso aqui, a aplicação inteira não é mais exibida, o que não seria exatamente a melhor experiência de usuário. Que tal, então, exibir a mensagem apenas no lugar do componente _Table_? O restante da aplicação ainda será visível em caso de erro.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1122,16 +1122,16 @@ Afterward, you should get the error message instead of your application. It is u
 	  }
 	}
 
-In the end, don't forget to revert the URL for the API to the existent one.
+Depois de feitos os testes, não se esqueça de restaurar a URL original da API.
 
 {title="src/App.js",lang=javascript}
 	const PATH_BASE = 'https://hn.algolia.com/api/v1';
 
-Your application should still work, but this time with error handling in case the API request fails.
+Sua aplicação estará funcionando, com a adição de um tratamento de erros em caso de problemas com a API.
 
-### Exercises:
+### Exercícios:
 
-* read more about [React's Error Handling for Components][28]
+* Leia mais sobre [tratamento de erros em componentes React][28]
 
 ## Axios instead of Fetch
 
