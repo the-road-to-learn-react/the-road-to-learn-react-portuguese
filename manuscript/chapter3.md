@@ -382,7 +382,7 @@ Finalmente, você deverá estar vendo os dados obtidos em sua aplicação. Tudo,
 * Leia mais sobre [diferentes formas de renderizações condicionais][20]
 * Leia mais sobre [renderização condicional em React][21]
 
-## Busca do lado do cliente ou do servidor
+## Consultando no lado do cliente ou do servidor
 
 Atualmente, quando você usa o componente _Search_ com o seu campo _input_, você irá filtrar a lista, embora isso esteja ocorrendo apenas no lado do cliente. Agora, você irá usar a API do Hacker News para realizar a busca do lado do servidor. Caso contrário, você só teria o primeiro resultado de chamada à API, feita no `componentDidMount()` com o termo de busca _default_ como parâmetro.
 
@@ -470,11 +470,11 @@ O método `onSearchSubmit()` poderia utilizar a mesma funcionalidade que `compon
 	  ...
 	}
 
-Now the Search component has to add an additional button. The button has to explicitly trigger the search request. Otherwise you would fetch data from the Hacker News API every time when your input field changes. But you want to do it explicitly in a `onClick()` handler.
+Agora, é necessário que um novo botão seja aficionado no componente _Search_. Este botão tem que, explicitamente, disparar a requisição de consulta. Caso contrário, os dados da API Hacker News seriam obtidos todas as vezes que o campo _input_ mudasse. O que você espera é que este comportamento aconteça explicitamente em um tratamento do evento `onClick()`.
 
-As alternative you could debounce (delay) the `onChange()` function and spare the button, but it would add more complexity at this time and maybe wouldn't be the desired effect. Let's keep it simple without a debounce for now.
+Uma alternativa seria o uso de um _debounce_ (um técnica de “atraso” na ação) na função `onChange()`, evitando a necessidade do botão, mas isto adicionaria mais complexidade no momento e, talvez, não teria o efeito desejado. Vamos manter as coisas simples, sem o _debounce_ por enquanto.
 
-First, pass the `onSearchSubmit()` method to your Search component.
+Primeiramente, passe o método `onSearchSubmit()` ao seu componente `Search`.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -508,7 +508,7 @@ First, pass the `onSearchSubmit()` method to your Search component.
 	  }
 	}
 
-Second, introduce a button in your Search component. The button has the `type="submit"` and the form uses its `onSubmit()` attribute to pass the `onSubmit()` method. You can reuse the children property, but this time it will be used as the content of the button.
+Segundo, crie um botão no componente _Search_. O botão possui um `type="submit"` e o _form_ irá utilizar o atributo `onSubmit` para com o método `onSubmit()`. Você pode reutilizar a propriedade _children_, mas desta vez será usada como conteúdo de _button_.
 
 {title="src/App.js",lang=javascript}
 	# leanpub-start-insert
@@ -530,7 +530,7 @@ Second, introduce a button in your Search component. The button has the `type="s
 	  </form>
 	# leanpub-end-insert
 
-In the Table, you can remove the filter functionality, because there will be no client-side filter (search) anymore. Don't forget to remove the `isSearched()` function as well. It will not be used anymore. The result comes directly from the Hacker News API now after you have clicked the "Search" button.
+Em _Table_, você pode remover a funcionalidade _filter_, porque não mais existirá um filtro (busca) do lado do cliente. Não esqueça de remover a função `isSearched()` também, uma vez que não será mais utilizada. O resultado virá diretamente da API Hacker News, depois que o botão _”Search”_ for clicado. 
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -568,7 +568,7 @@ In the Table, you can remove the filter functionality, because there will be no 
 	    )}
 	  </div>
 
-When you try to search now, you will notice that the browser reloads. That's a native browser behavior for a submit callback in a HTML form. In React you will often come across the `preventDefault()` event method to suppress the native browser behavior.
+Quando tentar realizar uma consulta agora, você irá notar que o _browser_ irá recarregar o conteúdo. Este é um comportamento natural do navegador para uma função de _callback_ de _submit_ em um _form_ HTML. Em React, frequentemente você suprimir este comportamento nativo através do método `preventDefault()`.
 
 {title="src/App.js",lang=javascript}
 	# leanpub-start-insert
@@ -581,18 +581,18 @@ When you try to search now, you will notice that the browser reloads. That's a n
 	# leanpub-end-insert
 	}
 
-Now you should be able to search different Hacker News stories. Perfect, you interact with a real world API. There should be no client-side search anymore.
+Enfim, você deverá conseguir consultar diferentes discussões na API Hacker News, sem mais haver filtragem no lado do cliente.
 
-### Exercises:
+### Exercícios:
 
-* read more about [synthetic events in React][22]
-* experiment with the [Hacker News API][23]
+* Leia mais sobre [_SyntheticEvent_ em React][22]
+* Faça experiências com [Hacker News API][23]
 
-## Paginated Fetch
+## Paginação de dados
 
-Did you have a closer look at the returned data structure yet? The [Hacker News API][24] returns more than a list of hits. Precisely it returns a paginated list. The page property, which is `0` in the first response, can be used to fetch more paginated sublists as result. You only need to pass the next page with the same search term to the API.
+Você já deu uma olhada na estrutura de dados retornada? A [API Hacker News][24] retorna mais de uma lista de resultados. Mais precisamente, ela retorna uma lista paginada. A propriedade _page_, que é `0` na primeira resposta à requisição, pode ser utilizada para consultar mais sulistas paginadas como resultado. Você precisa apenas passar a próxima página com o mesmo termo de busca (_search term_) para a API.
 
-Let's extend the composable API constants so that it can deal with paginated data.
+Vamos estender a lista de constantes de API, para que seja possível lidar com dados paginados.
 
 {title="src/App.js",lang=javascript}
 	const DEFAULT_QUERY = 'redux';
@@ -604,7 +604,7 @@ Let's extend the composable API constants so that it can deal with paginated dat
 	const PARAM_PAGE = 'page=';
 	# leanpub-end-insert
 
-Now you can use the new constant to add the page parameter to your API request.
+Agora, você pode utilizar a nova constante para adicionar o parâmetro _page_ à sua requisição de API.
 
 {title="Code Playground",lang="javascript"}
 	const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}`;
@@ -612,7 +612,7 @@ Now you can use the new constant to add the page parameter to your API request.
 	console.log(url);
 	// output: https://hn.algolia.com/api/v1/search?query=redux&page=
 
-The `fetchSearchTopStories()` method will take the page as second argument. If you don't provide the second argument, it will fallback to the `0` page for the initial request. Thus the `componentDidMount()` and `onSearchSubmit()` methods fetch the first page on the first request. Every additional fetch should fetch the next page by providing the second argument.
+O método `fetchSearchTopStories()`irá receber a página como o segundo argumento. Se você não o fornecer ao método, ele irá retornar a página `0` como resultado da requisição. Sendo assim, os métodos `componentDidMount()` e `onSearchSubmit()` consultam a primeira página na primeira requisição. Cada consulta adicional deve buscar a próxima página, fornecendo o segundo argumento.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -632,9 +632,10 @@ The `fetchSearchTopStories()` method will take the page as second argument. If y
 	
 	}
 
-The page argument uses the JavaScript ES6 default parameter to introduce the fallback to page `0` in case no defined page argument is provided for the function.
+O argumento que representa a página usa um parâmetro _default_ de JavaScript ES6, para definir o valor de página `0` no caso de nenhum outro ser fornecido para a função.
 
-Now you can use the current page from the API response in `fetchSearchTopStories()`. You can use this method in a button to fetch more stories on a `onClick` button handler. Let's use the Button to fetch more paginated data from the Hacker News API. You only need to define the `onClick()` handler which takes the current search term and the next page (current page + 1).
+Você pode agora usar a página atual do resultado obtido no `fetchSearchTopStories()`. Use este método em um botão, para obter mais discussões em um tratamento de evento `onClick`. Utilizaremos _Button_ para obter mais dados paginados da API Hacker News, sendo necessário apenas definir o tratamento do `onClick  
+()`, que recebe o termo de busca atual e a próxima página (página atual + 1).
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -668,9 +669,9 @@ Now you can use the current page from the API response in `fetchSearchTopStories
 	  }
 	}
 
-In addition, in your `render()` method you should make sure to default to page 0 when there is no result yet. Remember that the `render()` method is called before the data is fetched asynchronously in the `componentDidMount()` lifecycle method.
+Além disso, no seu método `render()`, você deverá assegurar, por padrão, a página `0` quando ainda não existir nenhum resultado. Lembre-se que o método `render()`é chamado antes que os dados sejam, de forma assíncrona, obtidos em `componentDidMount()`.
 
-There is one step missing. You fetch the next page of data, but it will override your previous page of data. It would be ideal to concatenate the old and new list of hits from the local state and new result object. Let's adjust the functionality to add the new data rather than to override it.
+Falta ainda um passo. Você obtém sua próxima página de dados, mas ela irá sobrescrever os dados da página anterior. Seria ideal concatenar as duas listas (a antiga e a nova) do estado local e do novo objeto resultante. Ajustemos a funcionalidade para que os novos dados sejam adicionados, ao invés de sobrescritos.
 
 {title="src/App.js",lang=javascript}
 	setSearchTopStories(result) {
@@ -692,15 +693,15 @@ There is one step missing. You fetch the next page of data, but it will override
 	# leanpub-end-insert
 	}
 
-A couple of things happen in the `setSearchTopStories()` method now. First, you get the hits and page from the result.
+Mais coisas acontecem em `setSearchTopStories()`. Primeiro, você recebe, no resultado, os itens (ou_hits_) e a página.
 
-Second, you have to check if there are already old hits. When the page is 0, it is a new search request from `componentDidMount()` or `onSearchSubmit()`. The hits are empty. But when you click the "More" button to fetch paginated data the page isn't 0. It is the next page. The old hits are already stored in your state and thus can be used.
+Segundo, você checa se já existiam _hits_ de consultas anteriores. Quando a página é 0, significa que é uma nova consulta feita em `componentDidMount()` ou `onSearchSubmit()`. O valor em _hits_ é vazio. Mas, quando você clica no botão “More”, visando obter mais dados paginados, o valor de _page_ não é 0, mas o da próxima página. Os itens do resultado anterior já se encontram armazenados em seu estado e, desta forma, podem ser utilizados.
 
-Third, you don't want to override the old hits. You can merge old and new hits from the recent API request. The merge of both lists can be done with the JavaScript ES6 array spread operator.
+Terceiro, você não deseja sobrescrever o valor antigo em _hits_. Você pode fundi-lo com os novos, da requisição mais recente à API. A junção das duas listas pode ser feita através do operador _spread_ de _arrays_ em JavaScript ES6.
 
-Fourth, you set the merged hits and page in the local component state.
+Quarto, você define o novo estado local do componente, com os _hits_ combinados e o valor da página.
 
-You can make one last adjustment. When you try the "More" button it only fetches a few list items. The API URL can be extended to fetch more list items with each request. Again, you can add more composable path constants.
+Um último ajuste pode ser feito. Quando você testa o botão “More”, ele obtém apenas alguns itens da lista. A URL da API pode ser editada para obter mais itens a cada requisição. Novamente, você pode adicionar mais constantes aqui.
 
 {title="src/App.js",lang=javascript}
 	const DEFAULT_QUERY = 'redux';
@@ -716,7 +717,7 @@ You can make one last adjustment. When you try the "More" button it only fetches
 	const PARAM_HPP = 'hitsPerPage=';
 	# leanpub-end-insert
 
-Now you can use the constants to extend the API URL.
+Pronto, você pode utilizar as constantes para estender a URL da API.
 
 {title="src/App.js",lang=javascript}
 	fetchSearchTopStories(searchTerm, page = 0) {
@@ -728,14 +729,14 @@ Now you can use the constants to extend the API URL.
 	    .catch(error => error);
 	}
 
-Afterward, the request to the Hacker News API fetches more list items in one request than before. As you can see, a powerful API such as the Hacker News API gives you plenty of ways to experiment with real world data. You should make use of it to make your endeavours when learning something new more exciting. That's [how I learned about the empowerment that APIs provide][25] when learning a new programming language or library.
+No final, a requisição à API Hacker News irá obter mais itens de uma vez, em relação ao que fazia antes. Como você pode ver, uma API tão poderosa como esta lhe dá uma rica variedade de alternativas para realizar experimentos com dados do mundo real. Faça uso dela quando estiver aprendendo algo novo, de um jeito mais excitante. Veja [como eu aprendi sobre os “poderes” que APIs provêem][25] quando se está aprendendo uma nova linguagem de programação ou biblioteca.
 
-### Exercises:
+### Exercícios:
 
-* read more about [ES6 default parameters][26]
-* experiment with the [Hacker News API parameters][27]
+* Leia mais sobre [parâmetros _default_ ES6][26]
+* Experimente as possibilidades dos [parâmetros da Hacker News API][27]
 
-## Client Cache
+## _Cache_ do Cliente
 
 Each search submit makes a request to the Hacker News API. You might search for "redux", followed by "react" and eventually "redux" again. In total it makes 3 requests. But you searched for "redux" twice and both times it took a whole asynchronous roundtrip to fetch the data. In a client-sided cache you would store each result. When a request to the API is made, it checks if a result is already there. If it is there, the cache is used. Otherwise an API request is made to fetch the data.
 
