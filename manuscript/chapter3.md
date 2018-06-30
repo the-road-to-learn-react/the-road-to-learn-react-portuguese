@@ -693,7 +693,7 @@ Falta ainda um passo. Você obtém sua próxima página de dados, mas ela irá s
 	# leanpub-end-insert
 	}
 
-Mais coisas acontecem em `setSearchTopStories()`. Primeiro, você recebe, no resultado, os itens (ou_hits_) e a página.
+Mais coisas acontecem em `setSearchTopStories()`. Primeiro, você recebe, no resultado, os itens (ou\_hits\_) e a página.
 
 Segundo, você checa se já existiam _hits_ de consultas anteriores. Quando a página é 0, significa que é uma nova consulta feita em `componentDidMount()` ou `onSearchSubmit()`. O valor em _hits_ é vazio. Mas, quando você clica no botão “More”, visando obter mais dados paginados, o valor de _page_ não é 0, mas o da próxima página. Os itens do resultado anterior já se encontram armazenados em seu estado e, desta forma, podem ser utilizados.
 
@@ -789,7 +789,7 @@ Vamos implementar a lógica do _cache_ do cliente com `setState()`. Primeiro, re
 	
 	}
 
-A `searchKey` deve ser definida antes de cada requisição ser feita. Ela reflete o `searchTerm`. Você deve estar se perguntando: Por que não utilizar `searchTerm` diretamente? Esta é uma parte crucial a ser entendida, antes de continuar com a implementação. O `searchTerm` é uma variável flutuante, porque ele é alterado todas as vezes que você digita no campo _input_ do _Search_. Entretanto, você precisará de uma variável não flutuante para determinar o termo de busca recentemente submetido à API para recuperar o resultado correto do mapa de resultados. Ela é um ponteiro para seu resultado atual no _cache_ e, desta forma, pode ser utilizado para exibi-lo no método `render()`.
+A `searchKey` deve ser definida antes de cada requisição ser feita. Ela reflete o `searchTerm`. Você deve estar se perguntando: Por que não utilizar `searchTerm` diretamente? Esta é uma parte crucial a ser entendida, antes de continuar com a implementação. O `searchTerm` é uma variável **instável**, porque ele é alterado todas as vezes que você digita no campo _input_ do _Search_. Entretanto, você precisará de uma variável mais **estável** para determinar o termo de busca recentemente submetido à API para recuperar o resultado correto do mapa de resultados. Ela é um ponteiro para seu resultado atual no _cache_ e, desta forma, pode ser utilizado para exibi-lo no método `render()`.
 
 {title="src/App.js",lang=javascript}
 	componentDidMount() {
@@ -863,7 +863,7 @@ A parte inferior garante que o resultado atualizado é armazenado por `searchKey
 
 A parte superior precisa copiar todos os outros resultados no state, por `searchKey`, utilizando o operador _spread_ de objetos. Caso contrário, você perderia tudo o que foi armazenado anteriormente.
 
-Todos os resultados são agora armazenados por termo de busca. Este foi o primeiro passo para habilitar o comportamento de _cache_. No passo seguinte, você pode recuperar o resultado através da variável `searchKey` no mapa de resultados. Este é o principal motivo pelo qual `searchKey` teve que ser definido como uma variável não flutuante. Se não fosse assim, o processo de recuperação em _cache_ nem sempre funcionaria, uma vez que o valor em `searchTerm` muda frequentemente enquanto você utiliza o componente _Search_.
+Todos os resultados são agora armazenados por termo de busca. Este foi o primeiro passo para habilitar o comportamento de _cache_. No passo seguinte, você pode recuperar o resultado através da variável `searchKey` no mapa de resultados. Este é o principal motivo pelo qual `searchKey` teve que ser definido como uma variável mais estável. Se não fosse assim, o processo de recuperação em _cache_ nem sempre funcionaria, uma vez que o valor em `searchTerm` muda frequentemente enquanto você utiliza o componente _Search_.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -914,11 +914,11 @@ Todos os resultados são agora armazenados por termo de busca. Este foi o primei
 	  }
 	}
 
-Since you default to an empty list when there is no result by `searchKey`, you can spare the conditional rendering for the Table component now. Additionally you will need to pass the `searchKey` rather than the `searchTerm` to the "More" button. Otherwise your paginated fetch depends on the `searchTerm` value which is fluctuant. Moreover make sure to keep the fluctuant `searchTerm` property for the input field in the "Search" component.
+Uma vez que você definiu uma lista vazia como padrão, quando não existe resultado para a `searchKey`, você pode poupar a renderização condicional no componente _Table_. Você também irá precisar passar a `searchKey`, ao invés do `searchTerm`, para o botão “More”. Caso contrário, sua consulta paginada dependerá deste último que, como já falamos, varia de uma forma instável. Garanta que `searchTerm` será utilizado com o campo _input_ do componente “Search”.
 
-The search functionality should work again. It stores all results from the Hacker News API.
+A funcionalidade de consulta deve voltar a funcionar. Ela armazena localmente todos os resultados da API Hacker News.
 
-Additionally the `onDismiss()` method needs to get improved. It still deals with the `result` object. Now it has to deal with multiple `results`.
+Ademais, o método `onDismiss()` precisa ser melhorado. Isto porque ele ainda trabalha com o objeto `result`. Agora ele deverá saber lidar com múltiplos resultados no objeto `results`.
 
 {title="src/App.js",lang=javascript}
 	  onDismiss(id) {
@@ -940,9 +940,9 @@ Additionally the `onDismiss()` method needs to get improved. It still deals with
 	# leanpub-end-insert
 	  }
 
-The "Dismiss" button should work again.
+Pronto. O botão “Dismiss” deverá voltar a funcionar.
 
-However, nothing stops the application from sending an API request on each search submit. Even though there might be already a result, there is no check that prevents the request. Thus the cache functionality is not complete yet. It caches the results, but it doesn't make use of them. The last step would be to prevent the API request when a result is available in the cache.
+Entretanto, não existe nada que impeça a aplicação de uma requisição à API a cada _submit_ de busca. Mesmo que já exista um resultado, a requisição será feita assim mesmo. Precisamos completar o comportamento da funcionalidade de _cache_, que já mantém os resultados, mas ainda não toma proveito deles. Resumindo, o último passo é: evitar uma nova requisição à API, caso já exista um resultado disponível em _cache_.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -986,7 +986,7 @@ However, nothing stops the application from sending an API request on each searc
 	
 	}
 
-Now your client makes a request to the API only once although you search for a search term twice. Even paginated data with several pages gets cached that way, because you always save the last page for each result in the `results` map. Isn't that a powerful approach to introduce caching to your application? The Hacker News API provides you with everything you need to even cache paginated data effectively.
+Agora, seu cliente fará apenas uma requisição à API, quando você buscar pelo mesmo termo duas ou mais vezes. Até mesmo dados paginados, com diversas páginas, são armazenados em _cache_ desta forma, porque você sempre salva a última página exibida, para cada resultado, no mapa `results`. Esta é uma abordagem muito arrojada de incluir _caching_ na sua aplicação, não acha? A API Hacker News provê tudo o que você precisa para fazer _cache_ até mesmo de dados paginados de forma efetiva.
 
 ## Error Handling
 
