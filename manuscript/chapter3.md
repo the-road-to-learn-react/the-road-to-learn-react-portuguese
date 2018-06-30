@@ -1133,18 +1133,18 @@ Sua aplicação estará funcionando, com a adição de um tratamento de erros em
 
 * Leia mais sobre [tratamento de erros em componentes React][28]
 
-## Axios instead of Fetch
+## _Axios_ no lugar de _Fetch_
 
-In one of the previous chapters, you have introduced the native fetch API to perform a request to the Hacker News platform. The browser enables you to use this native fetch API. However, not all browsers, especially older browsers, support it. In addition, once you start to test your application in a headless browser environment (there is no browser, instead it is only mocked), there can be issues regarding the fetch API. Such a headless browser environment can happen when writing and executing tests for your application which don't run in a real browser. There are a couple of ways to make fetch work in older browsers (polyfills) and in tests ([isomorphic-fetch][29]), but we won't go down this rabbit hole in this book.
+Em um capítulo anterior, você utilizou as funções nativas de _fetch_ para realizar requisições à plataforma do Hacker News. A maior parte dos navegadores lhe permitem fazê-lo. Mas, alguns, especialmente os mais antigos, não oferecem suporte à essa API nativa de JavaScript. Além disso, uma vez que você começar a testar sua aplicação com ambientes que simulam um _browser_, também pode se deparar com problemas em relação ao uso de _fetch_. Existem algumas maneiras de contornar estes problemas, fazendo com que _fetch_ funcione tanto em navegadores antigos (polyfills), quando em testes ([isomorphic-fetch][29]), mas nós não entraremos em maiores detalhes sobre isso aqui.
 
-An alternative way to solve it would be to substitute the native fetch API with a stable library such as [axios][30]. Axios is a library that solves only one problem, but it solves it with a high quality: performing asynchronous requests to remote APIs. That's why you will use it in this book. On a concrete level, the chapter should show you how you can substitute a library (which is a native API of the browser in this case) with another library. On an abstract level, it should show you how you can always find a solution for the quirks (e.g. old browsers, headless browser tests) in web development. So never stop to look for solutions if anything gets in your way.
+Uma solução alternativa é substituir o _fetch_ por uma biblioteca mais estável como a [axios][30]. Axios é uma biblioteca dedicada a resolver apenas um problema, mas o faz com alta qualidade: efetuar requisições assíncronas à APIs remotas. Por este motivo, você irá utilizá-la neste livro. Em termos práticos, este capítulo deve lhe mostrar como substituir uma biblioteca pela outra. Em um nível mais conceitual, ele lhe mostra como sempre é possível achar uma solução para esses pequenos caprichos, existentes no desenvolvimento _web_. Nunca pare de buscar soluções para obstáculos que venham a aparecer no seu caminho.
 
-Let's see how the native fetch API can be substituted with axios. Actually everything said before sounds more difficult than it is. First, you have to install axios on the command line:
+Vejamos como _fetch_ pode ser substituído por _axios_. Tudo que foi falado até então parece ser mais difícil do que realmente é. Primeiramente, você tem que instalar a biblioteca _axios_ via linha de comando:
 
 {title="Command Line",lang="text"}
 	npm install --save axios
 
-Second, you can import axios in your App component's file:
+Segundo, você irá importar _axios_ no seu componente _App_:
 
 {title="src/App.js",lang=javascript}
 	import React, { Component } from 'react';
@@ -1155,7 +1155,7 @@ Second, you can import axios in your App component's file:
 	
 	...
 
-And last but not least, you can use it instead of `fetch()`. Its usage looks almost identical to the native fetch API. It takes the URL as argument and returns a promise. You don't have to transform the returned response to JSON anymore. Axios is doing it for you and wraps the result into a `data` object in JavaScript. Thus make sure to adapt your code to the returned data structure.
+E por último, mas não menos importante, você usará a biblioteca, de forma quase idêntica à API nativa _fetch_. Ela recebe a URL como argumento e retorna uma _promise_. Você não precisa transformar a resposta para JSON, no então. _Axios_ faz isto para você e transforma o resultado em um objeto JavaScript chamado `data`. Certifique-se de que adaptou seu código à estrutura de dados retornada.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1174,16 +1174,16 @@ And last but not least, you can use it instead of `fetch()`. Its usage looks alm
 	
 	}
 
-That's it for replacing fetch with axios in this chapter. In your code, you are calling `axios()` which uses by default a HTTP GET request. You can make the GET request explicit by calling `axios.get()`. Also you can use another HTTP method such as HTTP POST with `axios.post()` instead. There you can already see how axios is a powerful library to perform requests to remote APIs. I often recommend to use it over the native fetch API when your API requests become complex or you have to deal with web development quirks with promises. In addition, in a later chapter, you will introduce testing in your application. Then you don't need to worry anymore about a browser or headless browser environment.
+É somente isto, no que se refere a substituir _fetch_ por _axios_ neste capítulo. No seu código, você está chamando `axios()`, que usa por padrão uma requisição HTTP GET. Você pode fazer uma requisição GET explícita chamando `axios.get()`. Outros métodos HTTP como POST podem ser usados com `axios.post()`. Neste ponto, você já deve conseguir enxergar como a biblioteca _axios_ é poderosa. Eu sempre recomendo que seja utilizada no lugar de _fetch_ quando suas requisições se tornarem muito complexas ou quando você tem que lidar com caprichos do desenvolvimento web. Em adição a isto, em um capítulo mais na frente, você incluirá testes na sua aplicação. Não precisará, então, se preocupar mais com navegadores ou ambientes que simulam eles.
 
-I want to introduce another improvement for the Hacker News request in the App component. Imagine your component mounts when the page is rendered for the first time in the browser. In `componentDidMount()` the component starts to make the request, but then, because your application introduced some kind of navigation, you navigate away from this page to another page. Your App component unmounts, but there is still a pending request from your `componentDidMount()` lifecycle method. It will attempt to use `this.setState()` eventually in the `then()` or `catch()` block of the promise. Perhaps then it's the first time you will see the following warning on your command line or in your browser's developer output:
+Eu gostaria de introduzir outra melhoria para a consulta ao Hacker News no componente _App_. Imagine que seu componente seja montado quando a página é renderizado pela primeira vez no _browser_. Em `componentDidMount()` o componente começa a fazer a requisição mas, logo depois, porque sua aplicação disponibilizou algum tipo de navegação, você sai da página atual e navega para outra. Seu componente _App_ é desmontado, mas ainda existirá uma requisição pendente disparada no método e ciclo de vida `componentDidMount()`. Ela tentará, eventualmente, utilizar `this.setState()` no `then()` ou no `catch()` da _promise_. Provavelmente, pela primeira vez, você verá o seguinte _warning_ na linha de comando ou no _console_ do seu navegador:
 
 {title="Command Line",lang="text"}
 	Warning: Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component. This is a no-op.
 
-You can deal with this issue by aborting the request when your component unmounts or preventing to call `this.setState()` on an unmounted component. It's a best practice in React, even though it's not followed by many developers, to preserve an clean application without any annoying warnings. However, the current promise API doesn't implement aborting a request. Thus you need to help yourself on this issue. This might also be the case why not many developers are following this best practice. The following implementation seems more like a workaround than a sustainable implementation. Because of that, you can decide on your own if you want to implement it to work around the warning because of an unmounted component. Nevertheless, keep the warning in mind in case it comes up in a later chapter of this book or in your own application one day. Then you know how to deal with it.
+Você pode tratar isto abortando a requisição quando seu componente é desmontado, prevenindo a chamada de `this.setState()` em um componente nesta situação. É uma boa prática em React (mesmo que não seja seguida por muitos desenvolvedores) para preservar a aplicação limpa e sem _warnings_. Contudo, a atual API de _promises_ não permite abortar requisições. Você precisa se virar para fazê-lo, o que pode ser o motivo pelo qual poucos desenvolvedores têm seguido esta boa prática. A implementação a seguir se parece mais com uma solução de contorno do que uma implementação sustentável. Sabendo disso, fica em suas mãos a escolha de fazê-lo, ou não. Esteja apenas ciente do _warning_, para o caso dele aparecer novamente em algum capítulo do livro ou uma aplicação sua, no futuro. Se acontecer, você saberá tratá-lo.
 
-Let's start to work around it. You can introduce a class field which holds the lifecycle state of your component. It can be initialized as `false` when the component initializes, changed to `true` when the component mounted, but then again set to `false` when the component unmounted. This way, you can keep track of your component's lifecycle state. It has nothing to do with the local state stored and modified with `this.state` and `this.setState()`, because you should be able to access it directly on the component instance without relying on React's local state management. Moreover, it doesn't lead to any re-rendering of the component when the class field is changed this way.
+Para começar, você pode adicionar uma variável de classe que mantém o estado do ciclo de vida do seu componente. Ele pode ser inicializado com o valor `false` quando o componente inicializa, mudado para `true` quando o componente é montado e, novamente, `false` quando ele é desmontado. Assim, você será capaz de rastrear o estado do ciclo de vida. Este campo nada tem a ver com o estado local, nem é acessado ou modificado com `this.state` e `this.setState()`, uma vez que você deveria poder acessá-lo diretamente na instância do componente sem depender do gerenciamento de estado de React. Ele também não leva a nenhuma nova renderização do componente quando seu valor é modificado.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1217,7 +1217,7 @@ Let's start to work around it. You can introduce a class field which holds the l
 	
 	}
 
-Finally, you can use this knowledge not to abort the request itself but to avoid calling `this.setState()` on your component instance even though the component already unmounted. It will prevent the mentioned warning.
+Finalmente, você pode utilizar este conhecimento, não para abortar a requisição por si mesma, mas para evitar que `setState()` seja chamado depois do componente ter sido desmontado, evitando o _warning_ antes mencionado.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1236,38 +1236,38 @@ Finally, you can use this knowledge not to abort the request itself but to avoid
 	
 	}
 
-Overall the chapter has shown you how you can replace one library with another library in React. If you run into any issues, you can use the vast library ecosystem in JavaScript to help yourself. In addition, you have seen a way how you can avoid calling `this.setState()` in React on an unmounted component. If you dig deeper into the axios library, you will find a way to cancel the request in the first place too. It's up to you to read up more about this topic.
+No geral, este capítulo lhe mostrou como você pode substituir uma biblioteca por outra em React. Se você se deparar com problemas, coloque a seu favor o vasto ecossistema de bibliotecas JavaScript. Você também viu uma forma de evitar que `this.setState()` seja chamado em um component React não montado. Se você investigar a biblioteca _axios_ mais a fundo, encontrará uma outra forma de cancelar a requisição. Fica a seu critério se aprofundar no tópico, ou não.
 
-### Exercises:
+### Exercícios:
 
-* read more about [why frameworks matter][31]
-* learn more about [an alternative React component syntax][32]
+* Leia mais sobre [porque _frameworks_ importam][31]
+* Leia mais sobre [uma sintaxe alternativa para componentes React][32]
 
 {pagebreak}
 
-You have learned to interact with an API in React! Let's recap the last chapters:
+Você aprendeu a interagir com uma API em React! Vamos recapitular os últimos tópicos:
 
 * React
-  * ES6 class component lifecycle methods for different use cases
-  * componentDidMount() for API interactions
-  * conditional renderings
-  * synthetic events on forms
-  * error handling
-  * aborting a remote API request
-* ES6 and beyond
-  * template strings to compose strings
-  * spread operator for immutable data structures
-  * computed property names
-  * class fields
-* General
-  * Hacker News API interaction
-  * native fetch browser API
-  * client- and server-side search
-  * pagination of data
-  * client-side caching
-  * axios as an alternative for the native fetch API
+	* Métodos de ciclo de vida de componentes de classe e seus diferentes casos de uso
+	* componentDidMount() para interações com APIs
+	* renderização condicional
+	* _synthetic events_ em _forms_
+	* tratamento de erros
+	* abortando uma requisição à uma API remota
+* ES6 e além
+	* _template strings_
+	* operador _spread_ para estruturas de dados imutáveis
+	* nomes de propriedades computados
+	* campos (variáveis) de classe 
+* Geral
+	* Integração com a Hacker News API
+	* API nativa _fetch_
+	* buscas do lado do cliente e do servidor
+	* dados paginados
+	* _caching_ no cliente
+	* _axios_  como uma alternativa à API nativa de _fetch_
 
-Again it makes sense to take a break. Internalize the learnings and apply them on your own. You can experiment with the source code you have written so far. You can find the source code in the [official repository][33].
+Novamente, faz sentido fazer uma pausa. Internalize o aprendizado e aplique-o você mesmo. Você pode fazer experiências com o código que escreveu até agora. Você também pode achar o código-fonte no [repositório oficial][33].
 
 [1]:	https://www.robinwieruch.de/what-is-an-api-javascript/
 [2]:	https://news.ycombinator.com/
