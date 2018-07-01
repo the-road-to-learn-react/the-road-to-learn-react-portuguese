@@ -1141,7 +1141,7 @@ Uma solução alternativa é substituir o _fetch_ por uma biblioteca mais estáv
 
 Vejamos como _fetch_ pode ser substituído por _axios_. Tudo que foi falado até então parece ser mais difícil do que realmente é. Primeiramente, você tem que instalar a biblioteca _axios_ via linha de comando:
 
-{title="Command Line",lang="text"}
+{title=“Linha de Comando“,lang="text"}
 	npm install --save axios
 
 Segundo, você irá importar _axios_ no seu componente _App_:

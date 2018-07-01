@@ -10,13 +10,13 @@ No começo deste livro, depois que você inicializou sua aplicação com _create
 
 As declarações de `import` e `export` facilitam o compartilhamento de código entre múltiplos arquivos. Antes, haviam diversas formas de atingir este objetivo em um ambiente JavaScript. Era uma verdadeira bagunça e desejava-se que existisse um padrão, ao invés de múltiplas abordagens para a mesma coisa. Agora, desde JavaScript ES6, este é o comportamento nativo.
 
-Adicionalmente, elas abraçam o paradigma de _code splitting, _onde você distribui seu código por múltiplos arquivos para mantê-lo reutilizável e manutenível. Reutilizável porque você consegue importar um pedaço de código em múltiplos arquivos. Manutenível porque você tem uma única fonte onde você mantém um pedaço de código.
+Adicionalmente, elas abraçam o paradigma de \_code splitting, \_onde você distribui seu código por múltiplos arquivos para mantê-lo reutilizável e manutenível. Reutilizável porque você consegue importar um pedaço de código em múltiplos arquivos. Manutenível porque você tem uma única fonte onde você mantém um pedaço de código.
 
 Pro fim, estas declarações lhe ajudam a pensar sobre o encapsulamento de código. Nem toda funcionalidade precisa ser exportada em um arquivo. Algumas deveriam ser utilizadas apenas no arquivo em que foram definidas. Os _exports_ de um arquivo são basicamente a sua API pública. Apenas as funcionalidades exportadas estão disponíveis para reuso em outro lugar, seguindo assim a boa prática de encapsulamento.
 
 Vamos por a mão na massa. Como `import`e `export` funcionam? Os exemplo a seguir demonstram ambas as declarações compartilhando uma ou múltiplas variáveis entre dois arquivos. No final, esta abordagem pode escalar para múltiplos arquivos e poderia também compartilhar mais do que simples variáveis.
 
-Você pode exportar uma ou múltiplas variáveis com o chamado “_export_ nomeado”.
+Você pode exportar uma ou múltiplas variáveis com o chamado “\_export\_ nomeado”.
 
 {title="Code Playground: file1.js",lang="javascript"}
 	const firstname = 'robin';
@@ -70,7 +70,7 @@ Quando importando um módulo exportado com a declaração _default_, você pode 
 	console.log(developer);
 	// output: { firstname: 'robin', lastname: 'wieruch' }
 
-Além disso, o nome dado para o módulo no _import_ pode diferir daquele que foi exportado com _default_. Ele pode até ser usado em conjunto com as declarações nomeadas de_export_ e _import_.
+Além disso, o nome dado para o módulo no _import_ pode diferir daquele que foi exportado com _default_. Ele pode até ser usado em conjunto com as declarações nomeadas de\_export\_ e _import_.
 
 {title="Code Playground: file1.js",lang="javascript"}
 	const firstname = 'robin';
@@ -109,15 +109,15 @@ Essas são as funcionalidades principais de _ES6 modules_. Elas lhe ajudam a org
 * Leia mais sobre [ES6 import][1]
 * Leia mais sobre [ES6 export][2]
 
-## Code Organization with ES6 Modules
+## Organização de Código com _ES6 Modules_
 
-You might wonder: Why didn't we follow the best practices of code splitting for the *src/App.js* file? In the file we already have multiple components which could be defined in their own files/folders (modules). For the sake of learning React, it is practical to keep these things at one place. But once your React application grows, you should consider to split up these components into multiple modules. Only that way your application scales.
+Você pode estar se perguntando: Por que nós não seguimos as melhores práticas de divisão de código para o arquivo _src/App.js_? No arquivo, nós já temos múltiplos componentes que poderiam ter sido definidos em seus próprios arquivos/pastas (módulos). Para o propósito de aprendizado de React, é prático manter estas coisas em um só lugar. Mas, uma vez que a sua aplicação cresce, você deve considerar dividir estes componentes em múltiplos módulos. Somente desta forma sua aplicação será escalável.
 
-In the following, I will propose several module structures you *could* apply. I would recommend to apply them as an exercise at the end of the book. To keep the book itself simple, I will not perform the code splitting and will continue the following chapters with the *src/App.js* file.
+A seguir, eu irei propor várias estruturas de módulos que você **poderia** aplicar. Eu recomendaria aplicá-las como, um exercício, ao final do livro. Para manter o livro simples, eu não irei fazer a divisão de código e irei continuar os capítulos seguintes com o arquivo _src/App.js_.
 
-One possible module structure could be:
+Uma possível estrutura de módulo seria:
 
-{title="Folder Structure",lang="text"}
+{title=“Estrutura de Pastas“,lang="text"}
 	src/
 	  index.js
 	  index.css
@@ -134,9 +134,11 @@ One possible module structure could be:
 	  Search.test.js
 	  Search.css
 
-It separates the components into their own files, but it doesn't look too promising. You can see a lot of naming duplications and only the file extension differs. Another module structure could be:
+Ela separa os componentes em seus próprios arquivos, mas não aparenta ser muito promissora. Note quantos arquivos com nomes duplicados, diferindo apenas nas extensões.
 
-{title="Folder Structure",lang="text"}
+Outra estrutura de módulos seria:
+
+{title=“Estrutura de Pastas“,lang="text"}
 	src/
 	  index.js
 	  index.css
@@ -157,9 +159,9 @@ It separates the components into their own files, but it doesn't look too promis
 	    test.js
 	    index.css
 
-It looks cleaner than before. The index naming of a file describes it as an entry point file to the folder. It is just a common naming convention, but you can use your own naming as well. In this module structure, a component is defined by its component declaration in the JavasScript file, but also by its style and tests.
+Ela parece mais limpa que a anterior. Dar o nome “index” a um arquivo o coloca como o ponto de entrada de uma parta. É uma convenção de nome comumente utilizada, mas não significa que você não possa utilizar os nomes que quiser. Nesta estrutura de módulos, um componente é definido pela sua declaração em um arquivo JavaScript, mas também pelo seu estilo e seus testes.
 
-Another step could be extracting the constant variables from the App component. These constants were used to compose the Hacker News API URL.
+Outro passo que poderia ser dado é o de extrair as constantes do componente _App_. Estas constantes foram utilizadas para compor a URL da API Hacker News.
 
 {title="Folder Structure",lang="text"}
 	src/
@@ -180,7 +182,7 @@ Another step could be extracting the constant variables from the App component. 
 	      index.css
 	    ...
 
-Naturally the modules would split up into *src/constants/* and *src/components/*. Now the *src/constants/index.js* file could look like the following:
+Os módulos naturalmente se dividem em _src/constants/_ e _src/components/_. O arquivo _src/constants/index.js_ pareceria-se com algo assim:
 
 {title="Code Playground: src/constants/index.js",lang="javascript"}
 	export const DEFAULT_QUERY = 'redux';
@@ -191,7 +193,7 @@ Naturally the modules would split up into *src/constants/* and *src/components/*
 	export const PARAM_PAGE = 'page=';
 	export const PARAM_HPP = 'hitsPerPage=';
 
-The *App/index.js* file could import these variables in order to use them.
+O arquivo _App/index.js_ poderia importar estas variáveis para utilizá-las.
 
 {title="Code Playground: src/components/App/index.js",lang=javascript}
 	import {
@@ -206,7 +208,7 @@ The *App/index.js* file could import these variables in order to use them.
 	
 	...
 
-When you use the *index.js* naming convention, you can omit the filename from the relative path.
+Quando você utiliza a convenção de nome _index.js_, pode omitir o nome do arquivo do caminho relativo no _import_.
 
 {title="Code Playground: src/components/App/index.js",lang=javascript}
 	import {
@@ -223,9 +225,9 @@ When you use the *index.js* naming convention, you can omit the filename from th
 	
 	...
 
-But what's behind the *index.js* file naming? The convention was introduced in the node.js world. The index file is the entry point to a module. It describes the public API to the module. External modules are only allowed to use the *index.js* file to import shared code from the module. Consider the following made up module structure to demonstrate it:
+No entanto, o que está realmente por trás da convenção de nomes _index.js_? Ela foi introduzida no mundo _node.js_. O arquivo _index_ é o ponto de entrada de um módulo, descrevendo sua API pública. Módulos externos somente são permitidos de usar o arquivo _index.js_ para importar código compartilhado pelo módulo. Considere a seguinte estrutura de módulos, feita para demonstrar o que foi falado aqui:
 
-{title="Folder Structure",lang="text"}
+{title=“Estrutura de Pastas“,lang="text"}
 	src/
 	  index.js
 	  App/
@@ -236,7 +238,7 @@ But what's behind the *index.js* file naming? The convention was introduced in t
 	    SaveButton.js
 	    CancelButton.js
 
-The *Buttons/* folder has multiple button components defined in its distinct files. Each file can `export default` the specific component making it available to *Buttons/index.js*. The *Buttons/index.js* file imports all different button representations and exports them as public module API.
+A pasta _Buttons/_ tem múltiplos componentes de botões definidos em arquivos distintos. Cada arquivo pode utilizar `export default` para tornar o componente específico disponível para _Buttons/index.js_. O arquivo _Buttons/index.js_ importa todas as diferentes representações de botões e as exporta como a API pública do módulo.
 
 {title="Code Playground: src/Buttons/index.js",lang="javascript"}
 	import SubmitButton from './SubmitButton';
@@ -249,7 +251,7 @@ The *Buttons/* folder has multiple button components defined in its distinct fil
 	  CancelButton,
 	};
 
-Now the *src/App/index.js* can import the buttons from the public module API located in the *index.js* file.
+Agora, *src/App/index.js* pode importar os botões desta API pública localizada em *index.js*.
 
 {title="Code Playground: src/App/index.js",lang=javascript}
 	import {
@@ -258,17 +260,17 @@ Now the *src/App/index.js* can import the buttons from the public module API loc
 	  CancelButton
 	} from '../Buttons';
 
-By going with this constraint, it would be a bad practice to reach into other files than the *index.js* in the module. It would break the rules of encapsulation.
+Se seguirmos esta restrição, seria então uma má prática acessar outros arquivos diretamente, sem ser através do _index.js_ do módulo. Quebraria as regras de encapsulamento.
 
 {title="Code Playground: src/App/index.js",lang=javascript}
 	// bad practice, don't do it
 	import SubmitButton from '../Buttons/SubmitButton';
 
-Now you know how you could refactor your source code in modules with the constraints of encapsulation. As I said, for the sake of keeping the book simple I will not apply these changes. But you should do the refactoring when you finished reading the book.
+Você agora sabe como poderia refatorar seu código-fonte em módulos, aplicando restrições de encapsulamento. Como eu disse antes, com fim de manter o livro simples, eu não farei estas mudanças aqui. Você deve refatorar quando terminar de ler este livro.
 
-### Exercises:
+### Exercícios:
 
-* refactor your *src/App.js* file into multiple component modules when you finished the book
+* refatore seu arquivo *src/App.js* em múltiplos módulos de componentes quando terminar de ler o livro
 
 ## Snapshot Tests with Jest
 
