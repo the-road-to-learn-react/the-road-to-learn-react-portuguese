@@ -504,16 +504,16 @@ _Snapshot tests_ geralmente são bem básicos. Você só quer cobrir o caso de o
 * Mantenha seus _snapshot tests_ atualizados quando implementar mudanças nos componentes nos próximos capítulos
 * Leia mais sobre [Jest em React][4]
 
-## Unit Tests with Enzyme
+## Testes de Unidade com Enzyme
 
-[Enzyme][5] is a testing utility by Airbnb to assert, manipulate and traverse your React components. You can use it to conduct unit tests to complement your snapshot tests in React.
+[Enzyme][5] é um utilitário de testes, lançado pelo Airbnb, para percorrer, manipular  e realizar assertivas com seus componentes React. Você pode utilizá-lo para conduzir testes unitários, complementando seus _snapshot tests_ em React.
 
-Let's see how you can use enzyme. First you have to install it since it doesn't come by default with *create-react-app*. It comes also with an extension to use it in React.
+Vejamos como podemos utilizar _enzyme_. Primeiro, você precisa instalá-lo, uma vez que não vem por padrão com _create-react-app_. Ele possui também uma extensão para ser utilizado em React.
 
-{title="Command Line",lang="text"}
+{title=“Linha de Comando“,lang="text"}
 	npm install --save-dev enzyme react-addons-test-utils enzyme-adapter-react-16
 
-Second, you need to include it in your test setup and initialize its Adapter for using it in React.
+Segundo, você precisa incluir a biblioteca no seu _setup_ de testes e inicializar o seu _Adapter_ para ser usado com React.
 
 {title="src/App.test.js",lang=javascript}
 	import React from 'react';
@@ -529,7 +529,7 @@ Second, you need to include it in your test setup and initialize its Adapter for
 	Enzyme.configure({ adapter: new Adapter() });
 	# leanpub-end-insert
 
-Now you can write your first unit test in the Table "describe"-block. You will use `shallow()` to render your component and assert that the Table has two items, because you pass it two list items. The assertion simply checks if the element has two elements with the class `table-row`.
+Agora, você pode escrever seu primeiro teste unitário no bloco “describe” de _Table_.VOcê irá usar `shallow()` para renderizar seu componente e verificar que _Table_ tem dois itens, de acordo com os dois itens de lista que você passou para ele. A verificação simplesmente checa se o elemento renderizado possui dois outros elementos com a classe `table-row`.
 
 {title="src/App.test.js",lang=javascript}
 	import React from 'react';
@@ -566,23 +566,23 @@ Now you can write your first unit test in the Table "describe"-block. You will u
 	
 	});
 
-Shallow renders the component without its child components. That way, you can make the test very dedicated to one component.
+_Shallow_ renderiza o componente sem renderizar seus componentes filhos. Assim, você pode fazer o teste verdadeiramente dedicado a ele.
 
-Enzyme has overall three rendering mechanisms in its API. You already know `shallow()`, but there also exist `mount()` and `render()`. Both instantiate instances of the parent component and all child components. Additionally `mount()` gives you access to the component lifecycle methods. But when to use which render mechanism? Here some rules of thumb:
+_Enzyme_ tem, ao todo, três mecanismos de renderização em sua API. Você já conhece `shallow()`, mas também existem `mount()` e `render()`. Ambos criam instâncias do componente pai e também dos seus filhos. A diferença é que `mount()` lhe dá acesso aos métodos de ciclo de vida do componente. Quando, então, utilizar cada mecanismo de renderização? Seguem algumas regras:
 
-* Always begin with a shallow test
-* If `componentDidMount()` or `componentDidUpdate()` should be tested, use `mount()`
-* If you want to test component lifecycle and children behavior, use `mount()`
-* If you want to test a component's children rendering with less overhead than `mount()` and you are not interested in lifecycle methods, use `render()`
+* Sempre comece com um teste _shallow_
+* Se `componentDidMount()` ou `componentDidUpdate()` precisam ser testados, use `mount()`
+* Se você quiser testar o ciclo de vida do componente e o comportamento dos seus filhos, use `mount()`
+* Se você quiser testar a renderização dos filhos de um componente com menos _overhead_ do que quando se usa `mount()`, use `render()`
 
-You could continue to unit test your components. But make sure to keep the tests simple and maintainable. Otherwise you will have to refactor them once you change your components. That's why Facebook introduced snapshot tests with Jest in the first place.
+Você pode continuar escrevendo testes de unidade para seus componentes. Mas, faça por onde manter os testes simples e manuteníveis. Caso contrário, você irá acabar tendo que refatorá-los todas as vezes que seus componentes mudarem. O Facebook já introduziu _snapshot tests_ com Jest para este propósito.
 
-### Exercises:
+### Exercícios:
 
-* write a unit test with Enzyme for your Button component
-* keep your unit tests up to date during the following chapters
-* read more about [enzyme and its rendering API][6]
-* read more about [testing React applications][7]
+* Escreva um teste unitário com _Enzyme_ para o seu componente _Button_
+* Mantenha seus testes unitários atualizados ao longo dos próximos capítulos
+* Leia mais sobre [enzyme e sua API de renderização][6]
+* Leia mais sobre [testes de aplicações React][7]
 
 ## Component Interface with PropTypes
 
