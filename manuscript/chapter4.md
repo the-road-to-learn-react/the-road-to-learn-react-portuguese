@@ -272,19 +272,21 @@ Você agora sabe como poderia refatorar seu código-fonte em módulos, aplicando
 
 * refatore seu arquivo *src/App.js* em múltiplos módulos de componentes quando terminar de ler o livro
 
-## Snapshot Tests with Jest
+## _Snapshot Tests_ com Jest
 
-The book will not dive deeply into the topic of testing, but it shouldn't be unmentioned. Testing your code in programming is essential and should be seen as mandatory. You want to keep the quality of your code high and an assurance that everything works.
+Este livro não irá mergulhar fundo no tópico de testes, mas estes não poderiam deixar de ser mencionados. Em programação, testar o código é essencial e deveria ser encarado como algo obrigatório. Você com certeza quer manter alta a qualidade do seu código e com a garantia de que tudo funciona.
 
-Perhaps you have heard about the testing pyramid. There are end-to-end tests, integration tests and unit tests. If you are not familiar with those, the book gives you a quick and basic overview. A unit test is used to test an isolated and small block of code. It can be a single function that is tested by an unit test. However, sometimes the units work well in isolation yet don't work in combination with other units. They need to be tested as a group of units. That's where integration tests can help out by covering whether units work well together. Last but not least, an end-to-end test is the simulation of a real user scenario. It could be an automated setup in a browser simulating the login flow of an user in a web application. While unit tests are fast and easy to write and to maintain, end-to-end tests are the opposite of this spectrum.
+Talvez você tenha ouvido falar sobre a pirâmide de testes. Existem testes de ponta a ponta, testes de integração e testes unitários. Se você não está familiarizado com eles, o livro lhe dará uma rápida e básica noção geral.
 
-How many tests do I need of each type? You want to have many unit tests to cover your isolated functions. After that, you can have several integration tests to cover that the most important functions work in combination as expected. Last but not least, you might want to have only a few end-to-end tests to simulate critical scenarios in your web application. That's it for the general excursion in the world of testing.
+Um teste unitário é utilizado para testar isoladamente um pequeno bloco de código. Pode ser uma única função que é testada por um teste deste tipo. Contudo, às vezes as partes isoladas funcionam bem, mas não funcionam como esperado quando combinadas. Elas precisam ser testadas como um grupo de unidades. É onde entram os testes de integração, que ajudam a ir aonde os testes unitários não chegam. Por último, mas não menos importante, testes ponta a ponta são uma simulação de um cenário real de usuário. Poderia ser, por exemplo, um _setupi_ automatizado em um _browser_ simulando o fluxo de _login_ de um usuário em uma aplicação web. Enquanto testes unitários são rápidos e fáceis de escrever e manter, testes de ponta a ponta estão do lado oposto deste espectro.
 
-So how do you apply this knowledge in testing your React application? The foundation for testing in React are component tests which can be generalized as unit tests and a part of it as snapshot tests. You will conduct unit tests for your components in the next chapter by using a library called Enzyme. In this chapter, you will focus on another kind of tests: snapshot tests. That's were Jest comes into play.
+De quantos testes de cada tipo eu preciso? Você irá querer ter muitos testes unitários para cobrir suas funções isoladamente. Depois disso, você poderá ter vários testes de integração para cobrir o uso combinado das mais importantes funções. Por fim, você pode querer ter apenas alguns testes ponta-a-ponta para simular cenários críticos em suas aplicações web. Isso é tudo para nossa excursão geral no mundo dos testes.
 
-[Jest][3] is a JavaScript testing framework that is used at Facebook. In the React community, it is used for React component tests. Fortunately *create-react-app* already comes with Jest, so you don't need to worry about setting it up.
+Então, como você aplica este conhecimento sobre testes em sua aplicação React? A base para testar em React são os testes de componentes, que podem ser generalizados como testes de unidade e uma parte deles como _snapshot tests_. Você irá criar testes de unidade para seus componentes no próximo capítulo, utilizando uma biblioteca chamada _Enzyme_. Neste capítulo, você irá focar em outro tipo: _snapshot testes_. É quando _Jest_ entra em cena.
 
-Let's start to test your first components. Before you can do that, you have to export the components, which you are going to test, from your *src/App.js* file. Afterward you can test them in a different file. You have learned about this in the code organization chapter.
+[Jest][3] é um framework JavaScript de testes utilizado no Facebook. Na comunidade React, ele é usado para testar componentes. Felizmente, _create-react-app_ já embute Jest e você não precisa se preocupar em configurá-lo.
+
+Comecemos os testes dos seus primeiros componentes. Antes de fazê-lo, precisará exportar os componentes que estão em _src/App.js_ e que irá testar. Assim, poderá testá-los em um arquivo separado. Você aprendeu como fazer a exportação no capítulo sobre organização de código.
 
 {title="src/App.js",lang=javascript}
 	...
@@ -305,7 +307,7 @@ Let's start to test your first components. Before you can do that, you have to e
 	};
 	# leanpub-end-insert
 
-In your *App.test.js* file, you will find a first test that came with *create-react-app*. It verifies that the App component would render without any errors.
+Em seu arquivo _App.test.js_, você encontrará um primeiro teste que veio do _create-react-app_. Ele verifica se o componente _App_ é renderizado sem erros.
 
 {title="src/App.test.js",lang=javascript}
 	import React from 'react';
@@ -318,25 +320,26 @@ In your *App.test.js* file, you will find a first test that came with *create-re
 	  ReactDOM.unmountComponentAtNode(div);
 	});
 
-The "it"-block describes one test case. It comes with a test description and when you test it, it can either succeed or fail. Furthermore, you could wrap it into a "describe"-block that defines your test suite. A test suite could include a bunch of the "it"-blocks for one specific component. You will see those "describe"-blocks later on. Both blocks are used to separate and organize your test cases.
+O bloco “it” descreve um caso de teste. Ele traz uma descrição do teste e, quando executado, pode ter sucesso ou falhar. Além disso, ele poderia ser colocado dentro de um bloco “describe” que define sua suíte de testes. Sua suíte de testes poderia incluir um punhado de blocos “it” para um componente específico. Mais tarde, você verá mais sobre o bloco “describe”. Ambos os blocos são utilizados para separar e organizar seus casos de teste.
 
-Note that the `it` function is acknowledged in the JavaScript community as the function where you run a single test. However, in Jest it is often found as an alias `test` function.
+Note que a função `it` é reconhecida na comunidade JavaScript como a função onde você roda um único teste. Contudo, em Jest ela é frequentemente encontrada sob o _alias_ de `test`.
 
-You can run your test cases by using the interactive *create-react-app* test script on the command line. You will get the output for all test cases on your command line interface.
+Você pode rodar seus casos de testes utilizando o script _test_ do _create-react-app_ na linha de comando. Você irá obter a saída para todos os casos de testes nesta mesma interface de linha de comando.
 
-{title="Command Line",lang="text"}
+{title=“Linha de Comando“,lang="text"}
 	npm test
 
-Now Jest enables you to write snapshot tests. These tests make a snapshot of your rendered component and run this snapshot against future snapshots. When a future snapshot changes, you will get notified in the test. You can either accept the snapshot change, because you changed the component implementation on purpose, or deny the change and investigate for the error. It complements unit tests very well, because you only test the diffs of the rendered output. It doesn't add big maintenance costs, because you can simply accept changed snapshots when you changed something on purpose for the rendered output in your component.
 
-Jest stores the snapshots in a folder. Only that way it can validate the diff against a future snapshot. Additionally, the snapshots can be shared across teams by having them in one folder.
+Jest lhe permite escrever _snapshot tests_. Eles fazem uma fotografia (_snapshot_) do seu componente e a comparam com futuras fotografias. Quando um _snapshot_ futuro muda, você será notificado no teste. Você pode aceitar a mudança, porque realmente mudou a implementação do componente de propósito, ou rejeitar a mudança e investigar o que causou o erro. É um ótimo complemento para testes unitários, porque você testa apenas as diferenças entre as renderizações. Não adiciona grandes custos de manutenção, porque você pode simplesmente aceitar os _snapshots_ que mudaram quando você altera algo conscientemente.
 
-Before writing your first snapshot test with Jest, you have to install an utility library.
+Jest guarda os _snapshots_ (ou fotografias) em uma pasta. Somente desta forma ele consegue validar as diferenças nas comparações com _snapshots_ futuros. Isso ainda permite que eles sejam compartilhados pelo time.
+
+Antes de escrever o seu primeiro _snapshot test_ com Jest, você tem que instalar uma biblioteca utilitária:
 
 {title="Command Line",lang="text"}
 	npm install --save-dev react-test-renderer
 
-Now you can extend the App component test with your first snapshot test. First, import the new functionality from the node package and wrap your previous "it"-block for the App component into a descriptive "describe"-block. In this case, the test suite is only for the App component.
+Agora você pode extender o teste do componente _App_ como seu primeiro _snapshot test_. Primeiro, importe a nova funcionalidade da biblioteca recém adicionada e envolva seu bloco “it” em um bloco “describe”.  Neste caso, a suíte de testes trata apenas do componente _App_.
 
 {title="src/App.test.js",lang=javascript}
 	import React from 'react';
@@ -360,7 +363,7 @@ Now you can extend the App component test with your first snapshot test. First, 
 	});
 	# leanpub-end-insert
 
-Now you can implement your first snapshot test by using a "test"-block.
+Implemente agora seu primeiro _snapshot test_ utilizando um bloco “test”.
 
 {title="src/App.test.js",lang=javascript}
 	import React from 'react';
@@ -388,7 +391,7 @@ Now you can implement your first snapshot test by using a "test"-block.
 	# leanpub-end-insert
 	});
 
-Run your tests again and see how the tests either succeed or fail. They should succeed. Once you change the output of the render block in your App component, the snapshot test should fail. Then you can decide to update the snapshot or investigate in your App component.
+Rode seus testes novamente e veja se eles têm sucesso ou falham. Eles devem ter sucesso. Se você mudar a saída do bloco “render” em seu componente _App_, o _snapshot_ teste deve falhar. Então você pode decidir atualizar o snapshot ou investigar o que aconteceu em seu componente _App_.
 
 Basically the `renderer.create()` function creates a snapshot of your App component. It renders it virtually and stores the DOM into a snapshot. Afterward, the snapshot is expected to match the previous snapshot from when you ran your snapshot tests the last time. This way, you can assure that your DOM stays the same and doesn't change anything by accident.
 
