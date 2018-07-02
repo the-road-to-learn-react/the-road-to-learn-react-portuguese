@@ -393,9 +393,9 @@ Implemente agora seu primeiro _snapshot test_ utilizando um bloco “test”.
 
 Rode seus testes novamente e veja se eles têm sucesso ou falham. Eles devem ter sucesso. Se você mudar a saída do bloco “render” em seu componente _App_, o _snapshot_ teste deve falhar. Então você pode decidir atualizar o snapshot ou investigar o que aconteceu em seu componente _App_.
 
-Basically the `renderer.create()` function creates a snapshot of your App component. It renders it virtually and stores the DOM into a snapshot. Afterward, the snapshot is expected to match the previous snapshot from when you ran your snapshot tests the last time. This way, you can assure that your DOM stays the same and doesn't change anything by accident.
+Basicamente, a função `renderer.create()` cria um _snapshot_ do seu componente App. Ele o renderiza virtualmente e armazena uma fotografia do DOM. Depois, espera-se que essa fotografia (ou _snapshot_) coincida com anteriores, de quando você rodou seus _snapshot tests_ da última vez. Desta forma, você pode assegurar que o seu DOM permanecerá o mesmo, não mudará acidentalmente.
 
-Let's add more tests for our independent components. First, the Search component:
+Vamos adicionar mais testes para nossos componentes independentes. Primeiro, o componente _Search_:
 
 {title="src/App.test.js",lang=javascript}
 	import React from 'react';
@@ -427,9 +427,9 @@ Let's add more tests for our independent components. First, the Search component
 	});
 	# leanpub-end-insert
 
-The Search component has two tests similar to the App component. The first test simply renders the Search component to the DOM and verifies that there is no error during the rendering process. If there would be an error, the test would break even though there isn't any assertion (e.g. expect, match, equal) in the test block. The second snapshot test is used to store a snapshot of the rendered component and to run it against a previous snapshot. It fails when the snapshot has changed.
+O componente _Search_ tem dois testes similares ao componente _App_. O primeiro simplesmente renderia _Search_ no DOM e verifica que não existe erro no processo de renderização.  Se um erro ocorrer, o teste quebrará mesmo que não exista nenhuma assertiva (_expect, match, equal)_ no bloco de teste. O segundo _snapshot test_é utilizado para armazenar o _snapshot_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o _snpashot_ muda.
 
-Second, you can test the Button component whereas the same test rules as in the Search component apply.
+Segundo, você pode testar o componente _Button_ aplicando estas mesmas regras do componente _Search_.
 
 {title="src/App.test.js",lang=javascript}
 	...
@@ -459,7 +459,7 @@ Second, you can test the Button component whereas the same test rules as in the 
 	});
 	# leanpub-end-insert
 
-Last but not least, the Table component that you can pass a bunch of initial props to render it with a sample list.
+Por fim, o componente _Table_, para o qual você passa um punhado de _props_ contendo uma amostra de dados para renderizá-lo.
 
 {title="src/App.test.js",lang=javascript}
 	...
@@ -495,14 +495,14 @@ Last but not least, the Table component that you can pass a bunch of initial pro
 	});
 	# leanpub-end-insert
 
-Snapshot tests usually stay pretty basic. You only want to cover that the component doesn't change its output. Once it changes the output, you have to decide if you accept the changes. Otherwise you have to fix the component when the output is not the desired output.
+_Snapshot tests_ geralmente são bem básicos. Você só quer cobrir o caso de o componente ter ou não mudado. Uma vez que mudou, você decide se aceita as mudanças. Caso não, você tem que consertar a modificação indesejada.
 
-### Exercises:
+### Exercícios:
 
-* see how a snapshot test fails once you change your component's return value in the `render()` method
-  * either accept or deny the snapshot change
-* keep your snapshots tests up to date when the implementation of components change in next chapters
-* read more about [Jest in React][4]
+* Veja como um _snapshot test_ falha quando você muda o retorno do seu componente no método `render()`
+  * Aceite ou negue a mudança de _snapshot_
+* Mantenha seus _snapshot tests_ atualizados quando implementar mudanças nos componentes nos próximos capítulos
+* Leia mais sobre [Jest em React][4]
 
 ## Unit Tests with Enzyme
 
