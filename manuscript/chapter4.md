@@ -16,7 +16,7 @@ Pro fim, estas declarações lhe ajudam a pensar sobre o encapsulamento de códi
 
 Vamos por a mão na massa. Como `import`e `export` funcionam? Os exemplo a seguir demonstram ambas as declarações compartilhando uma ou múltiplas variáveis entre dois arquivos. No final, esta abordagem pode escalar para múltiplos arquivos e poderia também compartilhar mais do que simples variáveis.
 
-Você pode exportar uma ou múltiplas variáveis com o chamado “\_export\_ nomeado”.
+Você pode exportar uma ou múltiplas variáveis com o chamado “_export_ nomeado”.
 
 {title="Code Playground: file1.js",lang="javascript"}
 	const firstname = 'robin';
@@ -427,7 +427,7 @@ Vamos adicionar mais testes para nossos componentes independentes. Primeiro, o c
 	});
 	# leanpub-end-insert
 
-O componente _Search_ tem dois testes similares ao componente _App_. O primeiro simplesmente renderia _Search_ no DOM e verifica que não existe erro no processo de renderização.  Se um erro ocorrer, o teste quebrará mesmo que não exista nenhuma assertiva (_expect, match, equal)_ no bloco de teste. O segundo _snapshot test_é utilizado para armazenar o _snapshot_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o _snpashot_ muda.
+O componente _Search_ tem dois testes similares ao componente _App_. O primeiro simplesmente renderia _Search_ no DOM e verifica que não existe erro no processo de renderização.  Se um erro ocorrer, o teste quebrará mesmo que não exista nenhuma assertiva (_expect, match, equal)_ no bloco de teste. O segundo _snapshot test_é utilizado para armazenar o _snapshot_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o _snapshot_ muda.
 
 Segundo, você pode testar o componente _Button_ aplicando estas mesmas regras do componente _Search_.
 
