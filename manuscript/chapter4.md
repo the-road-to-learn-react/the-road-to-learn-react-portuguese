@@ -16,7 +16,7 @@ Pro fim, estas declarações lhe ajudam a pensar sobre o encapsulamento de códi
 
 Vamos por a mão na massa. Como `import`e `export` funcionam? Os exemplo a seguir demonstram ambas as declarações compartilhando uma ou múltiplas variáveis entre dois arquivos. No final, esta abordagem pode escalar para múltiplos arquivos e poderia também compartilhar mais do que simples variáveis.
 
-Você pode exportar uma ou múltiplas variáveis com o chamado “_export_ nomeado”.
+Você pode exportar uma ou múltiplas variáveis com o chamado “\_export\_ nomeado”.
 
 {title="Code Playground: file1.js",lang="javascript"}
 	const firstname = 'robin';
@@ -427,7 +427,7 @@ Vamos adicionar mais testes para nossos componentes independentes. Primeiro, o c
 	});
 	# leanpub-end-insert
 
-O componente _Search_ tem dois testes similares ao componente _App_. O primeiro simplesmente renderia _Search_ no DOM e verifica que não existe erro no processo de renderização.  Se um erro ocorrer, o teste quebrará mesmo que não exista nenhuma assertiva (_expect, match, equal)_ no bloco de teste. O segundo _snapshot test_é utilizado para armazenar o _snapshot_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o _snapshot_ muda.
+O componente _Search_ tem dois testes similares ao componente _App_. O primeiro simplesmente renderia _Search_ no DOM e verifica que não existe erro no processo de renderização.  Se um erro ocorrer, o teste quebrará mesmo que não exista nenhuma assertiva (_expect, match, equal)_ no bloco de teste. O segundo _snapshot test_é utilizado para armazenar o _snapshot\_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o _snapshot_ muda.
 
 Segundo, você pode testar o componente _Button_ aplicando estas mesmas regras do componente _Search_.
 
@@ -584,20 +584,20 @@ Você pode continuar escrevendo testes de unidade para seus componentes. Mas, fa
 * Leia mais sobre [enzyme e sua API de renderização][6]
 * Leia mais sobre [testes de aplicações React][7]
 
-## Component Interface with PropTypes
+## Interface de Componente com _PropTypes_
 
-You may know [TypeScript][8] or [Flow][9] to introduce a type interface to JavaScript. A typed language is less error prone, because the code gets validated based on its program text. Editors and other utilities can catch these errors before the program runs. It makes your program more robust.
+Você pode conhecer [TypeScript][8] ou [Flow][9] como meios de introduzir uma interface de tipos para JavaScript. Uma linguagem com tipos é menos propensa a erros, porque o código é validado com base no texto. Editores e outros utilitários podem capturar estes erros antes mesmo do programa ser executado e seu programa torna-se mais robusto.
 
-In the book, you will not introduce Flow or TypeScript, but another neat way to check your types in components. React comes with a built-in type checker to prevent bugs. You can use PropTypes to describe your component interface. All the props that get passed from a parent component to a child component get validated based on the PropTypes interface assigned to the child component.
+Neste livro, você não irá trabalhar com _Flow_ ou _TypeScript_, mas com outra forma bastante organizada de checagem de tipos em seus componentes. React traz, nativamente, uma checagem de tipos para prevenir bugs. Você pode utilizar _PropTypes_ para descrever a interface do seu componente. Todas as _props_ passadas de um componente pai para um componente filho são validadas com base na interface definida no componente filho.
 
-The chapter will show you how you can make all your components type safe with PropTypes. I will omit the changes for the following chapters, because they add unnecessary code refactorings. But you should keep and update them along the way to keep your components interface type safe.
+Este capítulo irá lhe mostrar como tornar seus componentes mais seguros com _PropTypes_. Não irei manter estas mudanças nos capítulos seguintes, porque elas irão causar refatorações desnecessárias de código, com a evolução dos exemplos. Mas, você deveria mantê-las e atualizá-las ao longo do caminho, para manter a interface dos seus componentes segura em relação à tipos.
 
-First, you have to install a separate package for React.
+Primeiro, você tem que instalar um pacote separado para React.
 
 {title="Command Line",lang="text"}
 	npm install prop-types
 
-Now, you can import the PropTypes.
+Agora, você pode importar _PropTypes_.
 
 {title="src/App.js",lang=javascript}
 	import React, { Component } from 'react';
@@ -606,7 +606,7 @@ Now, you can import the PropTypes.
 	import PropTypes from 'prop-types';
 	# leanpub-end-insert
 
-Let's start to assign a props interface to the components:
+Vamos começar a definir uma interface de _props_ nos nossos componentes:
 
 {title="src/App.js",lang=javascript}
 	const Button = ({
@@ -630,7 +630,7 @@ Let's start to assign a props interface to the components:
 	};
 	# leanpub-end-insert
 
-Basically that's it. You take every argument from the function signature and assign a PropType to it. The basic PropTypes for primitives and complex objects are:
+Basicamente, é isto. Você atribui um _PropType_ para cada argumento na assinatura da função. Os _PropTypes_ básicos para tipos primitivos e objetos complexos são:
 
 * PropTypes.array
 * PropTypes.bool
@@ -639,14 +639,14 @@ Basically that's it. You take every argument from the function signature and ass
 * PropTypes.object
 * PropTypes.string
 
-Additionally you have two more PropTypes to define a renderable fragment (node), e.g. a string, and a React element:
+Adicionalmente, você tem mais dois _PropTypes_ que podem ser usados para definir um fragmento renderizável (node) e um elemento React.
 
 * PropTypes.node
 * PropTypes.element
 
-You already used the `node` PropType for the Button component. Overall there are more PropType definitions that you can read up on in the official React documentation.
+Você já utilizou o _PropType_ `node` para o componente _Button_. Existem, no total, mais definições de _PropTypes_ que você pode ler na documentação oficial do React.
 
-At the moment all of the defined PropTypes for the Button are optional. The parameters can be null or undefined. But for several props you want to enforce that they are defined. You can make it a requirement that these props are passed to the component.
+No momento, todos os _PropTypes_ definidos para _Button_ são opcionais. Os parâmetros podem receber _null_ ou _undefined_. Mas, em alguns casos, você quer forçar a definição de algumas _props_. Você pode fazer com que seja obrigatório que essas _props_ sejam passadas para o componente.
 
 {title="src/App.js",lang=javascript}
 	Button.propTypes = {
@@ -659,7 +659,9 @@ At the moment all of the defined PropTypes for the Button are optional. The para
 	# leanpub-end-insert
 	};
 
-The `className` is not required, because it can default to an empty string. Next you will define a PropType interface for the Table component:
+O parâmetro `className` não é obrigatório, porque ele pode simplesmente obter o valor _default_ de string vazia.
+
+O próximo passo é definir uma interface com _PropTypes_ para o componente _Table_:
 
 {title="src/App.js",lang=javascript}
 	# leanpub-start-insert
@@ -669,7 +671,7 @@ The `className` is not required, because it can default to an empty string. Next
 	};
 	# leanpub-end-insert
 
-You can define the content of an array PropType more explicitly:
+Você pode definir o conteúdo de um\_PropType\_ do tipo _array_ mais explicitamente:
 
 {title="src/App.js",lang=javascript}
 	Table.propTypes = {
@@ -685,9 +687,9 @@ You can define the content of an array PropType more explicitly:
 	  onDismiss: PropTypes.func.isRequired,
 	};
 
-Only the `objectID` is required, because you know that some of your code depends on it. The other properties are only displayed, thus they are not necessarily required. Moreover you cannot be sure that the Hacker News API has always a defined property for each object in the array.
+Apenas `objectID` é obrigatório, porque você sabe que alguma parte do seu código depende dele. As outras propriedades são apenas exibidas, não sendo necessariamente requeridas. Além disso, você não tem plena certeza de que a API Hacker News tem sempre uma propriedade definida para cada objeto no _array_.
 
-That's it for PropTypes. But there is one more aspect. You can define default props in your component. Let's take again the Button component. The `className` property has an ES6 default parameter in the component signature.
+Isso era tudo que tínhamos para falar, sobre _PropTypes_. Só falta mais um aspecto a ser mencionado: Você pode definir _props default_ em seu componente. Tomemos como exemplo o componente _Button_ novamente. A propriedade `className`, na assinatura do componente, tem um parâmetro _default_ (de ES6).
 
 {title="src/App.js",lang=javascript}
 	const Button = ({
@@ -697,7 +699,7 @@ That's it for PropTypes. But there is one more aspect. You can define default pr
 	}) =>
 	  ...
 
-You could replace it with the internal React default prop:
+Você pode substituí-lo por uma _prop default_ de React:
 
 {title="src/App.js",lang=javascript}
 	# leanpub-start-insert
@@ -721,30 +723,30 @@ You could replace it with the internal React default prop:
 	};
 	# leanpub-end-insert
 
-Same as the ES6 default parameter, the default prop ensures that the property is set to a default value when the parent component didn't specify it. The PropType type check happens after the default prop is evaluated.
+Assim como o parâmetro _default_ de ES6, a _default prop_ garante que a propriedade é definida com um valor padrão quando o componente pai não informa um. A checagem de tipo de _PropType_ é feita **depois** que a _default prop_ é avaliada.
 
-If you run your tests again, you might see PropType errors for your components on your command line. It can happen because you didn't define all props for your components in the tests that are defined as required in your PropType definition. The tests themselves all pass correctly though. You can pass all required props to the components in your tests to avoid these errors.
+Se você rodar seus testes novamente, verá que erros de _PropType_ aparecerão na linha de comando para seu componente. Isso pode ocorrer porque você não definiu todas as propriedades para seus componentes nos testes que foram definidos, algumas delas foram marcadas como obrigatórias na definição de PropTypes. Os testes, no entanto, passam sem problemas. Se quiser, você poderia passar todas as propriedades obrigatórias em seus testes, para evitar estes erros.
 
-### Exercises:
+### Exercícios:
 
-* define the PropType interface for the Search component
-* add and update the PropType interfaces when you add and update components in the next chapters
-* read more about [React PropTypes][10]
+* Defina a interface de _PropTypes_ para o componente _Search_
+* Adicione e atualize as interfaces de _PropTypes_ quando você adicionar ou alterar componentes nos próximos capítulos
+* Leia mais sobre [React PropTypes][10]
 
 {pagebreak}
 
-You have learned how to organize your code and how to test it! Let's recap the last chapters:
+Você aprendeu como organizar o seu código e como testá-lo. Vamos recapitular:
 
 * React
-  * PropTypes let you define type checks for components
-  * Jest allows you to write snapshot tests for your components
-  * Enzyme allows you to write unit tests for your components
+	* _PropTypes_ lhe permite definir checagem de tipos para componentes
+	* Jest lhe permite escrever _snapshot tests_ para seus componentes
+	* Enzyme lhe permite escrever testes unitários para seus componentes
 * ES6
-  * import and export statements help you to organize your code
+	* Declarações _import_ e _export_ lhe ajudam a organizar o seu código
 * General
-  * code organization allows you to scale your application with best practices
+	* Uma melhor organização de código lhe permite escalar sua aplicação com as melhores práticas
 
-You can find the source code in the [official repository][11].
+Você irá achar o código-fonte deste capítulo no [repositório oficial][11].
 
 [1]:	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
 [2]:	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export
