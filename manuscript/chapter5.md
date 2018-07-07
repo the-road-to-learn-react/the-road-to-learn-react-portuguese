@@ -401,16 +401,16 @@ Eu lhe encorajo a ler a [gentil introdução a _higher-order components_][6]. El
 * Pense a respeito de algum caso onde outro HOC poderia fazer sentido
   * Implemente o HOC, se este caso existir
 
-## Advanced Sorting
+## Ordenação Avançada
 
-You have already implemented a client- and server-side search interaction. Since you have a Table component, it would make sense to enhance the Table with advanced interactions. What about introducing a sort functionality for each column by using the column headers of the Table?
+Você já implementou interações de busca do lado do cliente e do servidor. Uma vez que você tem um componente _Table_, faria sentido enriquecê-lo com interações mais avançadas. Que tal introduzir uma funcionalidade de ordenação (_sort_) para cada coluna, usando os seus cabeçalhos?
 
-It would be possible to write your own sort function, but personally I prefer to use a utility library for such cases. [Lodash][8] is one of these utility libraries, but you can use whatever library suits you. Let's install Lodash and use it for the sort functionality.
+Seria possível escrever sua própria função de ordenação, mas eu pessoalmente prefiro usar uma biblioteca utilitária para tais casos. [Lodash][8] é uma dessas bibliotecas, mas você pode utilizar qualquer uma que lhe convir. Vamos instalar _Lodash_ e usá-la para a funcionalidade de ordenação.
 
 {title="Command Line",lang="text"}
 	npm install lodash
 
-Now you can import the sort functionality of Lodash in your *src/App.js* file.
+Você pode agora importar a funcionalidade _sortBy_ de _Lodash_ em seu arquivo *src/App.js*.
 
 {title="src/App.js",lang=javascript}
 	import React, { Component } from 'react';
@@ -420,7 +420,7 @@ Now you can import the sort functionality of Lodash in your *src/App.js* file.
 	# leanpub-end-insert
 	import './App.css';
 
-You have several columns in your Table. There are title, author, comments and points columns. You can define sort functions whereas each function takes a list and returns a list of items sorted by a specific property. Additionally, you will need one default sort function which doesn't sort but only returns the unsorted list. That will be your initial state.
+Existem várias colunas em _Table_. Título, autor, comentários e pontos (_title, author, comments _e _points_). Você pode definir funções de ordenação onde cada uma recebe uma lista e retorna uma lista ordenada para uma propriedade específica. Em adição a isto, você irá precisar uma função _default_, que não faz nenhuma ordenação, apenas retorna a lista desordenada. Este será o seu estado inicial.
 
 {title="src/App.js",lang=javascript}
 	...
@@ -440,11 +440,11 @@ You have several columns in your Table. There are title, author, comments and po
 	}
 	...
 
-You can see that two of the sort functions return a reversed list. That's because you want to see the items with the highest comments and points rather than to see the items with the lowest counts when you sort the list for the first time.
+Como você pode ver, duas das funções retornam uma lista inversamente ordenada. O motivo é que você desejará ver os items com o maior número de comentários ou de pontos no topo, ao invés de ver os valores mais baixos quando realizar a ordenação da lista.
 
-The `SORTS` object allows you to reference any sort function now.
+O objeto `SORTS` lhe permite fazer referência a qualquer função de ordenação agora.
 
-Again your App component is responsible for storing the state of the sort. The initial state will be the initial default sort function, which doesn't sort at all and returns the input list as output.
+Mais uma vez, seu componente _App_ é responsável por armazenar o estado da operação _sort_. O estado inicial será o _default_, que acaba não ordenando nada e devolvendo a mesma lista como saída.
 
 {title="src/App.js",lang=javascript}
 	this.state = {
@@ -458,9 +458,9 @@ Again your App component is responsible for storing the state of the sort. The i
 	# leanpub-end-insert
 	};
 
-Once you choose a different `sortKey`, let's say the `AUTHOR` key, you will sort the list with the appropriate sort function from the `SORTS` object.
+Quando você escolher uma `sortKey` diferente, digamos a chave `AUTHOR`, você irá ordenar a lista com a função mais apropriada do objeto `SORTS`.
 
-Now you can define a new class method in your App component that simply sets a `sortKey` to your local component state. Afterward, the `sortKey` can be used to retrieve the sorting function to apply it on your list.
+Você pode agora definir um novo método de classes seu componente _App_ que simplesmente define `sortKey` no estado local do seu componente. A `sortKey` poderá ser utilizada para obter a função de ordenação a ser aplicada em sua lista.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -493,7 +493,7 @@ Now you can define a new class method in your App component that simply sets a `
 	
 	}
 
-The next step is to pass the method and `sortKey` to your Table component.
+O próximo passo é passar o método e `sortKey` para seu componente _Table_.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -531,7 +531,7 @@ The next step is to pass the method and `sortKey` to your Table component.
 	  }
 	}
 
-The Table component is responsible for sorting the list. It takes one of the `SORT` functions by `sortKey` and passes the list as input. Afterward it keeps mapping over the sorted list.
+O componente _Table_ é responsável por ordenar a lista. Ele recebe uma das funções `SORT` através da `sortKey` e passa a lista como entrada. Ele então continua iterando sobre a lista ordenada com a função _map_.
 
 {title="src/App.js",lang=javascript}
 	# leanpub-start-insert
@@ -552,7 +552,7 @@ The Table component is responsible for sorting the list. It takes one of the `SO
 	    )}
 	  </div>
 
-In theory the list would get sorted by one of the functions. But the default sort is set to `NONE`, so nothing is sorted yet. So far, no one executes the `onSort()` method to change the `sortKey`. Let's extend the Table with a row of column headers that use Sort components in columns to sort each column.
+Em teoria, a lista deveria ser ordenada por alguma das funções. Mas, o valor _default_ é `NONE`, logo nada acontece ainda. Até agora, ninguém executa o método `onSort()` para mudar `sortKey`. Iremos estender a tabela com uma linha de cabeçalhos de coluna, que usa componentes _Sort_ para ordenar a lista em cada uma.
 
 {title="src/App.js",lang=javascript}
 	const Table = ({
@@ -606,7 +606,7 @@ In theory the list would get sorted by one of the functions. But the default sor
 	    )}
 	  </div>
 
-Each Sort component gets a specific `sortKey` and the general `onSort()` function. Internally it calls the method with the `sortKey` to set the specific key.
+Cada componente _Sort_ recebe uma `sortKey` específica e a função `onSort()`. Internamente, ele chama o método com a `sortKey` para definir a chave específica.
 
 {title="src/App.js",lang=javascript}
 	const Sort = ({ sortKey, onSort, children }) =>
@@ -614,9 +614,9 @@ Each Sort component gets a specific `sortKey` and the general `onSort()` functio
 	    {children}
 	  </Button>
 
-As you can see, the Sort component reuses your common Button component. On a button click each individual passed `sortKey` will get set by the `onSort()` method. Now you should be able to sort the list when you click on the column headers.
+Como você pode ver, o componente _Sort_ reutiliza seu componente genérico _Button_. Quando o botão for clicado, a `sortKey` passada irá ser definida com a ajuda do método `onSort()`. Agora você deve ser capaz de ordenar a lista quando clicar nos cabeçalhos das colunas.
 
-There is one minor improvement for an improved look. So far, the button in a column header looks a bit silly. Let's give the button in the Sort component a proper `className`.
+Ainda é possível fazer uma pequena melhoria, para um visual melhor. Até então, o botão no _header_ da coluna parece um pouco bobo. Vamos dar ao botão no componente _Sort_ um `className` mais apropriado.
 
 {title="src/App.js",lang=javascript}
 	const Sort = ({ sortKey, onSort, children }) =>
@@ -629,7 +629,7 @@ There is one minor improvement for an improved look. So far, the button in a col
 	    {children}
 	  </Button>
 
-It should look nice now. The next goal would be to implement a reverse sort as well. The list should get reverse sorted once you click a Sort component twice. First, you need to define the reverse state with a boolean. The sort can be either reversed or non reversed.
+Deve parecer melhor agora. O próximo objetivo seria o de também implementar a ordenação inversa. A ordenação deveria ser invertida uma vez que você novamente clica no componente _Sort_. Primeiro, você precisa definir o estado booleano _reverse_. A ordenação poderá ser inversa ou não.
 
 {title="src/App.js",lang=javascript}
 	this.state = {
