@@ -267,11 +267,11 @@ Inicialmente, o componente _Loading_ irá aparecer quando você inicia a sua apl
 
 ## Higher-Order Components
 
-Higher-order components (HOC) are an advanced concept in React. HOCs are an equivalent to higher-order functions. They take any input - most of the time a component, but also optional arguments - and return a component as output. The returned component is an enhanced version of the input component and can be used in your JSX.
+_Higher-order components_ (HOC) são um conceito avançado em React. HOCs são equivalentes a _higher-order functions_, pois recebem qualquer coisa como parâmetro de entrada - na maior parte do tempo um componente, mas também argumentos opcionais - e retornam um componente. O componente retornado é uma versão aprimorada do componente de entrada e pode ser usado em seu código JSX.
 
-HOCs are used for different use cases. They can prepare properties, manage state or alter the representation of a component. One use case could be to use a HOC as a helper for a conditional rendering. Imagine you have a List component that renders a list of items or nothing, because the list is empty or null. The HOC could shield away that the list would render nothing when there is no list. On the other hand, the plain List component doesn't need to bother anymore about an non existent list. It only cares about rendering the list.
+HOCs são utilizados em diferentes casos. Eles podem podem preparar propriedades, gerenciar estado ou alterar a representação de um componente. Um dos casos poderia ser o de utilizar o HOC como um utilitário para renderização condicional. Imagine que você tem um component _List_, que renderiza ou uma lista de itens, ou nada, quando a lista é vazia ou tem valor _null_. O HOC poderia tratar e evitar o caso em que a lista não existe, fazendo com que o componente _List_ não precise mais se preocupar com isso, focando apenas em renderizar a lista.
 
-Let's do a simple HOC which takes a component as input and returns a component. You can place it in your *src/App.js* file.
+Vamos criar um HOC simples, que recebe um componente como entrada e retorna um outro componente. Você pode colocá-lo em seu arquivo *src/App.js*.
 
 {title="src/App.js",lang=javascript}
 	function withFoo(Component) {
@@ -280,13 +280,13 @@ Let's do a simple HOC which takes a component as input and returns a component. 
 	  }
 	}
 
-One neat convention is to prefix the naming of a HOC with `with`. Since you are using JavaScript ES6, you can express the HOC more concisely with an ES6 arrow function.
+Existe a convenção de prefixar o nome de HOCs com `with`. Uma vez que você usa JavaScript ES6, pode expressar o HOC de forma mais concisa com uma _arrow function_.
 
 {title="src/App.js",lang=javascript}
 	const withFoo = (Component) => (props) =>
 	  <Component { ...props } />
 
-In the example, the input component would stay the same as the output component. Nothing happens. It renders the same component instance and passes all of the props to the output component. But that's useless. Let's enhance the output component. The output component should show the Loading component, when the loading state is true, otherwise it should show the input component. A conditional rendering is a great use case for a HOC.
+Neste exemplo, o componente de entrada é igual ao de saída. Nada acontece, por enquanto ele renderiza a mesma instância de componente e repassa todas as _props_ para o componente de saída, o que é inútil. Vamos então aprimorar o componente retornado, que deveria mostrar o componente _Loading_ quando o estado de _loading_ é _true_. Caso contrário, deveria mostrar o componente que recebeu como entrada. Uma renderização condicional é um grande caso de uso para um HOC.
 
 {title="src/App.js",lang=javascript}
 	# leanpub-start-insert
@@ -296,9 +296,9 @@ In the example, the input component would stay the same as the output component.
 	    : <Component { ...props } />
 	# leanpub-end-insert
 
-Based on the loading property you can apply a conditional rendering. The function will return the Loading component or the input component.
+Baseado na propriedade de _loading_, você pode aplicar a renderização condicional. A função irá retornar o componente _Loading_ ou o componente que recebeu via parâmetro.
 
-In general it can be very efficient to spread an object, like the props object in the previous example, as input for a component. See the difference in the following code snippet.
+Em geral, utilizar o operador _spread_ em um objeto pode ser bastante eficiente, como aqui com o objeto _props_. Veja a diferença no seguinte trecho de código:
 
 {title="Code Playground",lang="javascript"}
 	// before you would have to destructure the props before passing them
@@ -308,7 +308,7 @@ In general it can be very efficient to spread an object, like the props object i
 	// but you can use the object spread operator to pass all object properties
 	<SomeComponent { ...props } />
 
-There is one little thing that you should avoid. You pass all the props including the `isLoading` property, by spreading the object, into the input component. However, the input component may not care about the `isLoading` property. You can use the ES6 rest destructuring to avoid it.
+Existe mais uma pequena coisa que você deveria evitar. Você passa todas as propriedades para o componente de entrada, incluindo `isLoading`, utilizando operador _spread_ no objeto. Contudo, o componente de _input_ poderia ignorar a propriedade `isLoading`. Você pode utilizar _rest destructuring_, de JavaScript ES6, para evitar isso.
 
 {title="src/App.js",lang=javascript}
 	# leanpub-start-insert
@@ -318,9 +318,9 @@ There is one little thing that you should avoid. You pass all the props includin
 	    : <Component { ...rest } />
 	# leanpub-end-insert
 
-It takes one property out of the object, but keeps the remaining object. It works with multiple properties as well. You might have already read about it in the [destructuring assignment][5].
+Note que agora uma propriedade é extraída explicitamente do objeto, mantendo as outras agrupadas. Isto também funcionaria para múltiplas propriedades, inclusive. Você já deve ter lido mais à respeito de [destructuring][5].
 
-Now you can use the HOC in your JSX. An use case in the application could be to show either the "More" button or the Loading component. The Loading component is already encapsulated in the HOC, but an input component is missing. In the use case of showing a Button component or a Loading component, the Button is the input component of the HOC. The enhanced output component is a ButtonWithLoading component.
+Você agora pode usar o HOC em seu código JSX, no caso de exibir ou o botão “More”, ou o componente _Loading_. Este último já foi encapsulado no HOC, mas falta o componente de entrada. No caso de uso de exibir um componente _Button_ ou um componente _Loading_, _Button_ é o componente de entrada do HOC. A saída aprimorada é um componente _ButtonWithLoading_.
 
 {title="src/App.js",lang=javascript}
 	const Button = ({
@@ -348,7 +348,7 @@ Now you can use the HOC in your JSX. An use case in the application could be to 
 	const ButtonWithLoading = withLoading(Button);
 	# leanpub-end-insert
 
-Everything is defined now. As a last step, you have to use the ButtonWithLoading component, which receives the loading state as an additional property. While the HOC consumes the loading property, all other props get passed to the Button component.
+Finalmente, tudo foi bem definido. Como último passo, você deve utilizar o componente _ButtonWithLoading_, que recebe o estado de _loading_ como uma propriedade extra. Enquanto o HOC explicitamente usa esta propriedade, ele repassa todas as outras para o componente _Button_.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -374,7 +374,7 @@ Everything is defined now. As a last step, you have to use the ButtonWithLoading
 	  }
 	}
 
-When you run your tests again, you will notice that your snapshot test for the App component fails. The diff might look like the following on the command line:
+Quando você rodar seus testes novamente, irá notar que o _snapshot test_ para o componente _App_ falha. O _diff_ deverá aparentar mais ou menos como mostrado a seguir, na linha de comando:
 
 {title="Command Line",lang="text"}
 	-    <button
@@ -388,18 +388,18 @@ When you run your tests again, you will notice that your snapshot test for the A
 	+      Loading ...
 	+    </div>
 
-You can either fix the component now, when you think there is something wrong about it, or can accept the new snapshot of it. Because you introduced the Loading component in this chapter, you can accept the altered snapshot test on the command line in the interactive test.
+Mais uma vez, você tem a oportunidade consertar algo que possa estar errado no componente, ou aceitar o novo _snapshot_. Uma vez que você introduziu o componente _Loading_ neste capítulo, você deve aceitá-lo na interface interativa apresentada na linha de comando após o teste.
 
-Higher-order components are an advanced technique in React. They have multiple purposes like improved reusability of components, greater abstraction, composability of components and manipulations of props, state and view. Don't worry if you don't understand them immediately. It takes time to get used to them.
+O uso de _Higher-order components_ é uma técnica avançada em React. Eles têm múltiplos propósitos, como reusabilidade, maior abstração, melhor composição de componentes e manipulação de _props_, estado e das suas _views_. Não se preocupe caso não entenda de imediato a utilização de HOCs. Leva algum tempo para se acostumar à eles.
 
-I encourage you to read the [gentle introduction to higher-order components][6]. It gives you another approach to learn them, shows you an elegant way to use them in a functional programming way and solves specifically the problem of conditional rendering with higher-order components.
+Eu lhe encorajo a ler a [gentil introdução a _higher-order components_][6]. Ela lhe provê outra abordagem para aprender, mostrando um jeito elegante de usá-los com um paradigma de programação funcional e resolvendo especificamente o problema de renderização condicional com _higher-order components_.
 
-### Exercises:
+### Exercícios:
 
-* read [a gentle introduction to higher-order components][7]
-* experiment with the HOC you have created
-* think about a use case where another HOC would make sense
-  * implement the HOC, if there is a use case
+* Leia o artigo [A gentle introduction to higher-order components][7]
+* Faça experiências com o HOC que você criou
+* Pense a respeito de algum caso onde outro HOC poderia fazer sentido
+  * Implemente o HOC, se este caso existir
 
 ## Advanced Sorting
 
