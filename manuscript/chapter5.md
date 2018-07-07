@@ -420,7 +420,7 @@ Você pode agora importar a funcionalidade _sortBy_ de _Lodash_ em seu arquivo *
 	# leanpub-end-insert
 	import './App.css';
 
-Existem várias colunas em _Table_. Título, autor, comentários e pontos (_title, author, comments _e _points_). Você pode definir funções de ordenação onde cada uma recebe uma lista e retorna uma lista ordenada para uma propriedade específica. Em adição a isto, você irá precisar uma função _default_, que não faz nenhuma ordenação, apenas retorna a lista desordenada. Este será o seu estado inicial.
+Existem várias colunas em _Table_. Título, autor, comentários e pontos (_title, author, comments _e _points_). Você pode definir funções de ordenação onde cada uma recebe uma lista e retorna uma lista ordenada para uma propriedade específica. Em adição a isto, você irá precisar uma função _default\_, que não faz nenhuma ordenação, apenas retorna a lista desordenada. Este será o seu estado inicial.
 
 {title="src/App.js",lang=javascript}
 	...
@@ -629,7 +629,7 @@ Ainda é possível fazer uma pequena melhoria, para um visual melhor. Até entã
 	    {children}
 	  </Button>
 
-Deve parecer melhor agora. O próximo objetivo seria o de também implementar a ordenação inversa. A ordenação deveria ser invertida uma vez que você novamente clica no componente _Sort_. Primeiro, você precisa definir o estado booleano _reverse_. A ordenação poderá ser inversa ou não.
+Deve parecer melhor agora. O próximo objetivo seria o de também implementar a ordenação inversa. A ordenação deveria ser invertida uma vez que você novamente clica no componente _Sort_. Primeiro, você precisa definir o estado booleano _reverse_. A ordenação poderá ser inversa, ou não.
 
 {title="src/App.js",lang=javascript}
 	this.state = {
@@ -644,7 +644,7 @@ Deve parecer melhor agora. O próximo objetivo seria o de também implementar a 
 	# leanpub-end-insert
 	};
 
-Now in your sort method, you can evaluate if the list is reverse sorted. It is reverse if the `sortKey` in the state is the same as the incoming `sortKey` and the reverse state is not already set to true.
+Agora o seu, em seu método de ordenação, você pode verificar se a lista terá a ordenação invertida. Isto irá acontecer se o estado local `sortKey` tiver o mesmo valor que a `sortKey` recebida e o estado `isSortReverse` não já estiver definido com o valor _true_.
 
 {title="src/App.js",lang=javascript}
 	onSort(sortKey) {
@@ -654,7 +654,7 @@ Now in your sort method, you can evaluate if the list is reverse sorted. It is r
 	# leanpub-end-insert
 	}
 
-Again you can pass the reverse prop to your Table component.
+Novamente, você pode passar a _prop_ de ordenação invertida para o componente _Table_.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -694,7 +694,7 @@ Again you can pass the reverse prop to your Table component.
 	  }
 	}
 
-The Table has to have an arrow function block body to compute the data now.
+_Table_ precisará ter uma um bloco de escopo de função explícito, para computador os dados agora.
 
 {title="src/App.js",lang=javascript}
 	# leanpub-start-insert
@@ -727,11 +727,11 @@ The Table has to have an arrow function block body to compute the data now.
 	}
 	# leanpub-end-insert
 
-The reverse sort should work now.
+A ordenação invertida deverá funcionar.
 
-Last but not least, you have to deal with one open question for the sake of an improved user experience. Can a user distinguish which column is actively sorted? So far, it is not possible. Let's give the user a visual feedback.
+Por último, mas não menos importante, você deverá lidar com uma questão de melhoria de experiência do usuário. Poderia o usuário distinguir por qual coluna está sendo feita a ordenação no momento? Até agora, isto não é possível. Vamos provê-lo com este _feedback_ visual.
 
-Each Sort component gets its specific `sortKey` already. It could be used to identify the activated sort. You can pass the `sortKey` from the internal component state as active sort key to your Sort component.
+Cada componente _Sort_ já recebe sua `sortKey` específica. Ela poderia ser utilizada par identificar a ordenação corrente. Você pode passar a `sortKey` do estado interno do componente como a chave de ordenação ativa para seu componente de Sort.
 
 {title="src/App.js",lang=javascript}
 	const Table = ({
@@ -804,7 +804,7 @@ Each Sort component gets its specific `sortKey` already. It could be used to ide
 	  );
 	}
 
-Now in your Sort component, you know based on the `sortKey` and `activeSortKey` whether the sort is active. Give your Sort component an extra `className` attribute, in case it is sorted, to give the user a visual feedback.
+Agora, no seu componente _Sort_, você sabe qual ordenação está ativa, baseado na `sortKey` e na `activeSortKey`. Dê ao seu componente _Sort_ um atributo extra `className`, para o caso dele estar ativo, provendo assim um _feedback_ visual ao usuário.
 
 {title="src/App.js",lang=javascript}
 	# leanpub-start-insert
@@ -831,12 +831,12 @@ Now in your Sort component, you know based on the `sortKey` and `activeSortKey` 
 	}
 	# leanpub-end-insert
 
-The way to define the `sortClass` is a bit clumsy, isn't it? There is a neat little library to get rid of this. First you have to install it.
+A forma como definimos `sortClass` é um pouco bizarra, não acha? Existe uma pequena biblioteca muito bem feita, que nos ajuda a consertar isto. Primeiro, você tem que instalá-la.
 
 {title="Command Line",lang="text"}
 	npm install classnames
 
-And second you have to import it on top of your *src/App.js* file.
+Segundo, você precisa importá-la no topo do arquivo *src/App.js*.
 
 {title="src/App.js",lang=javascript}
 	import React, { Component } from 'react';
@@ -847,7 +847,7 @@ And second you have to import it on top of your *src/App.js* file.
 	# leanpub-end-insert
 	import './App.css';
 
-Now you can use it to define your component `className` with conditional classes.
+Agora será possível usá-la para definir o `className` do seu componente com classes condicionais.
 
 {title="src/App.js",lang=javascript}
 	const Sort = ({
@@ -875,7 +875,7 @@ Now you can use it to define your component `className` with conditional classes
 	  );
 	}
 
-Again, when you run your tests, you should see failing snapshot tests but also failing unit tests for the Table component. Since you changed again your component representations, you can accept the snapshot tests. But you have to fix the unit test. In your *src/App.test.js* file, you need to provide a `sortKey` and the `isSortReverse` boolean for the Table component.
+Novamente, quando você rodar os seus testes, verá _snapshot tests_ e agora também testes unitários falhando para o componente _Table_. Uma vez que você mudou novamente a representação do componente, pode acatar as mudanças de _snapshot_. Mas, você precisa consertar o teste unitário. Em seu arquivo *src/App.test.js*, você precisa fornecer uma `sortKey` e o valor booleano `isSortReverse` para o componente _Table_.
 
 {title="src/App.test.js",lang=javascript}
 	...
@@ -897,29 +897,29 @@ Again, when you run your tests, you should see failing snapshot tests but also f
 	
 	});
 
-Once again you might need to accept the failing snapshot tests for your Table component, because you provided extended props for the Table component.
+Mais uma vez, você precisará aceitar as mudanças de _snapshot_ para o componente _Table_, porque você forneceu novas _props_ para ele.
 
-Finally your advanced sort interaction is complete now.
+Finalmente, sua interação avançada de ordenação está completa.
 
-### Exercises:
+### Exercícios:
 
-* use a library like [Font Awesome][9] to indicate the (reverse) sort
-  * it could be an arrow up or arrow down icon next to each Sort header
-* read more about the [classnames library][10]
+* Use uma biblioteca como [Font Awesome][9] para indicar a ordenação (inversa ou não)
+	* Poderia ser um ícone de seta para cima ou para baixo, ao lado do cabeçalho _Sort_
+* Leia mais sobre a [biblioteca classnames][10]
 
 {pagebreak}
 
-You have learned advanced component techniques in React! Let's recap the last chapters:
+Você aprendeu técnicas avançadas em componentes React! Vamos recapitular:
 
 * React
-  * the ref attribute to reference DOM nodes
-  * higher-order components are a common way to build advanced components
-  * implementation of advanced interactions in React
-  * conditional classNames with a neat helper library
+	* o atributo _ref_ para referenciar _DOM nodes_
+	* _higher-order components_ são um jeito comum de construir componentes avançados
+	* implementação de interações avançadas em React
+	* _classNames_ condicionais com uma biblioteca utilitária elegante
 * ES6
-  * rest destructuring to split up objects and arrays
+	* uso de _rest destructuring_ para separar objetos e _arrays_
 
-You can find the source code in the [official repository][11].
+Você irá encontrar o código fonte no [repositório oficial][11].
 
 [1]:	https://d3js.org/
 [2]:	https://www.robinwieruch.de/react-ref-attribute-dom-node/
