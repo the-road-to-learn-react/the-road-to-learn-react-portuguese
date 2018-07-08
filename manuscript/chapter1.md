@@ -575,10 +575,10 @@ Agora você está exibindo ambos os itens da lista. Inicie sua aplicação, abra
 JavaScript ES6 introduziu _arrow functions_. Uma expressão com _arrow function_ é mais curta do que uma expressão com uma função convencional (utilizando a palavra `function`).
 
 {title="Code Playground",lang="javascript"}
-	// expressão com function
+	// declaração com function
 	function () { ... }
 	
-	// expressão com arrow function
+	// declaração com arrow function
 	() => { ... }
 
 Contudo, você precisa estar ciente das funcionalidades que essa sintaxe agrega. Uma delas é um comportamento diferente com com o objeto `this`. Uma função convencional sempre define seu próprio objeto `this`. _Arrow functions_ têm o objeto `this` do contexto que as contêm. Fique esperto quando utilizar `this` em funções definidas dessa forma.

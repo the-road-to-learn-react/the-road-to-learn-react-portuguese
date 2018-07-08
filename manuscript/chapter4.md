@@ -384,7 +384,7 @@ Implemente agora seu primeiro _snapshot test_ utilizando um bloco “test”.
 	    const component = renderer.create(
 	      <App />
 	    );
-	    let tree = component.toJSON();
+	    const tree = component.toJSON();
 	    expect(tree).toMatchSnapshot();
 	  });
 	
@@ -420,14 +420,14 @@ Vamos adicionar mais testes para nossos componentes independentes. Primeiro, o c
 	    const component = renderer.create(
 	      <Search>Search</Search>
 	    );
-	    let tree = component.toJSON();
+	    const tree = component.toJSON();
 	    expect(tree).toMatchSnapshot();
 	  });
 	
 	});
 	# leanpub-end-insert
 
-O componente _Search_ tem dois testes similares ao componente _App_. O primeiro simplesmente renderia _Search_ no DOM e verifica que não existe erro no processo de renderização.  Se um erro ocorrer, o teste quebrará mesmo que não exista nenhuma assertiva (_expect, match, equal)_ no bloco de teste. O segundo _snapshot test_é utilizado para armazenar o _snapshot\_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o _snapshot_ muda.
+O componente _Search_ tem dois testes similares ao componente _App_. O primeiro simplesmente renderia _Search_ no DOM e verifica que não existe erro no processo de renderização.  Se um erro ocorrer, o teste quebrará mesmo que não exista nenhuma assertiva (_expect, match, equal_) no bloco de teste. O segundo _snapshot test_ é utilizado para armazenar o _snapshot_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o _snapshot_ muda.
 
 Segundo, você pode testar o componente _Button_ aplicando estas mesmas regras do componente _Search_.
 
@@ -452,7 +452,7 @@ Segundo, você pode testar o componente _Button_ aplicando estas mesmas regras d
 	    const component = renderer.create(
 	      <Button>Give Me More</Button>
 	    );
-	    let tree = component.toJSON();
+	    const tree = component.toJSON();
 	    expect(tree).toMatchSnapshot();
 	  });
 	
@@ -488,7 +488,7 @@ Por fim, o componente _Table_, para o qual você passa um punhado de _props_ con
 	    const component = renderer.create(
 	      <Table { ...props } />
 	    );
-	    let tree = component.toJSON();
+	    const tree = component.toJSON();
 	    expect(tree).toMatchSnapshot();
 	  });
 	
