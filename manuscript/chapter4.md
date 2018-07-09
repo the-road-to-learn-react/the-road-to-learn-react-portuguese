@@ -1,6 +1,6 @@
 # Organização do Código e Testes
 
-O capítulo irá manter o foco em tópicos importantes para a manutenção do código em uma aplicação escalável. Você irá aprender sobre como organizar o código, visando adotar as melhores práticas de estruturação de arquivos de pastas. Outro aspecto são os testes, muito importantes para manter seu código robusto. O capítulo irá deixar um pouco de lado a aplicação prática que estamos desenvolvendo e explicará alguns destes tópicos para você de forma mais conceitual.
+O capítulo irá manter o foco em tópicos importantes para a manutenção do código em uma aplicação escalável. Você irá aprender sobre como organizar o código, visando adotar as melhores práticas de estruturação de arquivos de pastas. Outro aspecto são os testes, muito importantes para manter seu código robusto. O capítulo irá deixar um pouco de lado a aplicação prática que estamos desenvolvendo e explicará alguns destes tópicos para você de forma mais conceitual. Finally, you are going to learn about a useful tool for debugging your React applications. 
 
 ## _ES6 Modules_: _Import_ e _Export_
 
@@ -732,6 +732,18 @@ Se você rodar seus testes novamente, verá que erros de _PropType_ aparecerão 
 * Defina a interface de _PropTypes_ para o componente _Search_
 * Adicione e atualize as interfaces de _PropTypes_ quando você adicionar ou alterar componentes nos próximos capítulos
 * Leia mais sobre [React PropTypes][10]
+
+## Debugging with React Developer Tools
+
+This last section presents to you a helpful tool, generaly used to inspect and debug you React applications. **React Developer Tools** lets you inspect the React component hierarchy, component props and state. It comes as a browser extension (for Chrome and Firefox, at the moment) and as a standalone app (that works with other environments).
+
+Once installed, the extension icon will light up on the websites using React. On such websites, you will see a tab called "React" in your browser's developer tools.
+
+Let's try it on our Hacker News application. On most browsers, a quick way to bring up the _dev tools_ is to right-click on the page and than hit Inspect. Do it when your applications is loaded, then hit the "React" tab. You should see its elements (component instances in the DOM) hierarchy, being `<App>` the root element. If you expand it, you will find your `<Search>`, `<Table>` and `<Button>` elements, as well.
+
+The extension shows on the side pane the component's state and props for the selected element. For instance, if you click on `<App>`, you will see that the component has no props, but it already has a state. A very straightforward debugging technique is to monitor your application's state changing because of user's interaction.
+
+First, you need to check the "Highlight Updates" option (usually above the elements tree). Second, you can type another search term the input field.
 
 {pagebreak}
 
