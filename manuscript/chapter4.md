@@ -1,6 +1,6 @@
 # Organização do Código e Testes
 
-O capítulo irá manter o foco em tópicos importantes para a manutenção do código em uma aplicação escalável. Você irá aprender sobre como organizar o código, visando adotar as melhores práticas de estruturação de arquivos de pastas. Outro aspecto são os testes, muito importantes para manter seu código robusto. O capítulo irá deixar um pouco de lado a aplicação prática que estamos desenvolvendo e explicará alguns destes tópicos para você de forma mais conceitual. Finally, you are going to learn about a useful tool for debugging your React applications. 
+O capítulo irá manter o foco em tópicos importantes para a manutenção do código em uma aplicação escalável. Você irá aprender sobre como organizar o código, visando adotar as melhores práticas de estruturação de arquivos de pastas. Outro aspecto são os testes, muito importantes para manter seu código robusto. Finalmente, você irá aprender sobre uma ferramenta muito útil para depuração de suas aplicações React. O capítulo irá deixar um pouco de lado a aplicação prática que estamos desenvolvendo e explicará alguns destes tópicos para você de forma mais conceitual. 
 
 ## _ES6 Modules_: _Import_ e _Export_
 
@@ -427,7 +427,7 @@ Vamos adicionar mais testes para nossos componentes independentes. Primeiro, o c
 	});
 	# leanpub-end-insert
 
-O componente _Search_ tem dois testes similares ao componente _App_. O primeiro simplesmente renderia _Search_ no DOM e verifica que não existe erro no processo de renderização.  Se um erro ocorrer, o teste quebrará mesmo que não exista nenhuma assertiva (_expect, match, equal_) no bloco de teste. O segundo _snapshot test_ é utilizado para armazenar o _snapshot_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o _snapshot_ muda.
+O componente _Search_ tem dois testes similares ao componente _App_. O primeiro simplesmente renderia _Search_ no DOM e verifica que não existe erro no processo de renderização.  Se um erro ocorrer, o teste quebrará mesmo que não exista nenhuma assertiva (_expect, match, equal_) no bloco de teste. O segundo _snapshot test_ é utilizado para armazenar o _snapshot_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o \_snapshot\_ muda.
 
 Segundo, você pode testar o componente _Button_ aplicando estas mesmas regras do componente _Search_.
 
@@ -733,17 +733,28 @@ Se você rodar seus testes novamente, verá que erros de _PropType_ aparecerão 
 * Adicione e atualize as interfaces de _PropTypes_ quando você adicionar ou alterar componentes nos próximos capítulos
 * Leia mais sobre [React PropTypes][10]
 
-## Debugging with React Developer Tools
+## Depuração com _React Developer Tools_
 
-This last section presents to you a helpful tool, generaly used to inspect and debug you React applications. **React Developer Tools** lets you inspect the React component hierarchy, component props and state. It comes as a browser extension (for Chrome and Firefox, at the moment) and as a standalone app (that works with other environments).
+Esta última seção apresenta uma ferramenta muito útil, geralmente utilizada para analisar e depurar aplicações React. **React Developer Tools** lhe permite inspecionar a hierarquia, as _props_ e  estado local de componentes, estando disponível como uma extensão (para Chrome e Firefox) e como uma aplicação _standalone_ (que funciona com qualquer outro ambiente). Uma vez instalada, o ícone da extensão irá acender quando você carregar _websites_ que estejam utilizando React.  Em páginas assim, você poderá ver uma aba chamada “React” nas ferramentas de desenvolvedor do seu navegador.
 
-Once installed, the extension icon will light up on the websites using React. On such websites, you will see a tab called "React" in your browser's developer tools.
+Vamos testá-la com a sua aplicação Hacker News. Na maioria dos navegadores, uma forma rápida de abrir as ferramentas de desenvolvedor é clicando com o botão direito do mouse na página e, depois, selecionar “Inspect” (ou “Inspecionar”). Faça isso com a sua aplicação carregada, depois clique na aba “React”. Você deverá ver a hierarquia de elementos, sendo `App` o elemento raiz (_root element_). Se você expandir a árvore, achará também as instâncias dos componentes `Search`, `Table` e `Button`. 
 
-Let's try it on our Hacker News application. On most browsers, a quick way to bring up the _dev tools_ is to right-click on the page and than hit Inspect. Do it when your applications is loaded, then hit the "React" tab. You should see its elements (component instances in the DOM) hierarchy, being `<App>` the root element. If you expand it, you will find your `<Search>`, `<Table>` and `<Button>` elements, as well.
+A extensão mostra, no painel lateral do lado direito, o estado local e as _props_ de componente para o elemento selecionado. Por exemplo, se você clicar em `App`, verá que ele ainda não possui _props_, mas já possui um estado local. Uma técnica de depuração bastante simples é a de monitorar as mudanças de estado da aplicação causadas pela interação do usuário.
 
-The extension shows on the side pane the component's state and props for the selected element. For instance, if you click on `<App>`, you will see that the component has no props, but it already has a state. A very straightforward debugging technique is to monitor your application's state changing because of user's interaction.
+Primeiro, irá querer marcar a opção “Highlight Updates” (geralmente localizada acima da árvore de elementos). Segundo, você pode digitar um termo de busca diferente no campo de _input_ da aplicação. Como você poderá ver, apenas `searchTerm` será modificado no estado do componentes. Você até já sabia que isto aconteceria desta forma, mas agora pode ver de verdade que ocorreu como planejado.
 
-First, you need to check the "Highlight Updates" option (usually above the elements tree). Second, you can type another search term the input field.
+Finalmente, pressione o botão “Search”. O estado `searchKey` irá ser imediatamente alterado para o mesmo valor de `searchTerm` e o objeto de retorno da requisição irá ser adicionado à `results` poucos segundos depois. A natureza assíncrona do seu código está agora visível a seus olhos.
+
+Por último, se você clicar com o botão direito do mouse em qualquer elemento, um menu de contexto irá aparecer com várias opções. Por exemplo, você pode copiar as _props_ ou o nome de um elemento, achar o nó correspondente a ele no DOM ou até saltar para o código-fonte da aplicação direto no navegador. Esta última opção é bem útil, uma vez que lhe permite inserir _breakpoints_ e depurar as suas funções JavaScript.
+
+### Exercícios:
+
+* Instale a extensão [React Developer Tools][11] no navegador de sua escolha
+	* Rode a sua aplicação clone do Hacker News e a analise utilizando a extensão
+	* Faça experiências mudando o estado e as _props_ de componentes
+	* Observe o que acontece quando você dispara requisições assíncronas
+	* Faça múltiplas requisições, incluindo algumas repetidas. Observe o mecanismo de _cache_ em funcionamento
+* Leia sobre [como depurar suas funções JavaScript no navegador][12] 
 
 {pagebreak}
 
@@ -753,12 +764,13 @@ Você aprendeu como organizar o seu código e como testá-lo. Vamos recapitular:
 	* _PropTypes_ lhe permite definir checagem de tipos para componentes
 	* Jest lhe permite escrever _snapshot tests_ para seus componentes
 	* Enzyme lhe permite escrever testes unitários para seus componentes
+	* React Developer Tools is a helpful debugging tool
 * ES6
 	* Declarações _import_ e _export_ lhe ajudam a organizar o seu código
 * General
 	* Uma melhor organização de código lhe permite escalar sua aplicação com as melhores práticas
 
-Você irá achar o código-fonte deste capítulo no [repositório oficial][11].
+Você irá achar o código-fonte deste capítulo no [repositório oficial][13].
 
 [1]:	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
 [2]:	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export
@@ -770,4 +782,6 @@ Você irá achar o código-fonte deste capítulo no [repositório oficial][11].
 [8]:	https://www.typescriptlang.org/
 [9]:	https://flowtype.org/
 [10]:	https://reactjs.org/docs/typechecking-with-proptypes.html
-[11]:	https://github.com/the-road-to-learn-react/hackernews-client/tree/5.4
+[11]:	https://github.com/facebook/react-devtools
+[12]:	https://developers.google.com/web/tools/chrome-devtools/javascript/
+[13]:	https://github.com/the-road-to-learn-react/hackernews-client/tree/5.4
