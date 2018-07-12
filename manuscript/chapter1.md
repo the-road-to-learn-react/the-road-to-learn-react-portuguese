@@ -197,14 +197,16 @@ Você encontrará um arquivo *src/App.test.js* (para seus testes) e um *src/inde
 A aplicação *create-react-app* também é um projeto npm. Além de permitir que utilizemos npm para instalar e desinstalar pacotes node ao projeto, traz os seguintes _scripts_ npm para serem usados na linha de comando:
 
 {title="Linha de Comando",lang="text"}
-	// Roda a aplicação em http://localhost:3000
-	npm start
-	
-	// Executa os testes
-	npm test
-	
-	// Pepara a aplicação para produção
-	npm run build
+~~~~~~~~
+// Roda a aplicação em http://localhost:3000
+npm start
+
+// Executa os testes
+npm test
+
+// Pepara a aplicação para produção
+npm run build
+~~~~~~~~
 
 Os _scripts_ são definidos no *package.json*.
 Seu "esqueleto" de aplicação React está agora criado. A parte excitante vem a seguir, com os exercícios, finalmente rodando sua aplicação no _browser_.
@@ -225,27 +227,29 @@ Chegou o momento de você conhecer JSX, a sintaxe React. Como foi dito antes, *c
 Vamos ao código-fonte. Inicialmente, você irá trabalhar apenas com o arquivo *src/App.js*:
 
 {title="src/App.js",lang=javascript}
-	import React, { Component } from 'react';
-	import logo from './logo.svg';
-	import './App.css';
-	
-	class App extends Component {
-	  render() {
-	    return (
-	      <div className="App">
-	        <header className="App-header">
-	          <img src={logo} className="App-logo" alt="logo" />
-	          <h1 className="App-title">Welcome to React</h1>
-	        </header>
-	        <p className="App-intro">
-	          To get started, edit <code>src/App.js</code> and save to reload.
-	        </p>
-	      </div>
-	    );
-	  }
+~~~~~~~~
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+class App extends Component {
+	render() {
+		return (
+			<div className="App">
+				<header className="App-header">
+					<img src={logo} className="App-logo" alt="logo" />
+					<h1 className="App-title">Welcome to React</h1>
+				</header>
+				<p className="App-intro">
+					To get started, edit <code>src/App.js</code> and save to reload.
+				</p>
+			</div>
+		);
 	}
-	
-	export default App;
+}
+
+export default App;
+~~~~~~~~
 
 Para que não se confunda com as declarações _import/export_ e com a palavra _class_, saiba que essas já são funcionalidades de JavaScript ES6. Iremos falar sobre isso mais tarde, neste mesmo capítulo.
 
@@ -258,43 +262,47 @@ Logo você verá que o componente App é instanciado, pois, se não o fosse, voc
 O conteúdo do bloco _render_ se parece muito com HTML, mas é JSX. JSX lhe permite misturar HTML e JavaScript. É algo poderoso, mas confuso quando você já está acostumado a separar os dois. Por esta razão, é mais fácil começar com JSX usando apenas HTML básico, removendo qualquer outro conteúdo que possa ser uma distração no arquivo.
 
 {title="src/App.js",lang=javascript}
-	import React, { Component } from 'react';
-	import './App.css';
-	
-	class App extends Component {
-	  render() {
-	    return (
-	      <div className="App">
-	        <h2>Welcome to the Road to learn React</h2>
-	      </div>
-	    );
-	  }
+~~~~~~~~
+import React, { Component } from 'react';
+import './App.css';
+
+class App extends Component {
+	render() {
+		return (
+			<div className="App">
+				<h2>Welcome to the Road to learn React</h2>
+			</div>
+		);
 	}
-	
-	export default App;
+}
+
+export default App;
+~~~~~~~~
 
 Pronto. O método `render()` agora retorna apenas um HTML simples, sem JavaScript. Vamos definir o texto "_Welcome to the Road to learn React_" como uma variável, que pode ser usada dentro do seu JSX entre chaves.
 
 {title="src/App.js",lang=javascript}
-	import React, { Component } from 'react';
-	import './App.css';
-	
-	class App extends Component {
-	  render() {
-	# leanpub-start-insert
-	    var helloWorld = 'Welcome to the Road to learn React';
-	# leanpub-end-insert
-	    return (
-	      <div className="App">
-	# leanpub-start-insert
-	        <h2>{helloWorld}</h2>
-	# leanpub-end-insert
-	      </div>
-	    );
-	  }
+~~~~~~~~
+import React, { Component } from 'react';
+import './App.css';
+
+class App extends Component {
+	render() {
+# leanpub-start-insert
+		var helloWorld = 'Welcome to the Road to learn React';
+# leanpub-end-insert
+		return (
+			<div className="App">
+# leanpub-start-insert
+				<h2>{helloWorld}</h2>
+# leanpub-end-insert
+			</div>
+		);
 	}
-	
-	export default App;
+}
+
+export default App;
+~~~~~~~~
 
 Deverá funcionar, quando você levantar sua aplicação novamente com `npm start` na linha de comando.
 
