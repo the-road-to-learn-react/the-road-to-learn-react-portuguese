@@ -1,14 +1,12 @@
 # The Road to Learn React
 
-[!\[Slack][1]
-
-Repositório oficial da tradução em português do livro [The Road to learn React][2]. Também contém o [Código Fonte][3] da aplicação desenvolvida.
+Repositório oficial da tradução em português do livro [The Road to learn React][1]. Também contém o [Código Fonte][2] da aplicação desenvolvida.
 
 ## Atualizações, Ajuda e Como apoiar
 
-* Seja notificado sobre atualizações via [E-Mail][4] ou [Twitter][5]
-* Obtenha ajuda durante o aprendizado de React ou contribua ensinando outras pessoas no canal oficial no [Slack ][6]
-* Descubra como você pode [Apoiar o Livro][7]
+* Seja notificado sobre atualizações via [E-Mail][3] ou [Twitter][4]
+* Obtenha ajuda durante o aprendizado de React ou contribua ensinando outras pessoas no canal oficial no [Slack ][5]
+* Descubra como você pode [Apoiar o Livro][6]
 
 ## Contribuindo
 
@@ -22,10 +20,9 @@ Se quiser abrir um _issue_ para algum capítulo já completamente traduzido, fiq
 
 **Este README.md será atualizado quando tivermos a primeira versão completa, aberto à colaborações maiores**
 
-[1]:	https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/
-[2]:	https://www.robinwieruch.de/the-road-to-learn-react/ "O Caminho para aprender Re"
-[3]:	https://github.com/rwieruch/hackernews-client
-[4]:	https://www.getrevue.co/profile/rwieruch
-[5]:	https://twitter.com/rwieruch
-[6]:	https://slack-the-road-to-learn-react.wieruch.com/
-[7]:	https://www.robinwieruch.de/about/
+[1]:	https://www.robinwieruch.de/the-road-to-learn-react/ "O Caminho para aprender Re"
+[2]:	https://github.com/rwieruch/hackernews-client
+[3]:	https://www.getrevue.co/profile/rwieruch
+[4]:	https://twitter.com/rwieruch
+[5]:	https://slack-the-road-to-learn-react.wieruch.com/
+[6]:	https://www.robinwieruch.de/about/
