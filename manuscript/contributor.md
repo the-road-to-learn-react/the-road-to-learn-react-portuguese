@@ -1,7 +1,14 @@
-# Contributor(s)
+# Contribuidores
 
-Many people made it possible to write and improve *The Road to learn React* over the recent time. Currently, it is one of the most downloaded React.js books out there. Originally the book was written by the german software engineer [Robin Wieruch](https://www.robinwieruch.de/). But all the translations of the book wouldn't be possible without the help of others. This version of the book got translated by ... [tell your personal story here].
+Muitas pessoas tornaram possível que _The Road to learn React_ fosse inscrito e melhorado recentemente. Ele é, atualmente, um dos livros sobre React.js mais baixados neste mundo. Originalmente, o livro foi escrito pelo engenheiro de software alemão [Robin Wieruch][1]. Mas, suas várias traduções não teriam sido possíveis sem a ajuda de outros.
 
-[Note: Translate and complete this paragraph for your own personal pitch. Include your social media account, GitHub account, website or anything else that is personally related to you. It's your opportunity to tell something about your own work as software engineer or translator. Afterward, include it in the Book.txt below the foreword.md that it can be used to compile the finished ebook.]
+Esta versão, em particular, foi traduzida por **Claudio R. L. Rocha**, brasileiro e também engenheiro de software. Claudio estuda e trabalha na construção de sistemas de computador há 15 anos e, recentemente, também tem tido o prazer de apoiar o ensino do desenvolvimento de aplicações React. Participa de atividades de orientação de turmas e de avaliação de projetos práticos sobre o tema, estando em contato constante com código-fonte JavaScript e React dos mais variados níveis, estilos e fontes. Ele acredita que transmitir conhecimento aos outros é a forma mais poderosa de aprender.
+
+Siga Claudio no [Twitter][2], [GitHub][3] e [Linkedin][4].
 
 {pagebreak}
+
+[1]:	https://www.robinwieruch.de/
+[2]:	https://twitter.com/romerolrocha
+[3]:	https://github.com/romerorocha
+[4]:	https://www.linkedin.com/in/claudiorlr/
