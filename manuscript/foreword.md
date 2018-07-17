@@ -56,7 +56,7 @@ Este livro é _open source_ e deveria permitir que qualquer um aprenda React. Co
 
 # FAQ
 
-**Como recebo atualizações?** Você pode [assinar][12] a newsletter ou me seguir no [Twitter][13] para estar por dentro das atualizações. Uma vez que você obtenha uma cópia do livro, esta permanecerá atualizada até que uma nova edição seja lançada. Quando isso acontecer, você precisará fazer o _download_ novamente.
+**Como recebo atualizações?** Eu tenho dois canais onde compartilho atualizações de conteúdo. Você pode tanto [subscrever à atualizações por e-mail][12], quanto [seguir-me no Twitter][13]. Independente do canal escolhido, meu objetivo é compartilhar apenas conteúdo qualitativo. Você nunca receberá _spam_. Uma vez que o livro recebe uma atualização, você poderá baixá-la.
 
 **O livro usa a versão mais recente de React?** O livro sempre é atualizado quando uma nova versão de React é lançada. De modo geral, livros ficam obsoletos logo após o lançamento. Mas, como este livro é de publicação própria, eu posso atualizá-lo quando quiser.
 
@@ -64,19 +64,19 @@ Este livro é _open source_ e deveria permitir que qualquer um aprenda React. Co
 
 **Ele usa JavaScript ES6?** Sim, mas não se preocupe. Você se sairá bem se já for familiarizado com JavaScript ES5. Todas as características de ES6, que eu descrevo nesta jornada para aprender React, irão fazer a transição de ES5 para ES6 no livro. Todas serão explicadas ao longo do caminho. O livro não ensina apenas React, mas também todas as funcionalidades de JavaScript ES6 que são úteis para React.
 
-**Você irá adicionar capítulos no futuro?** Você pode ver no "Registro de Mudanças" as atualizações mais significativas que já aconteceram. Também foram feitas outras melhorias não listadas. Em geral, depende da comunidade dizer quando eu devo continuar a trabalhar no livro. Se este tiver uma boa aceitação, eu irei providenciar mais capítulos e melhorar o material mais antigo. Continuarei mantendo o conteúdo atualizado com as melhores práticas, padrões e conceitos mais recentes.
+**Como posso obter acesso ao código-fonte dos projetos e à série de _screencasts_?** Se você comprou um dos pacotes estendidos, que lhe dão acesso ao código-fonte de projetos, à série de _screencasts_, ou qualquer conteúdo adicional, irá encontrá-los no seu [_dashboard_ do curso][15]. Se você comprou o curso em qualquer outro lugar, não na plataforma de cursos [oficial  Road to React][16], será preciso criar uma conta na plataforma, ir na página de _Admin_ e entrar em contato comigo, utilizando um dos modelos de e-mail. Assim, eu poderei lhe matricular no curso. Se não comprou nenhum dos pacotes estendidos, pode me procurar a qualquer momento para fazer um _upgrade_ de conteúdo e ganhar acesso à este materiais já citados.
 
-**Quais são os formatos de leitura disponíveis?** Além dos formatos .pdf, .epub e .mobi, você pode ler o livro em _markdown_ puro no [GitHub][15]. Em geral, eu recomendo a leitura em formato adequado, caso contrário trechos de código irão ter quebras de linha indesejadas.
+**Como posso obter ajuda enquanto leio o livro?** Existe um [Grupo no Slack][17] para pessoas que estão lendo o livro e você pode entrar no canal para obter ajuda ou ajudar outras pessoas. Afinal de contas, ajudar os outros também pode melhorar o seu aprendizado. Se ninguém estiver lá para ajudá-lo, você sempre poderá vir falar comigo.
 
-**Como posso obter ajuda enquanto leio o livro?** Existe um [Grupo no Slack][16] para pessoas que estão lendo o livro e você pode entrar no canal para obter ajuda ou ajudar outras pessoas. Afinal de contas, ajudar os outros também pode melhorar o seu aprendizado.
+**Existe alguma seção de solução de problemas?** Se você se deparar com problemas, por favor, junte-se ao grupo no Slack. Você também pode verificar os [_issues_ abertos no GitHub][18] para o livro. Talvez seu problema até já tenha sido levantado e você poderá achar a solução. Caso contrário, não hesite em abrir um novo _issue_ onde você pode explicar sua dificuldade, talvez fornecer uma captura de tela e mais alguns detalhes (ex.: página do livro, versão do _node_). Eu tento enviar todas as correções nas próximas edições do livro.
 
-**Existe alguma seção de solução de problemas?** Se você se deparar com problemas, por favor, junte-se ao grupo no Slack. Você também pode verificar os [_issues_ abertos no GitHub][17] para o livro. Talvez seu problema até já tenha sido levantado e você poderá achar a solução. Caso contrário, não hesite em abrir um novo _issue_ onde você pode explicar sua dificuldade, talvez fornecer uma captura de tela e mais alguns detalhes (ex.: página do livro, versão do _node_). Eu tento enviar todas as correções nas próximas edições do livro.
+**Posso ajudar a melhorar o livro?** Sim, eu adoraria ouvir seu _feedback_. Você pode simplesmente abrir um _issue_ no [GitHub][19], que pode ser uma melhoria técnica ou textual. Não sou falante nativo do inglês (idioma original do livro) e, por isso, qualquer ajuda é bem vinda. Você também pode abrir _pull requests_ na página do GitHub.
 
-**Posso ajudar a melhorar o livro?** Sim. Você pode ter um impacto direto com suas idéias e [contribuições no GitHub][18]. Não tenho a pretensão de ser um especialista nem de escrever em inglês nativo. Eu agradeceria muito a sua ajuda.
+**Existe alguma garantia do tipo “seu dinheiro de volta”?** Sim, existe a garantia de 100% do dinheiro de volta nos dois primeiros meses, caso ache que o livro não lhe serve. Por favor, entre em contato comigo (Robin Wieruch) para solicitar o reembolso.
 
-**Por que posso pagar quanto quiser pelo livro?** Eu me dediquei bastante a este trabalho e irei continuar a fazê-lo no futuro. Meu desejo é alcançar o máximo de pessoas, todos devem estar aptos a aprender React. Mas existe a possibilidade de você pagar, caso possa. Além disso, [o livro é uma tentativa de apoiar projetos que educam crianças em países em desenvolvimento][19]. Você também pode fazer a diferença.
+**Posso apoiar o projeto?** Se você acredita no conteúdo que eu crio, pode [me apoiar][20]. Fico grato também se você divulgar este livro e adoraria ter você como meu [Patron no Patreon][21].
 
-**Posso apoiar o projeto?** Sim. Sinta-se livre para entrar em contato. Eu dedico bastante tempo a tutoriais _open source_ e recursos de aprendizagem. Você pode visitar minha página [sobre mim][20]. Eu também adoraria ter você como meu [Patron no Patreon][21].
+**Qual é a sua motivação por trás do livro?** Eu desejo ensinar sobre este tópico de forma consistente. É comum achar materiais _online_ que não recebem atualizações, ou que ensinam apenas um pedaço de um tópico. Quando estão aprendendo algo novo, as pessoas têm dificuldades para achar recursos consistentes e atualizados. Eu quero dar esta experiência de aprendizado sempre atual. Além disso, eu espero poder apoiar minorias com meus projetos, dando a elas o conteúdo gratuitamente ou [causando outros impactos][22]. Recentemente, tenho me sentido realizado por estar ensinando outras pessoas sobre programação. É uma atividade que significa muito para mim e que eu prefiro desempenhar, ao invés de qualquer outro emprego de 9h às 17h em alguma empresa. Por causa disso tudo, eu espero trilhar este caminho no futuro.    
 
 **Sou encorajado a participar ativamente?** Sim. Quero que você pare um momento para pensar em alguém que seria um bom candidato a aprender React. A pessoa pode já ter mostrado interesse, ou estar no meio do aprendizado ou ainda nem ter despertado a vontade de aprender ainda. Aborde essa pessoa e compartilhe o livro. Significaria muito para mim. Ele foi feito com a intenção de ser distribuído.
 
@@ -86,17 +86,17 @@ Este livro é _open source_ e deveria permitir que qualquer um aprenda React. Co
 
 **10 de janeiro de 2017:**
 
-* [v2 Pull Request][22]
+* [v2 Pull Request][23]
 * ainda mais amigável para iniciantes
 * 37% mais conteúdo
 * 30% de conteúdo melhorado
 * 13 novos (ou melhorados) capítulos
 * 140 páginas de material
-* [+ curso interativo do livro em educative.io][23]
+* [+ curso interativo do livro em educative.io][24]
 
 **08 de março de 2017:**
 
-* [v3 Pull Request][24]
+* [v3 Pull Request][25]
 * 20% mais conteúdo
 * 25% de conteúdo melhorado
 * 9 novos capítulos
@@ -118,19 +118,19 @@ Este livro é _open source_ e deveria permitir que qualquer um aprenda React. Co
 * atualização para npm 5.5.1
 * atualização para create-react-app 1.4.1
 * atualização para React 16
-* [v4 Pull Request][25]
+* [v4 Pull Request][26]
 * 15% mais conteúdo
 * 15% de conteúdo melhorado
 * 3 novos capítulos (_Bindings_, Tratamento de Eventos, Tratamento de Erros)
 * 190+ páginas de material
-* [+9 Projetos com código-fonte][26]
+* [+9 Projetos com código-fonte][27]
 
 **17 de fevereiro de 2018:**
 
 * atualização para node 8.9.4
 * atualização para npm 5.6.0
 * atualização pra create-react-app 1.5.1
-* [v5 Pull Request][27]
+* [v5 Pull Request][28]
 * mais formas de aprendizado
 * material de leitura extra
 * 1 novo capítulo (Axios ao invés de Fetch)
@@ -145,9 +145,9 @@ O livro também lhe provê uma transição de JavaScript ES5 para JavaScript ES6
 
 Em geral, um capítulo irá continuar de onde o anterior parou, ensinando-lhe alguma coisa nova. Não se apresse para terminar o livro. Você deve internalizar o conhecimento em cada passo. Você também pode aplicar suas próprias implementações e ler mais a respeito do tópico em questão. Ao final de cada capítulo, disponibilizo alguns exercícios e material de leitura. Se você quer aprender React, eu recomendo fortemente que leia o material extra e que "mele as mãos" com os exercícios. Sinta-se confortável com o que aprendeu antes de passar para o próximo assunto.
 
-No fim, você irá ter uma aplicação React completa em produção e eu tenho grande interesse em ver seus resultados. Portanto, sinta-se livre para entrar em contato quando terminar. O último capítulo irá lhe prover várias opções para continuar sua jornada. Você irá encontrar muitos tópicos relacionados a React no [meu website pessoal][28].
+No fim, você irá ter uma aplicação React completa em produção e eu tenho grande interesse em ver seus resultados. Portanto, sinta-se livre para entrar em contato quando terminar. O último capítulo irá lhe prover várias opções para continuar sua jornada. Você irá encontrar muitos tópicos relacionados a React no [meu website pessoal][29].
 
-Como você está lendo este livro, suponho que seja novo em React. Isso é ótimo. Espero receber o seu _feedback_ sobre como posso melhorar o material para que qualquer um possa aprender. Você pode fazer a diferença diretamente no [GitHub][29] ou falar comigo no [Twitter][30].
+Como você está lendo este livro, suponho que seja novo em React. Isso é ótimo. Espero receber o seu _feedback_ sobre como posso melhorar o material para que qualquer um possa aprender. Você pode fazer a diferença diretamente no [GitHub][30] ou falar comigo no [Twitter][31].
 
 {pagebreak}
 
@@ -165,19 +165,20 @@ Como você está lendo este livro, suponho que seja novo em React. Isso é ótim
 [12]:	https://www.getrevue.co/profile/rwieruch
 [13]:	https://twitter.com/rwieruch
 [14]:	https://roadtoreact.com/course-details?courseId=TAMING_THE_STATE
-[15]:	https://github.com/rwieruch/the-road-to-learn-react
-[16]:	https://slack-the-road-to-learn-react.wieruch.com/
-[17]:	https://github.com/rwieruch/the-road-to-learn-react/issues
-[18]:	https://github.com/rwieruch/the-road-to-learn-react
-[19]:	https://www.robinwieruch.de/giving-back-by-learning-react/
+[15]:	https://roadtoreact.com/my-courses
+[16]:	https://roadtoreact.com
+[17]:	https://slack-the-road-to-learn-react.wieruch.com/
+[18]:	https://github.com/rwieruch/the-road-to-learn-react/issues
+[19]:	https://github.com/the-road-to-learn-react/the-road-to-learn-react
 [20]:	https://www.robinwieruch.de/about/
 [21]:	https://www.patreon.com/rwieruch
-[22]:	https://github.com/rwieruch/the-road-to-learn-react/pull/18
-[23]:	https://www.educative.io/collection/5740745361195008/5676830073815040
-[24]:	https://github.com/rwieruch/the-road-to-learn-react/pull/34
-[25]:	https://github.com/rwieruch/the-road-to-learn-react/pull/72
-[26]:	https://roadtoreact.com/course-details?courseId=THE_ROAD_TO_LEARN_REACT
-[27]:	https://github.com/the-road-to-learn-react/the-road-to-learn-react/pull/105
-[28]:	https://www.robinwieruch.de/
-[29]:	https://github.com/rwieruch/the-road-to-learn-react
-[30]:	https://twitter.com/rwieruch
+[22]:	https://www.robinwieruch.de/giving-back-by-learning-react/
+[23]:	https://github.com/rwieruch/the-road-to-learn-react/pull/18
+[24]:	https://www.educative.io/collection/5740745361195008/5676830073815040
+[25]:	https://github.com/rwieruch/the-road-to-learn-react/pull/34
+[26]:	https://github.com/rwieruch/the-road-to-learn-react/pull/72
+[27]:	https://roadtoreact.com/course-details?courseId=THE_ROAD_TO_LEARN_REACT
+[28]:	https://github.com/the-road-to-learn-react/the-road-to-learn-react/pull/105
+[29]:	https://www.robinwieruch.de/
+[30]:	https://github.com/rwieruch/the-road-to-learn-react
+[31]:	https://twitter.com/rwieruch
