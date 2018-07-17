@@ -125,6 +125,16 @@ Este livro é _open source_ e deveria permitir que qualquer um aprenda React. Co
 * 190+ páginas de material
 * [+9 Projetos com código-fonte][26]
 
+**17 de fevereiro de 2018:**
+
+* atualização para node 8.9.4
+* atualização para npm 5.6.0
+* atualização pra create-react-app 1.5.1
+* [v5 Pull Request][27]
+* mais formas de aprendizado
+* material de leitura extra
+* 1 novo capítulo (Axios ao invés de Fetch)
+
 {pagebreak}
 
 # Como ler o livro?
@@ -135,32 +145,9 @@ O livro também lhe provê uma transição de JavaScript ES5 para JavaScript ES6
 
 Em geral, um capítulo irá continuar de onde o anterior parou, ensinando-lhe alguma coisa nova. Não se apresse para terminar o livro. Você deve internalizar o conhecimento em cada passo. Você também pode aplicar suas próprias implementações e ler mais a respeito do tópico em questão. Ao final de cada capítulo, disponibilizo alguns exercícios e material de leitura. Se você quer aprender React, eu recomendo fortemente que leia o material extra e que "mele as mãos" com os exercícios. Sinta-se confortável com o que aprendeu antes de passar para o próximo assunto.
 
-No fim, você irá ter uma aplicação React completa em produção e eu tenho grande interesse em ver seus resultados. Portanto, sinta-se livre para entrar em contato quando terminar. O último capítulo irá lhe prover várias opções para continuar sua jornada. Você irá encontrar muitos tópicos relacionados a React no [meu website pessoal][27].
+No fim, você irá ter uma aplicação React completa em produção e eu tenho grande interesse em ver seus resultados. Portanto, sinta-se livre para entrar em contato quando terminar. O último capítulo irá lhe prover várias opções para continuar sua jornada. Você irá encontrar muitos tópicos relacionados a React no [meu website pessoal][28].
 
-Como você está lendo este livro, suponho que seja novo em React. Isso é ótimo. Espero receber o seu _feedback_ sobre como posso melhorar o material para que qualquer um possa aprender. Você pode fazer a diferença diretamente no [GitHub][28] ou falar comigo no [Twitter][29].
-
-# O que você pode esperar (até agora…)
-
-* [Hacker News App em React][30]
-* nenhuma configuração complicada
-* create-react-app para fazer a configuração inicial da aplicação
-* código leve e eficiente
-* apenas _setState_ de React para gerenciar o estado
-* transição paulatina de JavaScript ES5 para ES6
-* a API React com _setState_ e métodos de ciclo de vida
-* interação com uma API do mundo real (Hacker News)
-* interação avançada com o usuário
-  * ordenação _client-sided_
-  * filtragem _client-sided_
-  * busca _server-sided_
-* implementação de _client-side caching_
-* _higher order functions_ e _higher order components_
-* testes _snapshot_ de componentes com Jest
-* testes unitários com Enzyme
-* bibliotecas organizadas ao longo do caminho
-* exercícios e leituras adicionais
-* internalizar e reforçar seus conhecimentos
-* implantação da sua aplicação em produção
+Como você está lendo este livro, suponho que seja novo em React. Isso é ótimo. Espero receber o seu _feedback_ sobre como posso melhorar o material para que qualquer um possa aprender. Você pode fazer a diferença diretamente no [GitHub][29] ou falar comigo no [Twitter][30].
 
 {pagebreak}
 
@@ -190,7 +177,7 @@ Como você está lendo este livro, suponho que seja novo em React. Isso é ótim
 [24]:	https://github.com/rwieruch/the-road-to-learn-react/pull/34
 [25]:	https://github.com/rwieruch/the-road-to-learn-react/pull/72
 [26]:	https://roadtoreact.com/course-details?courseId=THE_ROAD_TO_LEARN_REACT
-[27]:	https://www.robinwieruch.de/
-[28]:	https://github.com/rwieruch/the-road-to-learn-react
-[29]:	https://twitter.com/rwieruch
-[30]:	https://intense-refuge-78753.herokuapp.com/
+[27]:	https://github.com/the-road-to-learn-react/the-road-to-learn-react/pull/105
+[28]:	https://www.robinwieruch.de/
+[29]:	https://github.com/rwieruch/the-road-to-learn-react
+[30]:	https://twitter.com/rwieruch
