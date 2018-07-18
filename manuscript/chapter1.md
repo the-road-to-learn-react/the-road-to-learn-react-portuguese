@@ -1,8 +1,6 @@
 # Introdução a React
 
-Você pode estar se perguntando: Por que eu deveria aprender React, pra começo de conversa? Este capítulo é uma introdução ao assunto e pode lhe dar a resposta que procura. Você irá mergulhar no ecossistema de React, montando sua primeira aplicação sem a necessidade de nenhuma configuração e, durante o processo, terá uma introdução à JSX e ReactDOM.
-
-Prepare-se para seus primeiros componentes React.
+Você pode estar se perguntando: Por que eu deveria aprender React, pra começo de conversa? Este capítulo é uma introdução ao assunto e pode lhe dar a resposta que procura. Você irá mergulhar no ecossistema de React, montando sua primeira aplicação sem a necessidade de nenhuma configuração customizada e, durante o processo, terá uma introdução à JSX e ReactDOM. Prepare-se para seus primeiros componentes React.
 
 ## Oi, meu nome é React.
 
@@ -18,32 +16,31 @@ Primeiro, você pode aprender passo-a-passo cada parte, sem precisar se preocupa
 
 Segundo, todas as partes são substituíveis. Isso torna o ecossistema de React um lugar de inovação. Várias soluções competem entre si e você pode escolher a que mais se aplica a você e ao contexto em que irá utilizá-la.
 
-_Frameworks_ SPA da primeira geração surgiram com um nível mais profissional e mais engessados. React permanece com um caráter mais inovador e é adotado por muitas empresas que estão na vanguarda do pensamento tecnológico, como [Airbnb, Netflix e (obviamente) Facebook][3]. Todas elas investem no futuro de React e estão contentes com a biblioteca e com tudo que a cerca.
+_Frameworks_ SPA da primeira geração surgiram em um nível profissional e mais engessados. React permanece com um caráter mais inovador e é adotado por muitas empresas que estão na vanguarda do pensamento tecnológico, como [Airbnb, Netflix e (obviamente) Facebook][3]. Todas elas investem no futuro de React e estão contentes com a biblioteca e com tudo que a cerca.
 
-React é, provavelmente, uma das melhores escolhas para a construção de aplicações web atualmente. Apesar de cuidar apenas da camada de visão, [seu ecossistema forma um framework completo, flexível e intercambiável][4]. Em suma, React tem uma API enxuta, um fantástico ecossistema e uma grande comunidade. Você pode ler sobre minhas experiências passadas em [Por que saí de Angular e fui para React?][5].
-
-Recomendo fortemente que você entenda a razão do porquê você escolheria React e não outra biblioteca ou framework. Estamos todos ávidos pela experiência de seguir para onde React pode nos levar nos próximos anos.
+React é uma das melhores escolhas para a construção de aplicações web atualmente. Apesar de cuidar apenas da camada de visão, [seu ecossistema forma um framework completo, flexível e intercambiável][4]. React tem uma API enxuta, um fantástico ecossistema e uma grande comunidade. Você pode ler sobre minhas experiências passadas em [Por que saí de Angular e fui para React?][5]. Recomendo fortemente que você entenda a razão do porquê você escolheria React e não outra biblioteca ou framework. Estamos todos ávidos pela experiência de seguir para onde React pode nos levar nos próximos anos.
 
 ### Exercícios
 
-* Ler sobre [Por que saí de Angular e fui para React?][6]
-* Ler sobre [O ecossistema flexível de React][7]
+* Leia mais sobre [por que saí de Angular e fui para React][6]
+* Leia mais sobre [O ecossistema flexível de React][7]
+* Leia mais sobre [como aprender um _framework_][8]
 
 ## Pré-requisitos
 
-Se você está migrando de um _framework_ SPA ou de uma biblioteca diferente, já deve estar familiarizado com o básico de desenvolvimento para a _web_. Mas, se está começando agora, deveria pelo menos se sentir confortável com HTML, CSS e JavaScript ES5 para aprender React. Este livro irá fazer uma transição suave para JavaScript ES6 e além. Encorajo você a entrar para o [Grupo no Slack][8] oficial para obter ajuda ou para ajudar outras pessoas.
+Se você está migrando de um _framework_ SPA ou de uma biblioteca diferente, já deve estar familiarizado com o básico de desenvolvimento para a _web_. Mas, se está começando agora, deveria pelo menos se sentir confortável com HTML, CSS e JavaScript ES5 para aprender React. Este livro irá fazer uma transição suave para JavaScript ES6 e além. Encorajo você a entrar para o [Grupo no Slack][9] oficial para obter ajuda ou para ajudar outras pessoas.
 
 ### Editor e Terminal
 
 E quanto ao ambiente de desenvolvimento?
 
-Você precisa de um editor ou IDE e uma ferramenta de linha de comando (terminal). Se quiser, siga meu[guia de montagem de ambiente][9]. Ele foi feito para usuários de Mac OS, mas você pode encontrar ferramentas iguais ou equivalentes em outros sistemas operacionais. Existe também uma tonelada de artigos pela _web_ que irão lhe mostrar como configurar um ambiente de desenvolvimento de uma forma mais elaborada de acordo com o seu SO.
+Você precisa de um editor ou IDE e uma ferramenta de linha de comando (terminal). Se quiser, siga meu [guia de montagem de ambiente][10]. Ele foi feito para usuários de Mac OS, mas você pode encontrar ferramentas iguais ou equivalentes em outros sistemas operacionais. Existe também uma tonelada de artigos pela _web_ que irão lhe mostrar como configurar um ambiente de desenvolvimento de uma forma mais elaborada de acordo com o seu SO.
 
-Opcionalmente, você pode utilizar o git e o GitHub quando estiver praticando os exercícios do livro, para guardar seus projetos e monitorar o progresso em seus repositórios. Segue um [pequeno guia][10] sobre como usar essas ferramentas. Mas, mais uma vez, não é obrigatório para acompanhar este guia e pode dar um pouco de trabalho caso você precise aprender tudo do começo. Se você é um novato no desenvolvimento _web_, pode pular esse passo e concentrar o foco nas partes essenciais ensinadas aqui.
+Opcionalmente, você pode utilizar o git e o GitHub quando estiver praticando os exercícios do livro, para guardar seus projetos e monitorar o progresso em seus repositórios. Segue um [pequeno guia][11] sobre como usar essas ferramentas. Mas, mais uma vez, não é obrigatório para acompanhar este guia e pode dar um pouco de trabalho caso você precise aprender tudo do começo. Se você é um novato no desenvolvimento _web_, pode pular esse passo e concentrar o foco nas partes essenciais ensinadas aqui.
 
 ### Node e NPM
 
-Por último, mas não menos importante, você precisará ter [o node e o npm][11] instalados. Ambos são utilizados no gerenciamento de bibliotecas necessárias ao longo do caminho. Neste livro, você instalará pacotes node externos via npm (_node package manager_). Esses pacotes podem ser bibliotecas ou até _frameworks_ completos.
+Por último, mas não menos importante, você precisará ter [o node e o npm][12] instalados. Ambos são utilizados no gerenciamento de bibliotecas necessárias ao longo do caminho. Neste livro, você instalará pacotes node externos via npm (_node package manager_). Esses pacotes podem ser bibliotecas ou até _frameworks_ completos.
 
 É possível verificar as versões de node e npm instaladas pela linha de comando. Caso você não obtenha nenhum resultado no terminal, significa que precisará instalar ambos antes de continuar. Abaixo, minhas versões no momento em que escrevia este livro:
 
@@ -55,7 +52,7 @@ Por último, mas não menos importante, você precisará ter [o node e o npm][11
 
 ## node e npm
 
-Este capítulo é um curso intensivo em node e npm. Ele não explora todas as funcionalidades, mas apresenta as ferramentas necessárias. Se você já está familiarizado com ambos, sinta-se livre para pular para o próximo assunto.
+Esta seção do capítulo é um curso intensivo em node e npm. Ele não explora todas as funcionalidades, mas apresenta as ferramentas necessárias. Se você já está familiarizado com ambos, sinta-se livre para pular para o próximo assunto.
 
 O **node package manager** (npm) possibilita a instalação de pacotes (**node packages**) externos pela linha de comando. Esses pacotes podem conter desde um conjunto de funções utilitárias até bibliotecas ou _frameworks_ completos e, quando adicionados, tornam-se dependências da sua aplicação. Você pode instalá-los tanto globalmente (no seu diretório global de pacotes node), quanto na pasta local do seu projeto.
 
@@ -98,28 +95,33 @@ Imagine que você queira instalar um pacote para lhe ajudar a testar sua aplica�
 
 Encontraremos mais comandos npm pelo caminho. Mas, por enquanto, é suficiente.
 
+Uma última coisa, que considero importante mencionar: Muitas pessoas optam por utilizar outro gerenciador de dependências para trabalhar com pacotes _node_ em suas aplicações. **Yarn** é um gerenciador que funciona de maneira muito similar ao **npm**. Ele tem a sua própria lista de comandos para executar as mesmas tarefas, mas você continua tendo acesso ao arquivo de pacotes do npm. Yarn nasceu para resolver alguns problemas que o npm não podia. Contudo, atualmente as duas ferramentas estão evoluindo realmente muito rápido e você pode escolher a que achar melhor.  
+
 ### Exercícios:
 
 * Configurando um projeto npm qualquer:
-  * Crie uma nova pasta com `mkdir <nome_da_pasta>`
-  * Navegue para ela com `cd <nome_da_pasta>`
-  * Execute `npm init -y` ou `npm init`
-  * Instale um pacote local como React com `npm install react`
-  * Olhe os conteúdos do arquivo *package.json* e da pasta *node\_modules/*
-  * Descubra você mesmo como desinstalar o pacote *react*
-* Leia mais sobre [npm][12]
+	* Crie uma nova pasta com `mkdir <nome_da_pasta>`
+	* Navegue para ela com `cd <nome_da_pasta>`
+	* Execute `npm init -y` ou `npm init`
+	* Instale um pacote local como React com `npm install react`
+	* Olhe os conteúdos do arquivo *package.json* e da pasta *node\_modules/*
+	* Descubra você mesmo como desinstalar o pacote *react*
+* Leia mais sobre [npm][13]
+* Leia mais sobre [yarn][14]
 
 ## Instalação
 
-Existem muitas formas de começar a trabalhar com uma aplicação React, e a primeira delas é usar um CDN. Isso pode soar mais complicado do que realmente é, mas CDN é apenas a sigla para [Content Delivery Network][13]. Muitas empresas possuem CDNs que hospedam arquivos publicamente para que as pessoas possam consumi-los. Esses arquivos podem ser de bibliotecas como React, já que toda a biblioteca é empacotada em um simples arquivo JavaScript *react.js*. Ele pode ser hospedado em algum lugar e você pode requisitá-lo em sua aplicação.
+Existem muitas formas de começar a trabalhar com uma aplicação React.
 
-E como usar um CDN para começar a trabalhar com React? Simples. Você pode adicionar a tag `<script>` _inline_ no seu HTML, apontando para a url do CDN. Serão precisos dois arquivos (duas bibliotecas): *react* e *react-dom*.
+A primeira delas é usar um CDN. Isso pode soar mais complicado do que realmente é, mas CDN é apenas a sigla para [content delivery network][15]. Muitas empresas possuem CDNs que hospedam arquivos publicamente para que as pessoas possam consumi-los. Esses arquivos podem ser de bibliotecas como React, já que toda a biblioteca é empacotada em um simples arquivo JavaScript *react.js*. Ele pode ser hospedado em algum lugar e você pode requisitá-lo em sua aplicação.
+
+Como usar um CDN para começar a trabalhar com React? Simples. Você pode adicionar a tag `<script>` _inline_ no seu HTML, apontando para a url do CDN. Serão precisos dois arquivos (bibliotecas): *react* e *react-dom*.
 
 {title="Code Playground",lang="javascript"}
 	<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
 	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 
-Mas, eis a questão: por que você deveria usar um CDN quando tem o npm para instalar pacotes como React?
+Mas, eis a questão: Por que você deveria usar um CDN quando tem o npm para instalar pacotes como React?
 
 Quando sua aplicação possui um arquivo *package.json* em uma pasta inicializada como projeto npm usando `npm init -y`, você pode instalar *react* e *react-dom* pelo terminal. É possível, inclusive, instalar múltiplos pacotes em apenas uma linha com o npm.
 
@@ -128,7 +130,7 @@ Quando sua aplicação possui um arquivo *package.json* em uma pasta inicializad
 
 Essa é  uma abordagem frequentemente utilizada para adicionar React a uma aplicação existente, caso esta seja gerenciada com npm.
 
-Mas isso não é o bastante, infelizmente. Você teria que configurar também o [Babel][14] para fazer com que sua aplicação seja capaz de reconhecer JSX (a sintaxe React) e JavaScript ES6. O Babel "_transpila_" (tradução informal adotada pela comunidade para _transpile_) o seu código para que navegadores possam interpretar ES6 e JSX, pois nem todos conseguem fazê-lo naturalmente. Isso demanda muita configuração e uso de ferramentas, podendo ser aterrador para iniciantes em React lidarem com tudo isso.
+Mas, infelizmente, isso não é o bastante. Você teria que configurar também o [Babel][16] para fazer com que sua aplicação seja capaz de reconhecer JSX (a sintaxe React) e JavaScript ES6. O Babel "_transpila_" (tradução informal adotada pela comunidade para _transpile_) o seu código para que navegadores possam interpretar ES6 e JSX, pois nem todos conseguem fazê-lo naturalmente. Isso demanda muita configuração e uso de ferramentas, podendo ser aterrador para iniciantes em React lidarem com tudo isso.
 
 Por esta razão, o Facebook introduziu *create-react-app* como uma solução de trabalho com React sem a necessidade de escrever configurações. O próximo capítulo lhe mostrará como montar sua aplicação utilizando essa ferramenta de inicialização (_bootstrap tool_).
 
@@ -136,11 +138,11 @@ Por esta razão, o Facebook introduziu *create-react-app* como uma solução de 
 
 ### Exercícios:
 
-* Leia mais a respeito de [instalações de React][15]
+* Leia mais a respeito de [instalações de React][17]
 
 ## _Setup_ sem nenhuma configuração
 
-Em "O Caminho para aprender React", você usará [create-react-app][16] para montar a estrutura inicial da sua aplicação. Trata-se de um _kit_ de inicialização sem necessidade de configuração, de uso opcional, introduzido pelo Facebook em 2016. Cerca de [96% das pessoas perguntadas recomendam-no para iniciantes][17]. Com o *create-react-app*, a configuração e a instrumentação se desenvolvem automaticamente em segundo plano, enquanto o seu foco permanece na implementação da aplicação.
+Em “The Road to learn React“, você usará [create-react-app][18] para montar a estrutura inicial da sua aplicação. Trata-se de um _kit_ de inicialização sem necessidade de configuração, de uso opcional, introduzido pelo Facebook em 2016. Cerca de [96% dos usuários de React recomendam-no para iniciantes][19]. Com o *create-react-app*, a configuração e a instrumentação se desenvolvem automaticamente em segundo plano, enquanto o seu foco permanece na implementação da aplicação.
 
 Para começar, será necessário fazer a instalação global do pacote. Assim, ele sempre estará disponível na linha de comando para criar suas aplicações React.
 
@@ -180,7 +182,7 @@ Você pode abrir a aplicação no editor de sua escolha. A estrutura a seguir (o
 
 Não tem problema se você não entender tudo desde o início. Eis uma descrição curta dos arquivos e pastas:
 
-* **README.md:** A extensão .md indica que o arquivo é do tipo _markdown_, uma linguagem de marcação mais leve com uma sintaxe de formatação de texto. Muitos projetos com código-fonte incluem um arquivo *README.md* para passar as instruções iniciais. Quando eventualmente você sincronizar seu projeto em uma plataforma como o GitHub, o conteúdo do _README.md_ será exibido na página inicial do repositório. Por ter usado *create-react-app*, seu *README.md* terá conteúdo igual ao do [repositório do create-react-app no GitHub][18].
+* **README.md:** A extensão .md indica que o arquivo é do tipo _markdown_, uma linguagem de marcação mais leve com uma sintaxe de formatação de texto. Muitos projetos com código-fonte incluem um arquivo *README.md* para passar as instruções iniciais. Quando eventualmente você sincronizar seu projeto em uma plataforma como o GitHub, o conteúdo do _README.md_ será exibido na página inicial do repositório. Por ter usado *create-react-app*, seu *README.md* terá conteúdo igual ao do [repositório do create-react-app no GitHub][20].
 
 * **node\_modules/:** Contém todos os pacotes node instalados via npm pois, uma vez que foi utilizado o _create-react-app_, alguns módulos já foram instalados para você. Normalmente, você nunca irá manipular diretamente o conteúdo desta pasta, devendo instalar e desinstalar pacotes usando npm na linha de comando.
 
@@ -190,23 +192,25 @@ Não tem problema se você não entender tudo desde o início. Eis uma descriç�
 
 * **public/:** A pasta contém todos os arquivos do projeto quando este é preparado para produção. Todo o código que você escreveu na pasta *src/* será empacotado em um ou dois arquivos durante o _building_ e colocado na pasta _public_.
 
-No fim das contas, você não tem que alterar os arquivos e pastas mencionados acima. De início, tudo que você precisa está localizado na pasta _src/_. O foco principal fica com o arquivo *src/App.js*, que será usado para implementar sua aplicação. Mais tarde, você irá querer estruturá-la em múltiplos arquivos, cada um contendo seu próprio (ou alguns) componente.
+* **build/:** Esta pasta será criada quando você preparar o projeto para produção, contendo todos os arquivos que serão utilizados. Neste processo de preparação (_build_), todo o seu código nas pastas _src/_ e _public/_ será empacotado em alguns arquivos e colocados neste diretório.
+
+* **manifest.json** e **registerServiceWorker.js:** Não se preocupe com estes arquivos por enquanto, pois não serão necessários neste projeto.   
+
+No fim das contas, você não tem que alterar os arquivos e pastas mencionados acima. De início, tudo que você precisa está localizado na pasta _src/_. O foco principal fica com o arquivo *src/App.js*, que será usado para implementar sua aplicação. Mais tarde, você irá querer estruturá-la em múltiplos arquivos, cada um contendo seu próprio componente (ou mais de um).
 
 Você encontrará um arquivo *src/App.test.js* (para seus testes) e um *src/index.js* como ponto de entrada para o "mundo React". Encontrará também os arquivos *src/index.css* e *src/App.css* para aplicar estilos aos componentes e à aplicação de uma forma geral. Se abrir qualquer dos dois, verá que ambos já trazem as definições de estilos padrão.
 
 A aplicação *create-react-app* também é um projeto npm. Além de permitir que utilizemos npm para instalar e desinstalar pacotes node ao projeto, traz os seguintes _scripts_ npm para serem usados na linha de comando:
 
 {title="Linha de Comando",lang="text"}
-~~~~~~~~
-// Roda a aplicação em http://localhost:3000
-npm start
-
-// Executa os testes
-npm test
-
-// Pepara a aplicação para produção
-npm run build
-~~~~~~~~
+	// Roda a aplicação em http://localhost:3000
+	npm start
+	
+	// Executa os testes
+	npm test
+	
+	// Pepara a aplicação para produção
+	npm run build
 
 Os _scripts_ são definidos no *package.json*.
 Seu "esqueleto" de aplicação React está agora criado. A parte excitante vem a seguir, com os exercícios, finalmente rodando sua aplicação no _browser_.
@@ -218,7 +222,7 @@ Seu "esqueleto" de aplicação React está agora criado. A parte excitante vem a
 * Verifique o conteúdo da sua pasta *public/*, execute o _script_ `npm run build` e olhe novamente a pasta para ver quais arquivos foram adicionados (você pode removê-los se quiser, mas eles não causam nenhum problema)
 * Familiarize-se com a estrutura de pastas
 * Faça o mesmo com o conteúdo de cada arquivo
-* Leia mais a respeito de [npm scripts e create-react-app][19]
+* Leia mais a respeito de [npm scripts e create-react-app][21]
 
 ## Introdução à JSX
 
@@ -227,29 +231,27 @@ Chegou o momento de você conhecer JSX, a sintaxe React. Como foi dito antes, *c
 Vamos ao código-fonte. Inicialmente, você irá trabalhar apenas com o arquivo *src/App.js*:
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
-
-export default App;
-~~~~~~~~
+	import React, { Component } from 'react';
+	import logo from './logo.svg';
+	import './App.css';
+	
+	class App extends Component {
+	  render() {
+	    return (
+	      <div className="App">
+	        <header className="App-header">
+	          <img src={logo} className="App-logo" alt="logo" />
+	          <h1 className="App-title">Welcome to React</h1>
+	        </header>
+	        <p className="App-intro">
+	          To get started, edit <code>src/App.js</code> and save to reload.
+	        </p>
+	      </div>
+	    );
+	  }
+	}
+	
+	export default App;
 
 Para que não se confunda com as declarações _import/export_ e com a palavra _class_, saiba que essas já são funcionalidades de JavaScript ES6. Iremos falar sobre isso mais tarde, neste mesmo capítulo.
 
@@ -262,59 +264,55 @@ Logo você verá que o componente App é instanciado, pois, se não o fosse, voc
 O conteúdo do bloco _render_ se parece muito com HTML, mas é JSX. JSX lhe permite misturar HTML e JavaScript. É algo poderoso, mas confuso quando você já está acostumado a separar os dois. Por esta razão, é mais fácil começar com JSX usando apenas HTML básico, removendo qualquer outro conteúdo que possa ser uma distração no arquivo.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-import React, { Component } from 'react';
-import './App.css';
-
-class App extends Component {
-	render() {
-		return (
-			<div className="App">
-				<h2>Welcome to the Road to learn React</h2>
-			</div>
-		);
+	import React, { Component } from 'react';
+	import './App.css';
+	
+	class App extends Component {
+		render() {
+			return (
+				<div className="App">
+					<h2>Welcome to the Road to learn React</h2>
+				</div>
+			);
+		}
 	}
-}
-
-export default App;
-~~~~~~~~
+	
+	export default App;
 
 Pronto. O método `render()` agora retorna apenas um HTML simples, sem JavaScript. Vamos definir o texto "_Welcome to the Road to learn React_" como uma variável, que pode ser usada dentro do seu JSX entre chaves.
 
 {title="src/App.js",lang=javascript}
-~~~~~~~~
-import React, { Component } from 'react';
-import './App.css';
-
-class App extends Component {
-	render() {
-# leanpub-start-insert
-		var helloWorld = 'Welcome to the Road to learn React';
-# leanpub-end-insert
-		return (
-			<div className="App">
-# leanpub-start-insert
-				<h2>{helloWorld}</h2>
-# leanpub-end-insert
-			</div>
-		);
+	import React, { Component } from 'react';
+	import './App.css';
+	
+	class App extends Component {
+		render() {
+	# leanpub-start-insert
+			var helloWorld = 'Welcome to the Road to learn React';
+	# leanpub-end-insert
+			return (
+				<div className="App">
+	# leanpub-start-insert
+					<h2>{helloWorld}</h2>
+	# leanpub-end-insert
+				</div>
+			);
+		}
 	}
-}
-
-export default App;
-~~~~~~~~
+	
+	export default App;
 
 Deverá funcionar, quando você levantar sua aplicação novamente com `npm start` na linha de comando.
 
-Você também deve ter notado o atributo `className`. Ele espelha o atributo `class` padrão de HTML. Por razões técnicas, JSX teve que substituir um punhado de atributos HTML. Você pode ver a lista completa em [atributos HTML suportados na documentação de React][20]. Eles seguem a convenção _camelCase_. No seu caminho aprendendo React, você irá se deparar com mais atributos específicos de JSX.
+Você também deve ter notado o atributo `className`. Ele espelha o atributo `class` padrão de HTML. Por razões técnicas, JSX teve que substituir um punhado de atributos HTML. Você pode ver a lista completa em [atributos HTML suportados na documentação de React][22]. Eles seguem a convenção _camelCase_. No seu caminho aprendendo React, você irá se deparar com mais atributos específicos de JSX.
 
 ### Exercícios:
 
 * Defina mais variáveis e as adicione ao seu código JSX
   * Use um objeto para representar um usuário com nome e sobrenome
   * Adicione as propriedades do objeto ao seu código JSX
-* Leia mais sobre [JSX][21]
-* Leia mais sobre [componentes, elementos e instâncias em React][22]
+* Leia mais sobre [JSX][23]
+* Leia mais sobre [componentes, elementos e instâncias em React][24]
 
 ## ES6 const e let
 
@@ -372,8 +370,8 @@ Na sua aplicação, dê preferência a `const` sobre `var`.
 
 ### Exercícios:
 
-* Leia mais sobre [ES6 const][23]
-* Leia mais sobre [ES6 let][24]
+* Leia mais sobre [ES6 const][25]
+* Leia mais sobre [ES6 let][26]
 * Pesquise sobre imutabilidade de estruturas de dados
   * Descubra o porquê disso fazer sentido em geral em programação
   * Descubra porque é uma prática em React e em seu ecossistema
@@ -410,7 +408,7 @@ Na nossa implementação, `ReactDOM.render()` já recebe seu componente App. Con
 ### Exercícios:
 
 * Abra o arquivo *public/index.html* e veja onde a aplicação React será alocada em seu HTML
-* Leia mais a respeito da [renderização de elementos em React][25]
+* Leia mais a respeito da [renderização de elementos em React][27]
 
 ## _Hot Module Replacement_
 
@@ -450,11 +448,11 @@ Mas o maior benefício de usar HMR é o de que você consegue conservar o estado
 ### Exercícios:
 
 * Mude o código-fonte do seu *src/App.js* algumas vezes para testar o uso de HMR
-* Assista aos primeiros 10 minutos da apresentação [Live React: Hot Reloading with Time Travel][26], com Dan Abramov
+* Assista aos primeiros 10 minutos da apresentação [Live React: Hot Reloading with Time Travel][28], com Dan Abramov
 
 ## JavaScript dentro do código JSX
 
-Voltemos ao componente App. Até então, você renderiza algumas variáveis primitivas em seu código JSX. Agora você irá começar a trabalhar com listas de itens. Inicialmente, a lista virá de uma amostra local de dados, mas depois você irá consultar os dados usando uma [API][27] externa, o que é muito mais empolgante.
+Voltemos ao componente App. Até então, você renderiza algumas variáveis primitivas em seu código JSX. Agora você irá começar a trabalhar com listas de itens. Inicialmente, a lista virá de uma amostra local de dados, mas depois você irá consultar os dados usando uma [API][29] externa, o que é muito mais empolgante.
 
 Primeiro você precisa definir uma lista de itens.
 
@@ -574,8 +572,8 @@ Agora você está exibindo ambos os itens da lista. Inicie sua aplicação, abra
 
 ### Exercícios:
 
-* Leia mais sobre [listas e _keys_ em React][28]
-* Revise as [funcionalidades padrão de _arrays_ em JavaScript][29]
+* Leia mais sobre [listas e _keys_ em React][30]
+* Revise as [funcionalidades padrão de _arrays_ em JavaScript][31]
 * Use mais expressões JavaScript no seu código JSX
 
 ## ES6 Arrow Functions
@@ -646,7 +644,7 @@ Seu código JSX parece mais conciso e legível agora. Ele omite a palavra-chave 
 
 ### Exercícios:
 
-* Leia mais a respeito de [ES6 _arrow functions_][30]
+* Leia mais a respeito de [ES6 _arrow functions_][32]
 
 ## Classes ES6
 
@@ -704,7 +702,7 @@ Agora você sabe o básico sobre classes JavaScript de ES6 e como elas são usad
 
 ### Exercícios:
 
-* Leia mais sobre [classes ES6][31]
+* Leia mais sobre [classes ES6][33]
 
 {pagebreak}
 
@@ -718,14 +716,14 @@ Você aprendeu a criar a estrutura inicial da sua própria aplicação React! Va
 	 * Funcionalidades nativas de JavaScript podem ser utilizadas em JSX
 	* map pode ser usada para renderizar uma lista de itens como elementos HTML
 * ES6
-	 * Declarações de variáveis com `const` e `let` podem ser usadas para casos de uso específicos
-	* dê preferência ao uso de const ao invés de let em aplicações React
-	 * _Arrow functions_ podem ser usadas para manter a declaração de funções mais concisas
-	 * Classes são utilizadas para definir componentes em React através de herança
+	* Declarações de variáveis com `const` e `let` podem ser usadas para casos de uso específicos
+		* dê preferência ao uso de const ao invés de let em aplicações React
+	* _Arrow functions_ podem ser usadas para manter a declaração de funções mais concisas
+	* Classes são utilizadas para definir componentes em React através de herança
 
 É prudente fazer um intervalo agora. Internalize o conhecimento adquirido e aplique-o por sua conta. Você pode brincar com o código fonte que escreveu até agora.
 
- O código-fonte está disponível no [repositório oficial][32].
+ O código-fonte está disponível no [repositório oficial][34].
 
 [1]:	https://en.wikipedia.org/wiki/Single-page_application
 [2]:	https://de.wikipedia.org/wiki/Model_View_Controller
@@ -734,28 +732,30 @@ Você aprendeu a criar a estrutura inicial da sua própria aplicação React! Va
 [5]:	https://www.robinwieruch.de/reasons-why-i-moved-from-angular-to-react/
 [6]:	https://www.robinwieruch.de/reasons-why-i-moved-from-angular-to-react/
 [7]:	https://www.robinwieruch.de/essential-react-libraries-framework/
-[8]:	https://slack-the-road-to-learn-react.wieruch.com/
-[9]:	https://www.robinwieruch.de/developer-setup/
-[10]:	https://www.robinwieruch.de/git-essential-commands/
-[11]:	https://nodejs.org/en/
-[12]:	https://docs.npmjs.com/
-[13]:	https://en.wikipedia.org/wiki/Content_delivery_network
-[14]:	http://babeljs.io/
-[15]:	https://facebook.github.io/react/docs/installation.html
-[16]:	https://github.com/facebookincubator/create-react-app
-[17]:	https://twitter.com/dan_abramov/status/806985854099062785
+[8]:	https://www.robinwieruch.de/how-to-learn-framework/
+[9]:	https://slack-the-road-to-learn-react.wieruch.com/
+[10]:	https://www.robinwieruch.de/developer-setup/
+[11]:	https://www.robinwieruch.de/git-essential-commands/
+[12]:	https://nodejs.org/en/
+[13]:	https://docs.npmjs.com/
+[14]:	https://yarnpkg.com/en/docs/
+[15]:	https://en.wikipedia.org/wiki/Content_delivery_network
+[16]:	http://babeljs.io/
+[17]:	https://facebook.github.io/react/docs/installation.html
 [18]:	https://github.com/facebookincubator/create-react-app
-[19]:	https://github.com/facebookincubator/create-react-app
-[20]:	https://facebook.github.io/react/docs/dom-elements.html
-[21]:	https://facebook.github.io/react/docs/introducing-jsx.html
-[22]:	https://facebook.github.io/react/blog/2015/12/18/react-components-elements-and-instances.html
-[23]:	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
-[24]:	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let
-[25]:	https://facebook.github.io/react/docs/rendering-elements.html
-[26]:	https://www.youtube.com/watch?v=xsSnOQynTHs
-[27]:	https://www.robinwieruch.de/what-is-an-api-javascript/
-[28]:	https://facebook.github.io/react/docs/lists-and-keys.html
-[29]:	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
-[30]:	https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions
-[31]:	https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes
-[32]:	https://github.com/rwieruch/hackernews-client/tree/4.1
+[19]:	https://twitter.com/dan_abramov/status/806985854099062785
+[20]:	https://github.com/facebookincubator/create-react-app
+[21]:	https://github.com/facebookincubator/create-react-app
+[22]:	https://facebook.github.io/react/docs/dom-elements.html
+[23]:	https://facebook.github.io/react/docs/introducing-jsx.html
+[24]:	https://facebook.github.io/react/blog/2015/12/18/react-components-elements-and-instances.html
+[25]:	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
+[26]:	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let
+[27]:	https://facebook.github.io/react/docs/rendering-elements.html
+[28]:	https://www.youtube.com/watch?v=xsSnOQynTHs
+[29]:	https://www.robinwieruch.de/what-is-an-api-javascript/
+[30]:	https://facebook.github.io/react/docs/lists-and-keys.html
+[31]:	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+[32]:	https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+[33]:	https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes
+[34]:	https://github.com/rwieruch/hackernews-client/tree/4.1

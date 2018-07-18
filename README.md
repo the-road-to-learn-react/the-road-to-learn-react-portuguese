@@ -1,4 +1,4 @@
-# The Road to Learn React
+# The Road to Learn React [Livro]
 
 [![Slack][image-1]][1]
 
