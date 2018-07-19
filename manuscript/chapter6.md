@@ -4,7 +4,7 @@ Você já aprendeu o básico sobre gerenciamento de estado em React nos capítul
 
 ## Realocando o Estado
 
-Apenas _App_ é um componente _stateful_ (com estado) em sua aplicação. Ele lida com um bastante estado e lógica em seus métodos de classe. Talvez você tenha notado que você passa muitas propriedades para o componente _Table_ e muitas delas só são utilizadas nele mesmo. Alguém pode afirmar, então, que não faz sentido que _App_ tenha conhecimento sobre elas.
+Apenas _App_ é um componente _stateful_ (com estado) em sua aplicação. Ele lida com um bastante estado e lógica em seus métodos de classe. Talvez você tenha notado que você passa muitas propriedades para o componente _Table_ e muitas delas só são utilizadas nele mesmo. Podemos afirmar, então, que não faz sentido que _App_ tenha conhecimento sobre elas.
 
 A funcionalidade de ordenação, como um todo, só é utilizada no componente _Table_. Você pode movê-la para ele, _App_ não precisa dela para nada. O processo de refatoração onde um pedaço do estado é movido de um componente para o outro é conhecido como realocação de estado (_lifting state_). No seu caso, você quer mover o estado que não é utilizado no componente _App_ para o componente _Table_. O estado move-se para baixo, do componente pai para o filho.
 
@@ -278,7 +278,7 @@ Mas, `setState()` não recebe apenas um objeto. Em uma segunda versão, você po
 	  ...
 	});
 
-Por que você iria querer isto? Em um caso de uso crucial, de fato, onde faz sentido usar uma função ao invés de um objeto. É quando você atualiza o estado dependendo do estado ou de _props_ anteriores. Se não fizer desta forma, podem ocorrer _bugs_ relacionados ao gerenciamento interno do estado.
+Por que você iria querer isto? Em um caso de uso crítico, onde faz sentido usar uma função ao invés de um objeto. É quando você atualiza o estado dependendo do estado ou de _props_ anteriores. Se não fizer desta forma, podem ocorrer _bugs_ relacionados ao gerenciamento interno do estado.
 
 Mas e por que utilizar um objeto no lugar de uma função causaria _bugs_ quando há dependência de estado e _props_ anteriores? Porque o método `setState()` de React é assíncrono. React processa as chamadas de `setState()` em lote e pode acontecer de o estado ou _props_ serem modificados no meio da execução da sua própria chamada de `setState()`.
 
@@ -287,7 +287,7 @@ Mas e por que utilizar um objeto no lugar de uma função causaria _bugs_ quando
 	const { barCount } = this.props;
 	this.setState({ count: fooCount + barCount });
 
-Imagine que `fooCount` e `barCount`, aqui estado e _props_, são modificados de forma assíncrona em outro ponto no momento em que você chama `setState()` aqui. Em uma aplicação que está ganhando maior escala, você tem mais de uma chamada de `setState()`. Uma vez que `setState()` é assíncrono, você fica dependendo dos valores dos estados.
+Imagine que `fooCount` e `barCount`, aqui estado e _props_, são modificados de forma assíncrona em outro ponto no momento em que você chama `setState()` aqui. Em uma aplicação que está ganhando maior escala, você tem mais de uma chamada de `setState()`. Uma vez que `setState()` é assíncrono, você fica dependendo dos valores atuais dos estados.
 
 Com a abordagem funcional, a função em `setState()` é um _callback_ que irá operar sobre o estado e as _props_ que existiam no momento da sua execução.  Mesmo `setState()` sendo assíncrono, este será o comportamento.
 
@@ -300,7 +300,7 @@ Com a abordagem funcional, a função em `setState()` é um _callback_ que irá 
 
 Agora, voltemos para o seu código, para consertar este comportamento. Vamos juntos fazê-lo em um lugar onde `setState()` é utilizado e depende do estado e das _props_. Você depois estará apto a aplicar a correção em outros lugares.
 
-O método `setSearchTopStories()` depende do estado anterior e é, assim, um exemplo perfeito para utilizarmos uma função ao invés de um objeto em `setState()`. No momento, o trecho de código se parece com o a seguir:
+O método `setSearchTopStories()` depende do estado anterior e é, assim, um exemplo perfeito para utilizarmos uma função ao invés de um objeto em `setState()`. No momento, o trecho de código se parece com esse a seguir:
 
 {title="src/App.js",lang=javascript}
 	setSearchTopStories(result) {
@@ -427,7 +427,7 @@ Comparado com outras soluções, React já deu um grande passo à frente. O flux
 
 Em uma aplicação que está crescendo, fica mais difícil raciocinar sobre mudanças de estado. Você pode acabar introduzindo _bugs_ operando sobre um estado viciado, quando passa um objeto para `setState()`. Você precisa ficar realocando o estado para lá e para cá, por necessidade de compartilhamento, além de ficar escondendo estados desnecessários em componentes. Pode acontecer de um componente precisar promover um estado, porque o componente irmão depende dele. Talvez este esteja muito longe na árvore de componentes e você terá que compartilhar o estado por toda ela. No fim, componentes têm um grande envolvimento no gerenciamento de estados. Mas, a responsabilidade maior de componentes deveria ser a de representar a UI, não é mesmo?
 
-Por todos estes motivos é que existem soluções independentes para cuidar do gerenciamento de estado. Estas soluções não são utilizadas apenas em React, mas são elas que fazer do seu ecossistema um lugar tão poderoso. Você pode usar diferentes soluções para resolver seus problemas. Já pode ter ouvido falar das bibliotecas [Redux][4] e [MobX][5]. Você pode utilizar qualquer uma delas em sua aplicação React. Elas trazem extensões, [react-redux][6] e [mobx-react][7], respectivamente, para integrá-las na camada de visão de React.
+Por todos estes motivos é que existem soluções independentes para cuidar do gerenciamento de estado. Estas soluções não são utilizadas apenas em React, mas são elas que fazer do seu ecossistema um lugar tão poderoso. Você pode usar diferentes soluções para resolver seus problemas. Já pode ter ouvido falar das bibliotecas [Redux][4] e [MobX][5]. Você pode utilizar qualquer uma delas em sua aplicação React. Elas trazem extensões, [react-redux][6] e [mobx-react][7] (respectivamente) para integrá-las na camada de visão de React.
 
 Redux e MobX estão fora do escopo deste livro. Quando você terminar de lê-lo, irá ser guiado sobre como pode continuar a aprender React e seu ecossistema. Um dos caminhos que pode ser seguido é o aprendizado de Redux. Mas, antes de você mergulhar no tópico de gerenciamento externo de estado, recomendo que leia este [artigo][8]. Ele visa dar-lhe um melhor entendimento sobre como aprender este assunto.
 

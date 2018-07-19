@@ -10,7 +10,7 @@ No seu arquivo _package.json_, você encontrará os _scripts_ para iniciar (_sta
 
 Se você executar `npm run eject`, o comando irá copiar todas as configurações e dependências para o seu _package.json_ e para uma nova pasta _config/_. Você converteria o projeto inteiro em uma configuração customizada, com ferramentas que incluem _Babel_ e _Webpack_. No final, você teria total controle sobre elas.
 
-A documentação oficial diz que *create-react-app* para projetos pequenos e médios. Não se sinta obrigado a utilizar o comando “eject”.
+A documentação oficial recomenda *create-react-app* para projetos pequenos e médios. Não se sinta obrigado a utilizar o comando “eject” nas suas aplicações.
 
 ### Exercícios:
 
@@ -18,9 +18,9 @@ A documentação oficial diz que *create-react-app* para projetos pequenos e mé
 
 ## Implante sua Aplicação
 
-Nenhuma aplicação deveria permanecer para sempre em _localhost_, você irá querer publicá-la. _Heroku_ é uma plataforma em forma de serviço onde você pode hospedar sua aplicação. Eles oferecem uma suave integração com React. Para ser mais específico: É possível implantar uma aplicação criada com _create-react-app_ em minutos, sem configuração alguma, seguindo a mesma filosofia.
+Nenhuma aplicação deveria permanecer para sempre em _localhost_, você deve querer publicá-la. _Heroku_ é uma plataforma em forma de serviço onde você pode hospedar seus _apps_. Ele oferece uma suave integração com React, sendo possível implantar uma aplicação criada com _create-react-app_ em minutos, sem configuração alguma, seguindo a mesma filosofia desta ferramenta.
 
-Você precisa atender dois requisitos antes de poder implantar sua aplicação no _Heroku_:
+Você precisa cumprir dois passos antes de poder implantar sua aplicação no _Heroku_:
 
 * instalar a [Heroku CLI][2]
 * criar uma [conta gratuita no Heroku][3]
