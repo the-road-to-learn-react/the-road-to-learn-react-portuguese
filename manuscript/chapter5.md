@@ -420,7 +420,7 @@ Você pode agora importar a funcionalidade _sortBy_ de _Lodash_ em seu arquivo *
 	# leanpub-end-insert
 	import './App.css';
 
-Existem várias colunas em _Table_. Título, autor, comentários e pontos (_title, author, comments _e _points_). Você pode definir funções de ordenação onde cada uma recebe uma lista e retorna uma lista ordenada para uma propriedade específica. Em adição a isto, você irá precisar uma função _default\_, que não faz nenhuma ordenação, apenas retorna a lista desordenada. Este será o seu estado inicial.
+Existem várias colunas em _Table_. Título, autor, comentários e pontos (_title, author, comments _e _points_). Você pode definir funções de ordenação onde cada uma recebe uma lista e retorna uma lista ordenada para uma propriedade específica. Em adição a isto, você irá precisar uma função _default_, que não faz nenhuma ordenação, apenas retorna a lista desordenada. Este será o seu estado inicial.
 
 {title="src/App.js",lang=javascript}
 	...

@@ -1,6 +1,6 @@
 # Organização do Código e Testes
 
-O capítulo irá manter o foco em tópicos importantes para a manutenção do código em uma aplicação escalável. Você irá aprender sobre como organizar o código, visando adotar as melhores práticas de estruturação de arquivos de pastas. Outro aspecto são os testes, muito importantes para manter seu código robusto. Finalmente, você irá aprender sobre uma ferramenta muito útil para depuração de suas aplicações React. O capítulo irá deixar um pouco de lado a aplicação prática que estamos desenvolvendo e explicará alguns destes tópicos para você de forma mais conceitual. 
+O capítulo irá manter o foco em tópicos importantes para a manutenção do código em uma aplicação escalável. Você irá aprender sobre como organizá-lo, visando adotar as melhores práticas de estruturação de arquivos e pastas. Outro aspecto são os testes, muito importantes para manter seu código robusto. Finalmente, você irá aprender sobre uma ferramenta muito útil para depurar suas aplicações React. O capítulo irá deixar um pouco de lado a aplicação prática que estamos desenvolvendo e explicará alguns destes tópicos para você de forma mais conceitual. 
 
 ## _ES6 Modules_: _Import_ e _Export_
 
@@ -10,13 +10,13 @@ No começo deste livro, depois que você inicializou sua aplicação com _create
 
 As declarações de `import` e `export` facilitam o compartilhamento de código entre múltiplos arquivos. Antes, haviam diversas formas de atingir este objetivo em um ambiente JavaScript. Era uma verdadeira bagunça e desejava-se que existisse um padrão, ao invés de múltiplas abordagens para a mesma coisa. Agora, desde JavaScript ES6, este é o comportamento nativo.
 
-Adicionalmente, elas abraçam o paradigma de \_code splitting, \_onde você distribui seu código por múltiplos arquivos para mantê-lo reutilizável e manutenível. Reutilizável porque você consegue importar um pedaço de código em múltiplos arquivos. Manutenível porque você tem uma única fonte onde você mantém um pedaço de código.
+Adicionalmente, elas abraçam o paradigma de _code splitting_, onde você distribui seu código por múltiplos arquivos para mantê-lo reutilizável e manutenível. Reutilizável porque você consegue importar um pedaço de código em múltiplos arquivos. Manutenível porque você tem uma única fonte onde mantém o mesmo pedaço de código.
 
-Pro fim, estas declarações lhe ajudam a pensar sobre o encapsulamento de código. Nem toda funcionalidade precisa ser exportada em um arquivo. Algumas deveriam ser utilizadas apenas no arquivo em que foram definidas. Os _exports_ de um arquivo são basicamente a sua API pública. Apenas as funcionalidades exportadas estão disponíveis para reuso em outro lugar, seguindo assim a boa prática de encapsulamento.
+Pro fim, estas declarações lhe ajudam a pensar sobre o encapsulamento de código. Nem toda funcionalidade precisa ser exportada em um arquivo, algumas deveriam ser utilizadas apenas onde foram definidas. Os _exports_ de um arquivo são basicamente a sua API pública. Apenas as funcionalidades exportadas estão disponíveis para reuso em outro lugar, seguindo assim a boa prática de encapsulamento.
 
-Vamos por a mão na massa. Como `import`e `export` funcionam? Os exemplo a seguir demonstram ambas as declarações compartilhando uma ou múltiplas variáveis entre dois arquivos. No final, esta abordagem pode escalar para múltiplos arquivos e poderia também compartilhar mais do que simples variáveis.
+Vamos colocar a mão na massa. Como `import`e `export` funcionam? Os exemplo a seguir demonstram ambas as declarações, compartilhando uma ou múltiplas variáveis entre dois arquivos. No final, esta abordagem pode escalar para múltiplos arquivos e poderia também compartilhar mais do que simples variáveis.
 
-Você pode exportar uma ou múltiplas variáveis com o chamado “\_export\_ nomeado”.
+Você pode exportar uma ou múltiplas variáveis com o chamado “_export_ nomeado” (_named export_).
 
 {title="Code Playground: file1.js",lang="javascript"}
 	const firstname = 'robin';
@@ -30,7 +30,7 @@ E importá-las em outro arquivo utilizando o caminho relativo para o primeiro.
 	import { firstname, lastname } from './file1.js';
 	
 	console.log(firstname);
-	// output: robin
+	// saída: robin
 
 Você também pode importar, em um único objeto, todas as variáveis exportadas de outro arquivo.
 
@@ -38,7 +38,7 @@ Você também pode importar, em um único objeto, todas as variáveis exportadas
 	import * as person from './file1.js';
 	
 	console.log(person.firstname);
-	// output: robin
+	// saída: robin
 
 _Imports_ podem ter um _alias_. Por existir a possibilidade de você importar funcionalidades exportadas com o mesmo nome de arquivos diferentes, você pode utilizar o _alias_ para fornecer “apelidos” para elas.
 
@@ -46,7 +46,7 @@ _Imports_ podem ter um _alias_. Por existir a possibilidade de você importar fu
 	import { firstname as foo } from './file1.js';
 	
 	console.log(foo);
-	// output: robin
+	// saída: robin
 
 Por último, mas muito importante, existe a declaração `default`, que pode ser utilizada em alguns casos, como:
 
@@ -68,9 +68,9 @@ Quando importando um módulo exportado com a declaração _default_, você pode 
 	import developer from './file1.js';
 	
 	console.log(developer);
-	// output: { firstname: 'robin', lastname: 'wieruch' }
+	// saída: { firstname: 'robin', lastname: 'wieruch' }
 
-Além disso, o nome dado para o módulo no _import_ pode diferir daquele que foi exportado com _default_. Ele pode até ser usado em conjunto com as declarações nomeadas de\_export\_ e _import_.
+Além disso, o nome dado para o módulo no _import_ pode diferir daquele que foi exportado com _default_. Ele pode até ser usado em conjunto com as declarações nomeadas de _export_ e _import_.
 
 {title="Code Playground: file1.js",lang="javascript"}
 	const firstname = 'robin';
@@ -92,9 +92,9 @@ Além disso, o nome dado para o módulo no _import_ pode diferir daquele que foi
 	import developer, { firstname, lastname } from './file1.js';
 	
 	console.log(developer);
-	// output: { firstname: 'robin', lastname: 'wieruch' }
+	// saída: { firstname: 'robin', lastname: 'wieruch' }
 	console.log(firstname, lastname);
-	// output: robin wieruch
+	// saída: robin wieruch
 
 Em _exports_ nomeados, você pode poupar linhas adicionais, exportando diretamente as variáveis.
 
@@ -113,7 +113,7 @@ Essas são as funcionalidades principais de _ES6 modules_. Elas lhe ajudam a org
 
 Você pode estar se perguntando: Por que nós não seguimos as melhores práticas de divisão de código para o arquivo _src/App.js_? No arquivo, nós já temos múltiplos componentes que poderiam ter sido definidos em seus próprios arquivos/pastas (módulos). Para o propósito de aprendizado de React, é prático manter estas coisas em um só lugar. Mas, uma vez que a sua aplicação cresce, você deve considerar dividir estes componentes em múltiplos módulos. Somente desta forma sua aplicação será escalável.
 
-A seguir, eu irei propor várias estruturas de módulos que você **poderia** aplicar. Eu recomendaria aplicá-las como, um exercício, ao final do livro. Para manter o livro simples, eu não irei fazer a divisão de código e irei continuar os capítulos seguintes com o arquivo _src/App.js_.
+A seguir, eu irei propor várias estruturas de módulos que você **poderia** aplicar. Eu recomendaria aplicá-las como um exercício, ao final do livro. Para mantê-lo simples, eu não irei fazer a divisão de código e irei continuar os capítulos seguintes com o arquivo _src/App.js_.
 
 Uma possível estrutura de módulo seria:
 
@@ -263,10 +263,10 @@ Agora, *src/App/index.js* pode importar os botões desta API pública localizada
 Se seguirmos esta restrição, seria então uma má prática acessar outros arquivos diretamente, sem ser através do _index.js_ do módulo. Quebraria as regras de encapsulamento.
 
 {title="Code Playground: src/App/index.js",lang=javascript}
-	// bad practice, don't do it
+	// má prática, não fazer
 	import SubmitButton from '../Buttons/SubmitButton';
 
-Você agora sabe como poderia refatorar seu código-fonte em módulos, aplicando restrições de encapsulamento. Como eu disse antes, com fim de manter o livro simples, eu não farei estas mudanças aqui. Você deve refatorar quando terminar de ler este livro.
+Você agora sabe como poderia refatorar seu código-fonte em módulos, aplicando restrições de encapsulamento. Como eu disse antes, com a intenção de manter o livro simples, eu não farei estas mudanças aqui. Você deve refatorar quando terminar a leitura do último capítulo.
 
 ### Exercícios:
 
@@ -427,7 +427,7 @@ Vamos adicionar mais testes para nossos componentes independentes. Primeiro, o c
 	});
 	# leanpub-end-insert
 
-O componente _Search_ tem dois testes similares ao componente _App_. O primeiro simplesmente renderia _Search_ no DOM e verifica que não existe erro no processo de renderização.  Se um erro ocorrer, o teste quebrará mesmo que não exista nenhuma assertiva (_expect, match, equal_) no bloco de teste. O segundo _snapshot test_ é utilizado para armazenar o _snapshot_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o \_snapshot\_ muda.
+O componente _Search_ tem dois testes similares ao componente _App_. O primeiro simplesmente renderia _Search_ no DOM e verifica que não existe erro no processo de renderização.  Se um erro ocorrer, o teste quebrará mesmo que não exista nenhuma assertiva (_expect, match, equal_) no bloco de teste. O segundo _snapshot test_ é utilizado para armazenar o _snapshot_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o _snapshot_ muda.
 
 Segundo, você pode testar o componente _Button_ aplicando estas mesmas regras do componente _Search_.
 
@@ -671,7 +671,7 @@ O próximo passo é definir uma interface com _PropTypes_ para o componente _Tab
 	};
 	# leanpub-end-insert
 
-Você pode definir o conteúdo de um\_PropType\_ do tipo _array_ mais explicitamente:
+Você pode definir o conteúdo de um _PropType_ do tipo _array_ mais explicitamente:
 
 {title="src/App.js",lang=javascript}
 	Table.propTypes = {

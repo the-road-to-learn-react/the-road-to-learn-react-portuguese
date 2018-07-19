@@ -2,32 +2,37 @@
 
 [![Slack][image-1]][1]
 
-Repositório oficial da tradução em português do livro [The Road to learn React][2]. Também contém o [Código Fonte][3] da aplicação desenvolvida.
+Repositório oficial da tradução em português do livro [The Road to learn React][2]. Também está disponível o [Código Fonte][3] da aplicação desenvolvida e [o Curso Completo][4].
 
 ## Atualizações, Ajuda e Como apoiar
 
-* Seja notificado sobre atualizações via [E-Mail][4] ou [Twitter][5]
-* Obtenha ajuda durante o aprendizado de React ou contribua ensinando outras pessoas no canal oficial no [Slack ][6]
-* Descubra como você pode [Apoiar o Livro][7]
+* Seja notificado sobre atualizações via [E-Mail][5] ou [Twitter][6]
+* Obtenha ajuda durante o aprendizado de React ou contribua ensinando outras pessoas no canal oficial no [Slack ][7]
+* Descubra como você pode [Apoiar o Livro][8]
 
 ## Contribuindo
 
-Um texto narrativo funciona de forma um pouco diferente de códigos-fonte, pois precisa passar para o leitor uma sensação de continuidade, do começo ao fim do livro. Juntar pequenos pedaços de texto de fontes diferentes pode gerar um texto um tanto quanto inconsistente.
+Você pode ajudar a melhorar o livro através da abertura de _Pull Requests_ (PR). Pode abrir qualquer PR que corrige erros de ortografia ou de tradução (em comparação com a versão original, em inglês).
 
-Além disso, parágrafos e até capítulos inteiros já traduzidos não necessariamente são sincronizados imediatamente, aguardando revisão.
+Quando se escreve um livro tão técnico, é possível que a distinção entre o que está bem explicado e o que precisa melhorar fique prejudicada. Sendo assim, também são bem vindas as Pull Requests de mudanças de conteúdo. Entretanto, encorajo os leitores a fazê-lo no **repositório da versão original**, uma vez que esta versão não irá evoluir por conta própria, adicionando tópicos divergentes dos originais.
 
-Então, juntamente com o autor da versão original, decidi fazer um primeiro rascunho, com a tradução inicial de todas as seções e depois abri-lo para sugestões, melhorias e correções, através de _PRs_ e _issues_. Serão todas muito bem vindas.
+Além disso, você pode abrir _issues_ aqui, quando se deparar com problemas. Para tornar a correção do problema o mais fácil possível, por favor forneça alguns detalhes como _log_ de erro, captura de tela, página do livro em que ocorre, sua versão do _node_ (`node -v`, na linha de comando) e um _link_ para o seu próprio repositório. Não é necessário incluir todos estes detalhes, mas, quanto mais, melhor.
 
-Se quiser abrir um _issue_ para algum capítulo já completamente traduzido, fique à vontade. Ficarei muito grato.
+Muito obrigado pela sua ajuda!
 
-**Este README.md será atualizado quando tivermos a primeira versão completa, aberto à colaborações maiores**
+## Torne-se um _Patron_
+
+The Road to learn React é um e-book gratuito, que deve permitir à todos a aprender React. Este tipo de conteúdo educacional precisa do seu apoio para se auto-sustentar. Robin Wieruch também escreve uma grande quantidade de conteúdos educacionais como este em [seu website][9]. Sendo assim, você pode apoiá-lo sendo seu [_Patron_ no _Patreon_][10].
 
 [1]:	https://slack-the-road-to-learn-react.wieruch.com/
 [2]:	https://www.robinwieruch.de/the-road-to-learn-react/ "O Caminho para aprender Re"
 [3]:	https://github.com/rwieruch/hackernews-client
-[4]:	https://www.getrevue.co/profile/rwieruch
-[5]:	https://twitter.com/rwieruch
-[6]:	https://slack-the-road-to-learn-react.wieruch.com/
-[7]:	https://www.robinwieruch.de/about/
+[4]:	https://roadtoreact.com/
+[5]:	https://www.getrevue.co/profile/rwieruch
+[6]:	https://twitter.com/rwieruch
+[7]:	https://slack-the-road-to-learn-react.wieruch.com/
+[8]:	https://www.robinwieruch.de/about/
+[9]:	https://www.robinwieruch.de/
+[10]:	https://www.patreon.com/rwieruch
 
 [image-1]:	https://slack-the-road-to-learn-react.wieruch.com/badge.svg
