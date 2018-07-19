@@ -45,10 +45,10 @@ Por último, mas não menos importante, você precisará ter [o node e o npm][12
 É possível verificar as versões de node e npm instaladas pela linha de comando. Caso você não obtenha nenhum resultado no terminal, significa que precisará instalar ambos antes de continuar. Abaixo, minhas versões no momento em que escrevia este livro:
 
 {title="Linha de Comando",lang="text"}
-	node --version
-	*v8.3.0
-	npm --version
-	*v5.5.1
+  node --version
+  *v8.3.0
+  npm --version
+  *v5.5.1
 
 ## node e npm
 
@@ -59,26 +59,26 @@ O **node package manager** (npm) possibilita a instalação de pacotes (**node p
 Pacotes node globais são acessíveis de qualquer pasta no terminal e você só precisa fazer a instalação de cada pacote uma vez. Para tanto, digite em seu terminal:
 
 {title="Linha de Comando",lang="text"}
-	npm install -g <package>
+  npm install -g <package>
 
 A _flag_ `-g` diz ao npm para instalar o pacote globalmente. 
 
 Já os pacotes locais são usados apenas na sua aplicação. React, por exemplo, por se tratar de uma biblioteca, será adicionado como um pacote local que poderá ser importado para uso interno. A instalação de qualquer pacote local via terminal é feita através do comando:
 
 {title="Linha de Comando",lang="text"}
-	npm install <package>
+  npm install <package>
 
 No caso específico de React, teríamos:
 
 {title="Linha de Comando",lang="text"}
-	npm install react
+  npm install react
 
 O pacote instalado irá aparecer automaticamente em uma pasta chamada *node\_modules/* e será listado no arquivo *package.json* juntamente com as outras dependências do projeto.
 
 E como inicializar o projeto com a pasta *node\_modules/* e o arquivo *package.json*? Existe um comando npm para isso também. Quando executado, *package.json* é criado e somente com a existência desse arquivo no projeto é que é possível a instalação de novos pacotes locais.
 
 {title="Linha de Comando",lang="text"}
-	npm init -y
+  npm init -y
 
 A _flag_ `-y` é um atalho para inicializar seu *package.json* com as configurações padrão. Caso não a use, você terá que informar alguns dados adicionais para configurar o arquivo. Feita a inicialização, você está apto a instalar novos pacotes com o comando `npm install <package>`.
 
@@ -87,7 +87,7 @@ Mais uma coisa sobre o *package.json*: O arquivo habilita você a compartilhar o
 Existe mais um comando npm sobre o qual eu gostaria de falar a respeito:
 
 {title="Linha de Comando",lang="text"}
-	npm install --save-dev <package>
+  npm install --save-dev <package>
 
 A _flag_ `--save-dev` indica que o pacote node é usado apenas em ambiente de desenvolvimento, ou seja, não será usado em produção quando você implantar a aplicação no servidor. Mas, que tipo de pacote se enquadraria neste caso?
 
@@ -100,12 +100,12 @@ Uma última coisa, que considero importante mencionar: Muitas pessoas optam por 
 ### Exercícios:
 
 * Configurando um projeto npm qualquer:
-	* Crie uma nova pasta com `mkdir <nome_da_pasta>`
-	* Navegue para ela com `cd <nome_da_pasta>`
-	* Execute `npm init -y` ou `npm init`
-	* Instale um pacote local como React com `npm install react`
-	* Olhe os conteúdos do arquivo *package.json* e da pasta *node\_modules/*
-	* Descubra você mesmo como desinstalar o pacote *react*
+  * Crie uma nova pasta com `mkdir <nome_da_pasta>`
+  * Navegue para ela com `cd <nome_da_pasta>`
+  * Execute `npm init -y` ou `npm init`
+  * Instale um pacote local como React com `npm install react`
+  * Olhe os conteúdos do arquivo *package.json* e da pasta *node\_modules/*
+  * Descubra você mesmo como desinstalar o pacote *react*
 * Leia mais sobre [npm][13]
 * Leia mais sobre [yarn][14]
 
@@ -118,15 +118,15 @@ A primeira delas é usar um CDN. Isso pode soar mais complicado do que realmente
 Como usar um CDN para começar a trabalhar com React? Simples. Você pode adicionar a tag `<script>` _inline_ no seu HTML, apontando para a url do CDN. Serão precisos dois arquivos (bibliotecas): *react* e *react-dom*.
 
 {title="Code Playground",lang="javascript"}
-	<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 
 Mas, eis a questão: Por que você deveria usar um CDN quando tem o npm para instalar pacotes como React?
 
 Quando sua aplicação possui um arquivo *package.json* em uma pasta inicializada como projeto npm usando `npm init -y`, você pode instalar *react* e *react-dom* pelo terminal. É possível, inclusive, instalar múltiplos pacotes em apenas uma linha com o npm.
 
 {title="Linha de Comando",lang="text"}
-	npm install react react-dom
+  npm install react react-dom
 
 Essa é  uma abordagem frequentemente utilizada para adicionar React a uma aplicação existente, caso esta seja gerenciada com npm.
 
@@ -147,38 +147,38 @@ Em “The Road to learn React“, você usará [create-react-app][18] para monta
 Para começar, será necessário fazer a instalação global do pacote. Assim, ele sempre estará disponível na linha de comando para criar suas aplicações React.
 
 {title="Linha de Comando",lang="text"}
-	npm install -g create-react-app
+  npm install -g create-react-app
 
 Confira a versão do *create-react-app* para ter certeza de que a instalação ocorreu com sucesso:
 
 {title="Linha de Comando",lang="text"}
-	create-react-app --version
-	*v1.4.1
+  create-react-app --version
+  *v1.4.1
 
 Agora você pode criar sua primeira aplicação. Iremos chamá-la de *hackernews*, mas você pode escolher um nome diferente. O processo leva alguns segundos e, logo após terminar, navegue para a pasta:
 
 {title="Linha de Comando",lang="text"}
-	create-react-app hackernews
-	cd hackernews
+  create-react-app hackernews
+  cd hackernews
 
 Você pode abrir a aplicação no editor de sua escolha. A estrutura a seguir (ou uma variação, dependendo da versão do _create-react-app_) lhe será apresentada:
 
 {title="Estrutura de pastas",lang="text"}
-	hackernews/
-	  README.md
-	  node_modules/
-	  package.json
-	  .gitignore
-	  public/
-	    favicon.ico
-	    index.html
-	  src/
-	    App.css
-	    App.js
-	    App.test.js
-	    index.css
-	    index.js
-	    logo.svg
+  hackernews/
+    README.md
+    node_modules/
+    package.json
+    .gitignore
+    public/
+      favicon.ico
+      index.html
+    src/
+      App.css
+      App.js
+      App.test.js
+      index.css
+      index.js
+      logo.svg
 
 Não tem problema se você não entender tudo desde o início. Eis uma descrição curta dos arquivos e pastas:
 
@@ -203,14 +203,14 @@ Você encontrará um arquivo *src/App.test.js* (para seus testes) e um *src/inde
 A aplicação *create-react-app* também é um projeto npm. Além de permitir que utilizemos npm para instalar e desinstalar pacotes node ao projeto, traz os seguintes _scripts_ npm para serem usados na linha de comando:
 
 {title="Linha de Comando",lang="text"}
-	// Roda a aplicação em http://localhost:3000
-	npm start
-	
-	// Executa os testes
-	npm test
-	
-	// Pepara a aplicação para produção
-	npm run build
+  // Roda a aplicação em http://localhost:3000
+  npm start
+  
+  // Executa os testes
+  npm test
+  
+  // Pepara a aplicação para produção
+  npm run build
 
 Os _scripts_ são definidos no *package.json*.
 Seu "esqueleto" de aplicação React está agora criado. A parte excitante vem a seguir, com os exercícios, finalmente rodando sua aplicação no _browser_.
@@ -231,27 +231,27 @@ Chegou o momento de você conhecer JSX, a sintaxe React. Como foi dito antes, *c
 Vamos ao código-fonte. Inicialmente, você irá trabalhar apenas com o arquivo *src/App.js*:
 
 {title="src/App.js",lang=javascript}
-	import React, { Component } from 'react';
-	import logo from './logo.svg';
-	import './App.css';
-	
-	class App extends Component {
-	  render() {
-	    return (
-	      <div className="App">
-	        <header className="App-header">
-	          <img src={logo} className="App-logo" alt="logo" />
-	          <h1 className="App-title">Welcome to React</h1>
-	        </header>
-	        <p className="App-intro">
-	          To get started, edit <code>src/App.js</code> and save to reload.
-	        </p>
-	      </div>
-	    );
-	  }
-	}
-	
-	export default App;
+  import React, { Component } from 'react';
+  import logo from './logo.svg';
+  import './App.css';
+  
+  class App extends Component {
+    render() {
+      return (
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">Welcome to React</h1>
+          </header>
+          <p className="App-intro">
+            To get started, edit <code>src/App.js</code> and save to reload.
+          </p>
+        </div>
+      );
+    }
+  }
+  
+  export default App;
 
 Para que não se confunda com as declarações _import/export_ e com a palavra _class_, saiba que essas já são funcionalidades de JavaScript ES6. Iremos falar sobre isso mais tarde, neste mesmo capítulo.
 
@@ -264,43 +264,43 @@ Logo você verá que o componente App é instanciado, pois, se não o fosse, voc
 O conteúdo do bloco _render_ se parece muito com HTML, mas é JSX. JSX lhe permite misturar HTML e JavaScript. É algo poderoso, mas confuso quando você já está acostumado a separar os dois. Por esta razão, é mais fácil começar com JSX usando apenas HTML básico, removendo qualquer outro conteúdo que possa ser uma distração no arquivo.
 
 {title="src/App.js",lang=javascript}
-	import React, { Component } from 'react';
-	import './App.css';
-	
-	class App extends Component {
-		render() {
-			return (
-				<div className="App">
-					<h2>Welcome to the Road to learn React</h2>
-				</div>
-			);
-		}
-	}
-	
-	export default App;
+  import React, { Component } from 'react';
+  import './App.css';
+  
+  class App extends Component {
+    render() {
+      return (
+        <div className="App">
+          <h2>Welcome to the Road to learn React</h2>
+        </div>
+      );
+    }
+  }
+  
+  export default App;
 
 Pronto. O método `render()` agora retorna apenas um HTML simples, sem JavaScript. Vamos definir o texto "_Welcome to the Road to learn React_" como uma variável, que pode ser usada dentro do seu JSX entre chaves.
 
 {title="src/App.js",lang=javascript}
-	import React, { Component } from 'react';
-	import './App.css';
-	
-	class App extends Component {
-		render() {
-	# leanpub-start-insert
-			var helloWorld = 'Welcome to the Road to learn React';
-	# leanpub-end-insert
-			return (
-				<div className="App">
-	# leanpub-start-insert
-					<h2>{helloWorld}</h2>
-	# leanpub-end-insert
-				</div>
-			);
-		}
-	}
-	
-	export default App;
+  import React, { Component } from 'react';
+  import './App.css';
+  
+  class App extends Component {
+    render() {
+  # leanpub-start-insert
+      var helloWorld = 'Welcome to the Road to learn React';
+  # leanpub-end-insert
+      return (
+        <div className="App">
+  # leanpub-start-insert
+          <h2>{helloWorld}</h2>
+  # leanpub-end-insert
+        </div>
+      );
+    }
+  }
+  
+  export default App;
 
 Deverá funcionar, quando você levantar sua aplicação novamente com `npm start` na linha de comando.
 
@@ -321,27 +321,27 @@ Suponho que você tenha notado que declaramos a variável `helloWorld` com a pal
 Uma variável declarada com `const` não pode ter um novo valor atribuído a ela nem ser novamente declarada. Não pode ser modificada. Você adota o uso de estruturas de dados imutáveis quando utiliza `const`. Uma vez que sua estrutura de dados é definida, você não pode mais modificá-la.
 
 {title="Code Playground",lang="javascript"}
-	// não permitido
-	const helloWorld = 'Welcome to the Road to learn React';
-	helloWorld = 'Bye Bye React';
+  // não permitido
+  const helloWorld = 'Welcome to the Road to learn React';
+  helloWorld = 'Bye Bye React';
 
 Uma variável definida com `let` pode ser modificada.
 
 {title="Code Playground",lang="javascript"}
-	// permitido
-	let helloWorld = 'Welcome to the Road to learn React';
-	helloWorld = 'Bye Bye React';
+  // permitido
+  let helloWorld = 'Welcome to the Road to learn React';
+  helloWorld = 'Bye Bye React';
 
 Você pode usar `let` quando achar de poderia precisar atribuir novo valor à variável.
 
 Contudo, você deve ter cuidado com `const`. Uma variável declarada com `const` não pode ser modificada, mas, quando esta se trata de um _array_ ou objeto, os valores que ela armazena não são imutáveis e podem ser atualizados.
 
 {title="Code Playground",lang="javascript"}
-	// permitido
-	const helloWorld = {
-	  text: 'Welcome to the Road to learn React'
-	};
-	helloWorld.text = 'Bye Bye React';
+  // permitido
+  const helloWorld = {
+    text: 'Welcome to the Road to learn React'
+  };
+  helloWorld.text = 'Bye Bye React';
 
 Então quando usar cada tipo de declaração? Existem diferentes opiniões sobre o melhor uso. Eu sugiro usar `const` sempre que possível, indicando que você quer manter sua estrutura de dados imutável, mesmo que os valores em objetos e _arrays_ possam ser modificados. Se você deliberadamente deseja modificar sua variável, use `let`.
 
@@ -350,23 +350,23 @@ Imutabilidade é uma característica que foi abraçada em React e no seu ecossis
 Na sua aplicação, dê preferência a `const` sobre `var`.
 
 {title="src/App.js",lang=javascript}
-	import React, { Component } from 'react';
-	import './App.css';
-	
-	class App extends Component {
-	  render() {
-	# leanpub-start-insert
-	    const helloWorld = 'Welcome to the Road to learn React';
-	# leanpub-end-insert
-	    return (
-	      <div className="App">
-	        <h2>{helloWorld}</h2>
-	      </div>
-	    );
-	  }
-	}
-	
-	export default App;
+  import React, { Component } from 'react';
+  import './App.css';
+  
+  class App extends Component {
+    render() {
+  # leanpub-start-insert
+      const helloWorld = 'Welcome to the Road to learn React';
+  # leanpub-end-insert
+      return (
+        <div className="App">
+          <h2>{helloWorld}</h2>
+        </div>
+      );
+    }
+  }
+  
+  export default App;
 
 ### Exercícios:
 
@@ -381,15 +381,15 @@ Na sua aplicação, dê preferência a `const` sobre `var`.
 Antes de continuar trabalhando no componente App, você deve querer ver onde ele é utilizado, não é mesmo? Ele está localizado dentro do seu ponto de entrada no mundo React: o arquivo *src/index.js*.
 
 {title="src/index.js",lang=javascript}
-	import React from 'react';
-	import ReactDOM from 'react-dom';
-	import App from './App';
-	import './index.css';
-	
-	ReactDOM.render(
-	  <App />,
-	  document.getElementById('root')
-	);
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import App from './App';
+  import './index.css';
+  
+  ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+  );
 
 Basicamente, `ReactDOM.render()` usa um _DOM node_ no HTML e o substitui com o seu JSX. Dessa forma, você pode facilmente integrar React em qualquer aplicação estranha à sua.
 
@@ -400,10 +400,10 @@ Não é proibido utilizar `ReactDOM.render()` muitas vezes na aplicação, você
 Na nossa implementação, `ReactDOM.render()` já recebe seu componente App. Contudo, não haveria problema se, no lugar, passássemos um simples código JSX, não sendo obrigatório que o argumento passado seja um componente instanciado.
 
 {title="Code Playground",lang=javascript}
-	ReactDOM.render(
-	  <h1>Hello React World</h1>,
-	  document.getElementById('root')
-	);
+  ReactDOM.render(
+    <h1>Hello React World</h1>,
+    document.getElementById('root')
+  );
 
 ### Exercícios:
 
@@ -419,21 +419,21 @@ Em uma aplicação criada com *create-react-app*,  o navegador atualiza a págin
 _Hot Module Replacement_ - algo como "recarregamento de módulos em tempo real" - (ou HRM) é uma ferramenta que permite a atualização da aplicação em seu navegador, sem que este faça o recarregamento da página. Você pode facilmente ativar esse recurso, adicionando uma pequena configuração ao seu *src/index.js*:
 
 {title="src/index.js",lang=javascript}
-	import React from 'react';
-	import ReactDOM from 'react-dom';
-	import App from './App';
-	import './index.css';
-	
-	ReactDOM.render(
-	  <App />,
-	  document.getElementById('root')
-	);
-	
-	# leanpub-start-insert
-	if (module.hot) {
-	  module.hot.accept();
-	}
-	# leanpub-end-insert
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import App from './App';
+  import './index.css';
+  
+  ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+  );
+  
+  # leanpub-start-insert
+  if (module.hot) {
+    module.hot.accept();
+  }
+  # leanpub-end-insert
 
 É só isso. Faça o teste novamente, alterando a variável `helloWorld` em seu *src/App.js*. O navegador não irá recarregar toda a página, mas a aplicação irá ser atualizada e mostrar a saída correta. 
 
@@ -457,116 +457,116 @@ Voltemos ao componente App. Até então, você renderiza algumas variáveis prim
 Primeiro você precisa definir uma lista de itens.
 
 {title="src/App.js",lang=javascript}
-	import React, { Component } from 'react';
-	import './App.css';
-	
-	# leanpub-start-insert
-	const list = [
-	  {
-	    title: 'React',
-	    url: 'https://facebook.github.io/react/',
-	    author: 'Jordan Walke',
-	    num_comments: 3,
-	    points: 4,
-	    objectID: 0,
-	  },
-	  {
-	    title: 'Redux',
-	    url: 'https://github.com/reactjs/redux',
-	    author: 'Dan Abramov, Andrew Clark',
-	    num_comments: 2,
-	    points: 5,
-	    objectID: 1,
-	  },
-	];
-	# leanpub-end-insert
-	
-	class App extends Component {
-	  ...
-	}
+  import React, { Component } from 'react';
+  import './App.css';
+  
+  # leanpub-start-insert
+  const list = [
+    {
+      title: 'React',
+      url: 'https://facebook.github.io/react/',
+      author: 'Jordan Walke',
+      num_comments: 3,
+      points: 4,
+      objectID: 0,
+    },
+    {
+      title: 'Redux',
+      url: 'https://github.com/reactjs/redux',
+      author: 'Dan Abramov, Andrew Clark',
+      num_comments: 2,
+      points: 5,
+      objectID: 1,
+    },
+  ];
+  # leanpub-end-insert
+  
+  class App extends Component {
+    ...
+  }
 
 Esses dados irão refletir o modelo daqueles que iremos consultar mais tarde com a API. Um item da lista possui um título, uma url e um autor. Ele tem identificador, pontos (que indicam o quão popular é um artigo) e também um contador de comentários.
 
 Com a lista em mãos, você agora pode usar a funcionalidade `map`, nativa de JavaScript, em seu código JSX. Ela lhe possibilita iterar sobre sua lista de itens e exibir seu conteúdo. Mais uma vez, você usará chaves para encapsular a expressão JavaScript no JSX.
 
 {title="src/App.js",lang=javascript}
-	class App extends Component {
-	  render() {
-	    return (
-	      <div className="App">
-	# leanpub-start-insert
-	        {list.map(function(item) {
-	          return <div>{item.title}</div>;
-	        })}
-	# leanpub-end-insert
-	      </div>
-	    );
-	  }
-	}
-	
-	export default App;
+  class App extends Component {
+    render() {
+      return (
+        <div className="App">
+  # leanpub-start-insert
+          {list.map(function(item) {
+            return <div>{item.title}</div>;
+          })}
+  # leanpub-end-insert
+        </div>
+      );
+    }
+  }
+  
+  export default App;
 
 O uso de JavaScript dentro do HTML é algo muito poderoso em JSX. Normalmente, você teria utilizado `map` para converter uma lista de itens em outra lista de itens. Mas aqui você usa para converter uma lista de itens em elementos HTML.
 
 Até então, apenas o `title` é exibido para cada item. Vamos adicionar mais propriedades:
 
 {title="src/App.js",lang=javascript}
-	class App extends Component {
-	  render() {
-	    return (
-	      <div className="App">
-	# leanpub-start-insert
-	        {list.map(function(item) {
-	          return (
-	            <div>
-	              <span>
-	                <a href={item.url}>{item.title}</a>
-	              </span>
-	              <span>{item.author}</span>
-	              <span>{item.num_comments}</span>
-	              <span>{item.points}</span>
-	            </div>
-	          );
-	        })}
-	# leanpub-end-insert
-	      </div>
-	    );
-	  }
-	}
-	
-	export default App;
+  class App extends Component {
+    render() {
+      return (
+        <div className="App">
+  # leanpub-start-insert
+          {list.map(function(item) {
+            return (
+              <div>
+                <span>
+                  <a href={item.url}>{item.title}</a>
+                </span>
+                <span>{item.author}</span>
+                <span>{item.num_comments}</span>
+                <span>{item.points}</span>
+              </div>
+            );
+          })}
+  # leanpub-end-insert
+        </div>
+      );
+    }
+  }
+  
+  export default App;
 
 É possível enxergar como a função map é simplesmente invocada _inline_ no código JSX. Cada propriedade de item é exibida em uma tag `<span>`, com exceção da url, que colocamos no `href` da tag `<a>`.
 
 React irá fazer todo o trabalho de exibir cada item. Contudo, você deve dar uma ajudá-lo a atingir todo o seu potencial e a ter uma melhor performance. Você deve dar um atributo `key` a cada elemento da lista. Essa é a forma de identificar que itens foram adicionados, modificados ou removidos quando a lista muda. Os itens do exemplo possuem um identificador que pode ser utilizado.
 
 {title="src/App.js",lang=javascript}
-	{list.map(function(item) {
-	  return (
-	# leanpub-start-insert
-	    <div key={item.objectID}>
-	# leanpub-end-insert
-	      <span>
-	        <a href={item.url}>{item.title}</a>
-	      </span>
-	      <span>{item.author}</span>
-	      <span>{item.num_comments}</span>
-	      <span>{item.points}</span>
-	    </div>
-	  );
-	})}
+  {list.map(function(item) {
+    return (
+  # leanpub-start-insert
+      <div key={item.objectID}>
+  # leanpub-end-insert
+        <span>
+          <a href={item.url}>{item.title}</a>
+        </span>
+        <span>{item.author}</span>
+        <span>{item.num_comments}</span>
+        <span>{item.points}</span>
+      </div>
+    );
+  })}
 
 Você deve se certificar de que o atributo key é um identificador único válido. Não cometa o erro de usar o índice do item no array, por exemplo. O índice não é um identificador estável, pois, quando a lista é reordenada, ficará difícil para o React identificar propriamente cada item.
 
 {title="src/App.js",lang=javascript}
-	// não faça isso
-	{list.map(function(item, key) {
-	  return (
-	    <div key={key}>
-	      ...
-	    </div>
-	  );
-	})}
+  // não faça isso
+  {list.map(function(item, key) {
+    return (
+      <div key={key}>
+        ...
+      </div>
+    );
+  })}
 
 Agora você está exibindo ambos os itens da lista. Inicie sua aplicação, abra o navegador e veja os dois sendo mostrados.
 
@@ -581,64 +581,64 @@ Agora você está exibindo ambos os itens da lista. Inicie sua aplicação, abra
 JavaScript ES6 introduziu _arrow functions_. Uma expressão com _arrow function_ é mais curta do que uma expressão com uma função convencional (utilizando a palavra `function`).
 
 {title="Code Playground",lang="javascript"}
-	// declaração com function
-	function () { ... }
-	
-	// declaração com arrow function
-	() => { ... }
+  // declaração com function
+  function () { ... }
+  
+  // declaração com arrow function
+  () => { ... }
 
 Contudo, você precisa estar ciente das funcionalidades que essa sintaxe agrega. Uma delas é um comportamento diferente com com o objeto `this`. Uma função convencional sempre define seu próprio objeto `this`. _Arrow functions_ têm o objeto `this` do contexto que as contêm. Fique esperto quando utilizar `this` em funções definidas dessa forma.
 
 Existe outro fato importante sobre _arrow functions_ com relação a parênteses. Você pode removê-los quando a função recebe apenas um argumento, mas precisa mantê-los quando recebe vários.
 
 {title="Code Playground",lang="javascript"}
-	// permitido
-	item => { ... }
-	
-	// permitido
-	(item) => { ... }
-	
-	// proibido
-	item, key => { ... }
-	
-	// permitido
-	(item, key) => { ... }
+  // permitido
+  item => { ... }
+  
+  // permitido
+  (item) => { ... }
+  
+  // proibido
+  item, key => { ... }
+  
+  // permitido
+  (item, key) => { ... }
 
 Olhemos a função `map`. Você pode reescrevê-la de forma mais concisa com uma _arrow function_ de ES6.
 
 {title="src/App.js",lang=javascript}
-	# leanpub-start-insert
-	{list.map(item => {
-	# leanpub-end-insert
-	  return (
-	    <div key={item.objectID}>
-	      <span>
-	        <a href={item.url}>{item.title}</a>
-	      </span>
-	      <span>{item.author}</span>
-	      <span>{item.num_comments}</span>
-	      <span>{item.points}</span>
-	    </div>
-	  );
-	})}
+  # leanpub-start-insert
+  {list.map(item => {
+  # leanpub-end-insert
+    return (
+      <div key={item.objectID}>
+        <span>
+          <a href={item.url}>{item.title}</a>
+        </span>
+        <span>{item.author}</span>
+        <span>{item.num_comments}</span>
+        <span>{item.points}</span>
+      </div>
+    );
+  })}
 
 Você também pode remover as chaves que delimitam o corpo da _arrow function_, pois este é conciso e o retorno é implícito. Se o fizer, você deve remover  também o `return`. Essa prática irá se repetir mais vezes pelo livro, então certifique-se que aprendeu a diferença entre um bloco de código como corpo da função e um corpo conciso de função quando estiver utilizando _arrow functions_.
 
 {title="src/App.js",lang=javascript}
-	# leanpub-start-insert
-	{list.map(item =>
-	# leanpub-end-insert
-	  <div key={item.objectID}>
-	    <span>
-	      <a href={item.url}>{item.title}</a>
-	    </span>
-	    <span>{item.author}</span>
-	    <span>{item.num_comments}</span>
-	    <span>{item.points}</span>
-	  </div>
-	# leanpub-start-insert
-	)}
-	# leanpub-end-insert
+  # leanpub-start-insert
+  {list.map(item =>
+  # leanpub-end-insert
+    <div key={item.objectID}>
+      <span>
+        <a href={item.url}>{item.title}</a>
+      </span>
+      <span>{item.author}</span>
+      <span>{item.num_comments}</span>
+      <span>{item.points}</span>
+    </div>
+  # leanpub-start-insert
+  )}
+  # leanpub-end-insert
 
 Seu código JSX parece mais conciso e legível agora. Ele omite a palavra-chave `function`, as chaves e o `return`. O desenvolvedor pode focar melhor nos detalhes da implementação.
 
@@ -655,16 +655,16 @@ Apesar de React adotar programação funcional, por exemplo com estruturas de da
 Consideremos a classe `Developer` a seguir, para que possamos examinar uma classe JavaScript ES6 sem ter que pensar sobre componentes.
 
 {title="Code Playground",lang="javascript"}
-	class Developer {
-	  constructor(firstname, lastname) {
-	    this.firstname = firstname;
-	    this.lastname = lastname;
-	  }
-	
-	  getName() {
-	    return this.firstname + ' ' + this.lastname;
-	  }
-	}
+  class Developer {
+    constructor(firstname, lastname) {
+      this.firstname = firstname;
+      this.lastname = lastname;
+    }
+  
+    getName() {
+      return this.firstname + ' ' + this.lastname;
+    }
+  }
 
 Uma classe tem um construtor para torná-la instanciável e ele pode receber argumentos para atribuí-los à instância da classe. Além disso, uma classe pode definir funções que, por estarem associadas, são chamadas de métodos. Geralmente, são chamados de métodos de classe.
 
@@ -673,22 +673,22 @@ Uma classe tem um construtor para torná-la instanciável e ele pode receber arg
 Vejamos como você pode instanciar a classe e como pode utilizar seus métodos.
 
 {title="Code Playground",lang="javascript"}
-	const robin = new Developer('Robin', 'Wieruch');
-	console.log(robin.getName());
-	// saída: Robin Wieruch
+  const robin = new Developer('Robin', 'Wieruch');
+  console.log(robin.getName());
+  // saída: Robin Wieruch
 
 React usa classes de JavaScript ES6 para componentes de classe ES6 e  você já utilizou um.
 
 {title="src/App.js",lang=javascript}
-	import React, { Component } from 'react';
-	
-	...
-	
-	class App extends Component {
-	  render() {
-	    ...
-	  }
-	}
+  import React, { Component } from 'react';
+  
+  ...
+  
+  class App extends Component {
+    render() {
+      ...
+    }
+  }
 
 A classe App herda de `Component`. Basicamente você declara o componente App, mas ele estende outro componente. O que isso significa? Em programação orientada a objetos, você tem o princípio da herança. Ele é usado para repassar funcionalidades de uma classe para outra.
 
@@ -709,17 +709,17 @@ Agora você sabe o básico sobre classes JavaScript de ES6 e como elas são usad
 Você aprendeu a criar a estrutura inicial da sua própria aplicação React! Vamos recapitular os últimos tópicos:
 
 * React
-	 * create-react-app inicializa a estrutura de uma aplicação React
-	 * JSX mistura HTML e JavaScript para definir a saída de componentes React em seus métodos render
-	 * Componentes, instâncias e elementos são coisas diferentes em React
-	 * `ReactDOM.render()` é o ponto de entrada de uma aplicação React e o gancho para o DOM
-	 * Funcionalidades nativas de JavaScript podem ser utilizadas em JSX
-	* map pode ser usada para renderizar uma lista de itens como elementos HTML
+   * create-react-app inicializa a estrutura de uma aplicação React
+   * JSX mistura HTML e JavaScript para definir a saída de componentes React em seus métodos render
+   * Componentes, instâncias e elementos são coisas diferentes em React
+   * `ReactDOM.render()` é o ponto de entrada de uma aplicação React e o gancho para o DOM
+   * Funcionalidades nativas de JavaScript podem ser utilizadas em JSX
+  * map pode ser usada para renderizar uma lista de itens como elementos HTML
 * ES6
-	* Declarações de variáveis com `const` e `let` podem ser usadas para casos de uso específicos
-		* dê preferência ao uso de const ao invés de let em aplicações React
-	* _Arrow functions_ podem ser usadas para manter a declaração de funções mais concisas
-	* Classes são utilizadas para definir componentes em React através de herança
+  * Declarações de variáveis com `const` e `let` podem ser usadas para casos de uso específicos
+    * dê preferência ao uso de const ao invés de let em aplicações React
+  * _Arrow functions_ podem ser usadas para manter a declaração de funções mais concisas
+  * Classes são utilizadas para definir componentes em React através de herança
 
 É prudente fazer um intervalo agora. Internalize o conhecimento adquirido e aplique-o por sua conta. Você pode brincar com o código fonte que escreveu até agora.
 

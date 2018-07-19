@@ -28,18 +28,18 @@ Você precisa cumprir dois passos antes de poder implantar sua aplicação no _H
 Se você possui o _Homebrew_ no seu computador, poderá instalar a Heroku CLI direto da linha de comando:
 
 {title=“Linha de Comando“,lang="text"}
-	brew update
-	brew install heroku-toolbelt
+    brew update
+    brew install heroku-toolbelt
 
 Agora, você pode utilizar _git_ e _Heroku CLI_ para implantar a sua aplicação.
 
 {title=“Linha de Comando“,lang="text"}
-	git init
-	heroku create -b https://github.com/mars/create-react-app-buildpack.git
-	git add .
-	git commit -m "react-create-app on Heroku"
-	git push heroku master
-	heroku open
+    git init
+    heroku create -b https://github.com/mars/create-react-app-buildpack.git
+    git add .
+    git commit -m "react-create-app on Heroku"
+    git push heroku master
+    heroku open
 
 É o bastante. Espero que sua aplicação esteja rodando agora. Se tiver algum problema, você pode recorrer aos seguintes recursos:
 
