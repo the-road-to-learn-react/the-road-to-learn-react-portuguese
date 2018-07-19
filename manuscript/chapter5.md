@@ -220,7 +220,7 @@ Quando você faz a requisição, você altera o estado de _loading_ par _true_. 
 	
 	}
 
-Como último passo, você irá usar o component _Loading_ em _App_. Uma renderização condicional, baseada no estado de _loading_, irá determinar quando mostrar o componente _Loading_ ou o componente _Button_. Este último é o botão que carrega mais dados.
+Como último passo, você irá usar o componente _Loading_ em _App_. Uma renderização condicional, baseada no estado de _loading_, irá determinar quando mostrar o componente _Loading_ ou o componente _Button_. Este último é o botão que carrega mais dados.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -269,7 +269,7 @@ Inicialmente, o componente _Loading_ irá aparecer quando você inicia a sua apl
 
 _Higher-order components_ (HOC) são um conceito avançado em React. HOCs são equivalentes a _higher-order functions_, pois recebem qualquer coisa como parâmetro de entrada - na maior parte do tempo um componente, mas também argumentos opcionais - e retornam um componente. O componente retornado é uma versão aprimorada do componente de entrada e pode ser usado em seu código JSX.
 
-HOCs são utilizados em diferentes casos. Eles podem podem preparar propriedades, gerenciar estado ou alterar a representação de um componente. Um dos casos poderia ser o de utilizar o HOC como um utilitário para renderização condicional. Imagine que você tem um component _List_, que renderiza ou uma lista de itens, ou nada, quando a lista é vazia ou tem valor _null_. O HOC poderia tratar e evitar o caso em que a lista não existe, fazendo com que o componente _List_ não precise mais se preocupar com isso, focando apenas em renderizar a lista.
+HOCs são utilizados em diferentes casos. Eles podem podem preparar propriedades, gerenciar estado ou alterar a representação de um componente. Um dos casos poderia ser o de utilizar o HOC como um utilitário para renderização condicional. Imagine que você tem um componente _List_, que renderiza ou uma lista de itens, ou nada, quando a lista é vazia ou tem valor _null_. O HOC poderia tratar e evitar o caso em que a lista não existe, fazendo com que o componente _List_ não precise mais se preocupar com isso, focando apenas em renderizar a lista.
 
 Vamos criar um HOC simples, que recebe um componente como entrada e retorna um outro componente. Você pode colocá-lo em seu arquivo *src/App.js*.
 
@@ -301,11 +301,11 @@ Baseado na propriedade de _loading_, você pode aplicar a renderização condici
 Em geral, utilizar o operador _spread_ em um objeto pode ser bastante eficiente, como aqui com o objeto _props_. Veja a diferença no seguinte trecho de código:
 
 {title="Code Playground",lang="javascript"}
-	// before you would have to destructure the props before passing them
+	// antes, você teria que utilizar destructuring com as props, antes de passá-las
 	const { foo, bar } = props;
 	<SomeComponent foo={foo} bar={bar} />
 	
-	// but you can use the object spread operator to pass all object properties
+	// você pode, no entanto, utilizar o operador spread para passar todas as propriedades do objeto
 	<SomeComponent { ...props } />
 
 Existe mais uma pequena coisa que você deveria evitar. Você passa todas as propriedades para o componente de entrada, incluindo `isLoading`, utilizando operador _spread_ no objeto. Contudo, o componente de _input_ poderia ignorar a propriedade `isLoading`. Você pode utilizar _rest destructuring_, de JavaScript ES6, para evitar isso.
@@ -376,7 +376,7 @@ Finalmente, tudo foi bem definido. Como último passo, você deve utilizar o com
 
 Quando você rodar seus testes novamente, irá notar que o _snapshot test_ para o componente _App_ falha. O _diff_ deverá aparentar mais ou menos como mostrado a seguir, na linha de comando:
 
-{title="Command Line",lang="text"}
+{title=“Linha de Comando",lang="text"}
 	-    <button
 	-      className=""
 	-      onClick={[Function]}
@@ -390,9 +390,9 @@ Quando você rodar seus testes novamente, irá notar que o _snapshot test_ para 
 
 Mais uma vez, você tem a oportunidade consertar algo que possa estar errado no componente, ou aceitar o novo _snapshot_. Uma vez que você introduziu o componente _Loading_ neste capítulo, você deve aceitá-lo na interface interativa apresentada na linha de comando após o teste.
 
-O uso de _Higher-order components_ é uma técnica avançada em React. Eles têm múltiplos propósitos, como reusabilidade, maior abstração, melhor composição de componentes e manipulação de _props_, estado e das suas _views_. Não se preocupe caso não entenda de imediato a utilização de HOCs. Leva algum tempo para se acostumar à eles.
+O uso de _higher-order components_ é uma técnica avançada em React. Eles têm múltiplos propósitos, como reuso, maior abstração, melhor composição de componentes e manipulação de _props_, estado e das suas _views_. Não se preocupe caso não entenda de imediato a utilização de HOCs. Leva algum tempo para se acostumar à eles.
 
-Eu lhe encorajo a ler a [gentil introdução a _higher-order components_][6]. Ela lhe provê outra abordagem para aprender, mostrando um jeito elegante de usá-los com um paradigma de programação funcional e resolvendo especificamente o problema de renderização condicional com _higher-order components_.
+Eu lhe encorajo a ler essa [gentil introdução a _higher-order components_][6]. Ela lhe provê outra abordagem para aprender, mostrando um jeito elegante de usá-los com um paradigma de programação funcional e resolvendo especificamente o problema de renderização condicional com _higher-order components_.
 
 ### Exercícios:
 
@@ -407,7 +407,7 @@ Você já implementou interações de busca do lado do cliente e do servidor. Um
 
 Seria possível escrever sua própria função de ordenação, mas eu pessoalmente prefiro usar uma biblioteca utilitária para tais casos. [Lodash][8] é uma dessas bibliotecas, mas você pode utilizar qualquer uma que lhe convir. Vamos instalar _Lodash_ e usá-la para a funcionalidade de ordenação.
 
-{title="Command Line",lang="text"}
+{title=“Linha de Comando“,lang="text"}
 	npm install lodash
 
 Você pode agora importar a funcionalidade _sortBy_ de _Lodash_ em seu arquivo *src/App.js*.
@@ -420,7 +420,7 @@ Você pode agora importar a funcionalidade _sortBy_ de _Lodash_ em seu arquivo *
 	# leanpub-end-insert
 	import './App.css';
 
-Existem várias colunas em _Table_. Título, autor, comentários e pontos (_title, author, comments _e _points_). Você pode definir funções de ordenação onde cada uma recebe uma lista e retorna uma lista ordenada para uma propriedade específica. Em adição a isto, você irá precisar uma função _default_, que não faz nenhuma ordenação, apenas retorna a lista desordenada. Este será o seu estado inicial.
+Existem várias colunas em _Table_. Título, autor, comentários e pontos (_title, author, comments _e _points_). Você pode definir funções de ordenação, onde cada uma recebe uma lista e retorna uma lista ordenada para uma propriedade específica. Em adição a isto, você irá precisar uma função _default_, que não faz nenhuma ordenação, apenas retorna a lista desordenada. Este será o seu estado inicial.
 
 {title="src/App.js",lang=javascript}
 	...
@@ -460,7 +460,7 @@ Mais uma vez, seu componente _App_ é responsável por armazenar o estado da ope
 
 Quando você escolher uma `sortKey` diferente, digamos a chave `AUTHOR`, você irá ordenar a lista com a função mais apropriada do objeto `SORTS`.
 
-Você pode agora definir um novo método de classes seu componente _App_ que simplesmente define `sortKey` no estado local do seu componente. A `sortKey` poderá ser utilizada para obter a função de ordenação a ser aplicada em sua lista.
+Você pode agora definir um novo método de classe no seu componente _App_, que simplesmente define `sortKey` no estado local do seu componente. A `sortKey` poderá ser utilizada para obter a função de ordenação a ser aplicada em sua lista.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -694,7 +694,7 @@ Novamente, você pode passar a _prop_ de ordenação invertida para o componente
 	  }
 	}
 
-_Table_ precisará ter uma um bloco de escopo de função explícito, para computador os dados agora.
+_Table_ precisará ter uma um bloco de escopo de função explícito, para computar os dados agora.
 
 {title="src/App.js",lang=javascript}
 	# leanpub-start-insert
@@ -729,7 +729,7 @@ _Table_ precisará ter uma um bloco de escopo de função explícito, para compu
 
 A ordenação invertida deverá funcionar.
 
-Por último, mas não menos importante, você deverá lidar com uma questão de melhoria de experiência do usuário. Poderia o usuário distinguir por qual coluna está sendo feita a ordenação no momento? Até agora, isto não é possível. Vamos provê-lo com este _feedback_ visual.
+Por último, mas não menos importante, você deverá lidar com uma questão de melhoria de experiência do usuário. Poderia o usuário distinguir por qual coluna está sendo feita a ordenação no momento? Até agora, isto não é possível. Vamos fornecer este _feedback_ visual.
 
 Cada componente _Sort_ já recebe sua `sortKey` específica. Ela poderia ser utilizada par identificar a ordenação corrente. Você pode passar a `sortKey` do estado interno do componente como a chave de ordenação ativa para seu componente de Sort.
 
@@ -831,9 +831,9 @@ Agora, no seu componente _Sort_, você sabe qual ordenação está ativa, basead
 	}
 	# leanpub-end-insert
 
-A forma como definimos `sortClass` é um pouco bizarra, não acha? Existe uma pequena biblioteca muito bem feita, que nos ajuda a consertar isto. Primeiro, você tem que instalá-la.
+A forma como definimos `sortClass` é um pouco bizarra, não acha? Existe uma pequena biblioteca que nos ajuda a consertar isto. Primeiro, você tem que instalá-la.
 
-{title="Command Line",lang="text"}
+{title="Linha de Comando",lang="text"}
 	npm install classnames
 
 Segundo, você precisa importá-la no topo do arquivo *src/App.js*.

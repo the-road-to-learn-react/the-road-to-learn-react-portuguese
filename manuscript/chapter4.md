@@ -594,7 +594,7 @@ Este capítulo irá lhe mostrar como tornar seus componentes mais seguros com _P
 
 Primeiro, você tem que instalar um pacote separado para React.
 
-{title="Command Line",lang="text"}
+{title="Linha de Comando",lang="text"}
 	npm install prop-types
 
 Agora, você pode importar _PropTypes_.
