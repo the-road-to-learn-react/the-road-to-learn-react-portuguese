@@ -336,7 +336,7 @@ Jest guarda os _snapshots_ (ou fotografias) em uma pasta. Somente desta forma el
 
 Antes de escrever o seu primeiro _snapshot test_ com Jest, você tem que instalar uma biblioteca utilitária:
 
-{title="Command Line",lang="text"}
+{title=“Linha de Comando“,lang="text"}
 	npm install --save-dev react-test-renderer
 
 Agora você pode extender o teste do componente _App_ como seu primeiro _snapshot test_. Primeiro, importe a nova funcionalidade da biblioteca recém adicionada e envolva seu bloco “it” em um bloco “describe”.  Neste caso, a suíte de testes trata apenas do componente _App_.
@@ -391,9 +391,9 @@ Implemente agora seu primeiro _snapshot test_ utilizando um bloco “test”.
 	# leanpub-end-insert
 	});
 
-Rode seus testes novamente e veja se eles têm sucesso ou falham. Eles devem ter sucesso. Se você mudar a saída do bloco “render” em seu componente _App_, o _snapshot_ teste deve falhar. Então você pode decidir atualizar o snapshot ou investigar o que aconteceu em seu componente _App_.
+Rode seus testes novamente e veja se eles têm sucesso ou se falham. Eles devem ter sucesso. Se você mudar a saída do bloco “render” em seu componente _App_, o _snapshot test_ deve falhar. Então você pode decidir atualizar o _snapshot_ ou investigar o que aconteceu em seu componente _App_.
 
-Basicamente, a função `renderer.create()` cria um _snapshot_ do seu componente App. Ele o renderiza virtualmente e armazena uma fotografia do DOM. Depois, espera-se que essa fotografia (ou _snapshot_) coincida com anteriores, de quando você rodou seus _snapshot tests_ da última vez. Desta forma, você pode assegurar que o seu DOM permanecerá o mesmo, não mudará acidentalmente.
+Basicamente, a função `renderer.create()` cria um _snapshot_ do seu componente App. Ele o renderiza virtualmente e armazena uma fotografia do DOM. Depois, espera-se que essa fotografia (ou _snapshot_) coincida com outras anteriores, de quando você rodou seus _snapshot tests_ da última vez. Desta forma, você pode assegurar que o seu DOM permanecerá o mesmo, sem mudanças acidentais.
 
 Vamos adicionar mais testes para nossos componentes independentes. Primeiro, o componente _Search_:
 
@@ -427,7 +427,7 @@ Vamos adicionar mais testes para nossos componentes independentes. Primeiro, o c
 	});
 	# leanpub-end-insert
 
-O componente _Search_ tem dois testes similares ao componente _App_. O primeiro simplesmente renderia _Search_ no DOM e verifica que não existe erro no processo de renderização.  Se um erro ocorrer, o teste quebrará mesmo que não exista nenhuma assertiva (_expect, match, equal_) no bloco de teste. O segundo _snapshot test_ é utilizado para armazenar o _snapshot_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o _snapshot_ muda.
+O componente _Search_ tem dois testes similares aos do componente _App_. O primeiro simplesmente renderia _Search_ no DOM e verifica que não existe erro no processo de renderização.  Se um erro ocorrer, o teste quebrará mesmo que não exista nenhuma assertiva (_expect, match, equal_) no bloco de teste. O segundo _snapshot test_ é utilizado para armazenar o _snapshot_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o _snapshot_ muda.
 
 Segundo, você pode testar o componente _Button_ aplicando estas mesmas regras do componente _Search_.
 
@@ -508,7 +508,7 @@ _Snapshot tests_ geralmente são bem básicos. Você só quer cobrir o caso de o
 
 [Enzyme][5] é um utilitário de testes, lançado pelo Airbnb, para percorrer, manipular  e realizar assertivas com seus componentes React. Você pode utilizá-lo para conduzir testes unitários, complementando seus _snapshot tests_ em React.
 
-Vejamos como podemos utilizar _enzyme_. Primeiro, você precisa instalá-lo, uma vez que não vem por padrão com _create-react-app_. Ele possui também uma extensão para ser utilizado em React.
+Vejamos como podemos utilizar _enzyme_. Primeiro, você precisa instalar a biblioteca, uma vez que não ela vem por padrão com _create-react-app_. Ele possui também uma extensão para ser utilizado em React.
 
 {title=“Linha de Comando“,lang="text"}
 	npm install --save-dev enzyme react-addons-test-utils enzyme-adapter-react-16
@@ -529,7 +529,7 @@ Segundo, você precisa incluir a biblioteca no seu _setup_ de testes e inicializ
 	Enzyme.configure({ adapter: new Adapter() });
 	# leanpub-end-insert
 
-Agora, você pode escrever seu primeiro teste unitário no bloco “describe” de _Table_.VOcê irá usar `shallow()` para renderizar seu componente e verificar que _Table_ tem dois itens, de acordo com os dois itens de lista que você passou para ele. A verificação simplesmente checa se o elemento renderizado possui dois outros elementos com a classe `table-row`.
+Agora, você pode escrever seu primeiro teste unitário no bloco “describe” de _Table_. Você irá usar `shallow()` para renderizar seu componente e verificar que _Table_ tem dois itens, de acordo com os dois itens de lista que você passou para ele. A verificação simplesmente checa se o elemento renderizado possui dois outros elementos com a classe `table-row`.
 
 {title="src/App.test.js",lang=javascript}
 	import React from 'react';
@@ -575,7 +575,7 @@ _Enzyme_ tem, ao todo, três mecanismos de renderização em sua API. Você já 
 * Se você quiser testar o ciclo de vida do componente e o comportamento dos seus filhos, use `mount()`
 * Se você quiser testar a renderização dos filhos de um componente com menos _overhead_ do que quando se usa `mount()`, use `render()`
 
-Você pode continuar escrevendo testes de unidade para seus componentes. Mas, faça por onde manter os testes simples e manuteníveis. Caso contrário, você irá acabar tendo que refatorá-los todas as vezes que seus componentes mudarem. O Facebook já introduziu _snapshot tests_ com Jest para este propósito.
+Você pode continuar escrevendo testes de unidade para seus componentes. Mas, faça por onde manter os testes simples e manuteníveis. Caso contrário, você irá acabar tendo que refatorá-los todas as vezes que seus componentes mudarem. O Facebook já introduziu _snapshot tests_, com Jest, para este propósito.
 
 ### Exercícios:
 
@@ -644,7 +644,7 @@ Adicionalmente, você tem mais dois _PropTypes_ que podem ser usados para defini
 * PropTypes.node
 * PropTypes.element
 
-Você já utilizou o _PropType_ `node` para o componente _Button_. Existem, no total, mais definições de _PropTypes_ que você pode ler na documentação oficial do React.
+Você já utilizou o _PropType_ `node` para o componente _Button_. Existem, no total, mais definições de _PropTypes_ que você pode ler na documentação oficial de React.
 
 No momento, todos os _PropTypes_ definidos para _Button_ são opcionais. Os parâmetros podem receber _null_ ou _undefined_. Mas, em alguns casos, você quer forçar a definição de algumas _props_. Você pode fazer com que seja obrigatório que essas _props_ sejam passadas para o componente.
 
@@ -659,7 +659,7 @@ No momento, todos os _PropTypes_ definidos para _Button_ são opcionais. Os par�
 	# leanpub-end-insert
 	};
 
-O parâmetro `className` não é obrigatório, porque ele pode simplesmente obter o valor _default_ de string vazia.
+O parâmetro `className` não é obrigatório, porque ele pode simplesmente obter o valor _default_ de _string_ vazia.
 
 O próximo passo é definir uma interface com _PropTypes_ para o componente _Table_:
 
@@ -743,7 +743,7 @@ A extensão mostra, no painel lateral do lado direito, o estado local e as _prop
 
 Primeiro, irá querer marcar a opção “Highlight Updates” (geralmente localizada acima da árvore de elementos). Segundo, você pode digitar um termo de busca diferente no campo de _input_ da aplicação. Como você poderá ver, apenas `searchTerm` será modificado no estado do componentes. Você até já sabia que isto aconteceria desta forma, mas agora pode ver de verdade que ocorreu como planejado.
 
-Finalmente, pressione o botão “Search”. O estado `searchKey` irá ser imediatamente alterado para o mesmo valor de `searchTerm` e o objeto de retorno da requisição irá ser adicionado à `results` poucos segundos depois. A natureza assíncrona do seu código está agora visível a seus olhos.
+Finalmente, pressione o botão “Search”. O estado `searchKey` irá ser imediatamente alterado para o mesmo valor de `searchTerm` e o objeto de retorno da requisição irá ser adicionado à `results` poucos segundos depois. A natureza assíncrona do seu código está agora visível aos seus olhos.
 
 Por último, se você clicar com o botão direito do mouse em qualquer elemento, um menu de contexto irá aparecer com várias opções. Por exemplo, você pode copiar as _props_ ou o nome de um elemento, achar o nó correspondente a ele no DOM ou até saltar para o código-fonte da aplicação direto no navegador. Esta última opção é bem útil, uma vez que lhe permite inserir _breakpoints_ e depurar as suas funções JavaScript.
 
@@ -767,7 +767,7 @@ Você aprendeu como organizar o seu código e como testá-lo. Vamos recapitular:
 	* React Developer Tools is a helpful debugging tool
 * ES6
 	* Declarações _import_ e _export_ lhe ajudam a organizar o seu código
-* General
+* Geral
 	* Uma melhor organização de código lhe permite escalar sua aplicação com as melhores práticas
 
 Você irá achar o código-fonte deste capítulo no [repositório oficial][13].
