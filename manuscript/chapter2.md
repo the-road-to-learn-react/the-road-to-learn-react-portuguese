@@ -4,9 +4,9 @@ Este capítulo irá lhe apresentar os conceitos básicos de React. Trataremos de
 
 ## Estado Interno do Componente
 
-O estado local, também chamado de estado interno do componente, lhe permite salvar, modificar e apagar propriedades que nele são armazenadas.
+O estado local, também chamado de estado interno do componente, lhe permite salvar, modificar e apagar propriedades que nele são armazenadas. Componentes de classe usam inicializam seu estado interno utilizando um construtor. Ele é chamado apenas uma vez (quando o componente é inicializado).
 
-Componentes de classe usam inicializam seu estado interno utilizando um construtor. Ele é chamado apenas uma vez (quando o componente é inicializado). Abaixo, um construtor de classe:
+Abaixo, introduzimos um construtor de classe:
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -21,9 +21,7 @@ Componentes de classe usam inicializam seu estado interno utilizando um construt
 	
 	}
 
-Quando seu componente possui um construtor, torna-se obrigatória a chamada de `super();`, porque o componente App é uma subclasse de `Component` (`class App extends Component`). Mais tarde, você aprenderá mais sobre componentes de classe em ES6.
-
-Você também pode invocar `super(props);` para definir `this.props` no contexto do seu construtor. Caso contrário, se tentar acessar `this.props`, receberá o valor `undefined`. Futuramente, estudaremos mais sobre as _props_ de um componente React.
+Quando seu componente possui um construtor, torna-se obrigatória a chamada de `super();`, porque o componente App é uma subclasse de `Component` (`class App extends Component`). Mais tarde, você aprenderá mais sobre componentes de classe em ES6. Você também pode invocar `super(props);` para definir `this.props` no contexto do seu construtor. Caso contrário, se tentar acessar `this.props`, receberá o valor `undefined`. Futuramente, estudaremos mais sobre as _props_ de um componente React.
 
 A essa altura, o estado inicial do seu componente é composto por apenas uma lista de itens:
 
@@ -56,9 +54,7 @@ A essa altura, o estado inicial do seu componente é composto por apenas uma lis
 	
 	}
 
-O estado local está amarrado à classe através do objeto `this`. Dessa forma, você pode acessá-lo em qualquer lugar do componente. Por exemplo, no método `render()`.
-
-Anteriormente, você usou `map` com uma lista estática de itens (definida fora do componente)  em seu método `render()`. Agora, você irá usar a lista obtida do seu estado local.
+O estado local está amarrado à classe através do objeto `this`. Dessa forma, você pode acessá-lo em qualquer lugar do componente. Por exemplo, no método `render()`. Anteriormente, você usou `map` com uma lista estática de itens (definida fora do componente)  em seu método `render()`. Agora, você irá usar a lista obtida do seu estado local.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -318,8 +314,6 @@ A lista agora remove o item clicado. Entretanto, o estado local ainda não foi a
 
 Rode novamente sua aplicação e experimente clicar no botão "Dismiss". Provavelmente, irá funcionar e você estará testemunhando nesse momento o **fluxo unidirecional de dados** em React. Você dispara uma ação em sua _view_ com `onClick()`, uma função ou método de classe muda o estado interno do componente e `render()` é de novo executado para atualizar a _view_.
 
-![Internal state update with unidirectional data flow][image-1]
-
 ### Exercícios:
 
 * Leia mais sobre [o ciclo de vida do estado de componentes em React][3]
@@ -343,9 +337,7 @@ Rode novamente sua aplicação e experimente clicar no botão "Dismiss". Provave
 	  ...
 	}
 
-Em primeiro lugar: Por que você teve que fazer isso?
-
-Esse passo é necessário porque a amarração do `this` com a instância de classe não é feita automaticamente pelos métodos. Vamos demostrar isso com a ajuda do componente a seguir:
+Em primeiro lugar: Por que você teve que fazer isso? Esse passo é necessário porque a amarração do `this` com a instância de classe não é feita automaticamente pelos métodos. Vamos demostrar isso com a ajuda do componente a seguir:
 
 {title="Code Playground",lang=javascript}
 	class ExplainBindingsComponent extends Component {
@@ -419,7 +411,7 @@ O _binding_ de métodos também poderia ser feito em outros lugares, como no `re
 	  }
 	}
 
-Apesar de possível, deve ser evitado, porque a vinculação do método seria feira todas as vezes que `render()` for chamado. Como basicamente ele roda todas as vezes que seu componente é atualizado, isso poderia trazer implicações de performance. Quando o _binding_ ocorre no construtor, o processo só ocorre uma vez: quando o componente é instanciado. Essa é a melhor abordagem a ser escolhida.
+Apesar de possível, esta prática deve ser evitada, porque a vinculação do método seria feira todas as vezes que `render()` for chamado. Como basicamente ele roda todas as vezes que seu componente é atualizado, isso poderia trazer implicações de performance. Quando o _binding_ ocorre no construtor, o processo só ocorre uma vez: quando o componente é instanciado. Essa é a melhor abordagem a ser escolhida.
 
 Outra coisa que, uma vez ou outra, alguém acaba fazendo, é definir a lógica de negócios dos métodos de classe dentro do construtor.
 
@@ -447,7 +439,7 @@ Outra coisa que, uma vez ou outra, alguém acaba fazendo, é definir a lógica d
 	  }
 	}
 
-Essa prática também deveria ser evitada, porque ela irá transformar seu construtor em uma bagunça ao longo do tempo. A finalidade do construtor é instanciar sua classe com todas as propriedades. Por isso, a lógica de negócio dos métodos de classe deve ser definida fora dele.
+Esta outra prática também deveria ser evitada, porque ela irá transformar seu construtor em uma bagunça ao longo do tempo. A finalidade do construtor é instanciar sua classe com todas as propriedades. Por isso, a lógica de negócio dos métodos de classe deve ser definida fora dele.
 
 {title="Code Playground",lang=javascript}
 	class ExplainBindingsComponent extends Component {
@@ -489,7 +481,7 @@ Por fim, devo mencionar que métodos de classe podem ser automaticamente vincula
 	  }
 	}
 
-Se a repetição do processo de _binding_ no construtor não lhe agrada, você pode seguir nessa abordagem. Como a documentação oficial de React continua utilizando _bindings_ no construtor, este livro irá fazê-lo também.
+Se não lhe agrada repetidamente fazer o _binding_ no construtor, você pode seguir nesta abordagem. Como a documentação oficial de React continua utilizando _bindings_ no construtor, o livro irá seguir fazendo-o também.
 
 ### Exercícios:
 
@@ -499,7 +491,7 @@ Se a repetição do processo de _binding_ no construtor não lhe agrada, você p
 
 **Nota do tradutor**: De agora em diante, neste livro, usaremos "_event handler_" e "tratamento de evento" com o mesmo significado. Apesar de essa última não ser a tradução literal da primeira, é a forma mais conhecida para tal na língua portuguesa. Soaria estranho se usássemos "tratador de eventos", ou até "manipulador de eventos".
 
-Este capítulo deve lhe dar um melhor entendimento sobre tratamento de eventos em elementos. Na sua aplicação, você usa o elemento `button` a seguir para remover um item da lista:
+Este capítulo deve lhe dar um melhor entendimento sobre tratamento de eventos em elementos. Na sua aplicação, você usa o elemento `button` (a seguir) para remover um item da lista:
 
 {title="src/App.js",lang=javascript}
 	...
@@ -513,7 +505,7 @@ Este capítulo deve lhe dar um melhor entendimento sobre tratamento de eventos e
 	
 	...
 
-Este exemplo é um tanto quanto complexo. Você tem que passar um valor para o método de classe e, para tal, precisa encapsulá-lo em outra função (uma _arrow function_). Basicamente, o que precisa ser passado como argumento para _event handler_ é uma função, não sua chamada. O código a seguir não funcionaria, porque o método de classe seria imediatamente executado quando você abrisse sua aplicação no navegador.
+Este exemplo é um tanto quanto complexo. Você tem que passar um valor para o método de classe e, para tal, precisa encapsulá-lo em outra função (uma _arrow function_). Basicamente, o que precisa ser passado como argumento para o _event handler_ é uma função, não sua chamada. O código a seguir não funcionaria, porque o método de classe seria imediatamente executado quando você abrisse sua aplicação no navegador.
 
 {title="src/App.js",lang=javascript}
 	...
@@ -649,9 +641,7 @@ Visando manter o código conciso, você pode transformá-la de volta uma uma _ar
 	
 	...
 
-Frequentemente, novatos em React têm dificuldades com este tópico do uso de funções no tratamento de eventos. Por isso, me alonguei tentando explicar em maiores detalhes.
-
-Feita isso, agora você deve ter o seguinte código no botão, com uma _arrow function_ _inline_  concisa que tem acesso à propriedade `objectID` do objeto item:
+Frequentemente, novatos em React têm dificuldades com este tópico do uso de funções no tratamento de eventos. Por este motivo, eu me alonguei tentando explicá-lo em maiores detalhes. Depois de tudo, você deve ter o seguinte código no botão, com uma _arrow function_ _inline_ , concisa, que tem acesso à propriedade `objectID` do objeto item:
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -680,9 +670,9 @@ Feita isso, agora você deve ter o seguinte código no botão, com uma _arrow fu
 	  }
 	}
 
-Outro tópico relevante que sempre é mencionado, relacionado à performance, trata sobre as implicações do uso de _arrow functions_ em _event handlers_. Por exemplo, tomemos o caso do `onClick` com uma _arrow function_ envolvendo o `onDismiss`. Todas as vezes que o método `render()` for executado, o _event handler_ irá instanciar a função. Isso _pode_ ter um certo impacto na performance da sua aplicação. Na maioria dos casos, porém, você não irar notar a diferença.
+Outro tópico relevante que sempre é mencionado, com relação à performance, é o das implicações do uso de _arrow functions_ em _event handlers_. Por exemplo, tomemos o caso do `onClick` com uma _arrow function_ envolvendo o `onDismiss`. Todas as vezes que o método `render()` for executado, o _event handler_ irá instanciar a função. Isso _pode_ ter um certo impacto na performance da sua aplicação. Na maioria dos casos, porém, você não irar notar a diferença.
 
-Imagine que você tem uma enorme tabela de dados com 1000 itens e cada linha ou coluna tem uma _arrow function_ sendo definida no _event handler_. Nesse caso, sim, é válida a preocupação a respeito da performance e você poderia implementar um componente dedicado `Button` com o _biding_ ocorrendo no construtor. Mas, preocupar-se com isso agora significa otimização prematura. É mais benéfico focar em aprender React em si.
+Imagine que você tem uma enorme tabela de dados com 1000 itens e cada linha ou coluna tem uma _arrow function_ sendo definida no _event handler_. Nesse caso, sim, é válida a preocupação a respeito da performance e você poderia implementar um componente dedicado `Button` com o _biding_ ocorrendo no construtor. Mas, preocupar-se com isso agora significa otimização prematura. É mais benéfico focar em aprender apenas React.
 
 ### Exercícios:
 
@@ -800,7 +790,7 @@ O evento tem o _value_ do campo _input_ no seu objeto _target_. Consequentemente
 	  ...
 	}
 
-Ademais, você não deveria esquecer de definir o estado inicial para a propriedade `searchTerm` em seu construtor. O campo _input_ estará vazio de início e, portanto, o valor deveria ser uma _string_ vazia.
+Ademais, você não deve se esquecer de definir o estado inicial para a propriedade `searchTerm` em seu construtor. O campo _input_ estará vazio de início e, portanto, o valor deveria ser uma _string_ vazia.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -890,9 +880,7 @@ A função recebe o `searchTerm` e retorna outra função, porque é o que _filt
 	
 	}
 
-A condição diz que devemos comparar o padrão recebido em `searchTerm` com a propriedade `title` do item da lista. Você pode fazê-lo utilizando `includes`, funcionalidade nativa de JavaScript. Quando o padrão coincide, você retorna _true_ e o item permanece na lista. Senão, o item é removido. Mas, tenha cuidado com comparações de padrões: Você não pode esquecer de formatar ambas as _strings_, transformando seus caracteres em minúsculas. Caso contrário, o título "Redux" e o termo de busca "redux" serão considerados diferentes.
-
-Uma vez que estamos trabalhando com listas imutáveis e uma nova lista é retornada pela função _filter_, a lista original permanecerá sem ser modificada.
+A condição diz que devemos comparar o padrão recebido em `searchTerm` com a propriedade `title` do item da lista. Você pode fazê-lo utilizando `includes`, funcionalidade nativa de JavaScript. Quando o padrão coincide, você retorna _true_ e o item permanece na lista. Senão, o item é removido. Mas, tenha cuidado com comparações de padrões: Você não pode esquecer de formatar ambas as _strings_, transformando seus caracteres em minúsculas. Caso contrário, o título "Redux" e o termo de busca "redux" serão considerados diferentes. Uma vez que estamos trabalhando com listas imutáveis e uma nova lista é retornada pela função _filter_, a lista original permanecerá sem ser modificada.
 
 Uma última coisa a mencionar: "Apelamos" um pouco, utilizando o recuso _includes_ já de ES6. Como faríamos o mesmo, em JavaScript ES5? Você usaria a função `inderOf()` para pegar o índice do item na lista.
 
@@ -954,7 +942,7 @@ A funcionalidade de buscar deve funcionar agora. Tente você mesmo, no seu naveg
 
 ## ES6 _Destructuring_
 
-Existe um jeito em JavaScript ES6 para acessar propriedades de objetos mais facilmente: É chamado de _destructuring_. Compare os seguintes trechos de código, em JavaScript ES5 e ES6:
+Existe um jeito, em JavaScript ES6, de acessar propriedades de objetos mais facilmente: É chamado de _destructuring_. Compare os seguintes trechos de código a seguir, em JavaScript ES5 e ES6:
 
 {title="Code Playground",lang="javascript"}
 	const user = {
@@ -998,7 +986,7 @@ O mesmo vale para _arrays_, que também podem sofrer _destructuring_.
 	console.log(userOne, userTwo, userThree);
 	// output: Robin Andrew Dan
 
-Talvez você tenha notado que o objeto do estado local do componente App pode ser “desestruturado” (iremos nos alternar entre “desestruturação” e o original “\_destructuring\_” no texto, uma vez que é importante saber o termo amplamente conhecido na comunidade) da mesma forma. A linha de código com _filter_ e _map_ ficará menor.
+Talvez você tenha notado que o objeto do estado local do componente App pode ser “desestruturado” da mesma forma (iremos nos alternar entre “desestruturação” e o original “_destructuring_” no texto, uma vez que é importante saber o termo amplamente conhecido na comunidade). A linha de código com _filter_ e _map_ ficará menor.
 
 {title="src/App.js",lang=javascript}
 	  render() {
@@ -1026,7 +1014,7 @@ Novamente, o jeito ES5 e o ES6:
 	// ES6
 	const { searchTerm, list } = this.state;
 
-Contudo, uma vez que o livro usa JavaScript ES6 a maior parte do tempo, é aconselhável que você também faça esta opção.
+Uma vez que o livro usa JavaScript ES6 a maior parte do tempo, é aconselhável que você também faça esta opção.
 
 ### Exercícios:
 
@@ -1036,11 +1024,11 @@ Contudo, uma vez que o livro usa JavaScript ES6 a maior parte do tempo, é acons
 
 Você já tomou conhecimento do fluxo unidirecional de dados em React. A mesma lógica se aplica para o campo de _input_, que atualiza o estado local com o `searchTerm` para filtrar a lista. Quando o estado é alterado, o método  `render()` é executado novamente e utiliza o `searchTerm` mais recente do estado local para aplicar a condição de filtragem.
 
-Mas, não teríamos esquecido de alguma coisa no elemento _input_? A _tag_ HTML “input” possui um atributo `value`. Este, por sua vez, geralmente contém o valor que é mostrado no campo. Neste caso, a propriedade `searchTerm`. Contudo, ficou a impressão de que não precisamos disso em React.
+Mas, não teríamos esquecido de alguma coisa no elemento _input_? A _tag_ HTML “input” possui um atributo `value`. Este, por sua vez, geralmente contém o valor que é mostrado no campo. Neste caso, a propriedade `searchTerm`. Acho que ficou a impressão de que não precisamos disso em React.
 
-Errado. Elementos de _forms_ como `<input>`, `<textarea>` e `<select>` possuem seu próprio estado em HTML puro. Eles modificam o valor internamente quando alguém de fora do componente o muda. Em React, isso é chamado de um **componente não controlado**, porque ele gerencia seu próprio estado. Você deve garantir-se de fazê-los **componentes controlados**.
+Errado. Elementos de _forms_ como `<input>`, `<textarea>` e `<select>` possuem seu próprio estado em HTML puro. Eles modificam o valor internamente quando alguém de fora do componente o muda. Em React, isso é chamado de um **componente não controlado**, porque ele gerencia seu próprio estado. Você deve garantir-se de que os transformou em **componentes controlados**.
 
-Mas, como fazê-lo? Você só precisa definir o atributo “\_value\_” de um campo de _input_. O valor aqui, neste exemplo, já está salvo na propriedade `searchTerm` do estado do componente. Por que não acessá-lo, então?
+Mas, como fazê-lo? Você só precisa definir o atributo “_value_” de um campo de _input_. O valor aqui, neste exemplo, já está salvo na propriedade `searchTerm` do estado do componente. Por que não acessá-lo, então?
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1066,9 +1054,9 @@ Mas, como fazê-lo? Você só precisa definir o atributo “\_value\_” de um c
 	  }
 	}
 
-É só isso. O _loop_ do fluxo de dados unidirecional do campo _input_ torna-se auto-contido. O estado interno do componente é a única fonte confiável de dados (_single source of truth_) para o campo de _input_.
+É só isso. O _loop_ do fluxo de dados unidirecional do campo _input_ torna-se auto-contido. O estado interno do componente é a única fonte confiável de dados (_single source of truth_) para o _input_.
 
-Toda essa história de gerenciamento de estado interno e fluxo unidirecional de dados deve ser nova para você. Mas, uma vez acostumado, esta será o seu jeito natural de implementar coisas em React. Em geral, React trouxe um interessante novo padrão, com o fluxo de dados unidirecional, para o mundo das SPA (_single page applications_). Agora, este padrão é adotado por diversos _frameworks_ e bibliotecas no momento.
+Toda essa história de gerenciamento de estado interno e fluxo unidirecional de dados deve ser nova para você. Mas, uma vez acostumado, será o seu jeito natural de implementar coisas em React. Em geral, React trouxe um interessante novo padrão (com o fluxo de dados unidirecional) para o mundo das SPA (_single page applications_). Agora, este padrão é adotado por diversos _frameworks_ e bibliotecas no momento.
 
 ### Exercícios:
 
@@ -1076,7 +1064,7 @@ Toda essa história de gerenciamento de estado interno e fluxo unidirecional de 
 
 ## Dividindo componentes
 
-Você tem em mãos um componente _App_ de tamanho considerável. Ele continua crescendo e, eventualmente, pode tornar-se confuso. É possível dividi-lo partes, componentes menores.
+Você tem em mãos um componente _App_ de tamanho considerável. Ele continua crescendo e, eventualmente, pode tornar-se confuso. É possível dividi-lo partes, ou seja, componentes menores.
 
 Comecemos usando um componente para o _input_ de busca e um componente para a lista de itens.
 
@@ -1186,18 +1174,18 @@ O segundo é o componente _Table_:
 	}
 	# leanpub-end-insert
 
-Agora que você tem esses três componentes, talvez tenha notado o objeto `props`que é acessível na instância de classe com o uso de `this`. As `props` (diminutivo de propriedades) têm todos os valores que você passou para os componentes quando os utilizou dentro de _App_. Desta forma, componentes podem passar propriedades níveis abaixo na árvore de componentes.
+Agora que você tem esses três componentes, talvez tenha notado o objeto `props`, que é acessível na instância de classe com o uso de `this`. As `props` (diminutivo de propriedades) têm todos os valores que você passou para os componentes quando os utilizou dentro de _App_. Desta forma, componentes podem passar propriedades para os níveis abaixo, na árvore de componentes.
 
-Tendo extraído esses componentes de _App_, você estaria apto a reutilizá-los em qualquer outro lugar. Uma vez que componentes recebem valores através do objeto _props_, você pode passar valores diferentes para seu componente a cada vez que utilizá-lo. Em outras palavras, eles se tornaram bastante reutilizáveis.
+Tendo extraído esses componentes de _App_, você estaria apto a reutilizá-los em qualquer outro lugar. Uma vez que componentes recebem valores através do objeto _props_, você pode passar valores diferentes para seu componente a cada vez que utilizá-lo.
 
 ### Exercícios:
 
 * imagine outros componentes que você poderia separar, como fez com _Search_ e _Table_.
-  * entregando, não o faça agora na prática, para não ter conflitos com o que faremos nos capítulos seguintes.
+  * entretanto, não o faça agora, na prática, para não ter conflitos com o que faremos nos capítulos seguintes.
 
-## Divisão em Componentes
+## Componentes Integráveis
 
-Existe ainda uma pequena propriedade que pode ser acessada no objeto de  _props_: a _prop_ `children`. Você pode usá-la para passar elementos dos componentes acima na hierarquia para os que estão abaixo, tornando possível combinar componentes dentro uns dos outros. Vejamos como isso é feito quando você manda apenas um texto (_string_) como _child_ para o componente _Search_.
+Existe ainda uma pequena propriedade que pode ser acessada no objeto de  _props_: a _prop_ `children`. Você pode usá-la para passar elementos dos componentes acima na hierarquia para os que estão abaixo, tornando possível integrar componentes com outros. Vejamos como isso é feito, quando você manda apenas um texto (_string_) como _child_ para o componente _Search_.
 
 {title="src/App.js",lang=javascript}
 	class App extends Component {
@@ -1248,7 +1236,7 @@ Agora, o componente _Search_ pode desestruturar a propriedade _children_ do obje
 	  }
 	}
 
-O texto “Search” deverá estar visível próximo do campo de _input_ agora. Quando você utilizar o componente _Search_ em algum outro lugar, você poderá escolher um texto diferente, se assim quiser. No fim das contas, não é só texto que pode ser passado assim Você pode enviar um elemento (e árvores de elementos, encapsuladas por outros componentes) como _children_. Esta propriedade permite entrelaçar componentes.
+O texto “Search” deverá estar visível próximo do campo de _input_ agora. Quando você utilizar o componente _Search_ em algum outro lugar, você poderá escolher um texto diferente, se assim quiser. No fim das contas, não é só texto que pode ser passado assim. Você pode enviar um elemento (e árvores de elementos, encapsuladas por outros componentes) como _children_. Esta propriedade permite entrelaçar componentes.
 
 ### Exercícios:
 
@@ -1256,9 +1244,9 @@ O texto “Search” deverá estar visível próximo do campo de _input_ agora. 
 
 ## Componentes Reutilizáveis
 
-Componentes reutilizáveis e combináveis lhe dão poderes para ser capaz de produzir hierarquias qualificadas de componentes. Eles são a base da camada de visão do React. Os últimos capítulos mencionaram o termo reusabilidade. Você agora pode reutilizar os componentes _Table_ e _Search_. Até mesmo o componente _App_ é reutilizável, porque você poderia instanciá-lo em algum outro lugar.
+Ter componentes reutilizáveis e combináveis lhe dá o poder de produzir hierarquias de componentes com competência. Eles são a base da camada de visão do React. Os últimos capítulos mencionaram o termo reusabilidade e, agora, você pode reutilizar os componentes _Table_ e _Search_. Até mesmo o componente _App_ é reutilizável, porque você poderia instanciá-lo em algum outro lugar.
 
-Vamos definir mais um componente reutilizável, um componente _Button_, que irá, eventualmente, ser utilizado com mais frequência. 
+Vamos definir mais um componente reutilizável, _Button_, que irá, eventualmente, ser utilizado com mais frequência. 
 
 {title="src/App.js",lang=javascript}
 	class Button extends Component {
@@ -1281,7 +1269,7 @@ Vamos definir mais um componente reutilizável, um componente _Button_, que irá
 	  }
 	}
 
-Pode parecer redundante declarar um componente como este. Você irá utilizar um componente `Button` ao invés do elemento `button`. Isto irá apenas poupar o `type="button"`. Exceto por este atributo de tipo, você precisa definir todo o resto, quando você decide usar o componente `Button`. Mas, você tem que pensar se tratar de um investimento de longo prazo. Imagine que possui vários botões em sua aplicação, mas quer mudar um atributo, estilo ou comportamento do botão. Sem o componente recém criado, você teria que manualmente refatorar cada botão. O componente _Button_ garante que existirá uma referência única, um _Button_ para refatorar todos os botões de uma só vez. “\_One Button to rule them all\_.”
+Pode parecer redundante declarar um componente como este. Você irá utilizar um componente `Button` ao invés do elemento `button`, poupando apenas o `type="button"`. Exceto por este atributo de tipo, quando você decide usar o componente `Button`, você precisará definir todo o resto. Mas, você tem que pensar em termos de um investimento de longo prazo. Imagine que possui vários botões em sua aplicação, quer mudar um atributo, estilo ou comportamento do botão. Sem o componente recém criado, você teria que manualmente refatorar cada botão. O componente _Button_ garante que existirá uma referência única, um _Button_ para refatorar todos os botões de uma só vez. “_One Button to rule them all_.”
 
 Uma vez que você já tem um elemento de botão, substitua-o pelo componente _Button_. Note que ele omite o atributo _type_, já especificado dentro do próprio componente.
 
@@ -1332,7 +1320,7 @@ Portanto, você deveria definir um valor padrão para o parâmetro (mais uma fun
 	  }
 	}
 
-Agora, sempre que não houve propriedade `className` especificada quando o componente _Button_ for utilizado, o valor do atributo será uma _string_ vazia, ao invés de `undefined`.
+Agora, sempre que não houver propriedade `className` especificada, quando o componente _Button_ for utilizado, o valor do atributo será uma _string_ vazia, ao invés de `undefined`.
 
 ### Exercícios:
 
@@ -1340,15 +1328,15 @@ Agora, sempre que não houve propriedade `className` especificada quando o compo
 
 ## Declarações de Componentes
 
-No momento, você tem quatro componentes implementados com classes ES6. É possível melhorar ainda mais este cenário. Deixe-me apresentá-lo aos **componentes funcionais sem estado** (_stateless funcional componentes_), como uma alternativa a componentes de classe. Antes de partir para refatorar, vamos introduzir os diferentes tipos de componentes em React.
+No momento, você tem quatro componentes implementados com classes ES6. É possível melhorar ainda mais este cenário. Deixe-me introduzir para você os **componentes funcionais sem estado** (_stateless funcional componentes_), como uma alternativa a componentes de classe. Vamos apresentar os diferentes tipos de componentes em React, antes de partir para a refatoração.
 
-* **_Functional Stateless Components_:** Esses componentes são funções que recebem uma entrada e retornam uma saída. As _props_ do componente são a entrada. A saída é uma instância de componente (ou seja, puro e simples JSX). Em termos, é bem semelhante a componentes de classe. Contudo, eles são funções (_functional_) e não possuem estado local (_stateless_). Você não consegue acessar ou atualizar o estado com `this.state` ou `this.setState()`, porque não existe o objeto `this` aqui. Além disso, eles não possuem métodos de ciclo de vida (_lifecycle methods_). Apesar de não ter explicitamente aprendido a respeito ainda, mas já utilizou dois: `constructor()` e `render()`. Ao passo que o construtor roda apenas uma vez durante todo o tempo de vida de um componente, o método `render()` é executado uma vez no início e também todas as vezes que o componente é atualizado. Tenha em mente este detalhe dos _stateless funcional components_ (ausência de métodos de ciclo de vida), para quando chegarmos a este assunto posteriormente.
+* **_Functional Stateless Components_:** Esses componentes são funções que recebem uma entrada e retornam uma saída. As _props_ do componente são a entrada. A saída é uma instância de componente (ou seja, puro e simples JSX). Em termos, é bem semelhante a componentes de classe. Contudo, eles são funções (_functional_) e não possuem estado local (_stateless_). Você não consegue acessar ou atualizar o estado com `this.state` ou `this.setState()`, porque não existe o objeto `this` aqui. Além disso, eles não possuem métodos de ciclo de vida (_lifecycle methods_). Apesar de não ter explicitamente aprendido a respeito ainda, você já utilizou dois: `constructor()` e `render()`. Ao passo que o construtor roda apenas uma vez durante todo o tempo de vida de um componente, o método `render()` é executado uma vez no início e também todas as vezes que o componente é atualizado. Tenha em mente este detalhe dos _stateless funcional components_ (ausência de métodos de ciclo de vida), para quando chegarmos a este assunto posteriormente.
 
-* **Componentes de Classe ES6:** Você já utilizou este tipo de declaração de componente nos quatro que construiu até aqui, extendendo o componente React. O `extend` atrela todos os métodos de ciclo de vida, disponíveis na API de componentes React, ao componente. Assim, você pôde utilizar o método `render()`. Além disso, é possível armazenar e manipular o estado através de `this.state` e `this.setState()`.
+* **Componentes de Classe ES6:** Você já utilizou este tipo de declaração de componente nos quatro que construiu até aqui, extendendo o componente React. O `extends` atrela ao componente todos os métodos de ciclo de vida, disponíveis na API de componentes React. Assim, você pôde utilizar o método `render()`. Além disso, é possível armazenar e manipular o estado através de `this.state` e `this.setState()`.
 
-* **React.createClass:** Esta forma era utilizada nas versões mais antigas de React e ainda é, em aplicações React que utilizam JavaScript ES5. Mas, o [Facebook a declarou como _deprecated_][10], preferindo o uso de JavaScript ES6. Um [deprecation warning foi adicionado na versão 15.5][11]. Esta forma não será utilizada no livro.
+* **React.createClass:** Esta forma era utilizada nas versões mais antigas de React e ainda é, em aplicações React que utilizam JavaScript ES5. Mas, o [Facebook a declarou como _deprecated_][10], preferindo o uso de JavaScript ES6. Um [deprecation warning foi adicionado na versão 15.5][11]. Ela não será utilizada no livro.
 
-Assim, basicamente, sobram-nos apenas duas maneiras de declarar componentes. Mas, quando usar cada um? Uma regra simples é: use _functional stateless components_ quando você não precisa de estado ou de métodos de ciclo de vida. Geralmente, comece implementando seu componente desta forma e, uma vez que você precisa acessar o estado ou métodos de ciclo de vida, você pode refatorá-lo para um componente de classe ES6. Aqui no livro, fizemos o inverso, apenas para fins de aprendizado.
+Assim, basicamente, sobram-nos apenas duas maneiras de declarar componentes. Mas, quando usar cada uma? Uma regra simples é: use _functional stateless components_ quando você não precisa de estado ou de métodos de ciclo de vida. Geralmente, comece implementando seu componente desta forma e, uma vez que você precisa acessar o estado ou métodos de ciclo de vida, você pode refatorá-lo para um componente de classe ES6. Fizemos o inverso aqui no livro, apenas para fins de aprendizado.
 
 Voltemos para sua aplicação. O componente App usa diretamente o seu estado interno. Por este motivo, ele tem que permanecer escrito como um componente de classe. Mas, os outros três componentes não precisam acessar `this.state` ou `this.setState()`, muito menos possuem algum método de ciclo de vida. Vamos, juntos, refatorar o componente _Search_ para um _stateless functional component_. _Table_ e _Button_ ficarão como exercício para você.
 
@@ -1385,9 +1373,9 @@ Basicamente, é isso: as props estão acessíveis na assinatura da função e o 
 	  );
 	}
 
-Mas, pode melhorar. Você ja sabe que _arrow functions_ permitem que você escreva funções mais concisas. Você pode remover os caracteres de bloco do corpo da função. Ocorre um retorno implícito e, desta forma, você pode remover também a instrução _return_.
+De novo, pode melhorar. Você ja sabe que _arrow functions_ permitem que você escreva funções mais concisas. Você pode remover os caracteres de declaração de bloco no corpo da função. Ocorre um retorno implícito e, desta forma, você pode remover também a instrução _return_.
 
-Uma vez que seu _stateless functional component_ é uma função, você pode mantê-lo conciso também.
+Uma vez que seu _stateless functional component_ é uma função, você pode escrevê-lo da forma concisa também.
 
 {title="src/App.js",lang=javascript}
 	# leanpub-start-insert
@@ -1401,7 +1389,7 @@ Uma vez que seu _stateless functional component_ é uma função, você pode man
 	  </form>
 	# leanpub-end-insert
 
-Este último passo foi especialmente útil: ele forçou que a função tenha apenas _props_ como entrada e JSX como saída. Contudo, se você realmente precisar fazer alguma coisa (representada aqui pelo comentário _do something_) além disso, sempre é possível devolver as declarações de bloco de corpo e do retorno da função.
+Este último passo foi especialmente útil: ele forçou que a função tenha apenas _props_ como entrada e JSX como saída. Contudo, se você realmente precisar fazer alguma coisa (representada aqui pelo comentário _do something_) além, sempre é possível devolver as declarações de bloco de corpo e o retorno da função.
 
 {title="Code Playground",lang=javascript}
 	const Search = ({ value, onChange, children }) => {
@@ -1419,13 +1407,13 @@ Este último passo foi especialmente útil: ele forçou que a função tenha ape
 	  );
 	}
 
-Não precisa fazê-lo agora. Eis uma motivação para manter a versão concisa: Quando utilizando a versão mais explícita, as pessoas geralmente tendem a fazer muitas coisas em uma função. Deixando a função com retorno implícito, você pode focar nos seus _inputs_ e _outputs_.
+Não precisa fazê-lo agora. A motivação para manter a versão concisa é: Quando utilizando a versão mais explícita, as pessoas geralmente tendem a fazer muitas coisas em uma função. Deixando a função com retorno implícito, você pode focar nos seus _inputs_ e _outputs_.
 
-Agora, você tem um _stateless functional component_ super enxuto. Se, em algum momento, você precisar acessar seu estado local ou métodos de ciclo de vida, bastará refatorar seu código para um componente de classe ES6. Além disso, vimos aqui como ES6 pode ser utilizado em componentes React para torná-los mais concisos e elegantes.
+Agora, você tem um _stateless functional component_ super enxuto. Se, em algum momento, você precisar acessar seu estado local ou métodos de ciclo de vida, bastará refatorar seu código para um componente de classe ES6. Ademais, vimos aqui como ES6 pode ser utilizado em componentes React para torná-los mais concisos e elegantes.
 
 ### Exercícios:
 
-* refatore _Table_ e _Button_ para _stateless functional compotes_
+* Refatore _Table_ e _Button_ para _stateless functional compotes_
 * Leia mais a respeito de [componentes de classe ES6 e functional stateless components][12]
 
 ## Estilizando Componentes
@@ -1619,7 +1607,7 @@ Depois, faça o mesmo para o componente _Table_.
 	  </div>
 	# leanpub-end-insert
 
-Você estilizou sua aplicação e componentes com CSS básico. Ela deve ter um visual minimamente decente, agora. Como você bem sabe, JSX mistura HTML e JavaScript. Sendo assim, alguém pode argumentar que é perfeitamente aceitável misturar CSS também (_inline styles_). Você pode definir objetos JavaScript e passá-los para o atributo _style_ de um elemento.  
+Você estilizou sua aplicação e componentes com CSS básico. Agora, ela deve ter um visual minimamente decente. Como você bem sabe, JSX mistura HTML e JavaScript. Sendo assim, alguém pode argumentar que é perfeitamente aceitável misturar CSS também (_inline styles_). Você pode definir objetos JavaScript e passá-los para o atributo _style_ de um elemento.  
 
 Vamos definir uma coluna de largura dinâmica em Table, utilizando um _inline style_:
 
@@ -1673,7 +1661,7 @@ Finalmente, você pode utilizá-los em suas colunas: `<span style={smallColumn}>
 
 Em geral, você irá encontrar diferentes opções e soluções para aplicar estilos em React. Utilizamos CSS puro e _inline styles_, até agora. É o suficiente para iniciar.
 
-Não quero ser dogmático aqui, mas irei lhe deixar mais algumas opções. Você pode ler a respeito delas e aplicá-las por sua própria conta. Mas, se você é novo em React, eu recomendaria que permaneça com CSS puro e estilos _inline_, por enquanto.
+Não quero ser dogmático aqui e irei lhe deixar mais algumas opções. Você pode ler a respeito delas e aplicá-las por sua própria conta. Mas, se você é novo em React, eu recomendaria que permaneça com CSS puro e estilos _inline_, por enquanto.
 
 * [styled-components][13]
 * [CSS Modules][14]
@@ -1688,7 +1676,7 @@ Você aprendeu o básico para escrever sua própria aplicação React! Recapitul
 	 * utilizando _forms_ e eventos em React para adicionar interações
 	 * o fluxo de dados unidirecional unidirectional é um importante conceito em React
 	 * adote a prática de componentes controlados
-	 * compondo componentes com componentes filhos reutilizáveis
+	 * integre componentes com componentes filhos reutilizáveis
 	 * implementação e uso de componentes de classe ES6 e _stateless functional components_
 	 * abordagens para estilizar seus componentes
 * ES6
@@ -1718,5 +1706,3 @@ Você pode encontrar o código-fonte deste capítulo no [repositório oficial][1
 [14]:	https://github.com/css-modules/css-modules
 [15]:	https://facebook.github.io/react/docs/installation.html
 [16]:	https://github.com/rwieruch/hackernews-client/tree/4.2
-
-[image-1]:	images/set-state-to-render-unidirectional.png
