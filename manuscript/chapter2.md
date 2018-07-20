@@ -4,7 +4,7 @@ Este capítulo irá lhe apresentar os conceitos básicos de React. Trataremos de
 
 ## Estado Interno do Componente
 
-O estado local, também chamado de estado interno do componente, lhe permite salvar, modificar e apagar propriedades que nele são armazenadas. Componentes de classe usam inicializam seu estado interno utilizando um construtor. Ele é chamado apenas uma vez (quando o componente é inicializado).
+O estado local, também chamado de estado interno do componente, lhe permite salvar, modificar e apagar propriedades que nele são armazenadas. Componentes de classe inicializam seu estado interno utilizando um construtor. Ele é chamado apenas uma vez (quando o componente é inicializado).
 
 Abaixo, introduzimos um construtor de classe:
 
@@ -172,7 +172,7 @@ const user = {
 };
 ~~~~~~~~
 
-Talvez isso ainda não faça tanto sentido para você. Por que você utilizar nomes computados? Em um capítulo mais adiante, iremos nos deparar com a situação em que poderemos utilizá-los para alocar valores por chave, de uma forma dinâmica em um objeto. É uma forma elegante em JavaScript de gerar _lookup tables_ (um tipo de estrutura de dados).
+Talvez isso ainda não faça tanto sentido para você. Por que você utilizaria nomes computados? Em um capítulo mais adiante, iremos nos deparar com a situação em que poderemos utilizá-los para alocar valores por chave, de uma forma dinâmica em um objeto. É uma forma elegante em JavaScript de gerar _lookup tables_ (um tipo de estrutura de dados).
 
 ### Exercícios:
 
@@ -587,7 +587,7 @@ Entretanto, não é suficiente declarar `onClick={this.onDismiss}`, porque preci
 ...
 ~~~~~~~~
 
-Uma outra alternativa seria definir a função _wrapper_ em algum outro lugar e passá-la como argumento para to tratamento do evento. Uma vez que precisa ter acesso ao item, ela deve residir dentro do bloco da função _map_.
+Uma outra alternativa seria definir a função _wrapper_ em algum outro lugar e passá-la como argumento para o tratamento do evento. Uma vez que precisa ter acesso ao item, ela deve residir dentro do bloco da função _map_.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -683,7 +683,7 @@ A função é executada assim que você abre a aplicação no navegador, mas nã
 ...
 ~~~~~~~~
 
-Visando manter o código conciso, você pode transformá-la de volta uma uma _arrow function_, fazendo o mesmo que fizemos com o método de classe `onDismiss()`.
+Visando manter o código conciso, você pode transformá-la de volta em uma _arrow function_, fazendo o mesmo que fizemos com o método de classe `onDismiss()`.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -886,9 +886,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Agora, todas as vezes que o calor no campo de _input _ muda, você está armazenando o valor digitado no estado interno do seu componente.
+Agora, todas as vezes que o valor no campo de _input _ muda, você está armazenando o valor digitado no estado interno do seu componente.
 
-Um breve comentário a respeito da atualização do estado local em um componente React: Seria normal se achássemos que, quando atualizamos `searchTerm` com `this.setState`, também deveríamos informar o valor de `list`. Mas não é o caso. O método `this.setState()` de React faz o que chamamos de _shallow merge_. Ele preserva o valor das outras propriedades do objeto estado quando apenas uma delas é atualizada. O estado da lista permanecerá o mesmo, inclusive sem o item que você removeu, quando apenas a propriedade `searchTerm` for alterada.
+Um breve comentário a respeito da atualização do estado local em um componente React: Seria normal se achássemos que, quando atualizamos `searchTerm` com `this.setState`, também deveríamos informar o valor de `list`. Mas não é o caso. O método `this.setState()` de React faz o que chamamos de _shallow merge_. Ele preserva o valor das outras propriedades do objeto de estado, quando apenas uma delas é atualizada. O estado da lista permanecerá o mesmo, inclusive sem o item que você removeu, quando apenas a propriedade `searchTerm` for alterada.
 
 Voltemos à sua aplicação. A lista ainda não é temporariamente filtrada com base no valor do campo _input_ que está armazenado no seu estado local, mas você já tem em mão tudo o que precisa para fazê-lo. Como? No seu método `render()`, antes de iterar sobre a lista usando _map_, você pode aplicar um filtro à ela, que apenas avaliaria se `searchTerm` coincide com o a propriedade _title_ do item. Vamos usar a funcionalidade _filter_, nativa de JavaScript e já demonstrada anteriormente. Como _filter_ retorna um novo _array_, você pode convenientemente chamá-la antes de _map_.
 
@@ -962,7 +962,7 @@ class App extends Component {
 
 A condição diz que devemos comparar o padrão recebido em `searchTerm` com a propriedade `title` do item da lista. Você pode fazê-lo utilizando `includes`, funcionalidade nativa de JavaScript. Quando o padrão coincide, você retorna _true_ e o item permanece na lista. Senão, o item é removido. Mas, tenha cuidado com comparações de padrões: Você não pode esquecer de formatar ambas as _strings_, transformando seus caracteres em minúsculas. Caso contrário, o título "Redux" e o termo de busca "redux" serão considerados diferentes. Uma vez que estamos trabalhando com listas imutáveis e uma nova lista é retornada pela função _filter_, a lista original permanecerá sem ser modificada.
 
-Uma última coisa a mencionar: "Apelamos" um pouco, utilizando o recuso _includes_ já de ES6. Como faríamos o mesmo, em JavaScript ES5? Você usaria a função `inderOf()` para pegar o índice do item na lista.
+Uma última coisa a mencionar: "Apelamos" um pouco, utilizando o recurso _includes_ já de ES6. Como faríamos o mesmo, em JavaScript ES5? Você usaria a função `inderOf()` para pegar o índice do item na lista.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -1381,7 +1381,7 @@ class Button extends Component {
 }
 ~~~~~~~~
 
-Pode parecer redundante declarar um componente como este. Você irá utilizar um componente `Button` ao invés do elemento `button`, poupando apenas o `type="button"`. Exceto por este atributo de tipo, quando você decide usar o componente `Button`, você precisará definir todo o resto. Mas, você tem que pensar em termos de um investimento de longo prazo. Imagine que possui vários botões em sua aplicação, quer mudar um atributo, estilo ou comportamento do botão. Sem o componente recém criado, você teria que manualmente refatorar cada botão. O componente _Button_ garante que existirá uma referência única, um _Button_ para refatorar todos os botões de uma só vez. "_One Button to rule them all_."
+Pode parecer redundante declarar um componente como este. Você irá utilizar um componente `Button` ao invés do elemento `button`, poupando apenas o `type="button"`. Exceto por este atributo de tipo, quando você decide usar o componente `Button`, você precisará definir todo o resto. Mas, você tem que pensar em termos de um investimento de longo prazo. Imagine que possui vários botões em sua aplicação e quer mudar um atributo, estilo ou comportamento do botão. Sem o componente recém criado, você teria que manualmente refatorar cada botão. O componente _Button_ garante que existirá uma referência única, um _Button_ para refatorar todos os botões de uma só vez. "_One Button to rule them all_."
 
 Uma vez que você já tem um elemento de botão, substitua-o pelo componente _Button_. Note que ele omite o atributo _type_, já especificado dentro do próprio componente.
 
