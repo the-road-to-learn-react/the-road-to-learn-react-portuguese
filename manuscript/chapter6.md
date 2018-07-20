@@ -1,6 +1,6 @@
 # Gerenciamento de Estado em React (e além)
 
-Você já aprendeu o básico sobre gerenciamento de estado em React nos capítulos anteriores. Este capítulo “cava” um pouco mais fundo neste tópico. Você aprenderá as melhores práticas, como aplicá-las e por que você deveria considerar utilizar uma biblioteca de terceiros para gerenciar o estado de uma aplicação.
+Você já aprendeu o básico sobre gerenciamento de estado em React nos capítulos anteriores. Este capítulo "cava" um pouco mais fundo neste tópico. Você aprenderá as melhores práticas, como aplicá-las e por que você deveria considerar utilizar uma biblioteca de terceiros para gerenciar o estado de uma aplicação.
 
 ## Realocando o Estado
 
@@ -271,7 +271,7 @@ class Table extends Component {
 
 Sua aplicação deve continuar funcionando. Mas, você fez uma refatoração crucial, movendo funcionalidade e estado para outro componente. Outros componentes ficaram menos pesados, assim como a assinatura do componente _Table_, pois ele lida internamente com a funcionalidade de ordenação.
 
-O processo de realocação de estado pode acontecer no sentido oposto, da mesma forma: de um componente filho, para componente pai. Podemos chamar este processo de “promoção de estado” (_lifting state up_). Imagine que você estava lidando com o estado interno em um componente filho. Agora, você precisa atender à um requisito exibindo o estado também no componente pai. Você teria que promover este estado para o componente pai. Mas, iremos mais além. Imagine que você deseja exibir o mesmo estado em componentes “irmãos” (dois componentes com o mesmo componente pai). Mais uma vez, você terá que promover o estado para o componente pai, que irá tratar dele e expô-lo para ambos os componentes filhos.
+O processo de realocação de estado pode acontecer no sentido oposto, da mesma forma: de um componente filho, para componente pai. Podemos chamar este processo de "promoção de estado" (_lifting state up_). Imagine que você estava lidando com o estado interno em um componente filho. Agora, você precisa atender à um requisito exibindo o estado também no componente pai. Você teria que promover este estado para o componente pai. Mas, iremos mais além. Imagine que você deseja exibir o mesmo estado em componentes "irmãos" (dois componentes com o mesmo componente pai). Mais uma vez, você terá que promover o estado para o componente pai, que irá tratar dele e expô-lo para ambos os componentes filhos.
 
 ### Exercícios:
 
@@ -446,14 +446,14 @@ class App extends Component {
 
 * Leia mais sobre [uso correto do estado em React][3]
 * Exporte _updateSearchTopStoriesState_ no seu arquivo
- * Escreva um teste para, o qual passa o _payload_ (hist, page) e um “estado anterior”, com um _expect_ para um novo estado
+ * Escreva um teste para, o qual passa o _payload_ (hist, page) e um "estado anterior", com um _expect_ para um novo estado
 * refatore seus métodos `setState()` para a abordagem funcional
   * mas, somente quando fizer sentido, por ele depender de estado ou _props_
 * Rode seus testes novamente e verifique se tudo foi atualizado
 
 ## _Taming the State_
 
-Os capítulos anteriores lhe mostraram que o gerenciamento de estado pode ser um tópico crucial em aplicações de larga escala. Em geral, não apenas React, mas uma grande quantidade de _frameworks_ SPA gastam bastante energia com o assunto. As aplicações ficaram ainda mais complexas em anos recentes e um dos maiores desafios para aplicações _web_, nos dias de hoje, é o de **domar** (do inglês “_tame_”) e controlar o estado.
+Os capítulos anteriores lhe mostraram que o gerenciamento de estado pode ser um tópico crucial em aplicações de larga escala. Em geral, não apenas React, mas uma grande quantidade de _frameworks_ SPA gastam bastante energia com o assunto. As aplicações ficaram ainda mais complexas em anos recentes e um dos maiores desafios para aplicações _web_, nos dias de hoje, é o de **domar** (do inglês "_tame_") e controlar o estado.
 
 Comparado com outras soluções, React já deu um grande passo à frente. O fluxo unidirecional de dados e uma API simples para gerenciar estado em um componente são indispensáveis. Estes conceitos tornam mais leve a tarefa de raciocinar sobre seu estado e as mudanças sobre ele. É mais fácil pensar a nível de components e, até certo ponto, de aplicação também.
 

@@ -16,7 +16,7 @@ Pro fim, estas declarações lhe ajudam a pensar sobre o encapsulamento de códi
 
 Vamos colocar a mão na massa. Como `import`e `export` funcionam? Os exemplo a seguir demonstram ambas as declarações, compartilhando uma ou múltiplas variáveis entre dois arquivos. No final, esta abordagem pode escalar para múltiplos arquivos e poderia também compartilhar mais do que simples variáveis.
 
-Você pode exportar uma ou múltiplas variáveis com o chamado “_export_ nomeado” (_named export_).
+Você pode exportar uma ou múltiplas variáveis com o chamado "_export_ nomeado" (_named export_).
 
 {title="Code Playground: file1.js",lang="javascript"}
 ~~~~~~~~
@@ -46,7 +46,7 @@ console.log(person.firstname);
 // saída: robin
 ~~~~~~~~
 
-_Imports_ podem ter um _alias_. Por existir a possibilidade de você importar funcionalidades exportadas com o mesmo nome de arquivos diferentes, você pode utilizar o _alias_ para fornecer “apelidos” para elas.
+_Imports_ podem ter um _alias_. Por existir a possibilidade de você importar funcionalidades exportadas com o mesmo nome de arquivos diferentes, você pode utilizar o _alias_ para fornecer "apelidos" para elas.
 
 {title="Code Playground: file2.js",lang="javascript"}
 ~~~~~~~~
@@ -135,7 +135,7 @@ A seguir, eu irei propor várias estruturas de módulos que você **poderia** ap
 
 Uma possível estrutura de módulo seria:
 
-{title=“Estrutura de Pastas“,lang="text"}
+{title="Estrutura de Pastas",lang="text"}
   src/
     index.js
     index.css
@@ -156,7 +156,7 @@ Ela separa os componentes em seus próprios arquivos, mas não aparenta ser muit
 
 Outra estrutura de módulos seria:
 
-{title=“Estrutura de Pastas“,lang="text"}
+{title="Estrutura de Pastas",lang="text"}
   src/
     index.js
     index.css
@@ -177,7 +177,7 @@ Outra estrutura de módulos seria:
       test.js
       index.css
 
-Ela parece mais limpa que a anterior. Dar o nome “index” a um arquivo o coloca como o ponto de entrada de uma parta. É uma convenção de nome comumente utilizada, mas não significa que você não possa utilizar os nomes que quiser. Nesta estrutura de módulos, um componente é definido pela sua declaração em um arquivo JavaScript, mas também pelo seu estilo e seus testes.
+Ela parece mais limpa que a anterior. Dar o nome "index" a um arquivo o coloca como o ponto de entrada de uma parta. É uma convenção de nome comumente utilizada, mas não significa que você não possa utilizar os nomes que quiser. Nesta estrutura de módulos, um componente é definido pela sua declaração em um arquivo JavaScript, mas também pelo seu estilo e seus testes.
 
 Outro passo que poderia ser dado é o de extrair as constantes do componente _App_. Estas constantes foram utilizadas para compor a URL da API Hacker News.
 
@@ -253,7 +253,7 @@ import {
 
 No entanto, o que está realmente por trás da convenção de nomes _index.js_? Ela foi introduzida no mundo _node.js_. O arquivo _index_ é o ponto de entrada de um módulo, descrevendo sua API pública. Módulos externos somente são permitidos de usar o arquivo _index.js_ para importar código compartilhado pelo módulo. Considere a seguinte estrutura de módulos, feita para demonstrar o que foi falado aqui:
 
-{title=“Estrutura de Pastas“,lang="text"}
+{title="Estrutura de Pastas",lang="text"}
 ~~~~~~~~
 src/
   index.js
@@ -358,13 +358,13 @@ it('renders without crashing', () => {
 });
 ~~~~~~~~
 
-O bloco “it” descreve um caso de teste. Ele traz uma descrição do teste e, quando executado, pode ter sucesso ou falhar. Além disso, ele poderia ser colocado dentro de um bloco “describe” que define sua suíte de testes. Sua suíte de testes poderia incluir um punhado de blocos “it” para um componente específico. Mais tarde, você verá mais sobre o bloco “describe”. Ambos os blocos são utilizados para separar e organizar seus casos de teste.
+O bloco "it" descreve um caso de teste. Ele traz uma descrição do teste e, quando executado, pode ter sucesso ou falhar. Além disso, ele poderia ser colocado dentro de um bloco "describe" que define sua suíte de testes. Sua suíte de testes poderia incluir um punhado de blocos "it" para um componente específico. Mais tarde, você verá mais sobre o bloco "describe". Ambos os blocos são utilizados para separar e organizar seus casos de teste.
 
 Note que a função `it` é reconhecida na comunidade JavaScript como a função onde você roda um único teste. Contudo, em Jest ela é frequentemente encontrada sob o _alias_ de `test`.
 
 Você pode rodar seus casos de testes utilizando o script _test_ do _create-react-app_ na linha de comando. Você irá obter a saída para todos os casos de testes nesta mesma interface de linha de comando.
 
-{title=“Linha de Comando“,lang="text"}
+{title="Linha de Comando",lang="text"}
   npm test
 
 
@@ -374,10 +374,10 @@ Jest guarda os _snapshots_ (ou fotografias) em uma pasta. Somente desta forma el
 
 Antes de escrever o seu primeiro _snapshot test_ com Jest, você tem que instalar uma biblioteca utilitária:
 
-{title=“Linha de Comando“,lang="text"}
+{title="Linha de Comando",lang="text"}
   npm install --save-dev react-test-renderer
 
-Agora você pode extender o teste do componente _App_ como seu primeiro _snapshot test_. Primeiro, importe a nova funcionalidade da biblioteca recém adicionada e envolva seu bloco “it” em um bloco “describe”.  Neste caso, a suíte de testes trata apenas do componente _App_.
+Agora você pode extender o teste do componente _App_ como seu primeiro _snapshot test_. Primeiro, importe a nova funcionalidade da biblioteca recém adicionada e envolva seu bloco "it" em um bloco "describe".  Neste caso, a suíte de testes trata apenas do componente _App_.
 
 {title="src/App.test.js",lang=javascript}
 ~~~~~~~~
@@ -403,7 +403,7 @@ describe('App', () => {
 # leanpub-end-insert
 ~~~~~~~~
 
-Implemente agora seu primeiro _snapshot test_ utilizando um bloco “test”.
+Implemente agora seu primeiro _snapshot test_ utilizando um bloco "test".
 
 {title="src/App.test.js",lang=javascript}
 ~~~~~~~~
@@ -433,7 +433,7 @@ describe('App', () => {
 });
 ~~~~~~~~
 
-Rode seus testes novamente e veja se eles têm sucesso ou se falham. Eles devem ter sucesso. Se você mudar a saída do bloco “render” em seu componente _App_, o _snapshot test_ deve falhar. Então você pode decidir atualizar o _snapshot_ ou investigar o que aconteceu em seu componente _App_.
+Rode seus testes novamente e veja se eles têm sucesso ou se falham. Eles devem ter sucesso. Se você mudar a saída do bloco "render" em seu componente _App_, o _snapshot test_ deve falhar. Então você pode decidir atualizar o _snapshot_ ou investigar o que aconteceu em seu componente _App_.
 
 Basicamente, a função `renderer.create()` cria um _snapshot_ do seu componente App. Ele o renderiza virtualmente e armazena uma fotografia do DOM. Depois, espera-se que essa fotografia (ou _snapshot_) coincida com outras anteriores, de quando você rodou seus _snapshot tests_ da última vez. Desta forma, você pode assegurar que o seu DOM permanecerá o mesmo, sem mudanças acidentais.
 
@@ -558,7 +558,7 @@ _Snapshot tests_ geralmente são bem básicos. Você só quer cobrir o caso de o
 
 Vejamos como podemos utilizar _enzyme_. Primeiro, você precisa instalar a biblioteca, uma vez que não ela vem por padrão com _create-react-app_. Ele possui também uma extensão para ser utilizado em React.
 
-{title=“Linha de Comando“,lang="text"}
+{title="Linha de Comando",lang="text"}
   npm install --save-dev enzyme react-addons-test-utils enzyme-adapter-react-16
 
 Segundo, você precisa incluir a biblioteca no seu _setup_ de testes e inicializar o seu _Adapter_ para ser usado com React.
@@ -579,7 +579,7 @@ Enzyme.configure({ adapter: new Adapter() });
 # leanpub-end-insert
 ~~~~~~~~
 
-Agora, você pode escrever seu primeiro teste unitário no bloco “describe” de _Table_. Você irá usar `shallow()` para renderizar seu componente e verificar que _Table_ tem dois itens, de acordo com os dois itens de lista que você passou para ele. A verificação simplesmente checa se o elemento renderizado possui dois outros elementos com a classe `table-row`.
+Agora, você pode escrever seu primeiro teste unitário no bloco "describe" de _Table_. Você irá usar `shallow()` para renderizar seu componente e verificar que _Table_ tem dois itens, de acordo com os dois itens de lista que você passou para ele. A verificação simplesmente checa se o elemento renderizado possui dois outros elementos com a classe `table-row`.
 
 {title="src/App.test.js",lang=javascript}
 ~~~~~~~~
@@ -803,15 +803,15 @@ Se você rodar seus testes novamente, verá que erros de _PropType_ aparecerão 
 
 ## Depuração com _React Developer Tools_
 
-Esta última seção apresenta uma ferramenta muito útil, geralmente utilizada para analisar e depurar aplicações React. **React Developer Tools** lhe permite inspecionar a hierarquia, as _props_ e  estado local de componentes, estando disponível como uma extensão (para Chrome e Firefox) e como uma aplicação _standalone_ (que funciona com qualquer outro ambiente). Uma vez instalada, o ícone da extensão irá acender quando você carregar _websites_ que estejam utilizando React.  Em páginas assim, você poderá ver uma aba chamada “React” nas ferramentas de desenvolvedor do seu navegador.
+Esta última seção apresenta uma ferramenta muito útil, geralmente utilizada para analisar e depurar aplicações React. **React Developer Tools** lhe permite inspecionar a hierarquia, as _props_ e  estado local de componentes, estando disponível como uma extensão (para Chrome e Firefox) e como uma aplicação _standalone_ (que funciona com qualquer outro ambiente). Uma vez instalada, o ícone da extensão irá acender quando você carregar _websites_ que estejam utilizando React.  Em páginas assim, você poderá ver uma aba chamada "React" nas ferramentas de desenvolvedor do seu navegador.
 
-Vamos testá-la com a sua aplicação Hacker News. Na maioria dos navegadores, uma forma rápida de abrir as ferramentas de desenvolvedor é clicando com o botão direito do mouse na página e, depois, selecionar “Inspect” (ou “Inspecionar”). Faça isso com a sua aplicação carregada, depois clique na aba “React”. Você deverá ver a hierarquia de elementos, sendo `App` o elemento raiz (_root element_). Se você expandir a árvore, achará também as instâncias dos componentes `Search`, `Table` e `Button`. 
+Vamos testá-la com a sua aplicação Hacker News. Na maioria dos navegadores, uma forma rápida de abrir as ferramentas de desenvolvedor é clicando com o botão direito do mouse na página e, depois, selecionar "Inspect" (ou "Inspecionar"). Faça isso com a sua aplicação carregada, depois clique na aba "React". Você deverá ver a hierarquia de elementos, sendo `App` o elemento raiz (_root element_). Se você expandir a árvore, achará também as instâncias dos componentes `Search`, `Table` e `Button`. 
 
 A extensão mostra, no painel lateral do lado direito, o estado local e as _props_ de componente para o elemento selecionado. Por exemplo, se você clicar em `App`, verá que ele ainda não possui _props_, mas já possui um estado local. Uma técnica de depuração bastante simples é a de monitorar as mudanças de estado da aplicação causadas pela interação do usuário.
 
-Primeiro, irá querer marcar a opção “Highlight Updates” (geralmente localizada acima da árvore de elementos). Segundo, você pode digitar um termo de busca diferente no campo de _input_ da aplicação. Como você poderá ver, apenas `searchTerm` será modificado no estado do componentes. Você até já sabia que isto aconteceria desta forma, mas agora pode ver de verdade que ocorreu como planejado.
+Primeiro, irá querer marcar a opção "Highlight Updates" (geralmente localizada acima da árvore de elementos). Segundo, você pode digitar um termo de busca diferente no campo de _input_ da aplicação. Como você poderá ver, apenas `searchTerm` será modificado no estado do componentes. Você até já sabia que isto aconteceria desta forma, mas agora pode ver de verdade que ocorreu como planejado.
 
-Finalmente, pressione o botão “Search”. O estado `searchKey` irá ser imediatamente alterado para o mesmo valor de `searchTerm` e o objeto de retorno da requisição irá ser adicionado à `results` poucos segundos depois. A natureza assíncrona do seu código está agora visível aos seus olhos.
+Finalmente, pressione o botão "Search". O estado `searchKey` irá ser imediatamente alterado para o mesmo valor de `searchTerm` e o objeto de retorno da requisição irá ser adicionado à `results` poucos segundos depois. A natureza assíncrona do seu código está agora visível aos seus olhos.
 
 Por último, se você clicar com o botão direito do mouse em qualquer elemento, um menu de contexto irá aparecer com várias opções. Por exemplo, você pode copiar as _props_ ou o nome de um elemento, achar o nó correspondente a ele no DOM ou até saltar para o código-fonte da aplicação direto no navegador. Esta última opção é bem útil, uma vez que lhe permite inserir _breakpoints_ e depurar as suas funções JavaScript.
 

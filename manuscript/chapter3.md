@@ -1,6 +1,6 @@
 # Familiarizando-se com uma API
 
-Chegou o momento de “melar as mãos” com uma API, uma vez que é entediaste lidar sempre com dados estáticos.
+Chegou o momento de "melar as mãos" com uma API, uma vez que é entediaste lidar sempre com dados estáticos.
 
 Se você não está familiarizado, lhe encorajo a [ler a minha jornada onde tomei conhecimento de APIs][1].
 
@@ -153,7 +153,7 @@ Um monte de coisas aconteceu neste código. Eu até pensei em quebrá-lo em peda
 
 Primeiro, você pode remover a lista de itens criada como amostra de dados, porque a API do Hacker News retorna uma lista real, a amostra não será mais utilizada. O estado inicial do seu componente tem agora um `result` vazio e um termo de busca (`searchTerm`) padrão. O mesmo termo de busca é usado no campo _input_ do componente _Search_ e na sua primeira requisição.
 
-Segundo, você utiliza o método `componentDidMount` para obter os dados depois que o componente é montado. Na primeira chamada de _fetch_, o termo de busca _default_ do estado local é utilizado. Ela irá buscar discussões relacionadas com “redux”.
+Segundo, você utiliza o método `componentDidMount` para obter os dados depois que o componente é montado. Na primeira chamada de _fetch_, o termo de busca _default_ do estado local é utilizado. Ela irá buscar discussões relacionadas com "redux".
 
 Terceiro, a API nativa _fetch_ é utilizada. O uso de _template strings_ de JavaScript ES6 possibilita a composição da URL com o `searchTerm`. Ela (a URL) é o argumento para a função nativa _fetch_.  A resposta então precisa ser transformada em uma estrutura de dados JSON, um passo mandatório neste caso (_fetch_ nativo lidando com estruturas de dados JSON). E, finalmente, a resposta pode ser atribuída a _result_ no estado interno do componente. Ademais, o block `catch` é utilizado em caso de um erro ocorrer. O fluxo será desviado para o bloco _catch_  ao invés do _then_. Em um capítulo futuro, você irá incluir o tratamento para os erros.
 
@@ -161,7 +161,7 @@ Por último, não se esqueça de fazer o _binding_ do novo método no seu constr
 
 Você agora consegue utilizar os dados obtidos ao invés da amostra inicial. Contudo, tenha cuidado. O resultado não é apenas uma lista de dados. [É um objeto complexo com _metadados_ e uma lista de itens que são, no nosso caso, as discussões][10]. Você pode imprimir o estado interno com `console.log(this.state);` no seu método `render()`, a fim de visualizá-lo melhor.
 
-(**Nota do Tradutor:** No texto original, o autor refere-se às discussões como _stories_. Iremos usar as formas “discussões” e “posts” aqui). 
+(**Nota do Tradutor:** No texto original, o autor refere-se às discussões como _stories_. Iremos usar as formas "discussões" e "posts" aqui). 
 
 No passo seguinte, você irá renderizar o valor em _result_. Iremos evitar que qualquer coisa seja renderizada, retornando _null_ quando não existir um resultado.  Uma vez que a requisição à API foi bem sucedida o resultado é salvo em _state_ e o componente _App_ será re-renderizado, desta vez com o estado atualizado.
 
@@ -200,7 +200,7 @@ Você utilizou a função _fetch_ que é suportada pela maioria dos _browsers_ p
 
 Este livro se baseia fortemente na notação JavaScript para checagem de dados. No exemplo anterior, `if (!result)` foi utilizado no lugar de `if (result === null)`. O mesmo se aplica para outros casos ao longo do livro. Por exemplo, `if (!list.length)` é usado ao invés de `if (list.length === 0)` ou `if (someString)` no lugar de `if (someString !== '')`. Recomendo ler mais sobre este tópico, se não estiver bem familiarizado com ele.
 
-De volta à sua aplicação: A lista de resultados deve ser visível agora, Entretanto, existem dois _bugs_ que foram deixados para trás. Primeiro, o botão “Dismiss” está quebrado. Ele não conhece o objeto complexo de resultado e ainda funciona baseado na lista simples da amostra de dados. Segundo, quando a lista com dados do servidor é exibida e você tenta buscar por outra coisa, a filtragem ocorre apenas do lado do cliente. O comportamento esperado é que outra consulta à API ocorra. Ambos os _bugs_ serão corrigidos nos capítulos seguintes.
+De volta à sua aplicação: A lista de resultados deve ser visível agora, Entretanto, existem dois _bugs_ que foram deixados para trás. Primeiro, o botão "Dismiss" está quebrado. Ele não conhece o objeto complexo de resultado e ainda funciona baseado na lista simples da amostra de dados. Segundo, quando a lista com dados do servidor é exibida e você tenta buscar por outra coisa, a filtragem ocorre apenas do lado do cliente. O comportamento esperado é que outra consulta à API ocorra. Ambos os _bugs_ serão corrigidos nos capítulos seguintes.
 
 ### Exercícios:
 
@@ -210,7 +210,7 @@ De volta à sua aplicação: A lista de resultados deve ser visível agora, Entr
 
 ## ES6 e o Operador _Spread_
 
-O botão “_Dismiss_” não funciona, porque o método `onDismiss()` não conhece o objeto do resultado exibido. Ele ainda o trata como se fosse a lista da amostra que era armazenada no estado local. Vamos mudar a função, para que opere sobre o objeto ao invés da lista.
+O botão "_Dismiss_" não funciona, porque o método `onDismiss()` não conhece o objeto do resultado exibido. Ele ainda o trata como se fosse a lista da amostra que era armazenada no estado local. Vamos mudar a função, para que opere sobre o objeto ao invés da lista.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -260,7 +260,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-Esta poderia muito bem ser a solução. Mas, existe um jeito ainda mais simples, em JavaScript ES6 e _releases_ futuras. Gostaria de lhe introduzir o operador _spread_, que consiste apenas em “três pontos”: `...`. Quando utilizado, todos os valores de um array ou objeto são copiados para outro array ou objeto.
+Esta poderia muito bem ser a solução. Mas, existe um jeito ainda mais simples, em JavaScript ES6 e _releases_ futuras. Gostaria de lhe introduzir o operador _spread_, que consiste apenas em "três pontos": `...`. Quando utilizado, todos os valores de um array ou objeto são copiados para outro array ou objeto.
 
 Apesar de não precisar dele ainda, vamos examinar como funciona o operador _spread_ de um **array**.
 
@@ -327,7 +327,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-Agora, o botão “Dismiss” voltará a funcionar, uma vez que `onDismiss()` saberá como atualizar o objeto complexo em _result_, quando um item da lista for removido.
+Agora, o botão "Dismiss" voltará a funcionar, uma vez que `onDismiss()` saberá como atualizar o objeto complexo em _result_, quando um item da lista for removido.
 
 ### Exercícios:
 
@@ -508,7 +508,7 @@ class App extends Component {
 
 Agora, é necessário que um novo botão seja adicionado no componente _Search_. Este botão tem que, explicitamente, disparar a requisição de consulta. Caso contrário, os dados da API Hacker News seriam obtidos todas as vezes que o campo _input_ mudasse. O que você espera é que este comportamento aconteça explicitamente em um tratamento do evento `onClick()`.
 
-Uma alternativa seria o uso de um _debounce_ (um técnica de “atraso” na ação) na função `onChange()`, evitando a necessidade do botão, mas isto adicionaria mais complexidade no momento e, talvez, não teria o efeito desejado. Vamos manter as coisas simples, sem o _debounce_ por enquanto.
+Uma alternativa seria o uso de um _debounce_ (um técnica de "atraso" na ação) na função `onChange()`, evitando a necessidade do botão, mas isto adicionaria mais complexidade no momento e, talvez, não teria o efeito desejado. Vamos manter as coisas simples, sem o _debounce_ por enquanto.
 
 Primeiramente, passe o método `onSearchSubmit()` ao seu componente `Search`.
 
@@ -570,7 +570,7 @@ const Search = ({
 # leanpub-end-insert
 ~~~~~~~~
 
-Em _Table_, você pode remover a funcionalidade _filter_, porque não mais existirá um filtro (busca) do lado do cliente. Não esqueça de remover a função `isSearched()` também, uma vez que não será mais utilizada. O resultado virá diretamente da API Hacker News, depois que o botão _”Search”_ for clicado. 
+Em _Table_, você pode remover a funcionalidade _filter_, porque não mais existirá um filtro (busca) do lado do cliente. Não esqueça de remover a função `isSearched()` também, uma vez que não será mais utilizada. O resultado virá diretamente da API Hacker News, depois que o botão _"Search"_ for clicado. 
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -748,13 +748,13 @@ setSearchTopStories(result) {
 
 Mais coisas acontecem em `setSearchTopStories()`. Primeiro, você recebe, no resultado, os itens (ou _hits_) e a página.
 
-Segundo, você checa se já existiam _hits_ de consultas anteriores. Quando a página é 0, significa que é uma nova consulta feita em `componentDidMount()` ou `onSearchSubmit()`. O valor em _hits_ é vazio. Mas, quando você clica no botão “More”, visando obter mais dados paginados, o valor de _page_ não é 0, mas o da próxima página. Os itens do resultado anterior já se encontram armazenados em seu estado e, desta forma, podem ser utilizados.
+Segundo, você checa se já existiam _hits_ de consultas anteriores. Quando a página é 0, significa que é uma nova consulta feita em `componentDidMount()` ou `onSearchSubmit()`. O valor em _hits_ é vazio. Mas, quando você clica no botão "More", visando obter mais dados paginados, o valor de _page_ não é 0, mas o da próxima página. Os itens do resultado anterior já se encontram armazenados em seu estado e, desta forma, podem ser utilizados.
 
 Terceiro, você não deseja sobrescrever o valor antigo em _hits_. Você pode fundi-lo com os novos, da requisição mais recente à API. A junção das duas listas pode ser feita através do operador _spread_ de _arrays_ em JavaScript ES6.
 
 Quarto, você define o novo estado local do componente, com os _hits_ combinados e o valor da página.
 
-Um último ajuste deve ser feito. Quando você testa o botão “More”, ele obtém apenas alguns itens da lista. A URL da API pode ser editada para obter mais itens a cada requisição. Novamente, você pode adicionar mais constantes aqui.
+Um último ajuste deve ser feito. Quando você testa o botão "More", ele obtém apenas alguns itens da lista. A URL da API pode ser editada para obter mais itens a cada requisição. Novamente, você pode adicionar mais constantes aqui.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -786,7 +786,7 @@ fetchSearchTopStories(searchTerm, page = 0) {
 }
 ~~~~~~~~
 
-Assim, a requisição à API Hacker News irá obter mais itens de uma vez, em relação ao que fazia antes. Como você pode ver, uma API tão poderosa como esta lhe dá uma rica variedade de alternativas para realizar experimentos com dados do mundo real. Faça uso dela quando estiver aprendendo algo novo, de um jeito mais excitante. Veja [como eu aprendi sobre os “poderes” que APIs provêem][25] quando se está aprendendo uma nova linguagem de programação ou biblioteca.
+Assim, a requisição à API Hacker News irá obter mais itens de uma vez, em relação ao que fazia antes. Como você pode ver, uma API tão poderosa como esta lhe dá uma rica variedade de alternativas para realizar experimentos com dados do mundo real. Faça uso dela quando estiver aprendendo algo novo, de um jeito mais excitante. Veja [como eu aprendi sobre os "poderes" que APIs provêem][25] quando se está aprendendo uma nova linguagem de programação ou biblioteca.
 
 ### Exercícios:
 
@@ -795,7 +795,7 @@ Assim, a requisição à API Hacker News irá obter mais itens de uma vez, em re
 
 ## _Cache_ do Cliente
 
-Cada _submit_ de consulta faz uma requisição à API Hacker News. Você poderia buscar por “redux”, depois por “react” e, eventualmente, “redux” novamente. No total, 3 requisições. Mas, você buscou por “redux” duas vezes e, em ambas, todo o caminho de requisição assíncrona para obter dados foi percorrido. Em uma implementação de _cache_ do lado do cliente, você armazena cada resultado. Quando uma requisição à API é feita, ela antes checa se o resultado já existe. Se sim, o _cache_ é utilizado. Caso contrário, o processo completo é seguido.
+Cada _submit_ de consulta faz uma requisição à API Hacker News. Você poderia buscar por "redux", depois por "react" e, eventualmente, "redux" novamente. No total, 3 requisições. Mas, você buscou por "redux" duas vezes e, em ambas, todo o caminho de requisição assíncrona para obter dados foi percorrido. Em uma implementação de _cache_ do lado do cliente, você armazena cada resultado. Quando uma requisição à API é feita, ela antes checa se o resultado já existe. Se sim, o _cache_ é utilizado. Caso contrário, o processo completo é seguido.
 
 A fim de ter um _cache_ no cliente para cada resultado, você terá que armazenar múltiplos `results` ao invés de um só, no estado interno do seu componente. O objeto _results_ consistirá em um mapa com o termo de busca como chave e o _result_ como valor. Cada resultado da API será salvo com este conjunto chave-valor.
 
@@ -809,7 +809,7 @@ result: {
 }
 ~~~~~~~~
 
-Imaginando que você tenha feito duas requisições, uma para o termo “redux” e outra para “react”, o objeto _results_ deverá se parecer com o seguinte:
+Imaginando que você tenha feito duas requisições, uma para o termo "redux" e outra para "react", o objeto _results_ deverá se parecer com o seguinte:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -985,7 +985,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Uma vez que você definiu uma lista vazia como padrão, quando não existe resultado para a `searchKey`, você pode poupar a renderização condicional no componente _Table_. Você também irá precisar passar a `searchKey`, ao invés do `searchTerm`, para o botão “More”. Caso contrário, sua consulta paginada dependerá deste último que, como já falamos, varia de uma forma instável. O `searchTerm` será utilizado com o campo _input_ do componente “Search”.
+Uma vez que você definiu uma lista vazia como padrão, quando não existe resultado para a `searchKey`, você pode poupar a renderização condicional no componente _Table_. Você também irá precisar passar a `searchKey`, ao invés do `searchTerm`, para o botão "More". Caso contrário, sua consulta paginada dependerá deste último que, como já falamos, varia de uma forma instável. O `searchTerm` será utilizado com o campo _input_ do componente "Search".
 
 A funcionalidade de consulta deve voltar a funcionar. Ela armazena localmente todos os resultados da API Hacker News.
 
@@ -1013,7 +1013,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-Pronto. O botão “Dismiss” deverá voltar a funcionar.
+Pronto. O botão "Dismiss" deverá voltar a funcionar.
 
 Entretanto, não existe nada que impeça a aplicação de fazer uma requisição à API a cada _submit_ de busca. Mesmo que já exista um resultado, a requisição será feita assim mesmo. Precisamos completar o comportamento da funcionalidade de _cache_, que já mantém os resultados, mas ainda não toma proveito deles. Resumindo, o último passo é: evitar uma nova requisição à API, caso já exista um resultado disponível em _cache_.
 
@@ -1065,7 +1065,7 @@ Agora, seu cliente fará apenas uma requisição à API, quando você buscar pel
 
 ## Tratamento de Erros
 
-Tudo está pronto para que você interaja com a API do Hacker News. Você até mesmo introduziu um jeito muito elegante de manter _cache_ dos seus resultados e implementou paginação para obter listas de infinitos resultados de discussões da API. Mas, ainda falta uma peça no quebra-cabeças. Infelizmente, uma peça que geralmente tem faltado em aplicações desenvolvidas nos dias de hoje: tratamento de erros. É muito fácil implementar o “caminho feliz” sem a preocupação sobre erros que poderiam ocorrer no processo.
+Tudo está pronto para que você interaja com a API do Hacker News. Você até mesmo introduziu um jeito muito elegante de manter _cache_ dos seus resultados e implementou paginação para obter listas de infinitos resultados de discussões da API. Mas, ainda falta uma peça no quebra-cabeças. Infelizmente, uma peça que geralmente tem faltado em aplicações desenvolvidas nos dias de hoje: tratamento de erros. É muito fácil implementar o "caminho feliz" sem a preocupação sobre erros que poderiam ocorrer no processo.
 
 Neste capítulo, você irá incluir uma solução eficiente de tratamento de erros em sua aplicação, para o caso de problemas em uma requisição à API. Você já aprendeu tudo sobre as partes necessárias para adicionar tratamento de erros em React: estado local e renderização condicional. Basicamente, um erro é apenas mais um estado em React. Quando ele ocorre, você irá guardá-lo em um estado local e exibi-lo através de uma renderização condicional em seu componente. E só. Vamos implementar este tratamento no componente _App_, porque ele é o componente utilizado na consulta de dados da API. Primeiro, você tem que incluir o estado local `error`, inicializado com _null_, para receber um objeto em caso de erro.
 
@@ -1228,7 +1228,7 @@ Uma solução alternativa é substituir o _fetch_ por uma biblioteca mais estáv
 
 Vejamos como _fetch_ pode ser substituído por _axios_. Tudo que foi falado até então parece ser mais difícil do que realmente é. Primeiramente, você tem que instalar a biblioteca _axios_ via linha de comando:
 
-{title=“Linha de Comando“,lang="text"}
+{title="Linha de Comando",lang="text"}
   npm install --save axios
 
 Segundo, você irá importar _axios_ no seu componente _App_:

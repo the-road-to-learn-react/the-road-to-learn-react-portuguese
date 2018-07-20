@@ -72,7 +72,7 @@ Este livro é _open source_ e deveria permitir que qualquer um aprenda React. Co
 
 **Posso ajudar a melhorar o livro?** Sim, eu adoraria ouvir seu _feedback_. Você pode simplesmente abrir um _issue_ no [GitHub][19], que pode ser uma melhoria técnica ou textual. Não sou falante nativo do inglês (idioma original do livro) e, por isso, qualquer ajuda é bem vinda. Você também pode abrir _pull requests_ na página do GitHub.
 
-**Existe alguma garantia do tipo “seu dinheiro de volta”?** Sim, existe a garantia de 100% do dinheiro de volta nos dois primeiros meses, caso ache que o livro não lhe serve. Por favor, entre em contato comigo (Robin Wieruch) para solicitar o reembolso.
+**Existe alguma garantia do tipo "seu dinheiro de volta"?** Sim, existe a garantia de 100% do dinheiro de volta nos dois primeiros meses, caso ache que o livro não lhe serve. Por favor, entre em contato comigo (Robin Wieruch) para solicitar o reembolso.
 
 **Posso apoiar o projeto?** Se você acredita no conteúdo que eu crio, pode [me apoiar][20]. Fico grato também se você divulgar este livro e adoraria ter você como meu [Patron no Patreon][21].
 

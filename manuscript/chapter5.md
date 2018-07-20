@@ -275,7 +275,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Inicialmente, o componente _Loading_ irá aparecer quando você inicia a sua aplicação, porque você faz uma requisição em `componentDidMount()`. Não existe componente _Table_, porque a lista está vazia. Quando uma resposta é retornada da chamada à API Hacker News, o resultado é mostrado, o estado de _loading_ é alterado para _false_ e o componente _Loading_ desaparece. No lugar dele, o botão “More” (que obtém mais dados) aparece. Uma vez que você obtém mais dados, o botão irá desaparecer novamente e _Loading_ irá ser exibido.
+Inicialmente, o componente _Loading_ irá aparecer quando você inicia a sua aplicação, porque você faz uma requisição em `componentDidMount()`. Não existe componente _Table_, porque a lista está vazia. Quando uma resposta é retornada da chamada à API Hacker News, o resultado é mostrado, o estado de _loading_ é alterado para _false_ e o componente _Loading_ desaparece. No lugar dele, o botão "More" (que obtém mais dados) aparece. Uma vez que você obtém mais dados, o botão irá desaparecer novamente e _Loading_ irá ser exibido.
 
 ### Exercícios:
 
@@ -346,7 +346,7 @@ const withLoading = (Component) => ({ isLoading, ...rest }) =>
 
 Note que agora uma propriedade é extraída explicitamente do objeto, mantendo as outras agrupadas. Isto também funcionaria para múltiplas propriedades, inclusive. Você já deve ter lido mais à respeito de [destructuring][5].
 
-Você agora pode usar o HOC em seu código JSX, no caso de exibir ou o botão “More”, ou o componente _Loading_. Este último já foi encapsulado no HOC, mas falta o componente de entrada. No caso de uso de exibir um componente _Button_ ou um componente _Loading_, _Button_ é o componente de entrada do HOC. A saída aprimorada é um componente _ButtonWithLoading_.
+Você agora pode usar o HOC em seu código JSX, no caso de exibir ou o botão "More", ou o componente _Loading_. Este último já foi encapsulado no HOC, mas falta o componente de entrada. No caso de uso de exibir um componente _Button_ ou um componente _Loading_, _Button_ é o componente de entrada do HOC. A saída aprimorada é um componente _ButtonWithLoading_.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -439,7 +439,7 @@ Você já implementou interações de busca do lado do cliente e do servidor. Um
 
 Seria possível escrever sua própria função de ordenação, mas eu pessoalmente prefiro usar uma biblioteca utilitária para tais casos. [Lodash][8] é uma dessas bibliotecas, mas você pode utilizar qualquer uma que lhe convir. Vamos instalar _Lodash_ e usá-la para a funcionalidade de ordenação.
 
-{title=“Linha de Comando“,lang="text"}
+{title="Linha de Comando",lang="text"}
 ~~~~~~~~
 npm install lodash
 ~~~~~~~~

@@ -158,7 +158,7 @@ Por esta razão, o Facebook introduziu *create-react-app* como uma solução de 
 
 ## _Setup_ sem nenhuma configuração
 
-Em “The Road to learn React“, você usará [create-react-app][18] para montar a estrutura inicial da sua aplicação. Trata-se de um _kit_ de inicialização sem necessidade de configuração, de uso opcional, introduzido pelo Facebook em 2016. Cerca de [96% dos usuários de React recomendam-no para iniciantes][19]. Com o *create-react-app*, a configuração e a instrumentação se desenvolvem automaticamente em segundo plano, enquanto o seu foco permanece na implementação da aplicação.
+Em "The Road to learn React", você usará [create-react-app][18] para montar a estrutura inicial da sua aplicação. Trata-se de um _kit_ de inicialização sem necessidade de configuração, de uso opcional, introduzido pelo Facebook em 2016. Cerca de [96% dos usuários de React recomendam-no para iniciantes][19]. Com o *create-react-app*, a configuração e a instrumentação se desenvolvem automaticamente em segundo plano, enquanto o seu foco permanece na implementação da aplicação.
 
 Para começar, será necessário fazer a instalação global do pacote. Assim, ele sempre estará disponível na linha de comando para criar suas aplicações React.
 

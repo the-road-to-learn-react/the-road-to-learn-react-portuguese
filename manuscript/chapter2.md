@@ -1078,7 +1078,7 @@ console.log(userOne, userTwo, userThree);
 // output: Robin Andrew Dan
 ~~~~~~~~
 
-Talvez você tenha notado que o objeto do estado local do componente App pode ser “desestruturado” da mesma forma (iremos nos alternar entre “desestruturação” e o original “_destructuring_” no texto, uma vez que é importante saber o termo amplamente conhecido na comunidade). A linha de código com _filter_ e _map_ ficará menor.
+Talvez você tenha notado que o objeto do estado local do componente App pode ser "desestruturado" da mesma forma (iremos nos alternar entre "desestruturação" e o original "_destructuring_" no texto, uma vez que é importante saber o termo amplamente conhecido na comunidade). A linha de código com _filter_ e _map_ ficará menor.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1120,11 +1120,11 @@ Uma vez que o livro usa JavaScript ES6 a maior parte do tempo, é aconselhável 
 
 Você já tomou conhecimento do fluxo unidirecional de dados em React. A mesma lógica se aplica para o campo de _input_, que atualiza o estado local com o `searchTerm` para filtrar a lista. Quando o estado é alterado, o método  `render()` é executado novamente e utiliza o `searchTerm` mais recente do estado local para aplicar a condição de filtragem.
 
-Mas, não teríamos esquecido de alguma coisa no elemento _input_? A _tag_ HTML “input” possui um atributo `value`. Este, por sua vez, geralmente contém o valor que é mostrado no campo. Neste caso, a propriedade `searchTerm`. Acho que ficou a impressão de que não precisamos disso em React.
+Mas, não teríamos esquecido de alguma coisa no elemento _input_? A _tag_ HTML "input" possui um atributo `value`. Este, por sua vez, geralmente contém o valor que é mostrado no campo. Neste caso, a propriedade `searchTerm`. Acho que ficou a impressão de que não precisamos disso em React.
 
 Errado. Elementos de _forms_ como `<input>`, `<textarea>` e `<select>` possuem seu próprio estado em HTML puro. Eles modificam o valor internamente quando alguém de fora do componente o muda. Em React, isso é chamado de um **componente não controlado**, porque ele gerencia seu próprio estado. Você deve garantir-se de que os transformou em **componentes controlados**.
 
-Mas, como fazê-lo? Você só precisa definir o atributo “_value_” de um campo de _input_. O valor aqui, neste exemplo, já está salvo na propriedade `searchTerm` do estado do componente. Por que não acessá-lo, então?
+Mas, como fazê-lo? Você só precisa definir o atributo "_value_" de um campo de _input_. O valor aqui, neste exemplo, já está salvo na propriedade `searchTerm` do estado do componente. Por que não acessá-lo, então?
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1346,7 +1346,7 @@ class Search extends Component {
 }
 ~~~~~~~~
 
-O texto “Search” deverá estar visível próximo do campo de _input_ agora. Quando você utilizar o componente _Search_ em algum outro lugar, você poderá escolher um texto diferente, se assim quiser. No fim das contas, não é só texto que pode ser passado assim. Você pode enviar um elemento (e árvores de elementos, encapsuladas por outros componentes) como _children_. Esta propriedade permite entrelaçar componentes.
+O texto "Search" deverá estar visível próximo do campo de _input_ agora. Quando você utilizar o componente _Search_ em algum outro lugar, você poderá escolher um texto diferente, se assim quiser. No fim das contas, não é só texto que pode ser passado assim. Você pode enviar um elemento (e árvores de elementos, encapsuladas por outros componentes) como _children_. Esta propriedade permite entrelaçar componentes.
 
 ### Exercícios:
 
@@ -1381,7 +1381,7 @@ class Button extends Component {
 }
 ~~~~~~~~
 
-Pode parecer redundante declarar um componente como este. Você irá utilizar um componente `Button` ao invés do elemento `button`, poupando apenas o `type="button"`. Exceto por este atributo de tipo, quando você decide usar o componente `Button`, você precisará definir todo o resto. Mas, você tem que pensar em termos de um investimento de longo prazo. Imagine que possui vários botões em sua aplicação, quer mudar um atributo, estilo ou comportamento do botão. Sem o componente recém criado, você teria que manualmente refatorar cada botão. O componente _Button_ garante que existirá uma referência única, um _Button_ para refatorar todos os botões de uma só vez. “_One Button to rule them all_.”
+Pode parecer redundante declarar um componente como este. Você irá utilizar um componente `Button` ao invés do elemento `button`, poupando apenas o `type="button"`. Exceto por este atributo de tipo, quando você decide usar o componente `Button`, você precisará definir todo o resto. Mas, você tem que pensar em termos de um investimento de longo prazo. Imagine que possui vários botões em sua aplicação, quer mudar um atributo, estilo ou comportamento do botão. Sem o componente recém criado, você teria que manualmente refatorar cada botão. O componente _Button_ garante que existirá uma referência única, um _Button_ para refatorar todos os botões de uma só vez. "_One Button to rule them all_."
 
 Uma vez que você já tem um elemento de botão, substitua-o pelo componente _Button_. Note que ele omite o atributo _type_, já especificado dentro do próprio componente.
 
