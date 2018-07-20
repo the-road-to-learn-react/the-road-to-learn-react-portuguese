@@ -1,6 +1,6 @@
 # Familiarizando-se com uma API
 
-Chegou o momento de "melar as mãos" com uma API, uma vez que é entediaste lidar sempre com dados estáticos.
+Chegou o momento de "melar as mãos" com uma API, uma vez que é entediante lidar sempre com dados estáticos.
 
 Se você não está familiarizado, lhe encorajo a [ler a minha jornada onde tomei conhecimento de APIs][1].
 
@@ -59,7 +59,7 @@ No fim das contas, você não precisa conhecer todos esses métodos desde o come
 
 Os métodos de ciclo de vida `constructor()` e `render()` já foram utilizados por você, uma vez que são comumente utilizados em componentes de classe ES6. O método `render()` é, na verdade, obrigatório, caso contrário você não conseguiria retornar uma instância do componente.
 
-Existe ainda um outro método de ciclo de vida em componentes React: `componentDidCatch(error, info)`. Ele foi introduzido no [React 16][5] e é utilizado para capturar erros em componentes. No nosso contexto, a lista de dados da sua aplicação está funcionando muito bem. Mas, pode existir o caso da lista no estado local ser definida, por acidente, com o valor nulo (por exemplo, quando os dados são obtidos de uma API externa, mas a requisição falha e você define o valor do estado local para `null`).  Ocorrido esta situação, não será mais possível filtrar ou mapear a lista, porque ela tem valor `null` ao invés de ser uma lista vazia. O componente quebraria e a aplicação inteira poderia falhar. Agora, com o uso do `componentDidCatch()`, você capturar o erro, armazená-lo no estado local e, opcionalmente, exibir uma mensagem para o usuário informando que algo de errado ocorreu.
+Existe ainda um outro método de ciclo de vida em componentes React: `componentDidCatch(error, info)`. Ele foi introduzido no [React 16][5] e é utilizado para capturar erros em componentes. No nosso contexto, a lista de dados da sua aplicação está funcionando muito bem. Mas, pode existir o caso da lista no estado local ser definida, por acidente, com o valor nulo (por exemplo, quando os dados são obtidos de uma API externa, mas a requisição falha e você define o valor do estado local para `null`).  Ocorrido esta situação, não será mais possível filtrar ou mapear a lista, porque ela tem valor `null` ao invés de ser uma lista vazia. O componente quebraria e a aplicação inteira poderia falhar. Agora, com o uso do `componentDidCatch()`, você pode capturar o erro, armazená-lo no estado local e, opcionalmente, exibir uma mensagem para o usuário informando que algo de errado ocorreu.
 
 ### Exercícios:
 
@@ -194,7 +194,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Vamos recapitular o que acontece durante o ciclo de vida do componente. Ele é inicializado pelo seu construtor. Depois, ele é renderizado pela primeira vez. Mas, você evitou que ele tentasse exibir qualquer coisa, porque `result`, no estado local, é _null_. Sim, é permitido a um componente retornar o valor _null_ para que nada seja exibido. Então, o método `componentDidMount` é executado. Neste método, você obtém os dados da API do Hacker News de forma assíncrona. Uma vez que os dados chegam, o estado interno do componente é alterado por `setSearchTopStories()`. Por causa disto, o ciclo de vida de atualização entra em cena. O componente executa o método `render()` novamente, mas desta vez com o resultado poupado no estado interno. O componente atual e, consequentemente, o componente _Table_ e seu conteúdo são renderizados novamente.
+Vamos recapitular o que acontece durante o ciclo de vida do componente. Ele é inicializado pelo seu construtor. Depois, ele é renderizado pela primeira vez. Mas, você evitou que ele tentasse exibir qualquer coisa, porque `result`, no estado local, é _null_. Sim, é permitido a um componente retornar o valor _null_ para que nada seja exibido. Então, o método `componentDidMount` é executado. Neste método, você obtém os dados da API do Hacker News de forma assíncrona. Uma vez que os dados chegam, o estado interno do componente é alterado por `setSearchTopStories()`. Por causa disto, o ciclo de vida de atualização entra em cena. O componente executa o método `render()` novamente, mas desta vez com o resultado populado no estado interno. O componente atual e, consequentemente, o componente _Table_ e seu conteúdo são renderizados novamente.
 
 Você utilizou a função _fetch_ que é suportada pela maioria dos _browsers_ para realizar uma requisição assíncrona para uma API. A configuração do _create-react-app_ assegura que ela é suportada por todos eles. Existem, todavia, pacotes _node_ de terceiros que podem ser utilizados como substitutos à API nativa _fetch_: [superagent][11] e [axios][12].
 
@@ -720,7 +720,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Além disso, no seu método `render()`, você deverá assegurar, por padrão, a página `0` quando ainda não existir nenhum resultado. Lembre-se que o método `render()`é chamado antes que os dados sejam, de forma assíncrona, obtidos em `componentDidMount()`.
+Além disso, no seu método `render()`, você deverá assegurar, por padrão, a página `0` quando ainda não existir nenhum resultado. Lembre-se que o método `render()` é chamado antes que os dados sejam, de forma assíncrona, obtidos em `componentDidMount()`.
 
 Falta ainda um passo. Você obteve sua próxima página de dados, mas ela irá sobrescrever os dados da página anterior. Seria ideal concatenar as duas listas (a antiga e a nova) do estado local e do novo objeto resultante. Vamos ajustar a funcionalidade, para que os novos dados sejam adicionados, ao invés de sobrescritos.
 
