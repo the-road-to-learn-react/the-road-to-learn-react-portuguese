@@ -74,74 +74,74 @@ Você está preparado para obter dados da API Hacker News. Um método de ciclo d
 Antes que possamos fazê-lo, vamos configurar as constantes de URL e parâmetros _default_, para decompor a requisição em pedaços menores.
 
 {title="src/App.js",lang=javascript}
-  import React, { Component } from 'react';
-  import './App.css';
-  
-  # leanpub-start-insert
-  const DEFAULT_QUERY = 'redux';
-  
-  const PATH_BASE = 'https://hn.algolia.com/api/v1';
-  const PATH_SEARCH = '/search';
-  const PARAM_SEARCH = 'query=';
-  # leanpub-end-insert
-  
-  ...
+	import React, { Component } from 'react';
+	import './App.css';
+	
+	# leanpub-start-insert
+	const DEFAULT_QUERY = 'redux';
+	
+	const PATH_BASE = 'https://hn.algolia.com/api/v1';
+	const PATH_SEARCH = '/search';
+	const PARAM_SEARCH = 'query=';
+	# leanpub-end-insert
+	
+	...
 
 Em JavaScript ES6, você pode utilizar [template strings][9] para concatenar _strings_. Você fará isso aqui, para combinar sua URL para o _endpoint_ da API.
 
 {title="Code Playground",lang="javascript"}
-  // ES6
-  const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${DEFAULT_QUERY}`;
-  
-  // ES5
-  var url = PATH_BASE + PATH_SEARCH + '?' + PARAM_SEARCH + DEFAULT_QUERY;
-  
-  console.log(url);
-  // output: https://hn.algolia.com/api/v1/search?query=redux
+	// ES6
+	const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${DEFAULT_QUERY}`;
+	
+	// ES5
+	var url = PATH_BASE + PATH_SEARCH + '?' + PARAM_SEARCH + DEFAULT_QUERY;
+	
+	console.log(url);
+	// output: https://hn.algolia.com/api/v1/search?query=redux
 
 Este formato irá manter a composição da sua URL flexível no futuro.
 
 Agora, vejamos a requisição à API, onde você usará esta URL. O processo inteiro de obtenção dos dados será apresentado de uma só vez, mas cada passo será explicado posteriormente.
 
 {title="src/App.js",lang=javascript}
-  ...
-  
-  class App extends Component {
-  
-    constructor(props) {
-      super(props);
-  
-      this.state = {
-  # leanpub-start-insert
-        result: null,
-        searchTerm: DEFAULT_QUERY,
-  # leanpub-end-insert
-      };
-  
-  # leanpub-start-insert
-      this.setSearchTopStories = this.setSearchTopStories.bind(this);
-  # leanpub-end-insert
-      this.onSearchChange = this.onSearchChange.bind(this);
-      this.onDismiss = this.onDismiss.bind(this);
-    }
-  
-  # leanpub-start-insert
-    setSearchTopStories(result) {
-      this.setState({ result });
-    }
-  
-    componentDidMount() {
-      const { searchTerm } = this.state;
-  
-      fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`)
-        .then(response => response.json())
-        .then(result => this.setSearchTopStories(result))
-        .catch(error => error);
-    }
-  # leanpub-end-insert
-  
-    ...
-  }
+	...
+	
+	class App extends Component {
+	
+	  constructor(props) {
+	    super(props);
+	
+	    this.state = {
+	# leanpub-start-insert
+	      result: null,
+	      searchTerm: DEFAULT_QUERY,
+	# leanpub-end-insert
+	    };
+	
+	# leanpub-start-insert
+	    this.setSearchTopStories = this.setSearchTopStories.bind(this);
+	# leanpub-end-insert
+	    this.onSearchChange = this.onSearchChange.bind(this);
+	    this.onDismiss = this.onDismiss.bind(this);
+	  }
+	
+	# leanpub-start-insert
+	  setSearchTopStories(result) {
+	    this.setState({ result });
+	  }
+	
+	  componentDidMount() {
+	    const { searchTerm } = this.state;
+	
+	    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`)
+	      .then(response => response.json())
+	      .then(result => this.setSearchTopStories(result))
+	      .catch(error => error);
+	  }
+	# leanpub-end-insert
+	
+	  ...
+	}
 
 Um monte de coisas aconteceu neste código. Eu até pensei em quebrá-lo em pedaços menores. Mas, de novo, ficaria difícil de compreender as relações entre as partes. Deixe-me explicar cada passo em detalhes.
 
@@ -160,31 +160,31 @@ Você agora consegue utilizar os dados obtidos ao invés da amostra inicial. Con
 No passo seguinte, você irá renderizar o valor em _result_. Iremos evitar que qualquer coisa seja renderizada, retornando _null_ quando não existir um resultado.  Uma vez que a requisição à API foi bem sucedida o resultado é salvo em _state_ e o componente _App_ será re-renderizado, desta vez com o estado atualizado.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    ...
-  
-    render() {
-  # leanpub-start-insert
-      const { searchTerm, result } = this.state;
-  
-      if (!result) { return null; }
-  
-  # leanpub-end-insert
-      return (
-        <div className="page">
-          ...
-          <Table
-  # leanpub-start-insert
-            list={result.hits}
-  # leanpub-end-insert
-            pattern={searchTerm}
-            onDismiss={this.onDismiss}
-          />
-        </div>
-      );
-    }
-  }
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	# leanpub-start-insert
+	    const { searchTerm, result } = this.state;
+	
+	    if (!result) { return null; }
+	
+	# leanpub-end-insert
+	    return (
+	      <div className="page">
+	        ...
+	        <Table
+	# leanpub-start-insert
+	          list={result.hits}
+	# leanpub-end-insert
+	          pattern={searchTerm}
+	          onDismiss={this.onDismiss}
+	        />
+	      </div>
+	    );
+	  }
+	}
 
 Vamos recapitular o que acontece durante o ciclo de vida do componente. Ele é inicializado pelo seu construtor. Depois, ele é renderizado pela primeira vez. Mas, você evitou que ele tentasse exibir qualquer coisa, porque `result`, no estado local, é _null_. Sim, é permitido a um componente retornar o valor _null_ para que nada seja exibido. Então, o método `componentDidMount` é executado. Neste método, você obtém os dados da API do Hacker News de forma assíncrona. Uma vez que os dados chegam, o estado interno do componente é alterado por `setSearchTopStories()`. Por causa disto, o ciclo de vida de atualização entra em cena. O componente executa o método `render()` novamente, mas desta vez com o resultado poupado no estado interno. O componente atual e, consequentemente, o componente _Table_ e seu conteúdo são renderizados novamente.
 
@@ -205,101 +205,101 @@ De volta à sua aplicação: A lista de resultados deve ser visível agora, Entr
 O botão “_Dismiss_” não funciona, porque o método `onDismiss()` não conhece o objeto do resultado exibido. Ele ainda o trata como se fosse a lista da amostra que era armazenada no estado local. Vamos mudar a função, para que opere sobre o objeto ao invés da lista.
 
 {title="src/App.js",lang=javascript}
-  onDismiss(id) {
-    const isNotId = item => item.objectID !== id;
-  # leanpub-start-insert
-    const updatedHits = this.state.result.hits.filter(isNotId);
-    this.setState({
-      ...
-    });
-  # leanpub-end-insert
-  }
+	onDismiss(id) {
+	  const isNotId = item => item.objectID !== id;
+	# leanpub-start-insert
+	  const updatedHits = this.state.result.hits.filter(isNotId);
+	  this.setState({
+	    ...
+	  });
+	# leanpub-end-insert
+	}
 
 Mas  o que acontece no `setState()` agora? Infelizmente, o resultado é um objeto complexo. A lista de resultados (aqui chamados de _hits_) é apenas uma das múltiplas propriedades do objeto. Contudo, somente a lista é atualizada quando um item é removido e as outras propriedades devem permanecer as mesmas.
 
 Uma possível abordagem seria a de mudar os _hits_ no objeto _result_, como  demonstro abaixo. Mas, não será a que adotaremos.
 
 {title="Code Playground",lang="javascript"}
-  // não faça isso
-  this.state.result.hits = updatedHits;
+	// não faça isso
+	this.state.result.hits = updatedHits;
 
 React realmente abraça a imutabilidade de estruturas de dados. Sendo assim, você não deveria modificar diretamente um objeto. Uma abordagem melhor é a de gerar um novo objeto, baseado na informação que você tem. Nenhum dos objetos é realmente manipulado, você irá manter as estruturas de dados imutáveis, sempre retornando um novo objeto.
 
 Você pode usar `Object.assign()`, de JavaScript ES6, que recebe como primeiro argumento o objeto alvo. Todos os outros argumentos são objetos fontes de dados, que são combinados no objeto alvo que, por sua vez, pode ser um objeto vazio. A imutabilidade é preservada aqui, uma vez que nenhum dos objetos originais é modificado. Seria algo mais ou menos assim:
 
 {title="Code Playground",lang="javascript"}
-  const updatedHits = { hits: updatedHits };
-  const updatedResult = Object.assign({}, this.state.result, updatedHits);
+	const updatedHits = { hits: updatedHits };
+	const updatedResult = Object.assign({}, this.state.result, updatedHits);
 
 Quando objetos de origem possuírem propriedades de mesmo nome, as do objeto que aparecer primeiro como argumento serão sobrescritas por aquelas do que aparecer depois (sobrescritas no objeto de destino). Apliquemos o mesmo raciocínio para o método `onDismiss()`:
 
 {title="src/App.js",lang=javascript}
-  onDismiss(id) {
-    const isNotId = item => item.objectID !== id;
-    const updatedHits = this.state.result.hits.filter(isNotId);
-    this.setState({
-  # leanpub-start-insert
-      result: Object.assign({}, this.state.result, { hits: updatedHits })
-  # leanpub-end-insert
-    });
-  }
+	onDismiss(id) {
+	  const isNotId = item => item.objectID !== id;
+	  const updatedHits = this.state.result.hits.filter(isNotId);
+	  this.setState({
+	# leanpub-start-insert
+	    result: Object.assign({}, this.state.result, { hits: updatedHits })
+	# leanpub-end-insert
+	  });
+	}
 
 Esta poderia muito bem ser a solução. Mas, existe um jeito ainda mais simples, em JavaScript ES6 e _releases_ futuras. Gostaria de lhe introduzir o operador _spread_, que consiste apenas em “três pontos”: `...`. Quando utilizado, todos os valores de um array ou objeto são copiados para outro array ou objeto.
 
 Apesar de não precisar dele ainda, vamos examinar como funciona o operador _spread_ de um **array**.
 
 {title="Code Playground",lang="javascript"}
-  const userList = ['Robin', 'Andrew', 'Dan'];
-  const additionalUser = 'Jordan';
-  const allUsers = [ ...userList, additionalUser ];
-  
-  console.log(allUsers);
-  // saída: ['Robin', 'Andrew', 'Dan', 'Jordan']
+	const userList = ['Robin', 'Andrew', 'Dan'];
+	const additionalUser = 'Jordan';
+	const allUsers = [ ...userList, additionalUser ];
+	
+	console.log(allUsers);
+	// saída: ['Robin', 'Andrew', 'Dan', 'Jordan']
 
 A variável `allUsers` é um _array_ completamente novo. As outras variáveis `userList` e `additionalUser` permanecem as mesmas. Você poderia combinar até dois _arrays_ em um novo, da mesma forma.
 
 {title="Code Playground",lang="javascript"}
-  const oldUsers = ['Robin', 'Andrew'];
-  const newUsers = ['Dan', 'Jordan'];
-  const allUsers = [ ...oldUsers, ...newUsers ];
-  
-  console.log(allUsers);
-  // saída: ['Robin', 'Andrew', 'Dan', 'Jordan']
+	const oldUsers = ['Robin', 'Andrew'];
+	const newUsers = ['Dan', 'Jordan'];
+	const allUsers = [ ...oldUsers, ...newUsers ];
+	
+	console.log(allUsers);
+	// saída: ['Robin', 'Andrew', 'Dan', 'Jordan']
 
 Olhemos, agora, o mesmo operador _spread_ com objetos. Neste caso, não é JavaScript ES6, é apenas uma [proposta para a próxima versão de JavaScript][16]. Mas, mesmo assim, já utilizada pela comunidade React. Por causa disto, *create-react-app* incorporou essa funcionalidade em sua configuração.
 
 Basicamente, é o mesmo que o operador _spread_ de array, só que com objetos. Ele copia cada par chave-valor em um novo objeto.
 
 {title="Code Playground",lang="javascript"}
-  const userNames = { firstname: 'Robin', lastname: 'Wieruch' };
-  const age = 28;
-  const user = { ...userNames, age };
-  
-  console.log(user);
-  // saída: { firstname: 'Robin', lastname: 'Wieruch', age: 28 }
+	const userNames = { firstname: 'Robin', lastname: 'Wieruch' };
+	const age = 28;
+	const user = { ...userNames, age };
+	
+	console.log(user);
+	// saída: { firstname: 'Robin', lastname: 'Wieruch', age: 28 }
 
 Também a exemplo de _array_, múltiplos objetos podem ser combinados.
 
 {title="Code Playground",lang="javascript"}
-  const userNames = { firstname: 'Robin', lastname: 'Wieruch' };
-  const userAge = { age: 28 };
-  const user = { ...userNames, ...userAge };
-  
-  console.log(user);
-  // saída: { firstname: 'Robin', lastname: 'Wieruch', age: 28 }
+	const userNames = { firstname: 'Robin', lastname: 'Wieruch' };
+	const userAge = { age: 28 };
+	const user = { ...userNames, ...userAge };
+	
+	console.log(user);
+	// saída: { firstname: 'Robin', lastname: 'Wieruch', age: 28 }
 
 No fim das contas, ele pode ser utilizado no lugar de `Object.assign()`.
 
 {title="src/App.js",lang=javascript}
-  onDismiss(id) {
-    const isNotId = item => item.objectID !== id;
-    const updatedHits = this.state.result.hits.filter(isNotId);
-    this.setState({
-  # leanpub-start-insert
-      result: { ...this.state.result, hits: updatedHits }
-  # leanpub-end-insert
-    });
-  }
+	onDismiss(id) {
+	  const isNotId = item => item.objectID !== id;
+	  const updatedHits = this.state.result.hits.filter(isNotId);
+	  this.setState({
+	# leanpub-start-insert
+	    result: { ...this.state.result, hits: updatedHits }
+	# leanpub-end-insert
+	  });
+	}
 
 Agora, o botão “Dismiss” voltará a funcionar, uma vez que `onDismiss()` saberá como atualizar o objeto complexo em _result_, quando um item da lista for removido.
 
@@ -307,7 +307,7 @@ Agora, o botão “Dismiss” voltará a funcionar, uma vez que `onDismiss()` sa
 
 * Leia mais a respeito de [ES6 Object.assign()][17]
 * Leia mais sobre [o operador _spread_ de _array_ em ES6][18]
-   * O operador _spread_ de objetos é brevemente mencionado.
+	 * O operador _spread_ de objetos é brevemente mencionado.
 
 ## Renderização Condicional
 
@@ -318,60 +318,60 @@ O objeto `result` no estado interno do componente é, inicialmente, `null`. Até
 Mas, vamos dar um passo adiante. Faz mais sentido envolver o componente _Table_, que é um componente que depende de `result`, em uma condição independente de renderização. Todo o resto deve ser exibido, mesmo que ainda não haja nada em `result`. Você pode simplesmente usar um operador ternário em seu código JSX.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    ...
-  
-    render() {
-  # leanpub-start-insert
-      const { searchTerm, result } = this.state;
-  # leanpub-end-insert
-      return (
-        <div className="page">
-          <div className="interactions">
-            <Search
-              value={searchTerm}
-              onChange={this.onSearchChange}
-            >
-              Search
-            </Search>
-          </div>
-  # leanpub-start-insert
-          { result
-            ? <Table
-              list={result.hits}
-              pattern={searchTerm}
-              onDismiss={this.onDismiss}
-            />
-            : null
-          }
-  # leanpub-end-insert
-        </div>
-      );
-    }
-  }
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	# leanpub-start-insert
+	    const { searchTerm, result } = this.state;
+	# leanpub-end-insert
+	    return (
+	      <div className="page">
+	        <div className="interactions">
+	          <Search
+	            value={searchTerm}
+	            onChange={this.onSearchChange}
+	          >
+	            Search
+	          </Search>
+	        </div>
+	# leanpub-start-insert
+	        { result
+	          ? <Table
+	            list={result.hits}
+	            pattern={searchTerm}
+	            onDismiss={this.onDismiss}
+	          />
+	          : null
+	        }
+	# leanpub-end-insert
+	      </div>
+	    );
+	  }
+	}
 
 Esta é sua segunda opção para expressar uma renderização condicional. Uma terceira opção é o operador lógico `&&`. Em JavaScript, um `true && 'Hello World'` sempre resulta em ‘Hello World’. Um `false && 'Hello World'` sempre resulta em _false_.
 
 {title="Code Playground",lang="javascript"}
-  const result = true && 'Hello World';
-  console.log(result);
-  // output: Hello World
-  
-  const result = false && 'Hello World';
-  console.log(result);
-  // output: false
+	const result = true && 'Hello World';
+	console.log(result);
+	// output: Hello World
+	
+	const result = false && 'Hello World';
+	console.log(result);
+	// output: false
 
 Em React, você pode tomar proveito deste comportamento. Se a condição é verdadeira, a expressão após o operador lógico `&&` será a saída. Se a condição é falsa, React ignora e descarta a expressão. Isso pode ser aplicado no caso da renderização condicional de _Table_, porque o retorno será _Table_ ou nada.
 
 {title="src/App.js",lang=javascript}
-  { result &&
-    <Table
-      list={result.hits}
-      pattern={searchTerm}
-      onDismiss={this.onDismiss}
-    />
-  }
+	{ result &&
+	  <Table
+	    list={result.hits}
+	    pattern={searchTerm}
+	    onDismiss={this.onDismiss}
+	  />
+	}
 
 Estas foram algumas abordagens de como implementar a renderização condicional em React. Você poderá ler [mais alternativas nesta exaustiva lista de exemplos de renderização condicional][19]. Você irá conhecer seus diferentes casos de uso e quando aplicá-los.
 
@@ -389,86 +389,86 @@ Atualmente, quando você usa o componente _Search_ com o seu campo _input_, voc�
 Você pode definir um método `onSearchSubmit()` no seu componente _App_, que obtém resultados da API do Hacker News quando se está executando uma busca no componente _Search_.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    constructor(props) {
-      super(props);
-  
-      this.state = {
-        result: null,
-        searchTerm: DEFAULT_QUERY,
-      };
-  
-      this.setSearchTopStories = this.setSearchTopStories.bind(this);
-      this.onSearchChange = this.onSearchChange.bind(this);
-  # leanpub-start-insert
-      this.onSearchSubmit = this.onSearchSubmit.bind(this);
-  # leanpub-end-insert
-      this.onDismiss = this.onDismiss.bind(this);
-    }
-  
-    ...
-  
-  # leanpub-start-insert
-    onSearchSubmit() {
-      const { searchTerm } = this.state;
-    }
-  # leanpub-end-insert
-  
-    ...
-  }
+	class App extends Component {
+	
+	  constructor(props) {
+	    super(props);
+	
+	    this.state = {
+	      result: null,
+	      searchTerm: DEFAULT_QUERY,
+	    };
+	
+	    this.setSearchTopStories = this.setSearchTopStories.bind(this);
+	    this.onSearchChange = this.onSearchChange.bind(this);
+	# leanpub-start-insert
+	    this.onSearchSubmit = this.onSearchSubmit.bind(this);
+	# leanpub-end-insert
+	    this.onDismiss = this.onDismiss.bind(this);
+	  }
+	
+	  ...
+	
+	# leanpub-start-insert
+	  onSearchSubmit() {
+	    const { searchTerm } = this.state;
+	  }
+	# leanpub-end-insert
+	
+	  ...
+	}
 
 O método `onSearchSubmit()` poderia utilizar a mesma funcionalidade que `componentDidMount()`, porém com o termo de busca que foi substituído no estado local e não com o termo _default_ inicial. Sendo assim, você pode extrair a funcionalidade como um método de classe reutilizável.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    constructor(props) {
-      super(props);
-  
-      this.state = {
-        result: null,
-        searchTerm: DEFAULT_QUERY,
-      };
-  
-      this.setSearchTopStories = this.setSearchTopStories.bind(this);
-  # leanpub-start-insert
-      this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
-  # leanpub-end-insert
-      this.onSearchChange = this.onSearchChange.bind(this);
-      this.onSearchSubmit = this.onSearchSubmit.bind(this);
-      this.onDismiss = this.onDismiss.bind(this);
-    }
-  
-    ...
-  
-  # leanpub-start-insert
-    fetchSearchTopStories(searchTerm) {
-      fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`)
-        .then(response => response.json())
-        .then(result => this.setSearchTopStories(result))
-        .catch(error => error);
-    }
-  # leanpub-end-insert
-  
-    componentDidMount() {
-      const { searchTerm } = this.state;
-  # leanpub-start-insert
-      this.fetchSearchTopStories(searchTerm);
-  # leanpub-end-insert
-    }
-  
-    ...
-  
-    onSearchSubmit() {
-      const { searchTerm } = this.state;
-  # leanpub-start-insert
-      this.fetchSearchTopStories(searchTerm);
-  # leanpub-end-insert
-    }
-  
-    ...
-  }
+	class App extends Component {
+	
+	  constructor(props) {
+	    super(props);
+	
+	    this.state = {
+	      result: null,
+	      searchTerm: DEFAULT_QUERY,
+	    };
+	
+	    this.setSearchTopStories = this.setSearchTopStories.bind(this);
+	# leanpub-start-insert
+	    this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
+	# leanpub-end-insert
+	    this.onSearchChange = this.onSearchChange.bind(this);
+	    this.onSearchSubmit = this.onSearchSubmit.bind(this);
+	    this.onDismiss = this.onDismiss.bind(this);
+	  }
+	
+	  ...
+	
+	# leanpub-start-insert
+	  fetchSearchTopStories(searchTerm) {
+	    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`)
+	      .then(response => response.json())
+	      .then(result => this.setSearchTopStories(result))
+	      .catch(error => error);
+	  }
+	# leanpub-end-insert
+	
+	  componentDidMount() {
+	    const { searchTerm } = this.state;
+	# leanpub-start-insert
+	    this.fetchSearchTopStories(searchTerm);
+	# leanpub-end-insert
+	  }
+	
+	  ...
+	
+	  onSearchSubmit() {
+	    const { searchTerm } = this.state;
+	# leanpub-start-insert
+	    this.fetchSearchTopStories(searchTerm);
+	# leanpub-end-insert
+	  }
+	
+	  ...
+	}
 
 Agora, é necessário que um novo botão seja adicionado no componente _Search_. Este botão tem que, explicitamente, disparar a requisição de consulta. Caso contrário, os dados da API Hacker News seriam obtidos todas as vezes que o campo _input_ mudasse. O que você espera é que este comportamento aconteça explicitamente em um tratamento do evento `onClick()`.
 
@@ -477,109 +477,109 @@ Uma alternativa seria o uso de um _debounce_ (um técnica de “atraso” na aç
 Primeiramente, passe o método `onSearchSubmit()` ao seu componente `Search`.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    ...
-  
-    render() {
-      const { searchTerm, result } = this.state;
-      return (
-        <div className="page">
-          <div className="interactions">
-            <Search
-              value={searchTerm}
-              onChange={this.onSearchChange}
-  # leanpub-start-insert
-              onSubmit={this.onSearchSubmit}
-  # leanpub-end-insert
-            >
-              Search
-            </Search>
-          </div>
-          { result &&
-            <Table
-              list={result.hits}
-              pattern={searchTerm}
-              onDismiss={this.onDismiss}
-            />
-          }
-        </div>
-      );
-    }
-  }
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    const { searchTerm, result } = this.state;
+	    return (
+	      <div className="page">
+	        <div className="interactions">
+	          <Search
+	            value={searchTerm}
+	            onChange={this.onSearchChange}
+	# leanpub-start-insert
+	            onSubmit={this.onSearchSubmit}
+	# leanpub-end-insert
+	          >
+	            Search
+	          </Search>
+	        </div>
+	        { result &&
+	          <Table
+	            list={result.hits}
+	            pattern={searchTerm}
+	            onDismiss={this.onDismiss}
+	          />
+	        }
+	      </div>
+	    );
+	  }
+	}
 
 Segundo, crie um botão no componente _Search_. O botão possui um `type="submit"` e o _form_ irá utilizar o atributo `onSubmit` para com o método `onSubmit()`. Você pode reutilizar a propriedade _children_, mas desta vez será usada como conteúdo de _button_.
 
 {title="src/App.js",lang=javascript}
-  # leanpub-start-insert
-  const Search = ({
-    value,
-    onChange,
-    onSubmit,
-    children
-  }) =>
-    <form onSubmit={onSubmit}>
-      <input
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
-      <button type="submit">
-        {children}
-      </button>
-    </form>
-  # leanpub-end-insert
+	# leanpub-start-insert
+	const Search = ({
+	  value,
+	  onChange,
+	  onSubmit,
+	  children
+	}) =>
+	  <form onSubmit={onSubmit}>
+	    <input
+	      type="text"
+	      value={value}
+	      onChange={onChange}
+	    />
+	    <button type="submit">
+	      {children}
+	    </button>
+	  </form>
+	# leanpub-end-insert
 
 Em _Table_, você pode remover a funcionalidade _filter_, porque não mais existirá um filtro (busca) do lado do cliente. Não esqueça de remover a função `isSearched()` também, uma vez que não será mais utilizada. O resultado virá diretamente da API Hacker News, depois que o botão _”Search”_ for clicado. 
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    ...
-  
-    render() {
-      const { searchTerm, result } = this.state;
-      return (
-        <div className="page">
-          ...
-          { result &&
-            <Table
-  # leanpub-start-insert
-              list={result.hits}
-              onDismiss={this.onDismiss}
-  # leanpub-end-insert
-            />
-          }
-        </div>
-      );
-    }
-  }
-  
-  ...
-  
-  # leanpub-start-insert
-  const Table = ({ list, onDismiss }) =>
-  # leanpub-end-insert
-    <div className="table">
-  # leanpub-start-insert
-      {list.map(item =>
-  # leanpub-end-insert
-        ...
-      )}
-    </div>
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    const { searchTerm, result } = this.state;
+	    return (
+	      <div className="page">
+	        ...
+	        { result &&
+	          <Table
+	# leanpub-start-insert
+	            list={result.hits}
+	            onDismiss={this.onDismiss}
+	# leanpub-end-insert
+	          />
+	        }
+	      </div>
+	    );
+	  }
+	}
+	
+	...
+	
+	# leanpub-start-insert
+	const Table = ({ list, onDismiss }) =>
+	# leanpub-end-insert
+	  <div className="table">
+	# leanpub-start-insert
+	    {list.map(item =>
+	# leanpub-end-insert
+	      ...
+	    )}
+	  </div>
 
 Quando tentar realizar uma consulta agora, você irá notar que o _browser_ irá recarregar o conteúdo. Este é um comportamento natural do navegador para uma função de _callback_ do _submit_ em um _form_ HTML. Em React, frequentemente você irá suprimir este comportamento nativo através do método `preventDefault()`.
 
 {title="src/App.js",lang=javascript}
-  # leanpub-start-insert
-  onSearchSubmit(event) {
-  # leanpub-end-insert
-    const { searchTerm } = this.state;
-    this.fetchSearchTopStories(searchTerm);
-  # leanpub-start-insert
-    event.preventDefault();
-  # leanpub-end-insert
-  }
+	# leanpub-start-insert
+	onSearchSubmit(event) {
+	# leanpub-end-insert
+	  const { searchTerm } = this.state;
+	  this.fetchSearchTopStories(searchTerm);
+	# leanpub-start-insert
+	  event.preventDefault();
+	# leanpub-end-insert
+	}
 
 Enfim, você deverá conseguir consultar diferentes discussões na API Hacker News, sem mais haver filtragem no lado do cliente.
 
@@ -595,102 +595,102 @@ Você já deu uma olhada na estrutura de dados retornada? A [API Hacker News][24
 Vamos estender a lista de constantes de API, para que seja possível lidar com dados paginados.
 
 {title="src/App.js",lang=javascript}
-  const DEFAULT_QUERY = 'redux';
-  
-  const PATH_BASE = 'https://hn.algolia.com/api/v1';
-  const PATH_SEARCH = '/search';
-  const PARAM_SEARCH = 'query=';
-  # leanpub-start-insert
-  const PARAM_PAGE = 'page=';
-  # leanpub-end-insert
+	const DEFAULT_QUERY = 'redux';
+	
+	const PATH_BASE = 'https://hn.algolia.com/api/v1';
+	const PATH_SEARCH = '/search';
+	const PARAM_SEARCH = 'query=';
+	# leanpub-start-insert
+	const PARAM_PAGE = 'page=';
+	# leanpub-end-insert
 
 Agora, você pode utilizar a nova constante para adicionar o parâmetro _page_ à sua requisição de API.
 
 {title="Code Playground",lang="javascript"}
-  const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}`;
-  
-  console.log(url);
-  // output: https://hn.algolia.com/api/v1/search?query=redux&page=
+	const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}`;
+	
+	console.log(url);
+	// output: https://hn.algolia.com/api/v1/search?query=redux&page=
 
 O método `fetchSearchTopStories()`irá receber a página como o segundo argumento. Se você não o fornecer ao método, ele irá retornar a página `0` como resultado da requisição. Sendo assim, os métodos `componentDidMount()` e `onSearchSubmit()` consultam a primeira página na primeira requisição. Cada consulta adicional deve buscar a próxima página, fornecendo o segundo argumento.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    ...
-  
-  # leanpub-start-insert
-    fetchSearchTopStories(searchTerm, page = 0) {
-      fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`)
-  # leanpub-end-insert
-        .then(response => response.json())
-        .then(result => this.setSearchTopStories(result))
-        .catch(error => error);
-    }
-  
-    ...
-  
-  }
+	class App extends Component {
+	
+	  ...
+	
+	# leanpub-start-insert
+	  fetchSearchTopStories(searchTerm, page = 0) {
+	    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`)
+	# leanpub-end-insert
+	      .then(response => response.json())
+	      .then(result => this.setSearchTopStories(result))
+	      .catch(error => error);
+	  }
+	
+	  ...
+	
+	}
 
 O argumento que representa a página usa um parâmetro _default_ de JavaScript ES6, para definir o valor de página `0` no caso de nenhum outro ser fornecido para a função.
 
 Você pode agora usar a página atual do resultado obtido no `fetchSearchTopStories()`. Use este método em um botão, para obter mais discussões em um tratamento de evento `onClick`. Utilizaremos _Button_ para obter mais dados paginados da API Hacker News, sendo necessário apenas definir o tratamento do `onClick()`, que recebe o termo de busca atual e a próxima página (página atual + 1).
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    ...
-  
-    render() {
-      const { searchTerm, result } = this.state;
-  # leanpub-start-insert
-      const page = (result && result.page) || 0;
-  # leanpub-end-insert
-      return (
-        <div className="page">
-          <div className="interactions">
-          ...
-          { result &&
-            <Table
-              list={result.hits}
-              onDismiss={this.onDismiss}
-            />
-          }
-  # leanpub-start-insert
-          <div className="interactions">
-            <Button onClick={() => this.fetchSearchTopStories(searchTerm, page + 1)}>
-              More
-            </Button>
-          </div>
-  # leanpub-end-insert
-        </div>
-      );
-    }
-  }
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    const { searchTerm, result } = this.state;
+	# leanpub-start-insert
+	    const page = (result && result.page) || 0;
+	# leanpub-end-insert
+	    return (
+	      <div className="page">
+	        <div className="interactions">
+	        ...
+	        { result &&
+	          <Table
+	            list={result.hits}
+	            onDismiss={this.onDismiss}
+	          />
+	        }
+	# leanpub-start-insert
+	        <div className="interactions">
+	          <Button onClick={() => this.fetchSearchTopStories(searchTerm, page + 1)}>
+	            More
+	          </Button>
+	        </div>
+	# leanpub-end-insert
+	      </div>
+	    );
+	  }
+	}
 
 Além disso, no seu método `render()`, você deverá assegurar, por padrão, a página `0` quando ainda não existir nenhum resultado. Lembre-se que o método `render()`é chamado antes que os dados sejam, de forma assíncrona, obtidos em `componentDidMount()`.
 
 Falta ainda um passo. Você obteve sua próxima página de dados, mas ela irá sobrescrever os dados da página anterior. Seria ideal concatenar as duas listas (a antiga e a nova) do estado local e do novo objeto resultante. Vamos ajustar a funcionalidade, para que os novos dados sejam adicionados, ao invés de sobrescritos.
 
 {title="src/App.js",lang=javascript}
-  setSearchTopStories(result) {
-  # leanpub-start-insert
-    const { hits, page } = result;
-  
-    const oldHits = page !== 0
-      ? this.state.result.hits
-      : [];
-  
-    const updatedHits = [
-      ...oldHits,
-      ...hits
-    ];
-  
-    this.setState({
-      result: { hits: updatedHits, page }
-    });
-  # leanpub-end-insert
-  }
+	setSearchTopStories(result) {
+	# leanpub-start-insert
+	  const { hits, page } = result;
+	
+	  const oldHits = page !== 0
+	    ? this.state.result.hits
+	    : [];
+	
+	  const updatedHits = [
+	    ...oldHits,
+	    ...hits
+	  ];
+	
+	  this.setState({
+	    result: { hits: updatedHits, page }
+	  });
+	# leanpub-end-insert
+	}
 
 Mais coisas acontecem em `setSearchTopStories()`. Primeiro, você recebe, no resultado, os itens (ou _hits_) e a página.
 
@@ -703,30 +703,30 @@ Quarto, você define o novo estado local do componente, com os _hits_ combinados
 Um último ajuste deve ser feito. Quando você testa o botão “More”, ele obtém apenas alguns itens da lista. A URL da API pode ser editada para obter mais itens a cada requisição. Novamente, você pode adicionar mais constantes aqui.
 
 {title="src/App.js",lang=javascript}
-  const DEFAULT_QUERY = 'redux';
-  # leanpub-start-insert
-  const DEFAULT_HPP = '100';
-  # leanpub-end-insert
-  
-  const PATH_BASE = 'https://hn.algolia.com/api/v1';
-  const PATH_SEARCH = '/search';
-  const PARAM_SEARCH = 'query=';
-  const PARAM_PAGE = 'page=';
-  # leanpub-start-insert
-  const PARAM_HPP = 'hitsPerPage=';
-  # leanpub-end-insert
+	const DEFAULT_QUERY = 'redux';
+	# leanpub-start-insert
+	const DEFAULT_HPP = '100';
+	# leanpub-end-insert
+	
+	const PATH_BASE = 'https://hn.algolia.com/api/v1';
+	const PATH_SEARCH = '/search';
+	const PARAM_SEARCH = 'query=';
+	const PARAM_PAGE = 'page=';
+	# leanpub-start-insert
+	const PARAM_HPP = 'hitsPerPage=';
+	# leanpub-end-insert
 
 Pronto, você pode utilizar as constantes para estender a URL da API.
 
 {title="src/App.js",lang=javascript}
-  fetchSearchTopStories(searchTerm, page = 0) {
-  # leanpub-start-insert
-    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
-  # leanpub-end-insert
-      .then(response => response.json())
-      .then(result => this.setSearchTopStories(result))
-      .catch(error => error);
-  }
+	fetchSearchTopStories(searchTerm, page = 0) {
+	# leanpub-start-insert
+	  fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
+	# leanpub-end-insert
+	    .then(response => response.json())
+	    .then(result => this.setSearchTopStories(result))
+	    .catch(error => error);
+	}
 
 Assim, a requisição à API Hacker News irá obter mais itens de uma vez, em relação ao que fazia antes. Como você pode ver, uma API tão poderosa como esta lhe dá uma rica variedade de alternativas para realizar experimentos com dados do mundo real. Faça uso dela quando estiver aprendendo algo novo, de um jeito mais excitante. Veja [como eu aprendi sobre os “poderes” que APIs provêem][25] quando se está aprendendo uma nova linguagem de programação ou biblioteca.
 
@@ -744,105 +744,105 @@ A fim de ter um _cache_ no cliente para cada resultado, você terá que armazena
 No momento, o resultado no estado local se encontra da seguinte forma:
 
 {title="Code Playground",lang="javascript"}
-  result: {
-    hits: [ ... ],
-    page: 2,
-  }
+	result: {
+	  hits: [ ... ],
+	  page: 2,
+	}
 
 Imaginando que você tenha feito duas requisições, uma para o termo “redux” e outra para “react”, o objeto _results_ deverá se parecer com o seguinte:
 
 {title="Code Playground",lang="javascript"}
-  results: {
-    redux: {
-      hits: [ ... ],
-      page: 2,
-    },
-    react: {
-      hits: [ ... ],
-      page: 1,
-    },
-    ...
-  }
+	results: {
+	  redux: {
+	    hits: [ ... ],
+	    page: 2,
+	  },
+	  react: {
+	    hits: [ ... ],
+	    page: 1,
+	  },
+	  ...
+	}
 
 Vamos implementar a lógica do _cache_ do cliente com `setState()`. Primeiro, renomeie o objeto `result` para `results` no estado inicial do componente. Segundo, defina uma `searchKey` temporária, que é utilizada para armazenar cada `result`.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    constructor(props) {
-      super(props);
-  
-      this.state = {
-  # leanpub-start-insert
-        results: null,
-        searchKey: '',
-  # leanpub-end-insert
-        searchTerm: DEFAULT_QUERY,
-      };
-  
-      ...
-  
-    }
-  
-    ...
-  
-  }
+	class App extends Component {
+	
+	  constructor(props) {
+	    super(props);
+	
+	    this.state = {
+	# leanpub-start-insert
+	      results: null,
+	      searchKey: '',
+	# leanpub-end-insert
+	      searchTerm: DEFAULT_QUERY,
+	    };
+	
+	    ...
+	
+	  }
+	
+	  ...
+	
+	}
 
 A `searchKey` deve ser definida antes de cada requisição ser feita. Ela reflete o `searchTerm`. Você deve estar se perguntando: Por que não utilizar `searchTerm` diretamente? Esta é uma parte crucial a ser entendida, antes de continuar com a implementação. O `searchTerm` é uma variável **instável**, porque ele é alterado todas as vezes que você digita no campo _input_ do _Search_. Entretanto, você precisará de uma variável mais **estável** para determinar o termo de busca recentemente submetido à API para recuperar o resultado correto do mapa de resultados. Ela é um ponteiro para seu resultado atual no _cache_ e, desta forma, pode ser utilizado para exibi-lo no método `render()`.
 
 {title="src/App.js",lang=javascript}
-  componentDidMount() {
-    const { searchTerm } = this.state;
-  # leanpub-start-insert
-    this.setState({ searchKey: searchTerm });
-  # leanpub-end-insert
-    this.fetchSearchTopStories(searchTerm);
-  }
-  
-  onSearchSubmit(event) {
-    const { searchTerm } = this.state;
-  # leanpub-start-insert
-    this.setState({ searchKey: searchTerm });
-  # leanpub-end-insert
-    this.fetchSearchTopStories(searchTerm);
-    event.preventDefault();
-  }
+	componentDidMount() {
+	  const { searchTerm } = this.state;
+	# leanpub-start-insert
+	  this.setState({ searchKey: searchTerm });
+	# leanpub-end-insert
+	  this.fetchSearchTopStories(searchTerm);
+	}
+	
+	onSearchSubmit(event) {
+	  const { searchTerm } = this.state;
+	# leanpub-start-insert
+	  this.setState({ searchKey: searchTerm });
+	# leanpub-end-insert
+	  this.fetchSearchTopStories(searchTerm);
+	  event.preventDefault();
+	}
 
 Com isso, você também precisa ajustar a funcionalidade onde o resultado é armazenado no estado interno do componente. Ela agora deve gravar cada resultado por `searchKey`.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    ...
-  
-    setSearchTopStories(result) {
-      const { hits, page } = result;
-  # leanpub-start-insert
-      const { searchKey, results } = this.state;
-  
-      const oldHits = results && results[searchKey]
-        ? results[searchKey].hits
-        : [];
-  # leanpub-end-insert
-  
-      const updatedHits = [
-        ...oldHits,
-        ...hits
-      ];
-  
-      this.setState({
-  # leanpub-start-insert
-        results: {
-          ...results,
-          [searchKey]: { hits: updatedHits, page }
-        }
-  # leanpub-end-insert
-      });
-    }
-  
-    ...
-  
-  }
+	class App extends Component {
+	
+	  ...
+	
+	  setSearchTopStories(result) {
+	    const { hits, page } = result;
+	# leanpub-start-insert
+	    const { searchKey, results } = this.state;
+	
+	    const oldHits = results && results[searchKey]
+	      ? results[searchKey].hits
+	      : [];
+	# leanpub-end-insert
+	
+	    const updatedHits = [
+	      ...oldHits,
+	      ...hits
+	    ];
+	
+	    this.setState({
+	# leanpub-start-insert
+	      results: {
+	        ...results,
+	        [searchKey]: { hits: updatedHits, page }
+	      }
+	# leanpub-end-insert
+	    });
+	  }
+	
+	  ...
+	
+	}
 
 A `searchKey` será usada para salvar os _hits_ e página atualizados em um mapa de `results`.
 
@@ -853,10 +853,10 @@ Segundo, os resultados anteriores precisam ser combinados com os novos, como já
 Terceiro, um novo resultado pode ser colocado em `results` no estado do componente. Observemos o objeto `results` dentro do `setState()`.
 
 {title="src/App.js",lang=javascript}
-  results: {
-    ...results,
-    [searchKey]: { hits: updatedHits, page }
-  }
+	results: {
+	  ...results,
+	  [searchKey]: { hits: updatedHits, page }
+	}
 
 A parte inferior garante que o resultado atualizado é armazenado por `searchKey` no mapa. O valor é um objeto com propriedades _hits_ e _page_. A `searchKey` é o termo de busca. Você já aprendeu o que significa a sintaxe `[searchKey]: ...` em ES6: é uma propriedade com nome computado. Ela lhe ajuda a alocar valores dinamicamente em um objeto.
 
@@ -865,53 +865,53 @@ A parte superior precisa copiar todos os outros resultados no state, por `search
 Todos os resultados são agora armazenados por termo de busca. Este foi o primeiro passo para habilitar o comportamento de _cache_. No passo seguinte, você pode recuperar o resultado através da variável `searchKey` no mapa de resultados. Este é o principal motivo pelo qual `searchKey` teve que ser definido como uma variável mais estável. Se não fosse assim, o processo de recuperação em _cache_ nem sempre funcionaria, uma vez que o valor em `searchTerm` muda frequentemente enquanto você utiliza o componente _Search_.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    ...
-  
-    render() {
-  # leanpub-start-insert
-      const {
-        searchTerm,
-        results,
-        searchKey
-      } = this.state;
-  
-      const page = (
-        results &&
-        results[searchKey] &&
-        results[searchKey].page
-      ) || 0;
-  
-      const list = (
-        results &&
-        results[searchKey] &&
-        results[searchKey].hits
-      ) || [];
-  
-  # leanpub-end-insert
-      return (
-        <div className="page">
-          <div className="interactions">
-            ...
-          </div>
-  # leanpub-start-insert
-          <Table
-            list={list}
-            onDismiss={this.onDismiss}
-          />
-  # leanpub-end-insert
-          <div className="interactions">
-  # leanpub-start-insert
-            <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
-  # leanpub-end-insert
-              More
-            </Button>
-          </div>
-        </div>
-      );
-    }
-  }
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	# leanpub-start-insert
+	    const {
+	      searchTerm,
+	      results,
+	      searchKey
+	    } = this.state;
+	
+	    const page = (
+	      results &&
+	      results[searchKey] &&
+	      results[searchKey].page
+	    ) || 0;
+	
+	    const list = (
+	      results &&
+	      results[searchKey] &&
+	      results[searchKey].hits
+	    ) || [];
+	
+	# leanpub-end-insert
+	    return (
+	      <div className="page">
+	        <div className="interactions">
+	          ...
+	        </div>
+	# leanpub-start-insert
+	        <Table
+	          list={list}
+	          onDismiss={this.onDismiss}
+	        />
+	# leanpub-end-insert
+	        <div className="interactions">
+	# leanpub-start-insert
+	          <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
+	# leanpub-end-insert
+	            More
+	          </Button>
+	        </div>
+	      </div>
+	    );
+	  }
+	}
 
 Uma vez que você definiu uma lista vazia como padrão, quando não existe resultado para a `searchKey`, você pode poupar a renderização condicional no componente _Table_. Você também irá precisar passar a `searchKey`, ao invés do `searchTerm`, para o botão “More”. Caso contrário, sua consulta paginada dependerá deste último que, como já falamos, varia de uma forma instável. O `searchTerm` será utilizado com o campo _input_ do componente “Search”.
 
@@ -920,70 +920,70 @@ A funcionalidade de consulta deve voltar a funcionar. Ela armazena localmente to
 Ademais, o método `onDismiss()` precisa ser melhorado. Isto porque ele ainda trabalha com o objeto `result`. Agora ele deverá saber lidar com múltiplos resultados no objeto `results`.
 
 {title="src/App.js",lang=javascript}
-    onDismiss(id) {
-  # leanpub-start-insert
-      const { searchKey, results } = this.state;
-      const { hits, page } = results[searchKey];
-  # leanpub-end-insert
-  
-      const isNotId = item => item.objectID !== id;
-  # leanpub-start-insert
-      const updatedHits = hits.filter(isNotId);
-  
-      this.setState({
-        results: {
-          ...results,
-          [searchKey]: { hits: updatedHits, page }
-        }
-      });
-  # leanpub-end-insert
-    }
+	  onDismiss(id) {
+	# leanpub-start-insert
+	    const { searchKey, results } = this.state;
+	    const { hits, page } = results[searchKey];
+	# leanpub-end-insert
+	
+	    const isNotId = item => item.objectID !== id;
+	# leanpub-start-insert
+	    const updatedHits = hits.filter(isNotId);
+	
+	    this.setState({
+	      results: {
+	        ...results,
+	        [searchKey]: { hits: updatedHits, page }
+	      }
+	    });
+	# leanpub-end-insert
+	  }
 
 Pronto. O botão “Dismiss” deverá voltar a funcionar.
 
 Entretanto, não existe nada que impeça a aplicação de fazer uma requisição à API a cada _submit_ de busca. Mesmo que já exista um resultado, a requisição será feita assim mesmo. Precisamos completar o comportamento da funcionalidade de _cache_, que já mantém os resultados, mas ainda não toma proveito deles. Resumindo, o último passo é: evitar uma nova requisição à API, caso já exista um resultado disponível em _cache_.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    constructor(props) {
-  
-      ...
-  
-  # leanpub-start-insert
-      this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
-  # leanpub-end-insert
-      this.setSearchTopStories = this.setSearchTopStories.bind(this);
-      this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
-      this.onSearchChange = this.onSearchChange.bind(this);
-      this.onSearchSubmit = this.onSearchSubmit.bind(this);
-      this.onDismiss = this.onDismiss.bind(this);
-    }
-  
-  # leanpub-start-insert
-    needsToSearchTopStories(searchTerm) {
-      return !this.state.results[searchTerm];
-    }
-  # leanpub-end-insert
-  
-    ...
-  
-    onSearchSubmit(event) {
-      const { searchTerm } = this.state;
-      this.setState({ searchKey: searchTerm });
-  # leanpub-start-insert
-  
-      if (this.needsToSearchTopStories(searchTerm)) {
-        this.fetchSearchTopStories(searchTerm);
-      }
-  
-  # leanpub-end-insert
-      event.preventDefault();
-    }
-  
-    ...
-  
-  }
+	class App extends Component {
+	
+	  constructor(props) {
+	
+	    ...
+	
+	# leanpub-start-insert
+	    this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
+	# leanpub-end-insert
+	    this.setSearchTopStories = this.setSearchTopStories.bind(this);
+	    this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
+	    this.onSearchChange = this.onSearchChange.bind(this);
+	    this.onSearchSubmit = this.onSearchSubmit.bind(this);
+	    this.onDismiss = this.onDismiss.bind(this);
+	  }
+	
+	# leanpub-start-insert
+	  needsToSearchTopStories(searchTerm) {
+	    return !this.state.results[searchTerm];
+	  }
+	# leanpub-end-insert
+	
+	  ...
+	
+	  onSearchSubmit(event) {
+	    const { searchTerm } = this.state;
+	    this.setState({ searchKey: searchTerm });
+	# leanpub-start-insert
+	
+	    if (this.needsToSearchTopStories(searchTerm)) {
+	      this.fetchSearchTopStories(searchTerm);
+	    }
+	
+	# leanpub-end-insert
+	    event.preventDefault();
+	  }
+	
+	  ...
+	
+	}
 
 Agora, seu cliente fará apenas uma requisição à API, quando você buscar pelo mesmo termo duas ou mais vezes. Até mesmo dados paginados, com diversas páginas, são armazenados em _cache_ desta forma, porque você sempre salva a última página exibida, para cada resultado, no mapa `results`. Esta é uma abordagem muito arrojada de incluir _caching_ na sua aplicação, não acha? A API Hacker News provê tudo o que você precisa para fazer _cache_ até mesmo de dados paginados de forma efetiva.
 
@@ -994,137 +994,137 @@ Tudo está pronto para que você interaja com a API do Hacker News. Você até m
 Neste capítulo, você irá incluir uma solução eficiente de tratamento de erros em sua aplicação, para o caso de problemas em uma requisição à API. Você já aprendeu tudo sobre as partes necessárias para adicionar tratamento de erros em React: estado local e renderização condicional. Basicamente, um erro é apenas mais um estado em React. Quando ele ocorre, você irá guardá-lo em um estado local e exibi-lo através de uma renderização condicional em seu componente. E só. Vamos implementar este tratamento no componente _App_, porque ele é o componente utilizado na consulta de dados da API. Primeiro, você tem que incluir o estado local `error`, inicializado com _null_, para receber um objeto em caso de erro.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-    constructor(props) {
-      super(props);
-  
-      this.state = {
-        results: null,
-        searchKey: '',
-        searchTerm: DEFAULT_QUERY,
-  # leanpub-start-insert
-        error: null,
-  # leanpub-end-insert
-      };
-  
-      ...
-    }
-  
-  ...
-  
-  }
+	class App extends Component {
+	  constructor(props) {
+	    super(props);
+	
+	    this.state = {
+	      results: null,
+	      searchKey: '',
+	      searchTerm: DEFAULT_QUERY,
+	# leanpub-start-insert
+	      error: null,
+	# leanpub-end-insert
+	    };
+	
+	    ...
+	  }
+	
+	...
+	
+	}
 
 Segundo, você pode utilizar o bloco `catch`, da função nativa _fetch_, para chamar `setState()` e guardar o objeto de erro no estado local. Todas as vezes que uma requisição à API não é bem sucedida, o bloco _catch_ será executado.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    ...
-  
-    fetchSearchTopStories(searchTerm, page = 0) {
-      fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
-        .then(response => response.json())
-        .then(result => this.setSearchTopStories(result))
-  # leanpub-start-insert
-        .catch(error => this.setState({ error }));
-  # leanpub-end-insert
-    }
-  
-    ...
-  
-  }
+	class App extends Component {
+	
+	  ...
+	
+	  fetchSearchTopStories(searchTerm, page = 0) {
+	    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
+	      .then(response => response.json())
+	      .then(result => this.setSearchTopStories(result))
+	# leanpub-start-insert
+	      .catch(error => this.setState({ error }));
+	# leanpub-end-insert
+	  }
+	
+	  ...
+	
+	}
 
 Terceiro, você pode recuperar este objeto do estado local no método `render()` e exibir uma mensagem em caso de erro, utilizando a renderização condicional de React.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    ...
-  
-    render() {
-      const {
-        searchTerm,
-        results,
-        searchKey,
-  # leanpub-start-insert
-        error
-  # leanpub-end-insert
-      } = this.state;
-  
-      ...
-  
-  # leanpub-start-insert
-      if (error) {
-        return <p>Something went wrong.</p>;
-      }
-  # leanpub-end-insert
-  
-      return (
-        <div className="page">
-          ...
-        </div>
-      );
-    }
-  }
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    const {
+	      searchTerm,
+	      results,
+	      searchKey,
+	# leanpub-start-insert
+	      error
+	# leanpub-end-insert
+	    } = this.state;
+	
+	    ...
+	
+	# leanpub-start-insert
+	    if (error) {
+	      return <p>Something went wrong.</p>;
+	    }
+	# leanpub-end-insert
+	
+	    return (
+	      <div className="page">
+	        ...
+	      </div>
+	    );
+	  }
+	}
 
 É isto. Se quiser testar que o seu tratamento de erros está funcionando, você pode mudar a URL da API para algum valor inexistente.
 
 {title="src/App.js",lang=javascript}
-  const PATH_BASE = 'https://hn.foo.bar.com/api/v1';
+	const PATH_BASE = 'https://hn.foo.bar.com/api/v1';
 
 Se o fizer, você deverá receber uma mensagem de erro, ao invés do conteúdo da aplicação. Fica a seu critério o local onde deseja colocar a renderização condicional para a mensagem de erro. No caso aqui, a aplicação inteira não é mais exibida, o que não seria exatamente a melhor experiência de usuário. Que tal, então, exibir a mensagem apenas no lugar do componente _Table_? O restante da aplicação ainda será visível em caso de erro.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    ...
-  
-    render() {
-      const {
-        searchTerm,
-        results,
-        searchKey,
-        error
-      } = this.state;
-  
-      const page = (
-        results &&
-        results[searchKey] &&
-        results[searchKey].page
-      ) || 0;
-  
-      const list = (
-        results &&
-        results[searchKey] &&
-        results[searchKey].hits
-      ) || [];
-  
-      return (
-        <div className="page">
-          <div className="interactions">
-            ...
-          </div>
-  # leanpub-start-insert
-          { error
-            ? <div className="interactions">
-              <p>Something went wrong.</p>
-            </div>
-            : <Table
-              list={list}
-              onDismiss={this.onDismiss}
-            />
-          }
-  # leanpub-end-insert
-          ...
-        </div>
-      );
-    }
-  }
+	class App extends Component {
+	
+	  ...
+	
+	  render() {
+	    const {
+	      searchTerm,
+	      results,
+	      searchKey,
+	      error
+	    } = this.state;
+	
+	    const page = (
+	      results &&
+	      results[searchKey] &&
+	      results[searchKey].page
+	    ) || 0;
+	
+	    const list = (
+	      results &&
+	      results[searchKey] &&
+	      results[searchKey].hits
+	    ) || [];
+	
+	    return (
+	      <div className="page">
+	        <div className="interactions">
+	          ...
+	        </div>
+	# leanpub-start-insert
+	        { error
+	          ? <div className="interactions">
+	            <p>Something went wrong.</p>
+	          </div>
+	          : <Table
+	            list={list}
+	            onDismiss={this.onDismiss}
+	          />
+	        }
+	# leanpub-end-insert
+	        ...
+	      </div>
+	    );
+	  }
+	}
 
 Depois de feitos os testes, não se esqueça de restaurar a URL original da API.
 
 {title="src/App.js",lang=javascript}
-  const PATH_BASE = 'https://hn.algolia.com/api/v1';
+	const PATH_BASE = 'https://hn.algolia.com/api/v1';
 
 Sua aplicação estará funcionando, com a adição de um tratamento de erros em caso de problemas com a API.
 
@@ -1141,99 +1141,99 @@ Uma solução alternativa é substituir o _fetch_ por uma biblioteca mais estáv
 Vejamos como _fetch_ pode ser substituído por _axios_. Tudo que foi falado até então parece ser mais difícil do que realmente é. Primeiramente, você tem que instalar a biblioteca _axios_ via linha de comando:
 
 {title=“Linha de Comando“,lang="text"}
-  npm install --save axios
+	npm install --save axios
 
 Segundo, você irá importar _axios_ no seu componente _App_:
 
 {title="src/App.js",lang=javascript}
-  import React, { Component } from 'react';
-  # leanpub-start-insert
-  import axios from 'axios';
-  # leanpub-end-insert
-  import './App.css';
-  
-  ...
+	import React, { Component } from 'react';
+	# leanpub-start-insert
+	import axios from 'axios';
+	# leanpub-end-insert
+	import './App.css';
+	
+	...
 
 E por último, mas não menos importante, você usará a biblioteca, de forma quase idêntica à API nativa _fetch_. Ela recebe a URL como argumento e retorna uma _promise_. Você não precisa transformar a resposta para JSON, no então. _Axios_ faz isto para você e transforma o resultado em um objeto JavaScript chamado `data`. Certifique-se de que adaptou seu código à estrutura de dados retornada.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    ...
-  
-    fetchSearchTopStories(searchTerm, page = 0) {
-  # leanpub-start-insert
-      axios(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
-        .then(result => this.setSearchTopStories(result.data))
-  # leanpub-end-insert
-        .catch(error => this.setState({ error }));
-    }
-  
-    ...
-  
-  }
+	class App extends Component {
+	
+	  ...
+	
+	  fetchSearchTopStories(searchTerm, page = 0) {
+	# leanpub-start-insert
+	    axios(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
+	      .then(result => this.setSearchTopStories(result.data))
+	# leanpub-end-insert
+	      .catch(error => this.setState({ error }));
+	  }
+	
+	  ...
+	
+	}
 
 É somente isto, no que se refere a substituir _fetch_ por _axios_ neste capítulo. No seu código, você está chamando `axios()`, que usa por padrão uma requisição HTTP GET. Você pode fazer uma requisição GET explícita chamando `axios.get()`. Outros métodos HTTP como POST podem ser usados com `axios.post()`. Neste ponto, você já deve conseguir enxergar como a biblioteca _axios_ é poderosa. Eu sempre recomendo que seja utilizada no lugar de _fetch_ quando suas requisições se tornarem muito complexas ou quando você tem que lidar com caprichos do desenvolvimento _web_. Em adição a isto, em um capítulo mais na frente, você incluirá testes na sua aplicação. Não precisará, então, se preocupar mais com navegadores ou ambientes que simulam eles.
 
 Eu gostaria de introduzir outra melhoria para a consulta ao Hacker News no componente _App_. Imagine que seu componente seja montado quando a página é renderizado pela primeira vez no _browser_. Em `componentDidMount()` o componente começa a fazer a requisição mas, logo depois, porque sua aplicação disponibilizou algum tipo de navegação, você sai da página atual e navega para outra. Seu componente _App_ é desmontado, mas ainda existirá uma requisição pendente disparada no método e ciclo de vida `componentDidMount()`. Ela tentará, eventualmente, utilizar `this.setState()` no `then()` ou no `catch()` da _promise_. Provavelmente, pela primeira vez, você verá o seguinte _warning_ na linha de comando ou no _console_ do seu navegador:
 
 {title="Linha de Comando",lang="text"}
-  Warning: Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component. This is a no-op.
+	Warning: Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component. This is a no-op.
 
 Você pode tratar isto abortando a requisição quando seu componente é desmontado, prevenindo a chamada de `this.setState()` em um componente nesta situação. É uma boa prática em React (mesmo que não seja seguida por muitos desenvolvedores) para preservar a aplicação limpa e sem _warnings_. Contudo, a atual API de _promises_ não permite abortar requisições. Você precisa se virar para fazê-lo, o que pode ser o motivo pelo qual poucos desenvolvedores têm seguido esta boa prática. A implementação a seguir se parece mais com uma solução de contorno do que uma implementação sustentável. Sabendo disso, fica em suas mãos a escolha de fazê-lo, ou não. Esteja apenas ciente do _warning_, para o caso dele aparecer novamente em algum capítulo do livro ou uma aplicação sua, no futuro. Se acontecer, você saberá tratá-lo.
 
 Para começar, você pode adicionar uma variável de classe que mantém o estado do ciclo de vida do seu componente. Ele pode ser inicializado com o valor `false` quando o componente inicializa, mudado para `true` quando o componente é montado e, novamente, `false` quando ele é desmontado. Assim, você será capaz de rastrear o estado do ciclo de vida. Este campo nada tem a ver com o estado local, nem é acessado ou modificado com `this.state` e `this.setState()`, uma vez que você deveria poder acessá-lo diretamente na instância do componente sem depender do gerenciamento de estado de React. Ele também não leva a nenhuma nova renderização do componente quando seu valor é modificado.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  # leanpub-start-insert
-    _isMounted = false;
-  # leanpub-end-insert
-  
-    constructor(props) {
-      ...
-    }
-  
-    ...
-  
-    componentDidMount() {
-  # leanpub-start-insert
-      this._isMounted = true;
-  # leanpub-end-insert
-  
-      const { searchTerm } = this.state;
-      this.setState({ searchKey: searchTerm });
-      this.fetchSearchTopStories(searchTerm);
-    }
-  
-  # leanpub-start-insert
-    componentWillUnmount() {
-      this._isMounted = false;
-    }
-  # leanpub-end-insert
-  
-    ...
-  
-  }
+	class App extends Component {
+	# leanpub-start-insert
+	  _isMounted = false;
+	# leanpub-end-insert
+	
+	  constructor(props) {
+	    ...
+	  }
+	
+	  ...
+	
+	  componentDidMount() {
+	# leanpub-start-insert
+	    this._isMounted = true;
+	# leanpub-end-insert
+	
+	    const { searchTerm } = this.state;
+	    this.setState({ searchKey: searchTerm });
+	    this.fetchSearchTopStories(searchTerm);
+	  }
+	
+	# leanpub-start-insert
+	  componentWillUnmount() {
+	    this._isMounted = false;
+	  }
+	# leanpub-end-insert
+	
+	  ...
+	
+	}
 
 Finalmente, você pode utilizar este conhecimento, não para abortar a requisição por si mesma, mas para evitar que `setState()` seja chamado depois do componente ter sido desmontado, evitando o _warning_ antes mencionado.
 
 {title="src/App.js",lang=javascript}
-  class App extends Component {
-  
-    ...
-  
-    fetchSearchTopStories(searchTerm, page = 0) {
-      axios(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
-  # leanpub-start-insert
-        .then(result => this._isMounted && this.setSearchTopStories(result.data))
-        .catch(error => this._isMounted && this.setState({ error }));
-  # leanpub-end-insert
-    }
-  
-    ...
-  
-  }
+	class App extends Component {
+	
+	  ...
+	
+	  fetchSearchTopStories(searchTerm, page = 0) {
+	    axios(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
+	# leanpub-start-insert
+	      .then(result => this._isMounted && this.setSearchTopStories(result.data))
+	      .catch(error => this._isMounted && this.setState({ error }));
+	# leanpub-end-insert
+	  }
+	
+	  ...
+	
+	}
 
 No geral, este capítulo lhe mostrou como você pode substituir uma biblioteca por outra em React. Se você se deparar com problemas, coloque a seu favor o vasto ecossistema de bibliotecas JavaScript. Você também viu uma forma de evitar que `this.setState()` seja chamado em um component React não montado. Se você investigar a biblioteca _axios_ mais a fundo, encontrará uma outra forma de cancelar a requisição. Fica a seu critério se aprofundar no tópico, ou não.
 
@@ -1247,24 +1247,24 @@ No geral, este capítulo lhe mostrou como você pode substituir uma biblioteca p
 Você aprendeu a interagir com uma API em React! Vamos recapitular os últimos tópicos:
 
 * React
-  * Métodos de ciclo de vida de componentes de classe e seus diferentes casos de uso
-  * componentDidMount() para interações com APIs
-  * renderização condicional
-  * _synthetic events_ em _forms_
-  * tratamento de erros
-  * abortando uma requisição à uma API remota
+	* Métodos de ciclo de vida de componentes de classe e seus diferentes casos de uso
+	* componentDidMount() para interações com APIs
+	* renderização condicional
+	* _synthetic events_ em _forms_
+	* tratamento de erros
+	* abortando uma requisição à uma API remota
 * ES6 e além
-  * _template strings_
-  * operador _spread_ para estruturas de dados imutáveis
-  * nomes de propriedades computados
-  * campos (variáveis) de classe 
+	* _template strings_
+	* operador _spread_ para estruturas de dados imutáveis
+	* nomes de propriedades computados
+	* campos (variáveis) de classe 
 * Geral
-  * Integração com a Hacker News API
-  * API nativa _fetch_
-  * buscas do lado do cliente e do servidor
-  * dados paginados
-  * _caching_ no cliente
-  * _axios_  como uma alternativa à API nativa de _fetch_
+	* Integração com a Hacker News API
+	* API nativa _fetch_
+	* buscas do lado do cliente e do servidor
+	* dados paginados
+	* _caching_ no cliente
+	* _axios_  como uma alternativa à API nativa de _fetch_
 
 Novamente, faz sentido fazer uma pausa. Internalize o aprendizado e aplique-o você mesmo. Você pode fazer experiências com o código que escreveu até agora. Você também pode achar o código-fonte no [repositório oficial][33].
 
