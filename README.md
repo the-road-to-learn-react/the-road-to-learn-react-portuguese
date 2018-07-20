@@ -25,7 +25,7 @@ Muito obrigado pela sua ajuda!
 The Road to learn React é um e-book gratuito, que deve permitir à todos a aprender React. Este tipo de conteúdo educacional precisa do seu apoio para se auto-sustentar. Robin Wieruch também escreve uma grande quantidade de conteúdos educacionais como este em [seu website][9]. Sendo assim, você pode apoiá-lo sendo seu [_Patron_ no _Patreon_][10].
 
 [1]:	https://slack-the-road-to-learn-react.wieruch.com/
-[2]:	https://www.robinwieruch.de/the-road-to-learn-react/ "O Caminho para aprender Re"
+[2]:	https://www.robinwieruch.de/the-road-to-learn-react/
 [3]:	https://github.com/rwieruch/hackernews-client
 [4]:	https://roadtoreact.com/
 [5]:	https://www.getrevue.co/profile/rwieruch
