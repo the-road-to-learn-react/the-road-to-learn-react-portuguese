@@ -43,7 +43,7 @@ No fim das contas, você não precisa conhecer todos esses métodos desde o come
 
 * **constructor(props)** -É chamado quando o componente é inicializado. Você pode definir um estado inicial do componente e realizar o _binding_ de métodos de classe aqui.
 
-* ** static getDerivedStateFromProps(props, state)** - Invocado antes do método `render()`, tanto na montagem inicial do componente, quanto em atualizações subsequentes. Ele deve retornar um objeto para atualização do estado (ou _null_ para não atualizar nada). Este método existe para ser usado em **raras** situações onde o estado depende das mudanças de _props_ ao longo do tempo. Importante notar que este é um método estático e não tem acesso à instância do componente.
+* **static getDerivedStateFromProps(props, state)** - Invocado antes do método `render()`, tanto na montagem inicial do componente, quanto em atualizações subsequentes. Ele deve retornar um objeto para atualização do estado (ou _null_ para não atualizar nada). Este método existe para ser usado em **raras** situações onde o estado depende das mudanças de _props_ ao longo do tempo. Importante notar que este é um método estático e não tem acesso à instância do componente.
 
 * **render()** - Este método de ciclo de vida é mandatório e retorna os elementos como saída do componente. Deve ser puro e, logo, não deve modificar o estado do componente. Ele recebe como entrada o _state_ e as _props_ e retorna um elemento.
 
@@ -51,7 +51,7 @@ No fim das contas, você não precisa conhecer todos esses métodos desde o come
 
 * **shouldComponentUpdate(nextProps, nextState)** - É sempre chamado quando o componente atualiza devido a mudanças de `state` ou `props`.  Você utilizará este método em uma aplicação React mais madura, visando otimizações de performance. Dependendo do valor booleano retornado aqui, o componente e todos os seus filhos irão ser novamente renderizados no ciclo de atualização. Você pode evitar que o método `render()` seja invocado.
 
-* ** getSnapshotBeforeUpdate(prevProps, prevState)** - Este método de ciclo de vida é invocado imediatamente antes da renderização mais recente ser aplicada no DOM. Em raros casos, quando o componente precisa capturar a informação do DOM antes que ela seja alterada, este método lhe permite fazê-lo. Outro método de ciclo de vida (`componentDidUpdate`) irá receber como um parâmetro qualquer valor retornado por `getSnapshotBeforeUpdate()`.
+* **getSnapshotBeforeUpdate(prevProps, prevState)** - Este método de ciclo de vida é invocado imediatamente antes da renderização mais recente ser aplicada no DOM. Em raros casos, quando o componente precisa capturar a informação do DOM antes que ela seja alterada, este método lhe permite fazê-lo. Outro método de ciclo de vida (`componentDidUpdate`) irá receber como um parâmetro qualquer valor retornado por `getSnapshotBeforeUpdate()`.
 
 * **componentDidUpdate(prevProps, prevState, snapshot)** - Este método é chamado imediatamente depois de uma atualização do componente, com exceção da renderização inicial. Você pode utilizá-lo como uma oportunidade de realizar operações no DOM ou de efetuar requisições assíncronas depois do componente já estar montado. Se `getSnapshotBeforeUpdate()` tiver sido implementado no seu componente, o valor por ele retornado será recebido aqui, através do parâmetro `snapshot`.
 
