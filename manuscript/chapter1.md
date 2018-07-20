@@ -383,7 +383,7 @@ helloWorld.text = 'Bye Bye React';
 
 Então quando usar cada tipo de declaração? Existem diferentes opiniões sobre o melhor uso. Eu sugiro usar `const` sempre que possível, indicando que você quer manter sua estrutura de dados imutável, mesmo que os valores em objetos e _arrays_ possam ser modificados. Se você deliberadamente deseja modificar sua variável, use `let`.
 
-Imutabilidade é uma característica que foi abraçada em React e no seu ecossistema. É por este motivo que`const` deveria ser sua escolha padrão quando definindo uma variável. Mais uma vez, os valores em objetos complexos ainda podem ser modificados. Tenha cuidado com esse comportamento.
+Imutabilidade é uma característica que foi abraçada em React e no seu ecossistema. É por este motivo que `const` deveria ser sua escolha padrão quando definindo uma variável. Mais uma vez, os valores em objetos complexos ainda podem ser modificados. Tenha cuidado com esse comportamento.
 
 Na sua aplicação, dê preferência a `const` sobre `var`.
 
@@ -590,7 +590,7 @@ export default App;
 
 É possível enxergar como a função map é simplesmente invocada _inline_ no código JSX. Cada propriedade de item é exibida em uma tag `<span>`, com exceção da url, que colocamos no `href` da tag `<a>`.
 
-React irá fazer todo o trabalho de exibir cada item. Contudo, você deve dar uma ajudá-lo a atingir todo o seu potencial e a ter uma melhor performance. Você deve dar um atributo `key` a cada elemento da lista. Essa é a forma de identificar que itens foram adicionados, modificados ou removidos quando a lista muda. Os itens do exemplo possuem um identificador que pode ser utilizado.
+React irá fazer todo o trabalho de exibir cada item. Contudo, você deve ajudá-lo a atingir todo o seu potencial e a ter uma melhor performance. Você deve dar um atributo `key` a cada elemento da lista. Essa é a forma de identificar que itens foram adicionados, modificados ou removidos quando a lista muda. Os itens do exemplo possuem um identificador que pode ser utilizado.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -645,7 +645,7 @@ function () { ... }
 () => { ... }
 ~~~~~~~~
 
-Contudo, você precisa estar ciente das funcionalidades que essa sintaxe agrega. Uma delas é um comportamento diferente com com o objeto `this`. Uma função convencional sempre define seu próprio objeto `this`. _Arrow functions_ têm o objeto `this` do contexto que as contêm. Fique esperto quando utilizar `this` em funções definidas dessa forma.
+Contudo, você precisa estar ciente das funcionalidades que essa sintaxe agrega. Uma delas é um comportamento diferente com o objeto `this`. Uma função convencional sempre define seu próprio objeto `this`. _Arrow functions_ têm o objeto `this` do contexto que as contêm. Fique esperto quando utilizar `this` em funções definidas dessa forma.
 
 Existe outro fato importante sobre _arrow functions_ com relação a parênteses. Você pode removê-los quando a função recebe apenas um argumento, mas precisa mantê-los quando recebe vários.
 
