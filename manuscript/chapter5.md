@@ -4,13 +4,13 @@ Este capítulo irá focar na implementação de conceitos avançados de componen
 
 ## Usando _ref_ com um elemento do DOM
 
-Às vezes, você precisa interagir com os nós da árvore do DOM (_DOM nodes_) em React. O atributo `ref` lhe dá acesso à um nó em seus elementos. Geralmente isso significa um anti-padrão em React, porque você deveria utilizar a sua forma mais declarativa de fazer as coisas e também seu fluxo unidirecional de dados, como você bem aprendeu quando adicionou seu primeiro campo de _input_ para consultas. Mas, existem certos casos onde você realmente precisa acessar um nó no DOM.  A documentação oficial menciona três deles:
+Às vezes, você precisa interagir com os nós da árvore do DOM (_DOM nodes_) em React. O atributo `ref` lhe dá acesso à um nó em seus elementos. Geralmente isto é um anti-padrão em React, porque você deveria utilizar a sua forma mais declarativa de fazer as coisas e também seu fluxo unidirecional de dados, como você bem aprendeu quando adicionou seu primeiro campo de _input_ para consultas. Mas, existem certos casos onde você realmente precisa acessar um nó no DOM. A documentação oficial menciona três deles:
 
 * para usar a API do DOM (focus, media playback, etc.)
 * para invocar animações em nós do DOM
 * para integrar-se com uma biblioteca de terceiros que precisa ter acesso à arvore de nós do DOM (exemplo: [D3.js][1])
 
-Façamos um exemplo com um componente _Search_. Quando a aplicação é renderizada pela primeira vez, o campo de _input_ deveria receber o foco. Este é um caso onde você precisaria acessar a API do DOM. Este capítulo lhe mostrará como isto funciona, mas, uma vez que não é muito útil para a aplicação em si, omitiremos estas mudanças em capítulos posteriores. Você pode mantê-las no seu próprio código, se quiser.
+Façamos um exemplo com um componente _Search_. Quando a aplicação é renderizada pela primeira vez, o campo de _input_ deveria receber o foco. Este é um caso onde você precisaria acessar a API do DOM. Este capítulo lhe mostrará como isto funciona mas, uma vez que não é muito útil para a aplicação em si, omitiremos estas mudanças em capítulos posteriores. Você pode mantê-las no seu próprio código, se quiser.
 
 Em geral, você pode usar o atributo `ref` em ambos os tipos de componentes React (_functional stateless components_ e componentes de classe ES6). No caso do foco, você precisará usar um método de ciclo de vida e, por isso, um componente de classe ES6 foi utilizado na demonstração.
 
@@ -117,7 +117,7 @@ class Search extends Component {
 }
 ~~~~~~~~
 
-O campo _input_ deverá receber o foco quando a aplicação é renderizada. Basicamente, assim é o uso do atributo `ref`.
+O campo _input_ deverá receber o foco quando a aplicação é renderizada. Basicamente, este é o uso do atributo `ref`.
 
 Mas, como você obteria acesso ao atributo `ref` em um _stateless functional component_, sem o objeto `this`? O código a seguir demonstra como fazê-lo:
 
@@ -150,7 +150,7 @@ const Search = ({
 }
 ~~~~~~~~
 
-Você agora estaria apto a acessar o elemento _input_ do DOM. Não funcionaria para o exemplo com o foco, pois você não tem acesso a métodos de ciclo de vida em um _stateless functional component_ para disparar a ação de foco. Mas, no futuro, você pode se deparar com casos de uso onde faz sentido ter acesso ao atributo `ref` em um componente deste tipo.
+Você agora estará apto a acessar o elemento _input_ do DOM. Não funcionaria para o exemplo com o foco, pois você não tem acesso à métodos de ciclo de vida em um _stateless functional component_ para disparar a ação de foco. Mas, no futuro, você pode se deparar com casos de uso onde faz sentido ter acesso ao atributo `ref` em um componente deste tipo.
 
 ### Exercícios
 
@@ -159,7 +159,7 @@ Você agora estaria apto a acessar o elemento _input_ do DOM. Não funcionaria p
 
 ## _Loading_ ...
 
-Voltemos à aplicação. Você pode querer exibir um indicador de carregamento (_loading_) quando faz uma requisição de busca na API Hacker News.  A requisição é assíncrona e seria bom se você exibisse algum _feedback_ ao usuário, demonstrando que algo ainda está para acontecer. Vamos definir um componente _Loading_, reutilizável, no seu arquivo _src/App.js_.
+Voltemos à aplicação. Você pode querer exibir um indicador de carregamento (_loading_), quando faz uma requisição de busca na API Hacker News.  A requisição é assíncrona e seria bom se você exibisse algum _feedback_ para o usuário, demonstrando que algo ainda está para acontecer. Vamos definir um componente _Loading_, reutilizável, no seu arquivo _src/App.js_.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -283,7 +283,7 @@ Inicialmente, o componente _Loading_ irá aparecer quando você inicia a sua apl
 
 ## Higher-Order Components
 
-_Higher-order components_ (HOC) são um conceito avançado em React. HOCs são equivalentes a _higher-order functions_, pois recebem qualquer coisa como parâmetro de entrada - na maior parte do tempo um componente, mas também argumentos opcionais - e retornam um componente. O componente retornado é uma versão aprimorada do componente de entrada e pode ser usado em seu código JSX.
+_Higher-order component_ (HOC) é um conceito avançado em React. HOCs são equivalentes a _higher-order functions_, pois recebem qualquer coisa como parâmetro de entrada - na maior parte do tempo um componente, mas também argumentos opcionais - e retornam um componente. O componente retornado é uma versão aprimorada do componente de entrada e pode ser usado em seu código JSX.
 
 HOCs são utilizados em diferentes casos. Eles podem podem preparar propriedades, gerenciar estado ou alterar a representação de um componente. Um dos casos poderia ser o de utilizar o HOC como um utilitário para renderização condicional. Imagine que você tem um componente _List_, que renderiza ou uma lista de itens, ou nada, quando a lista é vazia ou tem valor _null_. O HOC poderia tratar e evitar o caso em que a lista não existe, fazendo com que o componente _List_ não precise mais se preocupar com isso, focando apenas em renderizar a lista.
 
@@ -298,7 +298,7 @@ function withFoo(Component) {
 }
 ~~~~~~~~
 
-Existe a convenção de prefixar o nome de HOCs com `with`. Uma vez que você usa JavaScript ES6, pode expressar o HOC de forma mais concisa com uma _arrow function_.
+Existe a convenção de prefixar o nome de HOCs com `with` e, uma vez que você usa JavaScript ES6, pode expressar o HOC de forma mais concisa com uma _arrow function_.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -306,7 +306,7 @@ const withFoo = (Component) => (props) =>
 	<Component { ...props } />
 ~~~~~~~~
 
-Neste exemplo, o componente de entrada é igual ao de saída. Nada acontece, por enquanto ele renderiza a mesma instância de componente e repassa todas as _props_ para o componente de saída, o que é inútil. Vamos então aprimorar o componente retornado, que deveria mostrar o componente _Loading_ quando o estado de _loading_ é _true_. Caso contrário, deveria mostrar o componente que recebeu como entrada. Uma renderização condicional é um grande caso de uso para um HOC.
+Neste exemplo, o componente de entrada é igual ao de saída. Nada acontece, por enquanto ele renderiza a mesma instância de componente e repassa todas as _props_ para o componente de saída, o que é inútil. Vamos então aprimorar o componente retornado, que deveria mostrar o componente _Loading_ quando o estado de _loading_ é _true_. Caso contrário, deveria mostrar o componente que recebeu como entrada. Uma renderização condicional é um ótimo caso de uso para um HOC.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -344,9 +344,9 @@ const withLoading = (Component) => ({ isLoading, ...rest }) =>
 # leanpub-end-insert
 ~~~~~~~~
 
-Note que agora uma propriedade é extraída explicitamente do objeto, mantendo as outras agrupadas. Isto também funcionaria para múltiplas propriedades, inclusive. Você já deve ter lido mais à respeito de [destructuring][5].
+Note que, agora, uma propriedade é extraída explicitamente do objeto, permanecendo as outras agrupadas. Isto também funcionaria para múltiplas propriedades, inclusive. Você já deve ter lido mais à respeito de [destructuring][5].
 
-Você agora pode usar o HOC em seu código JSX, no caso de exibir ou o botão "More", ou o componente _Loading_. Este último já foi encapsulado no HOC, mas falta o componente de entrada. No caso de uso de exibir um componente _Button_ ou um componente _Loading_, _Button_ é o componente de entrada do HOC. A saída aprimorada é um componente _ButtonWithLoading_.
+Você já pode usar o HOC em seu código JSX, no caso de exibir ou o botão "More", ou o componente _Loading_. Este último já foi encapsulado no HOC, mas falta o componente de entrada. No caso de uso de exibir um componente _Button_ ou um componente _Loading_, _Button_ é o componente de entrada do HOC. A saída aprimorada é um componente _ButtonWithLoading_.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -376,7 +376,7 @@ const ButtonWithLoading = withLoading(Button);
 # leanpub-end-insert
 ~~~~~~~~
 
-Finalmente, tudo foi bem definido. Como último passo, você deve utilizar o componente _ButtonWithLoading_, que recebe o estado de _loading_ como uma propriedade extra. Enquanto o HOC explicitamente usa esta propriedade, ele repassa todas as outras para o componente _Button_.
+Finalmente, com tudo bem definido, damos o último passo. Você deve utilizar o componente _ButtonWithLoading_, que recebe o estado de _loading_ como uma propriedade extra. Enquanto o HOC explicitamente usa esta propriedade, ele repassa todas as outras para o componente _Button_.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
