@@ -12,9 +12,9 @@ As declarações de `import` e `export` facilitam o compartilhamento de código 
 
 Adicionalmente, elas abraçam o paradigma de _code splitting_, onde você distribui seu código por múltiplos arquivos para mantê-lo reutilizável e manutenível. Reutilizável porque você consegue importar um pedaço de código em múltiplos arquivos. Manutenível porque você tem uma única fonte onde mantém o mesmo pedaço de código.
 
-Pro fim, estas declarações lhe ajudam a pensar sobre o encapsulamento de código. Nem toda funcionalidade precisa ser exportada em um arquivo, algumas deveriam ser utilizadas apenas onde foram definidas. Os _exports_ de um arquivo são basicamente a sua API pública. Apenas as funcionalidades exportadas estão disponíveis para reuso em outro lugar, seguindo assim a boa prática de encapsulamento.
+No fim, estas declarações lhe ajudam a pensar sobre o encapsulamento de código. Nem toda funcionalidade precisa ser exportada em um arquivo, algumas deveriam ser utilizadas apenas onde foram definidas. Os _exports_ de um arquivo são basicamente a sua API pública. Apenas as funcionalidades exportadas estarão disponíveis para reuso em outro lugar, seguindo assim a boa prática de encapsulamento.
 
-Vamos colocar a mão na massa. Como `import`e `export` funcionam? Os exemplo a seguir demonstram ambas as declarações, compartilhando uma ou múltiplas variáveis entre dois arquivos. No final, esta abordagem pode escalar para múltiplos arquivos e poderia também compartilhar mais do que simples variáveis.
+Vamos colocar a mão na massa. Como `import`e `export` funcionam? Os exemplos a seguir demonstram ambas as declarações, compartilhando uma ou múltiplas variáveis entre dois arquivos. No final, esta abordagem pode escalar para múltiplos arquivos e poderia também compartilhar mais do que simples variáveis.
 
 Você pode exportar uma ou múltiplas variáveis com o chamado "_export_ nomeado" (_named export_).
 
@@ -26,7 +26,7 @@ const lastname = 'wieruch';
 export { firstname, lastname };
 ~~~~~~~~
  
-E importá-las em outro arquivo utilizando o caminho relativo para o primeiro.
+E importá-las em outro arquivo, utilizando o caminho relativo para o primeiro.
 
 {title="Code Playground: file2.js",lang="javascript"}
 ~~~~~~~~
@@ -46,7 +46,7 @@ console.log(person.firstname);
 // saída: robin
 ~~~~~~~~
 
-_Imports_ podem ter um _alias_. Por existir a possibilidade de você importar funcionalidades exportadas com o mesmo nome de arquivos diferentes, você pode utilizar o _alias_ para fornecer "apelidos" para elas.
+_Imports_ podem ter um _alias_. Por existir a possibilidade de você importar funcionalidades exportadas com o mesmo nome, de arquivos diferentes, você pode utilizar o _alias_ para fornecer "apelidos" para elas.
 
 {title="Code Playground: file2.js",lang="javascript"}
 ~~~~~~~~
@@ -120,7 +120,7 @@ export const firstname = 'robin';
 export const lastname = 'wieruch';
 ~~~~~~~~
 
-Essas são as funcionalidades principais de _ES6 modules_. Elas lhe ajudam a organizar e manter o seu código, projetando APIs com módulos reutilizáveis. Você também pode exportar e importar funcionalidades para testá-las, o que será feito em um dos capítulos a seguir.
+Essas são as funcionalidades principais de _ES6 modules_. Elas lhe ajudam a organizar e manter o seu código, projetando APIs com módulos reutilizáveis. Você também pode exportar e importar funcionalidades com a finalidade de testá-las, o que será feito em um dos capítulos a seguir.
 
 ### Exercícios:
 
@@ -129,53 +129,57 @@ Essas são as funcionalidades principais de _ES6 modules_. Elas lhe ajudam a org
 
 ## Organização de Código com _ES6 Modules_
 
-Você pode estar se perguntando: Por que nós não seguimos as melhores práticas de divisão de código para o arquivo _src/App.js_? No arquivo, nós já temos múltiplos componentes que poderiam ter sido definidos em seus próprios arquivos/pastas (módulos). Para o propósito de aprendizado de React, é prático manter estas coisas em um só lugar. Mas, uma vez que a sua aplicação cresce, você deve considerar dividir estes componentes em múltiplos módulos. Somente desta forma sua aplicação será escalável.
+Você pode estar se perguntando: Por que nós não seguimos as melhores práticas de divisão de código para o arquivo _src/App.js_? No arquivo, nós já temos múltiplos componentes que poderiam ter sido definidos em seus próprios arquivos/pastas (módulos). Para o nosso propósito de aprendizado de React, é prático manter estas coisas em um só lugar. Mas, uma vez que a sua aplicação cresce, você deve considerar dividir estes componentes em múltiplos módulos. Somente desta forma sua aplicação será escalável.
 
-A seguir, eu irei propor várias estruturas de módulos que você **poderia** aplicar. Eu recomendaria aplicá-las como um exercício, ao final do livro. Para mantê-lo simples, eu não irei fazer a divisão de código e irei continuar os capítulos seguintes com o arquivo _src/App.js_.
+A seguir, eu irei propor várias estruturas de módulos que você **poderia** aplicar. Eu recomendo aplicá-las como um exercício, ao final do livro. Para manter o código simples, eu não irei fazer a divisão e irei continuar os capítulos seguintes com o arquivo _src/App.js_.
 
 Uma possível estrutura de módulo seria:
 
 {title="Estrutura de Pastas",lang="text"}
-  src/
-    index.js
-    index.css
-    App.js
-    App.test.js
-    App.css
-    Button.js
-    Button.test.js
-    Button.css
-    Table.js
-    Table.test.js
-    Table.css
-    Search.js
-    Search.test.js
-    Search.css
+~~~~~~~~
+src/
+  index.js
+  index.css
+  App.js
+  App.test.js
+  App.css
+  Button.js
+  Button.test.js
+  Button.css
+  Table.js
+  Table.test.js
+  Table.css
+  Search.js
+  Search.test.js
+  Search.css
+~~~~~~~~
 
 Ela separa os componentes em seus próprios arquivos, mas não aparenta ser muito promissora. Note quantos arquivos com nomes duplicados, diferindo apenas nas extensões.
 
 Outra estrutura de módulos seria:
 
 {title="Estrutura de Pastas",lang="text"}
-  src/
+~~~~~~~~
+src/
+  index.js
+  index.css
+  App/
     index.js
+    test.js
     index.css
-    App/
-      index.js
-      test.js
-      index.css
-    Button/
-      index.js
-      test.js
-      index.css
-    Table/
-      index.js
-      test.js
-      index.css
-    Search/
-      index.js
-      test.js
-      index.css
+  Button/
+    index.js
+    test.js
+    index.css
+  Table/
+    index.js
+    test.js
+    index.css
+  Search/
+    index.js
+    test.js
+    index.css
+~~~~~~~~
 
 Ela parece mais limpa que a anterior. Dar o nome "index" a um arquivo o coloca como o ponto de entrada de uma parta. É uma convenção de nome comumente utilizada, mas não significa que você não possa utilizar os nomes que quiser. Nesta estrutura de módulos, um componente é definido pela sua declaração em um arquivo JavaScript, mas também pelo seu estilo e seus testes.
 
@@ -202,7 +206,7 @@ src/
     ...
 ~~~~~~~~
 
-Os módulos naturalmente se dividem em _src/constants/_ e _src/components/_. O arquivo _src/constants/index.js_ pareceria-se com algo assim:
+Os módulos naturalmente se dividem em _src/constants/_ e _src/components/_. O arquivo _src/constants/index.js_ se pareceria com algo assim:
 
 {title="Code Playground: src/constants/index.js",lang="javascript"}
 ~~~~~~~~
@@ -232,7 +236,7 @@ import {
 ...
 ~~~~~~~~
 
-Quando você utiliza a convenção de nome _index.js_, pode omitir o nome do arquivo do caminho relativo no _import_.
+Quando você utiliza a convenção de nome _index.js_, pode omitir o nome no arquivo do caminho relativo no _import_.
 
 {title="Code Playground: src/components/App/index.js",lang=javascript}
 ~~~~~~~~
@@ -251,7 +255,7 @@ import {
 ...
 ~~~~~~~~
 
-No entanto, o que está realmente por trás da convenção de nomes _index.js_? Ela foi introduzida no mundo _node.js_. O arquivo _index_ é o ponto de entrada de um módulo, descrevendo sua API pública. Módulos externos somente são permitidos de usar o arquivo _index.js_ para importar código compartilhado pelo módulo. Considere a seguinte estrutura de módulos, feita para demonstrar o que foi falado aqui:
+Mas, o que estaria realmente por trás da convenção de nomes _index.js_? Ela foi introduzida no mundo _node.js_. O arquivo _index_ é o ponto de entrada de um módulo, descrevendo sua API pública. Módulos externos somente são permitidos de usar o arquivo _index.js_ para importar código compartilhado pelo módulo. Considere a seguinte estrutura de módulos, feita para demonstrar o que foi falado aqui:
 
 {title="Estrutura de Pastas",lang="text"}
 ~~~~~~~~
@@ -292,7 +296,7 @@ import {
 } from '../Buttons';
 ~~~~~~~~
 
-Se seguirmos esta restrição, seria então uma má prática acessar outros arquivos diretamente, sem ser através do _index.js_ do módulo. Quebraria as regras de encapsulamento.
+Se seguirmos esta restrição, seria então uma má prática acessar outros arquivos diretamente, sem ser através do _index.js_ do módulo. Isto quebraria as regras de encapsulamento.
 
 {title="Code Playground: src/App/index.js",lang=javascript}
 ~~~~~~~~
@@ -304,23 +308,23 @@ Você agora sabe como poderia refatorar seu código-fonte em módulos, aplicando
 
 ### Exercícios:
 
-* refatore seu arquivo *src/App.js* em múltiplos módulos de componentes quando terminar de ler o livro
+* Refatore seu arquivo *src/App.js* em múltiplos módulos de componentes, quando terminar de ler o livro
 
 ## _Snapshot Tests_ com Jest
 
-Este livro não irá mergulhar fundo no tópico de testes, mas estes não poderiam deixar de ser mencionados. Em programação, testar o código é essencial e deveria ser encarado como algo obrigatório. Você com certeza quer manter alta a qualidade do seu código e com a garantia de que tudo funciona.
+Este livro não irá mergulhar fundo no tópico de testes, mas estes não poderiam deixar de ser mencionados. Em programação, testar o código é essencial e deveria ser encarado como algo obrigatório. Você, com certeza, quer manter alta a qualidade do seu código e com a garantia de que tudo funciona.
 
 Talvez você tenha ouvido falar sobre a pirâmide de testes. Existem testes de ponta a ponta, testes de integração e testes unitários. Se você não está familiarizado com eles, o livro lhe dará uma rápida e básica noção geral.
 
-Um teste unitário é utilizado para testar isoladamente um pequeno bloco de código. Pode ser uma única função que é testada por um teste deste tipo. Contudo, às vezes as partes isoladas funcionam bem, mas não funcionam como esperado quando combinadas. Elas precisam ser testadas como um grupo de unidades. É onde entram os testes de integração, que ajudam a ir aonde os testes unitários não chegam. Por último, mas não menos importante, testes ponta a ponta são uma simulação de um cenário real de usuário. Poderia ser, por exemplo, um _setupi_ automatizado em um _browser_ simulando o fluxo de _login_ de um usuário em uma aplicação web. Enquanto testes unitários são rápidos e fáceis de escrever e manter, testes de ponta a ponta estão do lado oposto deste espectro.
+Um teste unitário é utilizado para testar isoladamente um pequeno bloco de código. Pode ser uma única função a ser testada. Contudo, às vezes as partes isoladas funcionam bem, mas não funcionam como esperado quando combinadas. Elas precisam ser testadas como um grupo de unidades. É onde entram os testes de integração, que ajudam a ir aonde os testes unitários não chegam. Por último, mas não menos importante, testes ponta a ponta são uma simulação de um cenário real de usuário. Poderia ser, por exemplo, um _setup_ automatizado em um _browser_, simulando o fluxo de _login_ de um usuário em uma aplicação *web*. Enquanto testes unitários são rápidos e fáceis de escrever e manter, testes de ponta a ponta estão do lado oposto deste espectro.
 
-De quantos testes de cada tipo eu preciso? Você irá querer ter muitos testes unitários para cobrir suas funções isoladamente. Depois disso, você poderá ter vários testes de integração para cobrir o uso combinado das mais importantes funções. Por fim, você pode querer ter apenas alguns testes ponta-a-ponta para simular cenários críticos em suas aplicações web. Isso é tudo para nossa excursão geral no mundo dos testes.
+De quantos testes de cada tipo eu preciso? Você irá querer ter muitos testes unitários para cobrir suas funções isoladamente. Depois disso, você poderá ter vários testes de integração para cobrir o uso combinado das mais importantes funções. Por fim, você pode querer ter apenas alguns testes ponta-a-ponta para simular cenários críticos em suas aplicações web. Isso é tudo o que tínhamos para falar, na nossa excursão geral no mundo dos testes.
 
-Então, como você aplica este conhecimento sobre testes em sua aplicação React? A base para testar em React são os testes de componentes, que podem ser generalizados como testes de unidade e uma parte deles como _snapshot tests_. Você irá criar testes de unidade para seus componentes no próximo capítulo, utilizando uma biblioteca chamada _Enzyme_. Neste capítulo, você irá focar em outro tipo: _snapshot testes_. É quando _Jest_ entra em cena.
+Então, como é que você aplica este conhecimento sobre testes em sua aplicação React? A base para testar em React são os testes de componentes, que podem ser generalizados como testes de unidade e como _snapshot tests_. Você irá criar testes de unidade para seus componentes no próximo capítulo, utilizando uma biblioteca chamada _Enzyme_. Neste capítulo, você irá focar no outro tipo: _snapshot tests_. É quando _Jest_ entra em cena.
 
 [Jest][3] é um framework JavaScript de testes utilizado no Facebook. Na comunidade React, ele é usado para testar componentes. Felizmente, _create-react-app_ já embute Jest e você não precisa se preocupar em configurá-lo.
 
-Comecemos os testes dos seus primeiros componentes. Antes de fazê-lo, precisará exportar os componentes que estão em _src/App.js_ e que irá testar. Assim, poderá testá-los em um arquivo separado. Você aprendeu como fazer a exportação no capítulo sobre organização de código.
+Comecemos os testes dos seus primeiros componentes. Antes de fazê-lo, precisará exportar os componentes que estão em _src/App.js_ e serão testados. Assim, poderá fazê-lo em um arquivo separado. Você aprendeu como fazer a exportação no capítulo sobre organização de código.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -358,24 +362,27 @@ it('renders without crashing', () => {
 });
 ~~~~~~~~
 
-O bloco "it" descreve um caso de teste. Ele traz uma descrição do teste e, quando executado, pode ter sucesso ou falhar. Além disso, ele poderia ser colocado dentro de um bloco "describe" que define sua suíte de testes. Sua suíte de testes poderia incluir um punhado de blocos "it" para um componente específico. Mais tarde, você verá mais sobre o bloco "describe". Ambos os blocos são utilizados para separar e organizar seus casos de teste.
+O bloco "it" descreve um caso de teste. Ele traz uma descrição e, quando executado, pode ter sucesso ou falhar. Além disso, ele poderia ser colocado dentro de um bloco "describe", que define uma suíte de testes. Sua suíte poderia incluir um punhado de blocos "it" para um componente específico. Mais tarde, você verá mais sobre o bloco "describe". Ambos os blocos são utilizados para separar e organizar seus casos de teste.
 
-Note que a função `it` é reconhecida na comunidade JavaScript como a função onde você roda um único teste. Contudo, em Jest ela é frequentemente encontrada sob o _alias_ de `test`.
+Note que `it` é a função conhecida na comunidade JavaScript como a função onde você roda um único teste. Contudo, em Jest, ela é frequentemente encontrada sob o _alias_ de `test`.
 
-Você pode rodar seus casos de testes utilizando o script _test_ do _create-react-app_ na linha de comando. Você irá obter a saída para todos os casos de testes nesta mesma interface de linha de comando.
+Você pode rodar seus casos de testes utilizando o script _test_ do _create-react-app_ na linha de comando. Irá obter a saída para todos os casos de testes nesta mesma interface de linha de comando.
 
 {title="Linha de Comando",lang="text"}
-  npm test
+~~~~~~~~
+npm test
+~~~~~~~~
 
-
-Jest lhe permite escrever _snapshot tests_. Eles fazem uma fotografia (_snapshot_) do seu componente e a comparam com futuras fotografias. Quando um _snapshot_ futuro muda, você será notificado no teste. Você pode aceitar a mudança, porque realmente mudou a implementação do componente de propósito, ou rejeitar a mudança e investigar o que causou o erro. É um ótimo complemento para testes unitários, porque você testa apenas as diferenças entre as renderizações. Não adiciona grandes custos de manutenção, porque você pode simplesmente aceitar os _snapshots_ que mudaram quando você altera algo conscientemente.
+Jest lhe permite escrever _snapshot tests_. Eles fazem uma fotografia (_snapshot_) do seu componente e a compara com futuras fotografias. Quando um _snapshot_ futuro for diferente, você será notificado no teste. Você pode aceitar a mudança, porque realmente mudou a implementação do componente, de propósito, ou rejeitar a mudança e investigar o que causou o erro. É um ótimo complemento para testes unitários, porque você testa apenas as diferenças entre as renderizações. Não adiciona grandes custos de manutenção, porque você pode simplesmente aceitar os _snapshots_ que mudaram quando você altera algo conscientemente.
 
 Jest guarda os _snapshots_ (ou fotografias) em uma pasta. Somente desta forma ele consegue validar as diferenças nas comparações com _snapshots_ futuros. Isso ainda permite que eles sejam compartilhados pelo time.
 
 Antes de escrever o seu primeiro _snapshot test_ com Jest, você tem que instalar uma biblioteca utilitária:
 
 {title="Linha de Comando",lang="text"}
-  npm install --save-dev react-test-renderer
+~~~~~~~~
+npm install --save-dev react-test-renderer
+~~~~~~~~
 
 Agora você pode extender o teste do componente _App_ como seu primeiro _snapshot test_. Primeiro, importe a nova funcionalidade da biblioteca recém adicionada e envolva seu bloco "it" em um bloco "describe".  Neste caso, a suíte de testes trata apenas do componente _App_.
 
@@ -433,9 +440,9 @@ describe('App', () => {
 });
 ~~~~~~~~
 
-Rode seus testes novamente e veja se eles têm sucesso ou se falham. Eles devem ter sucesso. Se você mudar a saída do bloco "render" em seu componente _App_, o _snapshot test_ deve falhar. Então você pode decidir atualizar o _snapshot_ ou investigar o que aconteceu em seu componente _App_.
+Rode seus testes novamente e veja se eles têm sucesso ou se falham. Eles devem ter sucesso. Se você mudar a saída do bloco "render" em seu componente _App_, o _snapshot test_ deve falhar. Então você pode decidir atualizar o _snapshot_ ou investigar o que aconteceu em seu componente.
 
-Basicamente, a função `renderer.create()` cria um _snapshot_ do seu componente App. Ele o renderiza virtualmente e armazena uma fotografia do DOM. Depois, espera-se que essa fotografia (ou _snapshot_) coincida com outras anteriores, de quando você rodou seus _snapshot tests_ da última vez. Desta forma, você pode assegurar que o seu DOM permanecerá o mesmo, sem mudanças acidentais.
+Basicamente, a função `renderer.create()` cria um _snapshot_ do seu componente App. Ela o renderiza virtualmente e armazena uma fotografia do DOM. Depois, espera-se que essa fotografia (ou _snapshot_) coincida com outras anteriores, de quando você rodou seus _snapshot tests_ da última vez. Desta forma, você pode assegurar que o seu DOM permanecerá o mesmo, sem mudanças acidentais.
 
 Vamos adicionar mais testes para nossos componentes independentes. Primeiro, o componente _Search_:
 
@@ -471,7 +478,7 @@ describe('Search', () => {
 # leanpub-end-insert
 ~~~~~~~~
 
-O componente _Search_ tem dois testes similares aos do componente _App_. O primeiro simplesmente renderia _Search_ no DOM e verifica que não existe erro no processo de renderização.  Se um erro ocorrer, o teste quebrará mesmo que não exista nenhuma assertiva (_expect, match, equal_) no bloco de teste. O segundo _snapshot test_ é utilizado para armazenar o _snapshot_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o _snapshot_ muda.
+O componente _Search_ tem dois testes similares aos do componente _App_. O primeiro simplesmente renderiza _Search_ no DOM e verifica que não existe erro no processo. Se um erro ocorrer, o teste quebrará, mesmo que não exista nenhuma assertiva (_expect, match, equal_) no bloco de teste. O segundo _snapshot test_ é utilizado para armazenar o _snapshot_ do componente renderizado e rodá-lo em comparação aos anteriores. Ele falha quando o _snapshot_ muda.
 
 Segundo, você pode testar o componente _Button_ aplicando estas mesmas regras do componente _Search_.
 
@@ -505,7 +512,7 @@ describe('Button', () => {
 # leanpub-end-insert
 ~~~~~~~~
 
-Por fim, o componente _Table_, para o qual você passa um punhado de _props_ contendo uma amostra de dados para renderizá-lo.
+Por fim, o componente _Table_, para o qual você passa um punhado de _props_, contendo uma amostra de dados para renderizá-lo.
 
 {title="src/App.test.js",lang=javascript}
 ~~~~~~~~
@@ -554,12 +561,14 @@ _Snapshot tests_ geralmente são bem básicos. Você só quer cobrir o caso de o
 
 ## Testes de Unidade com Enzyme
 
-[Enzyme][5] é um utilitário de testes, lançado pelo Airbnb, para percorrer, manipular  e realizar assertivas com seus componentes React. Você pode utilizá-lo para conduzir testes unitários, complementando seus _snapshot tests_ em React.
+[Enzyme][5] é um utilitário de testes, lançado pelo Airbnb, para percorrer, manipular e realizar assertivas com seus componentes React. Você pode utilizá-lo para conduzir testes unitários, complementando seus _snapshot tests_.
 
-Vejamos como podemos utilizar _enzyme_. Primeiro, você precisa instalar a biblioteca, uma vez que não ela vem por padrão com _create-react-app_. Ele possui também uma extensão para ser utilizado em React.
+Vejamos como podemos utilizar _enzyme_. Primeiro, você precisa instalar a biblioteca, uma vez que não ela vem por padrão com _create-react-app_. Ela possui, também, uma extensão para ser utilizada em React.
 
 {title="Linha de Comando",lang="text"}
-  npm install --save-dev enzyme react-addons-test-utils enzyme-adapter-react-16
+~~~~~~~~
+npm install --save-dev enzyme react-addons-test-utils enzyme-adapter-react-16
+~~~~~~~~
 
 Segundo, você precisa incluir a biblioteca no seu _setup_ de testes e inicializar o seu _Adapter_ para ser usado com React.
 
@@ -620,12 +629,14 @@ describe('Table', () => {
 
 _Shallow_ renderiza o componente sem renderizar seus componentes filhos. Assim, você pode fazer o teste verdadeiramente dedicado a ele.
 
-_Enzyme_ tem, ao todo, três mecanismos de renderização em sua API. Você já conhece `shallow()`, mas também existem `mount()` e `render()`. Ambos criam instâncias do componente pai e também dos seus filhos. A diferença é que `mount()` lhe dá acesso aos métodos de ciclo de vida do componente. Quando, então, utilizar cada mecanismo de renderização? Seguem algumas regras:
+_Enzyme_ tem, ao todo, três mecanismos de renderização em sua API. Você já conhece `shallow()`, mas também existem `mount()` e `render()`. Ambos criam instâncias do componente pai e também dos seus filhos. A diferença é que `mount()` lhe dá acesso aos métodos de ciclo de vida do componente.
+
+Quando, então, utilizar cada mecanismo de renderização? Seguem algumas regras:
 
 * Sempre comece com um teste _shallow_
 * Se `componentDidMount()` ou `componentDidUpdate()` precisam ser testados, use `mount()`
 * Se você quiser testar o ciclo de vida do componente e o comportamento dos seus filhos, use `mount()`
-* Se você quiser testar a renderização dos filhos de um componente com menos _overhead_ do que quando se usa `mount()`, use `render()`
+* Se você quiser testar a renderização dos filhos de um componente, com menos _overhead_ do que quando se usa `mount()`, use `render()`
 
 Você pode continuar escrevendo testes de unidade para seus componentes. Mas, faça por onde manter os testes simples e manuteníveis. Caso contrário, você irá acabar tendo que refatorá-los todas as vezes que seus componentes mudarem. O Facebook já introduziu _snapshot tests_, com Jest, para este propósito.
 
@@ -640,9 +651,9 @@ Você pode continuar escrevendo testes de unidade para seus componentes. Mas, fa
 
 Você pode conhecer [TypeScript][8] ou [Flow][9] como meios de introduzir uma interface de tipos para JavaScript. Uma linguagem com tipos é menos propensa a erros, porque o código é validado com base no texto. Editores e outros utilitários podem capturar estes erros antes mesmo do programa ser executado e seu programa torna-se mais robusto.
 
-Neste livro, você não irá trabalhar com _Flow_ ou _TypeScript_, mas com outra forma bastante organizada de checagem de tipos em seus componentes. React traz, nativamente, uma checagem de tipos para prevenir bugs. Você pode utilizar _PropTypes_ para descrever a interface do seu componente. Todas as _props_ passadas de um componente pai para um componente filho são validadas com base na interface definida no componente filho.
+Neste livro, você não irá trabalhar com _Flow_ ou _TypeScript_, mas com outra forma bastante organizada de checagem de tipos em seus componentes. React traz, nativamente, uma checagem de tipos para prevenir bugs. Você utiliza _PropTypes_ para descrever a interface do seu componente. Todas as _props_ passadas de um componente pai para um componente filho são validadas, com base na interface definida no componente filho.
 
-Este capítulo irá lhe mostrar como tornar seus componentes mais seguros com _PropTypes_. Não irei manter estas mudanças nos capítulos seguintes, porque elas irão causar refatorações desnecessárias de código, com a evolução dos exemplos. Mas, você deveria mantê-las e atualizá-las ao longo do caminho, para manter a interface dos seus componentes segura em relação à tipos.
+Este capítulo irá lhe mostrar como tornar seus componentes mais seguros com _PropTypes_. Não irei manter estas mudanças nos capítulos seguintes, porque elas irão causar refatorações desnecessárias de código, durante a evolução dos exemplos. Mas, você deveria mantê-las e atualizá-las ao longo do caminho, para manter a interface dos seus componentes segura em relação à tipos.
 
 Primeiro, você tem que instalar um pacote separado para React.
 
@@ -704,7 +715,7 @@ Adicionalmente, você tem mais dois _PropTypes_ que podem ser usados para defini
 
 Você já utilizou o _PropType_ `node` para o componente _Button_. Existem, no total, mais definições de _PropTypes_ que você pode ler na documentação oficial de React.
 
-No momento, todos os _PropTypes_ definidos para _Button_ são opcionais. Os parâmetros podem receber _null_ ou _undefined_. Mas, em alguns casos, você quer forçar a definição de algumas _props_. Você pode fazer com que seja obrigatório que essas _props_ sejam passadas para o componente.
+No momento, todos os _PropTypes_ definidos para _Button_ são opcionais. Os parâmetros podem receber _null_ ou _undefined_. Mas, em alguns casos, você quer forçar a definição de algumas _props_. É possível fazer com que a passagem destas _props_ para o componente seja obrigatória.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -719,7 +730,7 @@ Button.propTypes = {
 };
 ~~~~~~~~
 
-O parâmetro `className` não é obrigatório, porque ele pode simplesmente obter o valor _default_ de _string_ vazia.
+O parâmetro `className` não é obrigatório, porque ele pode simplesmente obter o valor _default_ da _string_ vazia.
 
 O próximo passo é definir uma interface com _PropTypes_ para o componente _Table_:
 
@@ -751,9 +762,9 @@ Table.propTypes = {
 };
 ~~~~~~~~
 
-Apenas `objectID` é obrigatório, porque você sabe que alguma parte do seu código depende dele. As outras propriedades são apenas exibidas, não sendo necessariamente requeridas. Além disso, você não tem plena certeza de que a API Hacker News tem sempre uma propriedade definida para cada objeto no _array_.
+Apenas `objectID` é requerido, porque você sabe que alguma parte do seu código depende dele. As outras propriedades são apenas exibidas, não sendo necessariamente obrigatórias. Além disso, você não tem plena certeza de que a API Hacker News tem sempre uma propriedade definida para cada objeto no _array_.
 
-Isso era tudo que tínhamos para falar, sobre _PropTypes_. Só falta mais um aspecto a ser mencionado: Você pode definir _props default_ em seu componente. Tomemos como exemplo o componente _Button_ novamente. A propriedade `className`, na assinatura do componente, tem um parâmetro _default_ (de ES6).
+Isto era, praticamente, tudo o que tínhamos para falar sobre _PropTypes_. Só falta mais um aspecto a ser mencionado: Você pode definir _props default_ em seu componente. Tomemos novamente como exemplo o componente _Button_. A propriedade `className`, na assinatura do componente, tem um parâmetro _default_ (de ES6).
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -793,7 +804,7 @@ Button.defaultProps = {
 
 Assim como o parâmetro _default_ de ES6, a _default prop_ garante que a propriedade é definida com um valor padrão quando o componente pai não informa um. A checagem de tipo de _PropType_ é feita **depois** que a _default prop_ é avaliada.
 
-Se você rodar seus testes novamente, verá que erros de _PropType_ aparecerão na linha de comando para seu componente. Isso pode ocorrer porque você não definiu todas as propriedades para seus componentes nos testes que foram definidos, algumas delas foram marcadas como obrigatórias na definição de PropTypes. Os testes, no entanto, passam sem problemas. Se quiser, você poderia passar todas as propriedades obrigatórias em seus testes, para evitar estes erros.
+Se você rodar seus testes novamente, verá que erros de _PropType_ aparecerão, na linha de comando, para seu componente. Isso pode ocorrer porque você não definiu todas as propriedades para seus componentes nos testes que foram escritos e algumas delas foram marcadas como obrigatórias na definição de PropTypes. Os testes, no entanto, passam sem problemas. Se quiser, você poderia passar todas as propriedades obrigatórias em seus testes, para evitar estes erros.
 
 ### Exercícios:
 
@@ -803,7 +814,7 @@ Se você rodar seus testes novamente, verá que erros de _PropType_ aparecerão 
 
 ## Depuração com _React Developer Tools_
 
-Esta última seção apresenta uma ferramenta muito útil, geralmente utilizada para analisar e depurar aplicações React. **React Developer Tools** lhe permite inspecionar a hierarquia, as _props_ e  estado local de componentes, estando disponível como uma extensão (para Chrome e Firefox) e como uma aplicação _standalone_ (que funciona com qualquer outro ambiente). Uma vez instalada, o ícone da extensão irá acender quando você carregar _websites_ que estejam utilizando React.  Em páginas assim, você poderá ver uma aba chamada "React" nas ferramentas de desenvolvedor do seu navegador.
+Esta última seção apresenta uma ferramenta muito útil, geralmente utilizada para analisar e depurar aplicações React. **React Developer Tools** lhe permite inspecionar a hierarquia, as _props_ e o estado local de componentes, estando disponível como uma extensão (para Chrome e Firefox) e como uma aplicação _standalone_ (que funciona com qualquer outro ambiente). Uma vez instalada, o ícone da extensão irá acender quando você carregar _websites_ que estejam utilizando React. Em páginas assim, você poderá ver uma aba chamada "React" nas ferramentas de desenvolvedor do seu navegador.
 
 Vamos testá-la com a sua aplicação Hacker News. Na maioria dos navegadores, uma forma rápida de abrir as ferramentas de desenvolvedor é clicando com o botão direito do mouse na página e, depois, selecionar "Inspect" (ou "Inspecionar"). Faça isso com a sua aplicação carregada, depois clique na aba "React". Você deverá ver a hierarquia de elementos, sendo `App` o elemento raiz (_root element_). Se você expandir a árvore, achará também as instâncias dos componentes `Search`, `Table` e `Button`. 
 
@@ -832,7 +843,7 @@ Você aprendeu como organizar o seu código e como testá-lo. Vamos recapitular:
   * _PropTypes_ lhe permite definir checagem de tipos para componentes
   * Jest lhe permite escrever _snapshot tests_ para seus componentes
   * Enzyme lhe permite escrever testes unitários para seus componentes
-  * React Developer Tools is a helpful debugging tool
+  * React Developer Tools é uma ferramenta útil de _debug_
 * ES6
   * Declarações _import_ e _export_ lhe ajudam a organizar o seu código
 * Geral
