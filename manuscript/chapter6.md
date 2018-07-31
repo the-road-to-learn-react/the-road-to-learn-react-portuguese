@@ -4,7 +4,7 @@ Você já aprendeu o básico sobre gerenciamento de estado em React nos capítul
 
 ## Realocando o Estado
 
-Apenas _App_ é um componente _stateful_ (com estado) em sua aplicação. Ele lida com um bastante estado e lógica em seus métodos de classe. Talvez você tenha notado que você passa muitas propriedades para o componente _Table_ e muitas delas só são utilizadas nele mesmo. Podemos afirmar, então, que não faz sentido que _App_ tenha conhecimento sobre elas.
+Apenas _App_ é um componente _stateful_ (com estado) em sua aplicação. Ele lida com um bastante estado e lógica em seus métodos de classe. Talvez você tenha notado que passa muitas propriedades para o componente _Table_ e muitas delas só são utilizadas nele mesmo. Podemos afirmar, então, que não faz sentido que _App_ tenha conhecimento sobre elas.
 
 A funcionalidade de ordenação, como um todo, só é utilizada no componente _Table_. Você pode movê-la para ele, _App_ não precisa dela para nada. O processo de refatoração onde um pedaço do estado é movido de um componente para o outro é conhecido como realocação de estado (_lifting state_). No seu caso, você quer mover o estado que não é utilizado no componente _App_ para o componente _Table_. O estado move-se para baixo, do componente pai para o filho.
 
@@ -183,7 +183,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Agora, você pode utilizar método `onSort()` e o estado interno no seu componente _Table_.
+Agora, você pode utilizar o método `onSort()` e o estado interno no seu componente _Table_.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~

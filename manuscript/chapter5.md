@@ -285,7 +285,7 @@ Inicialmente, o componente _Loading_ irá aparecer quando você inicia a sua apl
 
 _Higher-order component_ (HOC) é um conceito avançado em React. HOCs são equivalentes a _higher-order functions_, pois recebem qualquer coisa como parâmetro de entrada - na maior parte do tempo um componente, mas também argumentos opcionais - e retornam um componente. O componente retornado é uma versão aprimorada do componente de entrada e pode ser usado em seu código JSX.
 
-HOCs são utilizados em diferentes casos. Eles podem podem preparar propriedades, gerenciar estado ou alterar a representação de um componente. Um dos casos poderia ser o de utilizar o HOC como um utilitário para renderização condicional. Imagine que você tem um componente _List_, que renderiza ou uma lista de itens, ou nada, quando a lista é vazia ou tem valor _null_. O HOC poderia tratar e evitar o caso em que a lista não existe, fazendo com que o componente _List_ não precise mais se preocupar com isso, focando apenas em renderizar a lista.
+HOCs são utilizados em diferentes casos. Eles podem preparar propriedades, gerenciar estado ou alterar a representação de um componente. Um dos casos poderia ser o de utilizar o HOC como um utilitário para renderização condicional. Imagine que você tem um componente _List_, que renderiza ou uma lista de itens, ou nada (quando a lista é vazia ou tem valor _null_). O HOC poderia tratar e evitar o caso em que a lista não existe, fazendo com que o componente _List_ não precise mais se preocupar com isso, focando apenas em renderizar a lista.
 
 Vamos criar um HOC simples, que recebe um componente como entrada e retorna um outro componente. Você pode colocá-lo em seu arquivo *src/App.js*.
 
@@ -456,7 +456,7 @@ import { sortBy } from 'lodash';
 import './App.css';
 ~~~~~~~~
 
-Existem várias colunas em _Table_. Título, autor, comentários e pontos (_title, author, comments _e _points_). Você pode definir funções de ordenação, onde cada uma recebe uma lista e retorna uma lista ordenada para uma propriedade específica. Em adição a isto, você irá precisar uma função _default_, que não faz nenhuma ordenação, apenas retorna a lista desordenada. Este será o seu estado inicial.
+Existem várias colunas em _Table_. Título, autor, comentários e pontos (_title, author, comments _e _points_). Você pode definir funções de ordenação, onde cada uma recebe uma lista e retorna uma lista ordenada para uma propriedade específica. Em adição a isto, você irá precisar de uma função _default_, que não faz nenhuma ordenação, apenas retorna a lista desordenada. Este será o seu estado inicial.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -698,7 +698,7 @@ this.state = {
 };
 ~~~~~~~~
 
-Agora o seu, em seu método de ordenação, você pode verificar se a lista terá a ordenação invertida. Isto irá acontecer se o estado local `sortKey` tiver o mesmo valor que a `sortKey` recebida e o estado `isSortReverse` não já estiver definido com o valor _true_.
+Agora, em seu método de ordenação, você pode verificar se a lista terá a ordenação invertida. Isto irá acontecer se o estado local `sortKey` tiver o mesmo valor que a `sortKey` recebida e o estado `isSortReverse` não já estiver definido com o valor _true_.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~

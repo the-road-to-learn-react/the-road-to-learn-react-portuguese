@@ -6,7 +6,7 @@ Você pode estar se perguntando: Por que eu deveria aprender React, pra começo 
 
 **Por que você deveria se incomodar em aprender React?** Nos últimos anos, _single page applications_ ([SPA][1]) tornaram-se populares. _Frameworks_ como Angular, Ember e Backbone ajudaram desenvolvedores JavaScript a construir aplicações web modernas, indo além do que já se costumava fazer com jQuery e JavaScript puro. Existe uma ampla gama de _frameworks_ SPA e, olhando para suas respectivas datas de lançamento, a maioria pertence à primeira geração: Angular 2010, Backbone 2010 e Ember 2011. 
 
-A primeira versão de React foi lançada em 2013 pelo Facebook. Não como um _framework_, mas como uma biblioteca. Ele é apenas o "V" do [MVC][2] (_model view controller_), que lhe permite renderizar componentes como elementos visualizáveis no _browser_. O ecossistema onde React se insere é que torna possível a construção de _single page applications_ .
+A primeira versão de React foi lançada em 2013 pelo Facebook. Não como um _framework_, mas como uma biblioteca. Ele é apenas o "V" do [MVC][2] (_model view controller_), que lhe permite renderizar componentes como elementos visualizáveis no _browser_. O ecossistema onde React se insere é que torna possível a construção de _single page applications_.
 
 E por que considerar o uso de React em detrimento à primeira geração de _frameworks_ SPA? Porque enquanto estes últimos tentam resolver várias coisas ao mesmo tempo, React apenas lhe ajuda a construir _views_. Uma biblioteca, não um _framework_, que segue uma simples idéia: a camada de visão é uma hierarquia de componentes.
 

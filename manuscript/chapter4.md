@@ -6,7 +6,7 @@ O capítulo irá manter o foco em tópicos importantes para a manutenção do c�
 
 Em JavaScript ES6, você pode importar e exportar funcionalidades de módulos. Estas funcionalidades podem ser funções, classes, componentes, constantes e outros. Basicamente, tudo o que pode ser atribuído à uma variável. Módulos podem ser simples arquivos ou pastas inteiras com um arquivo _index_ como ponto de entrada.
 
-No começo deste livro, depois que você inicializou sua aplicação com _create-react-app_, os arquivos gerados já tinham várias declarações de `import`e `export`. É chegada a hora de explicá-los.
+No começo deste livro, depois que você inicializou sua aplicação com _create-react-app_, os arquivos gerados já tinham várias declarações de `import` e `export`. É chegada a hora de explicá-los.
 
 As declarações de `import` e `export` facilitam o compartilhamento de código entre múltiplos arquivos. Antes, haviam diversas formas de atingir este objetivo em um ambiente JavaScript. Era uma verdadeira bagunça e desejava-se que existisse um padrão, ao invés de múltiplas abordagens para a mesma coisa. Agora, desde JavaScript ES6, este é o comportamento nativo.
 
@@ -14,7 +14,7 @@ Adicionalmente, elas abraçam o paradigma de _code splitting_, onde você distri
 
 No fim, estas declarações lhe ajudam a pensar sobre o encapsulamento de código. Nem toda funcionalidade precisa ser exportada em um arquivo, algumas deveriam ser utilizadas apenas onde foram definidas. Os _exports_ de um arquivo são basicamente a sua API pública. Apenas as funcionalidades exportadas estarão disponíveis para reuso em outro lugar, seguindo assim a boa prática de encapsulamento.
 
-Vamos colocar a mão na massa. Como `import`e `export` funcionam? Os exemplos a seguir demonstram ambas as declarações, compartilhando uma ou múltiplas variáveis entre dois arquivos. No final, esta abordagem pode escalar para múltiplos arquivos e poderia também compartilhar mais do que simples variáveis.
+Vamos colocar a mão na massa. Como `import` e `export` funcionam? Os exemplos a seguir demonstram ambas as declarações, compartilhando uma ou múltiplas variáveis entre dois arquivos. No final, esta abordagem pode escalar para múltiplos arquivos e poderia também compartilhar mais do que simples variáveis.
 
 Você pode exportar uma ou múltiplas variáveis com o chamado "_export_ nomeado" (_named export_).
 
@@ -181,7 +181,7 @@ src/
     index.css
 ~~~~~~~~
 
-Ela parece mais limpa que a anterior. Dar o nome "index" a um arquivo o coloca como o ponto de entrada de uma parta. É uma convenção de nome comumente utilizada, mas não significa que você não possa utilizar os nomes que quiser. Nesta estrutura de módulos, um componente é definido pela sua declaração em um arquivo JavaScript, mas também pelo seu estilo e seus testes.
+Ela parece mais limpa que a anterior. Dar o nome "index" a um arquivo o coloca como o ponto de entrada de uma pasta. É uma convenção de nome comumente utilizada, mas não significa que você não possa utilizar os nomes que quiser. Nesta estrutura de módulos, um componente é definido pela sua declaração em um arquivo JavaScript, mas também pelo seu estilo e seus testes.
 
 Outro passo que poderia ser dado é o de extrair as constantes do componente _App_. Estas constantes foram utilizadas para compor a URL da API Hacker News.
 

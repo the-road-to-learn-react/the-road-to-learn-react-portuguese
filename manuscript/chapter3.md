@@ -1244,7 +1244,7 @@ import './App.css';
 ...
 ~~~~~~~~
 
-E por último, mas não menos importante, você usará a biblioteca, de forma quase idêntica à API nativa _fetch_. Ela recebe a URL como argumento e retorna uma _promise_. Você não precisa transformar a resposta para JSON, no então. _Axios_ faz isto para você e transforma o resultado em um objeto JavaScript chamado `data`. Certifique-se de que adaptou seu código à estrutura de dados retornada.
+E por último, mas não menos importante, você usará a biblioteca, de forma quase idêntica à API nativa _fetch_. Ela recebe a URL como argumento e retorna uma _promise_. Você não precisa transformar a resposta para JSON, no entanto. _Axios_ faz isto para você e transforma o resultado em um objeto JavaScript chamado `data`. Certifique-se de que adaptou seu código à estrutura de dados retornada.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~

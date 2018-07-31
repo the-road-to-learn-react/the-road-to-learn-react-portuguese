@@ -4,7 +4,7 @@ Os últimos capítulos irão mostrar como implantar sua aplicação em produçã
 
 ## Ejetando
 
-O passo (e o conhecimento) a seguir **não é realmente necessário** para que sua aplicação seja implantada em produção. Mesmo assim, quero explicá-lo para você. _create-react-app_ traz uma funcionalidade para deixá-lo extensível e também prevenir amarrações, que podem ocorrer quando você compra uma tecnologia que não lhe dá possibilidades de livra-se dela no futuro. Felizmente, _create-react-app_ possui está válvula de escape com "eject".
+O passo (e o conhecimento) a seguir **não é realmente necessário** para que sua aplicação seja implantada em produção. Mesmo assim, quero explicá-lo para você. _create-react-app_ traz uma funcionalidade para deixá-lo extensível e também prevenir amarrações, que podem ocorrer quando você compra uma tecnologia que não lhe dá possibilidades de livrar-se dela no futuro. Felizmente, _create-react-app_ possui está válvula de escape com "eject".
 
 No seu arquivo _package.json_, você encontrará os _scripts_ para iniciar (_start_), testar (_test_) e construir (_build_) sua aplicação. Um último _script_ é _eject_. Uma vez que você use ele, não existe caminho de volta. **É uma operação definitiva. Uma vez que você ejetou sua aplicação, não é possível voltar atrás!** Se você apenas iniciou o aprendizado de React, não faz muito sentido abandonar o ambiente conveniente provido pelo _create-react-app_.
 

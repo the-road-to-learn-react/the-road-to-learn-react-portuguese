@@ -886,7 +886,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Agora, todas as vezes que o valor no campo de _input _ muda, você está armazenando o valor digitado no estado interno do seu componente.
+Agora, todas as vezes que o valor no campo de _input_ muda, você está armazenando o valor digitado no estado interno do seu componente.
 
 Um breve comentário a respeito da atualização do estado local em um componente React: Seria normal se achássemos que, quando atualizamos `searchTerm` com `this.setState`, também deveríamos informar o valor de `list`. Mas não é o caso. O método `this.setState()` de React faz o que chamamos de _shallow merge_. Ele preserva o valor das outras propriedades do objeto de estado, quando apenas uma delas é atualizada. O estado da lista permanecerá o mesmo, inclusive sem o item que você removeu, quando apenas a propriedade `searchTerm` for alterada.
 
