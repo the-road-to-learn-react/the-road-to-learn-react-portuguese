@@ -20,29 +20,29 @@ O passo inicial é refatorar o componente funcional para passar a ser um compone
 ~~~~~~~~
 # leanpub-start-insert
 class Search extends Component {
-	render() {
-		const {
-			value,
-			onChange,
-			onSubmit,
-			children
-		} = this.props;
+  render() {
+    const {
+      value,
+      onChange,
+      onSubmit,
+      children
+    } = this.props;
 
-		return (
+    return (
 # leanpub-end-insert
-			<form onSubmit={onSubmit}>
-				<input
-					type="text"
-					value={value}
-					onChange={onChange}
-				/>
-				<button type="submit">
-					{children}
-				</button>
-			</form>
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          value={value}
+          onChange={onChange}
+        />
+        <button type="submit">
+          {children}
+        </button>
+      </form>
 # leanpub-start-insert
-		);
-	}
+    );
+  }
 }
 # leanpub-end-insert
 ~~~~~~~~
@@ -52,30 +52,30 @@ O objeto `this` de um componente de classe ES6 nos ajuda a referenciar o _DOM no
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 class Search extends Component {
-	render() {
-		const {
-			value,
-			onChange,
-			onSubmit,
-			children
-		} = this.props;
+  render() {
+    const {
+      value,
+      onChange,
+      onSubmit,
+      children
+    } = this.props;
 
-		return (
-			<form onSubmit={onSubmit}>
-				<input
-					type="text"
-					value={value}
-					onChange={onChange}
+    return (
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          value={value}
+          onChange={onChange}
 # leanpub-start-insert
-					ref={(node) => { this.input = node; }}
+          ref={(node) => { this.input = node; }}
 # leanpub-end-insert
-				/>
-				<button type="submit">
-					{children}
-				</button>
-			</form>
-		);
-	}
+        />
+        <button type="submit">
+          {children}
+        </button>
+      </form>
+    );
+  }
 }
 ~~~~~~~~
 
@@ -85,35 +85,35 @@ Agora, você pode definir o foco para o campo _input_ quando o componente é mon
 ~~~~~~~~
 class Search extends Component {
 # leanpub-start-insert
-	componentDidMount() {
-		if(this.input) {
-			this.input.focus();
-		}
-	}
+  componentDidMount() {
+    if(this.input) {
+      this.input.focus();
+    }
+  }
 # leanpub-end-insert
 
-	render() {
-		const {
-			value,
-			onChange,
-			onSubmit,
-			children
-		} = this.props;
+  render() {
+    const {
+      value,
+      onChange,
+      onSubmit,
+      children
+    } = this.props;
 
-		return (
-			<form onSubmit={onSubmit}>
-				<input
-					type="text"
-					value={value}
-					onChange={onChange}
-					ref={(node) => { this.input = node; }}
-				/>
-				<button type="submit">
-					{children}
-				</button>
-			</form>
-		);
-	}
+    return (
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          value={value}
+          onChange={onChange}
+          ref={(node) => { this.input = node; }}
+        />
+        <button type="submit">
+          {children}
+        </button>
+      </form>
+    );
+  }
 }
 ~~~~~~~~
 
@@ -124,29 +124,29 @@ Mas, como você obteria acesso ao atributo `ref` em um _stateless functional com
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 const Search = ({
-	value,
-	onChange,
-	onSubmit,
-	children
+  value,
+  onChange,
+  onSubmit,
+  children
 }) => {
 # leanpub-start-insert
-	let input;
+  let input;
 # leanpub-end-insert
-	return (
-		<form onSubmit={onSubmit}>
-			<input
-				type="text"
-				value={value}
-				onChange={onChange}
+  return (
+    <form onSubmit={onSubmit}>
+      <input
+        type="text"
+        value={value}
+        onChange={onChange}
 # leanpub-start-insert
-				ref={(node) => input = node}
+        ref={(node) => input = node}
 # leanpub-end-insert
-			/>
-			<button type="submit">
-				{children}
-			</button>
-		</form>
-	);
+      />
+      <button type="submit">
+        {children}
+      </button>
+    </form>
+  );
 }
 ~~~~~~~~
 
@@ -164,7 +164,7 @@ Voltemos à aplicação. Você pode querer exibir um indicador de carregamento (
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 const Loading = () =>
-	<div>Loading ...</div>
+  <div>Loading ...</div>
 ~~~~~~~~
 
 Você precisa agora de uma propriedade para armazenar o estado de _loading_. Baseado neste estado, você pode decidir se exibe ou não o componente _Loading_.
@@ -172,25 +172,25 @@ Você precisa agora de uma propriedade para armazenar o estado de _loading_. Bas
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
-	_isMounted = false;
+  _isMounted = false;
 
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
-			results: null,
-			searchKey: '',
-			searchTerm: DEFAULT_QUERY,
-			error: null,
+    this.state = {
+      results: null,
+      searchKey: '',
+      searchTerm: DEFAULT_QUERY,
+      error: null,
 # leanpub-start-insert
-			isLoading: false,
+      isLoading: false,
 # leanpub-end-insert
-		};
+    };
 
-		...
-	}
+    ...
+  }
 
-	...
+  ...
 
 }
 ~~~~~~~~
@@ -203,33 +203,33 @@ Quando você faz a requisição, você altera o estado de _loading_ par _true_. 
 ~~~~~~~~
 class App extends Component {
 
-	...
+  ...
 
-	setSearchTopStories(result) {
-		...
+  setSearchTopStories(result) {
+    ...
 
-		this.setState({
-			results: {
-				...results,
-				[searchKey]: { hits: updatedHits, page }
-			},
+    this.setState({
+      results: {
+        ...results,
+        [searchKey]: { hits: updatedHits, page }
+      },
 # leanpub-start-insert
-			isLoading: false
+      isLoading: false
 # leanpub-end-insert
-		});
-	}
+    });
+  }
 
-	fetchSearchTopStories(searchTerm, page = 0) {
+  fetchSearchTopStories(searchTerm, page = 0) {
 # leanpub-start-insert
-		this.setState({ isLoading: true });
+    this.setState({ isLoading: true });
 # leanpub-end-insert
 
-		axios(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
-			.then(result => this._isMounted && this.setSearchTopStories(result.data))
-			.catch(error => this._isMounted && this.setState({ error }));
-	}
+    axios(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
+      .then(result => this._isMounted && this.setSearchTopStories(result.data))
+      .catch(error => this._isMounted && this.setState({ error }));
+  }
 
-	...
+  ...
 
 }
 ~~~~~~~~
@@ -240,38 +240,38 @@ Como último passo, você irá usar o componente _Loading_ em _App_. Uma renderi
 ~~~~~~~~
 class App extends Component {
 
-	...
+  ...
 
-	render() {
-		const {
-			searchTerm,
-			results,
-			searchKey,
-			error,
+  render() {
+    const {
+      searchTerm,
+      results,
+      searchKey,
+      error,
 # leanpub-start-insert
-			isLoading
+      isLoading
 # leanpub-end-insert
-		} = this.state;
+    } = this.state;
 
-		...
+    ...
 
-		return (
-			<div className="page">
-				...
-				<div className="interactions">
+    return (
+      <div className="page">
+        ...
+        <div className="interactions">
 # leanpub-start-insert
-					{ isLoading
-						? <Loading />
-						: <Button
-							onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
-							More
-						</Button>
-					}
+          { isLoading
+            ? <Loading />
+            : <Button
+              onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
+              More
+            </Button>
+          }
 # leanpub-end-insert
-				</div>
-			</div>
-		);
-	}
+        </div>
+      </div>
+    );
+  }
 }
 ~~~~~~~~
 
@@ -292,9 +292,9 @@ Vamos criar um HOC simples, que recebe um componente como entrada e retorna um o
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 function withFoo(Component) {
-	return function(props) {
-		return <Component { ...props } />;
-	}
+  return function(props) {
+    return <Component { ...props } />;
+  }
 }
 ~~~~~~~~
 
@@ -303,7 +303,7 @@ Existe a convenção de prefixar o nome de HOCs com `with` e, uma vez que você 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 const withFoo = (Component) => (props) =>
-	<Component { ...props } />
+  <Component { ...props } />
 ~~~~~~~~
 
 Neste exemplo, o componente de entrada é igual ao de saída. Nada acontece, por enquanto ele renderiza a mesma instância de componente e repassa todas as _props_ para o componente de saída, o que é inútil. Vamos então aprimorar o componente retornado, que deveria mostrar o componente _Loading_ quando o estado de _loading_ é _true_. Caso contrário, deveria mostrar o componente que recebeu como entrada. Uma renderização condicional é um ótimo caso de uso para um HOC.
@@ -312,9 +312,9 @@ Neste exemplo, o componente de entrada é igual ao de saída. Nada acontece, por
 ~~~~~~~~
 # leanpub-start-insert
 const withLoading = (Component) => (props) =>
-	props.isLoading
-		? <Loading />
-		: <Component { ...props } />
+  props.isLoading
+    ? <Loading />
+    : <Component { ...props } />
 # leanpub-end-insert
 ~~~~~~~~
 
@@ -338,9 +338,9 @@ Existe mais uma pequena coisa que você deveria evitar. Você passa todas as pro
 ~~~~~~~~
 # leanpub-start-insert
 const withLoading = (Component) => ({ isLoading, ...rest }) =>
-	isLoading
-		? <Loading />
-		: <Component { ...rest } />
+  isLoading
+    ? <Loading />
+    : <Component { ...rest } />
 # leanpub-end-insert
 ~~~~~~~~
 
@@ -351,25 +351,25 @@ Você já pode usar o HOC em seu código JSX, no caso de exibir ou o botão "Mor
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 const Button = ({
-	onClick,
-	className = '',
-	children,
+  onClick,
+  className = '',
+  children,
 }) =>
-	<button
-		onClick={onClick}
-		className={className}
-		type="button"
-	>
-		{children}
-	</button>
+  <button
+    onClick={onClick}
+    className={className}
+    type="button"
+  >
+    {children}
+  </button>
 
 const Loading = () =>
-	<div>Loading ...</div>
+  <div>Loading ...</div>
 
 const withLoading = (Component) => ({ isLoading, ...rest }) =>
-	isLoading
-		? <Loading />
-		: <Component { ...rest } />
+  isLoading
+    ? <Loading />
+    : <Component { ...rest } />
 
 # leanpub-start-insert
 const ButtonWithLoading = withLoading(Button);
@@ -382,25 +382,25 @@ Finalmente, com tudo bem definido, damos o último passo. Você deve utilizar o 
 ~~~~~~~~
 class App extends Component {
 
-	...
+  ...
 
-	render() {
-		...
-		return (
-			<div className="page">
-				...
-				<div className="interactions">
+  render() {
+    ...
+    return (
+      <div className="page">
+        ...
+        <div className="interactions">
 # leanpub-start-insert
-					<ButtonWithLoading
-						isLoading={isLoading}
-						onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
-						More
-					</ButtonWithLoading>
+          <ButtonWithLoading
+            isLoading={isLoading}
+            onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
+            More
+          </ButtonWithLoading>
 # leanpub-end-insert
-				</div>
-			</div>
-		);
-	}
+        </div>
+      </div>
+    );
+  }
 }
 ~~~~~~~~
 
@@ -464,16 +464,16 @@ Existem várias colunas em _Table_. Título, autor, comentários e pontos (_titl
 
 # leanpub-start-insert
 const SORTS = {
-	NONE: list => list,
-	TITLE: list => sortBy(list, 'title'),
-	AUTHOR: list => sortBy(list, 'author'),
-	COMMENTS: list => sortBy(list, 'num_comments').reverse(),
-	POINTS: list => sortBy(list, 'points').reverse(),
+  NONE: list => list,
+  TITLE: list => sortBy(list, 'title'),
+  AUTHOR: list => sortBy(list, 'author'),
+  COMMENTS: list => sortBy(list, 'num_comments').reverse(),
+  POINTS: list => sortBy(list, 'points').reverse(),
 };
 # leanpub-end-insert
 
 class App extends Component {
-	...
+  ...
 }
 ...
 ~~~~~~~~
@@ -487,13 +487,13 @@ Mais uma vez, seu componente _App_ é responsável por armazenar o estado da ope
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 this.state = {
-	results: null,
-	searchKey: '',
-	searchTerm: DEFAULT_QUERY,
-	error: null,
-	isLoading: false,
+  results: null,
+  searchKey: '',
+  searchTerm: DEFAULT_QUERY,
+  error: null,
+  isLoading: false,
 # leanpub-start-insert
-	sortKey: 'NONE',
+  sortKey: 'NONE',
 # leanpub-end-insert
 };
 ~~~~~~~~
@@ -505,32 +505,32 @@ Você pode agora definir um novo método de classe no seu componente _App_, que 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
-	_isMounted = false;
+  _isMounted = false;
 
-	constructor(props) {
+  constructor(props) {
 
-		...
+    ...
 
-		this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
-		this.setSearchTopStories = this.setSearchTopStories.bind(this);
-		this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
-		this.onSearchSubmit = this.onSearchSubmit.bind(this);
-		this.onSearchChange = this.onSearchChange.bind(this);
-		this.onDismiss = this.onDismiss.bind(this);
+    this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
+    this.setSearchTopStories = this.setSearchTopStories.bind(this);
+    this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
+    this.onSearchSubmit = this.onSearchSubmit.bind(this);
+    this.onSearchChange = this.onSearchChange.bind(this);
+    this.onDismiss = this.onDismiss.bind(this);
 # leanpub-start-insert
-		this.onSort = this.onSort.bind(this);
+    this.onSort = this.onSort.bind(this);
 # leanpub-end-insert
-	}
+  }
 
-	...
+  ...
 
 # leanpub-start-insert
-	onSort(sortKey) {
-		this.setState({ sortKey });
-	}
+  onSort(sortKey) {
+    this.setState({ sortKey });
+  }
 # leanpub-end-insert
 
-	...
+  ...
 
 }
 ~~~~~~~~
@@ -541,37 +541,37 @@ O próximo passo é passar o método e `sortKey` para seu componente _Table_.
 ~~~~~~~~
 class App extends Component {
 
-	...
+  ...
 
-	render() {
-		const {
-			searchTerm,
-			results,
-			searchKey,
-			error,
-			isLoading,
+  render() {
+    const {
+      searchTerm,
+      results,
+      searchKey,
+      error,
+      isLoading,
 # leanpub-start-insert
-			sortKey
+      sortKey
 # leanpub-end-insert
-		} = this.state;
+    } = this.state;
 
-		...
+    ...
 
-		return (
-			<div className="page">
-				...
-				<Table
-					list={list}
+    return (
+      <div className="page">
+        ...
+        <Table
+          list={list}
 # leanpub-start-insert
-					sortKey={sortKey}
-					onSort={this.onSort}
+          sortKey={sortKey}
+          onSort={this.onSort}
 # leanpub-end-insert
-					onDismiss={this.onDismiss}
-				/>
-				...
-			</div>
-		);
-	}
+          onDismiss={this.onDismiss}
+        />
+        ...
+      </div>
+    );
+  }
 }
 ~~~~~~~~
 
@@ -581,21 +581,21 @@ O componente _Table_ é responsável por ordenar a lista. Ele recebe uma das fun
 ~~~~~~~~
 # leanpub-start-insert
 const Table = ({
-	list,
-	sortKey,
-	onSort,
-	onDismiss
+  list,
+  sortKey,
+  onSort,
+  onDismiss
 }) =>
 # leanpub-end-insert
-	<div className="table">
+  <div className="table">
 # leanpub-start-insert
-		{SORTS[sortKey](list).map(item =>
+    {SORTS[sortKey](list).map(item =>
 # leanpub-end-insert
-			<div key={item.objectID} className="table-row">
-				...
-			</div>
-		)}
-	</div>
+      <div key={item.objectID} className="table-row">
+        ...
+      </div>
+    )}
+  </div>
 ~~~~~~~~
 
 Em teoria, a lista deveria ser ordenada por alguma das funções. Mas, o valor _default_ é `NONE`, logo nada acontece ainda. Até agora, ninguém executa o método `onSort()` para mudar `sortKey`. Iremos estender a tabela com uma linha de cabeçalhos de coluna, que usa componentes _Sort_ para ordenar a lista em cada uma.
@@ -603,55 +603,55 @@ Em teoria, a lista deveria ser ordenada por alguma das funções. Mas, o valor _
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 const Table = ({
-	list,
-	sortKey,
-	onSort,
-	onDismiss
+  list,
+  sortKey,
+  onSort,
+  onDismiss
 }) =>
-	<div className="table">
+  <div className="table">
 # leanpub-start-insert
-		<div className="table-header">
-			<span style={{ width: '40%' }}>
-				<Sort
-					sortKey={'TITLE'}
-					onSort={onSort}
-				>
-					Title
-				</Sort>
-			</span>
-			<span style={{ width: '30%' }}>
-				<Sort
-					sortKey={'AUTHOR'}
-					onSort={onSort}
-				>
-					Author
-				</Sort>
-			</span>
-			<span style={{ width: '10%' }}>
-				<Sort
-					sortKey={'COMMENTS'}
-					onSort={onSort}
-				>
-					Comments
-				</Sort>
-			</span>
-			<span style={{ width: '10%' }}>
-				<Sort
-					sortKey={'POINTS'}
-					onSort={onSort}
-				>
-					Points
-				</Sort>
-			</span>
-			<span style={{ width: '10%' }}>
-				Archive
-			</span>
-		</div>
+    <div className="table-header">
+      <span style={{ width: '40%' }}>
+        <Sort
+          sortKey={'TITLE'}
+          onSort={onSort}
+        >
+          Title
+        </Sort>
+      </span>
+      <span style={{ width: '30%' }}>
+        <Sort
+          sortKey={'AUTHOR'}
+          onSort={onSort}
+        >
+          Author
+        </Sort>
+      </span>
+      <span style={{ width: '10%' }}>
+        <Sort
+          sortKey={'COMMENTS'}
+          onSort={onSort}
+        >
+          Comments
+        </Sort>
+      </span>
+      <span style={{ width: '10%' }}>
+        <Sort
+          sortKey={'POINTS'}
+          onSort={onSort}
+        >
+          Points
+        </Sort>
+      </span>
+      <span style={{ width: '10%' }}>
+        Archive
+      </span>
+    </div>
 # leanpub-end-insert
-		{SORTS[sortKey](list).map(item =>
-			...
-		)}
-	</div>
+    {SORTS[sortKey](list).map(item =>
+      ...
+    )}
+  </div>
 ~~~~~~~~
 
 Cada componente _Sort_ recebe uma `sortKey` específica e a função `onSort()`. Internamente, ele chama o método com a `sortKey` para definir a chave específica.
@@ -659,9 +659,9 @@ Cada componente _Sort_ recebe uma `sortKey` específica e a função `onSort()`.
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 const Sort = ({ sortKey, onSort, children }) =>
-	<Button onClick={() => onSort(sortKey)}>
-		{children}
-	</Button>
+  <Button onClick={() => onSort(sortKey)}>
+    {children}
+  </Button>
 ~~~~~~~~
 
 Como você pode ver, o componente _Sort_ reutiliza seu componente genérico _Button_. Quando o botão for clicado, a `sortKey` passada irá ser definida com a ajuda do método `onSort()`. Agora você deve ser capaz de ordenar a lista quando clicar nos cabeçalhos das colunas.
@@ -672,13 +672,13 @@ Ainda é possível fazer uma pequena melhoria, para um visual melhor. Até entã
 ~~~~~~~~
 const Sort = ({ sortKey, onSort, children }) =>
 # leanpub-start-insert
-	<Button
-		onClick={() => onSort(sortKey)}
-		className="button-inline"
-	>
+  <Button
+    onClick={() => onSort(sortKey)}
+    className="button-inline"
+  >
 # leanpub-end-insert
-		{children}
-	</Button>
+    {children}
+  </Button>
 ~~~~~~~~
 
 Deve parecer melhor agora. O próximo objetivo seria o de também implementar a ordenação inversa. A ordenação deveria ser invertida uma vez que você novamente clica no componente _Sort_. Primeiro, você precisa definir o estado booleano _reverse_. A ordenação poderá ser inversa, ou não.
@@ -686,14 +686,14 @@ Deve parecer melhor agora. O próximo objetivo seria o de também implementar a 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 this.state = {
-	results: null,
-	searchKey: '',
-	searchTerm: DEFAULT_QUERY,
-	error: null,
-	isLoading: false,
-	sortKey: 'NONE',
+  results: null,
+  searchKey: '',
+  searchTerm: DEFAULT_QUERY,
+  error: null,
+  isLoading: false,
+  sortKey: 'NONE',
 # leanpub-start-insert
-	isSortReverse: false,
+  isSortReverse: false,
 # leanpub-end-insert
 };
 ~~~~~~~~
@@ -704,8 +704,8 @@ Agora, em seu método de ordenação, você pode verificar se a lista terá a or
 ~~~~~~~~
 onSort(sortKey) {
 # leanpub-start-insert
-	const isSortReverse = this.state.sortKey === sortKey && !this.state.isSortReverse;
-	this.setState({ sortKey, isSortReverse });
+  const isSortReverse = this.state.sortKey === sortKey && !this.state.isSortReverse;
+  this.setState({ sortKey, isSortReverse });
 # leanpub-end-insert
 }
 ~~~~~~~~
@@ -716,39 +716,39 @@ Novamente, você pode passar a _prop_ de ordenação invertida para o componente
 ~~~~~~~~
 class App extends Component {
 
-	...
+  ...
 
-	render() {
-		const {
-			searchTerm,
-			results,
-			searchKey,
-			error,
-			isLoading,
-			sortKey,
+  render() {
+    const {
+      searchTerm,
+      results,
+      searchKey,
+      error,
+      isLoading,
+      sortKey,
 # leanpub-start-insert
-			isSortReverse
+      isSortReverse
 # leanpub-end-insert
-		} = this.state;
+    } = this.state;
 
-		...
+    ...
 
-		return (
-			<div className="page">
-				...
-				<Table
-					list={list}
-					sortKey={sortKey}
+    return (
+      <div className="page">
+        ...
+        <Table
+          list={list}
+          sortKey={sortKey}
 # leanpub-start-insert
-					isSortReverse={isSortReverse}
+          isSortReverse={isSortReverse}
 # leanpub-end-insert
-					onSort={this.onSort}
-					onDismiss={this.onDismiss}
-				/>
-				...
-			</div>
-		);
-	}
+          onSort={this.onSort}
+          onDismiss={this.onDismiss}
+        />
+        ...
+      </div>
+    );
+  }
 }
 ~~~~~~~~
 
@@ -758,31 +758,31 @@ _Table_ precisará ter uma um bloco de escopo de função explícito, para compu
 ~~~~~~~~
 # leanpub-start-insert
 const Table = ({
-	list,
-	sortKey,
-	isSortReverse,
-	onSort,
-	onDismiss
+  list,
+  sortKey,
+  isSortReverse,
+  onSort,
+  onDismiss
 }) => {
-	const sortedList = SORTS[sortKey](list);
-	const reverseSortedList = isSortReverse
-		? sortedList.reverse()
-		: sortedList;
+  const sortedList = SORTS[sortKey](list);
+  const reverseSortedList = isSortReverse
+    ? sortedList.reverse()
+    : sortedList;
 
-	return(
+  return(
 # leanpub-end-insert
-		<div className="table">
-			<div className="table-header">
-				...
-			</div>
+    <div className="table">
+      <div className="table-header">
+        ...
+      </div>
 # leanpub-start-insert
-			{reverseSortedList.map(item =>
+      {reverseSortedList.map(item =>
 # leanpub-end-insert
-				...
-			)}
-		</div>
+        ...
+      )}
+    </div>
 # leanpub-start-insert
-	);
+  );
 }
 # leanpub-end-insert
 ~~~~~~~~
@@ -796,73 +796,73 @@ Cada componente _Sort_ já recebe sua `sortKey` específica. Ela poderia ser uti
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 const Table = ({
-	list,
-	sortKey,
-	isSortReverse,
-	onSort,
-	onDismiss
+  list,
+  sortKey,
+  isSortReverse,
+  onSort,
+  onDismiss
 }) => {
-	const sortedList = SORTS[sortKey](list);
-	const reverseSortedList = isSortReverse
-		? sortedList.reverse()
-		: sortedList;
+  const sortedList = SORTS[sortKey](list);
+  const reverseSortedList = isSortReverse
+    ? sortedList.reverse()
+    : sortedList;
 
-	return(
-		<div className="table">
-			<div className="table-header">
-				<span style={{ width: '40%' }}>
-					<Sort
-						sortKey={'TITLE'}
-						onSort={onSort}
+  return(
+    <div className="table">
+      <div className="table-header">
+        <span style={{ width: '40%' }}>
+          <Sort
+            sortKey={'TITLE'}
+            onSort={onSort}
 # leanpub-start-insert
-						activeSortKey={sortKey}
+            activeSortKey={sortKey}
 # leanpub-end-insert
-					>
-						Title
-					</Sort>
-				</span>
-				<span style={{ width: '30%' }}>
-					<Sort
-						sortKey={'AUTHOR'}
-						onSort={onSort}
+          >
+            Title
+          </Sort>
+        </span>
+        <span style={{ width: '30%' }}>
+          <Sort
+            sortKey={'AUTHOR'}
+            onSort={onSort}
 # leanpub-start-insert
-						activeSortKey={sortKey}
+            activeSortKey={sortKey}
 # leanpub-end-insert
-					>
-						Author
-					</Sort>
-				</span>
-				<span style={{ width: '10%' }}>
-					<Sort
-						sortKey={'COMMENTS'}
-						onSort={onSort}
+          >
+            Author
+          </Sort>
+        </span>
+        <span style={{ width: '10%' }}>
+          <Sort
+            sortKey={'COMMENTS'}
+            onSort={onSort}
 # leanpub-start-insert
-						activeSortKey={sortKey}
+            activeSortKey={sortKey}
 # leanpub-end-insert
-					>
-						Comments
-					</Sort>
-				</span>
-				<span style={{ width: '10%' }}>
-					<Sort
-						sortKey={'POINTS'}
-						onSort={onSort}
+          >
+            Comments
+          </Sort>
+        </span>
+        <span style={{ width: '10%' }}>
+          <Sort
+            sortKey={'POINTS'}
+            onSort={onSort}
 # leanpub-start-insert
-						activeSortKey={sortKey}
+            activeSortKey={sortKey}
 # leanpub-end-insert
-					>
-						Points
-					</Sort>
-				</span>
-				<span style={{ width: '10%' }}>
-					Archive
-				</span>
-			</div>
-			{reverseSortedList.map(item =>
-					...
-			)}
-		</div>
-	);
+          >
+            Points
+          </Sort>
+        </span>
+        <span style={{ width: '10%' }}>
+          Archive
+        </span>
+      </div>
+      {reverseSortedList.map(item =>
+          ...
+      )}
+    </div>
+  );
 }
 ~~~~~~~~
 
@@ -872,25 +872,25 @@ Agora, no seu componente _Sort_, você sabe qual ordenação está ativa, basead
 ~~~~~~~~
 # leanpub-start-insert
 const Sort = ({
-	sortKey,
-	activeSortKey,
-	onSort,
-	children
+  sortKey,
+  activeSortKey,
+  onSort,
+  children
 }) => {
-	const sortClass = ['button-inline'];
+  const sortClass = ['button-inline'];
 
-	if (sortKey === activeSortKey) {
-		sortClass.push('button-active');
-	}
+  if (sortKey === activeSortKey) {
+    sortClass.push('button-active');
+  }
 
-	return (
-		<Button
-			onClick={() => onSort(sortKey)}
-			className={sortClass.join(' ')}
-		>
-			{children}
-		</Button>
-	);
+  return (
+    <Button
+      onClick={() => onSort(sortKey)}
+      className={sortClass.join(' ')}
+    >
+      {children}
+    </Button>
+  );
 }
 # leanpub-end-insert
 ~~~~~~~~
@@ -920,28 +920,28 @@ Agora será possível usá-la para definir o `className` do seu componente com c
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 const Sort = ({
-	sortKey,
-	activeSortKey,
-	onSort,
-	children
+  sortKey,
+  activeSortKey,
+  onSort,
+  children
 }) => {
 # leanpub-start-insert
-	const sortClass = classNames(
-		'button-inline',
-		{ 'button-active': sortKey === activeSortKey }
-	);
+  const sortClass = classNames(
+    'button-inline',
+    { 'button-active': sortKey === activeSortKey }
+  );
 # leanpub-end-insert
 
-	return (
+  return (
 # leanpub-start-insert
-		<Button
-			onClick={() => onSort(sortKey)}
-			className={sortClass}
-		>
+    <Button
+      onClick={() => onSort(sortKey)}
+      className={sortClass}
+    >
 # leanpub-end-insert
-			{children}
-		</Button>
-	);
+      {children}
+    </Button>
+  );
 }
 ~~~~~~~~
 
@@ -953,18 +953,18 @@ Novamente, quando você rodar os seus testes, verá _snapshot tests_ e agora tam
 
 describe('Table', () => {
 
-	const props = {
-		list: [
-			{ title: '1', author: '1', num_comments: 1, points: 2, objectID: 'y' },
-			{ title: '2', author: '2', num_comments: 1, points: 2, objectID: 'z' },
-		],
+  const props = {
+    list: [
+      { title: '1', author: '1', num_comments: 1, points: 2, objectID: 'y' },
+      { title: '2', author: '2', num_comments: 1, points: 2, objectID: 'z' },
+    ],
 # leanpub-start-insert
-		sortKey: 'TITLE',
-		isSortReverse: false,
+    sortKey: 'TITLE',
+    isSortReverse: false,
 # leanpub-end-insert
-	};
+  };
 
-	...
+  ...
 
 });
 ~~~~~~~~
@@ -976,7 +976,7 @@ Finalmente, sua interação avançada de ordenação está completa.
 ### Exercícios:
 
 * Use uma biblioteca como [Font Awesome][9] para indicar a ordenação (inversa ou não)
-	* Poderia ser um ícone de seta para cima ou para baixo, ao lado do cabeçalho _Sort_
+  * Poderia ser um ícone de seta para cima ou para baixo, ao lado do cabeçalho _Sort_
 * Leia mais sobre a [biblioteca classnames][10]
 
 {pagebreak}
@@ -984,12 +984,12 @@ Finalmente, sua interação avançada de ordenação está completa.
 Você aprendeu técnicas avançadas em componentes React! Vamos recapitular:
 
 * React
-	* o atributo _ref_ para referenciar _DOM nodes_
-	* _higher-order components_ são um jeito comum de construir componentes avançados
-	* implementação de interações avançadas em React
-	* _classNames_ condicionais com uma biblioteca utilitária elegante
+  * o atributo _ref_ para referenciar _DOM nodes_
+  * _higher-order components_ são um jeito comum de construir componentes avançados
+  * implementação de interações avançadas em React
+  * _classNames_ condicionais com uma biblioteca utilitária elegante
 * ES6
-	* uso de _rest destructuring_ para separar objetos e _arrays_
+  * uso de _rest destructuring_ para separar objetos e _arrays_
 
 Você irá encontrar o código fonte no [repositório oficial][11].
 
